@@ -1,0 +1,129 @@
+{
+ "brand": "DSG 数创时代",
+ "legalName": "数创时代 DSG",
+ "contact": {
+  "address": "上海市徐汇区钦州北路1066号70号楼3楼",
+  "email": "jason.huang@dsgcorp.cn",
+  "phone": "+86 189 1635 8954"
+ },
+ "navigation": [
+  {
+   "label": "首页",
+   "zhUrl": "index.html",
+   "enUrl": "index-en.html"
+  },
+  {
+   "label": "活动",
+   "zhUrl": "events.html",
+   "enUrl": "events-en.html"
+  },
+  {
+   "label": "供应链AI创新专区",
+   "zhUrl": "supply-chain-ai.html",
+   "enUrl": "supply-chain-ai-en.html"
+  },
+  {
+   "label": "行业洞察",
+   "zhUrl": "insights.html",
+   "enUrl": "insights-en.html"
+  },
+  {
+   "label": "关于 DSG",
+   "zhUrl": "about.html",
+   "enUrl": "about-en.html"
+  },
+  {
+   "label": "联系我们",
+   "zhUrl": "contact.html",
+   "enUrl": "contact-en.html"
+  }
+ ],
+ "homeMetrics": [
+  {
+   "label": "产业活动",
+   "unit": "场",
+   "metric": {
+    "value": 63,
+    "status": "verified",
+    "note": "2024 年 2 月至 2026 年 11 月共 63 场：年度峰会 2 + 城市沙龙 8 + 精英六人谈 53（含原闭门会 4 场）",
+    "provenance": {
+     "sourceFile": "数创时代DSG-案例集锦（revision 16652）",
+     "verifiedBy": "DSG 运营部",
+     "verifiedOn": "2026-11-17",
+     "note": "events.json 63 条；新增 11-24 北京站，闭门会 4 条并入精英六人谈"
+    }
+   }
+  },
+  {
+   "label": "企业高管",
+   "unit": "位",
+   "metric": {
+    "value": 400,
+    "status": "verified",
+    "note": "案例集锦「参会嘉宾」栏目累计记录 448 条，对外按 400+ 表述",
+    "provenance": {
+     "sourceFile": "数创时代DSG-案例集锦（revision 16609）",
+     "verifiedBy": "DSG 运营部",
+     "verifiedOn": "2026-11-16",
+     "note": "doc_plain 参会嘉宾行统计 448"
+    },
+    "atLeast": true
+   }
+  },
+  {
+   "label": "参会企业",
+   "unit": "家",
+   "metric": {
+    "value": 300,
+    "status": "verified",
+    "note": "448 条嘉宾记录去重后 366 家机构，对外按 300+ 表述",
+    "provenance": {
+     "sourceFile": "数创时代DSG-案例集锦（revision 16609）",
+     "verifiedBy": "DSG 运营部",
+     "verifiedOn": "2026-11-16",
+     "note": "参会机构去重 366"
+    },
+    "atLeast": true
+   }
+  },
+  {
+   "label": "精英六人谈",
+   "unit": "场",
+   "metric": {
+    "value": 53,
+    "status": "verified",
+    "note": "精英六人谈 49 场 + 原闭门会/走进企业 4 场，合并为一类统计",
+    "provenance": {
+     "sourceFile": "数创时代DSG-案例集锦（revision 16652）",
+     "verifiedBy": "DSG 运营部",
+     "verifiedOn": "2026-11-17",
+     "note": "category=elite 共 53 条"
+    }
+   }
+  },
+  {
+   "label": "分享嘉宾",
+   "unit": "位",
+   "metric": {
+    "value": 63,
+    "status": "verified",
+    "note": "登台分享的企业高管与行业专家（含 500 强与 C-level）",
+    "provenance": {
+     "sourceFile": "数创时代DSG-案例集锦（revision 16609）",
+     "verifiedBy": "DSG 运营部",
+     "verifiedOn": "2026-11-16",
+     "note": "speakers.json published 63"
+    }
+   }
+  }
+ ],
+ "leadRouting": {
+  "default": "local-queue",
+  "channels": [
+   "local-queue",
+   "wechat-work",
+   "email",
+   "webhook"
+  ]
+ }
+}

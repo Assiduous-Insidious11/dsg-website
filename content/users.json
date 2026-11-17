@@ -1,0 +1,67 @@
+[
+  {
+    "id": "ROLE-SUPER-ADMIN",
+    "name": "超级管理员",
+    "type": "role",
+    "permissions": [
+      "dashboard",
+      "events",
+      "ai",
+      "insights",
+      "permissions"
+    ],
+    "locked": true,
+    "mfaRecommended": true,
+    "status": "active"
+  },
+  {
+    "id": "ROLE-EVENTS-ADMIN",
+    "name": "会议管理员",
+    "type": "role",
+    "permissions": [
+      "dashboard",
+      "events"
+    ],
+    "locked": true,
+    "mfaRecommended": true,
+    "status": "active"
+  },
+  {
+    "id": "ROLE-AI-ADMIN",
+    "name": "供应链AI管理员",
+    "type": "role",
+    "permissions": [
+      "dashboard",
+      "ai"
+    ],
+    "locked": true,
+    "mfaRecommended": false,
+    "status": "active"
+  },
+  {
+    "id": "ROLE-INSIGHTS-ADMIN",
+    "name": "行业洞察管理员",
+    "type": "role",
+    "permissions": [
+      "dashboard",
+      "insights"
+    ],
+    "locked": true,
+    "mfaRecommended": false,
+    "status": "active"
+  },
+  {
+    "id": "ROLE-EDITOR",
+    "name": "内容编辑",
+    "type": "role",
+    "permissions": [
+      "dashboard",
+      "events",
+      "insights"
+    ],
+    "locked": false,
+    "mfaRecommended": false,
+    "status": "active",
+    "note": "可编辑但不可发布，发布需负责人审核"
+  }
+]

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" type="image/png" href="assets/optimized/logo_favicon.png">
+  <title>行业洞察 | DSG 数创时代</title><link rel="stylesheet" href="assets/styles.css?v=20261117i">
+  <link rel="stylesheet" href="assets/dsg-2026.css?v=20261117i"><script defer src="assets/alpine.min.js"></script><script src="assets/embedded-data.js?v=20261117i"></script>
+  <script src="assets/site.js?v=20261117i"></script>  <script src="assets/forms.js?v=20260917-eventsync"></script>
+<!-- seo:begin 由 tools/build.py 生成，勿手动修改 -->
+  <meta name="description" content="DSG 行业洞察沉淀峰会回放、专家访谈、闭门纪要与行业文章，面向经营者与数字化负责人。">
+  <link rel="canonical" href="https://www.dsgcorp.cn/insights.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://www.dsgcorp.cn/insights.html">
+  <link rel="alternate" hreflang="en" href="https://www.dsgcorp.cn/insights-en.html">
+  <link rel="alternate" hreflang="x-default" href="https://www.dsgcorp.cn/insights.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="数创时代 DSG">
+  <meta property="og:title" content="行业洞察 | DSG 数创时代">
+  <meta property="og:description" content="DSG 行业洞察沉淀峰会回放、专家访谈、闭门纪要与行业文章，面向经营者与数字化负责人。">
+  <meta property="og:url" content="https://www.dsgcorp.cn/insights.html">
+  <meta property="og:image" content="https://www.dsgcorp.cn/assets/optimized/module-home-v2.webp">
+  <meta property="og:locale" content="zh_CN">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="行业洞察 | DSG 数创时代">
+  <meta name="twitter:description" content="DSG 行业洞察沉淀峰会回放、专家访谈、闭门纪要与行业文章，面向经营者与数字化负责人。">
+  <meta name="twitter:image" content="https://www.dsgcorp.cn/assets/optimized/module-home-v2.webp">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "name": "数创时代 DSG", "alternateName": "Digital Service Group", "url": "https://www.dsgcorp.cn", "logo": "https://www.dsgcorp.cn/assets/logo_full.png", "email": "jason.huang@dsgcorp.cn", "telephone": "+86 189 1635 8954", "address": {"@type": "PostalAddress", "streetAddress": "上海市徐汇区钦州北路1066号70号楼3楼"}}, {"@type": "WebSite", "name": "数创时代 DSG", "url": "https://www.dsgcorp.cn", "inLanguage": "zh-CN"}, {"@type": "WebPage", "name": "行业洞察 | DSG 数创时代", "url": "https://www.dsgcorp.cn/insights.html", "isPartOf": {"@type": "WebSite", "url": "https://www.dsgcorp.cn"}}]}</script>
+<!-- seo:end -->
+</head>
+<body x-data="dsgApp('insights')">
+  <header class="site-header"><nav class="nav"><a class="brand" href="index.html"><img src="assets/optimized/logo_full.webp" alt="DSG"></a><div class="nav-links"><a href="index.html">首页</a><div class="nav-item"><a href="events.html?v=20261117i">活动</a><div class="dropdown"><a href="events-calendar.html">活动日历</a><a href="events-summits.html">年度峰会</a><a href="events-city.html">城市沙龙</a><a href="events-elite-talks.html">精英六人谈</a></div></div><a href="supply-chain-ai.html">供应链AI创新专区</a><a href="consult.html">轻咨询</a><a class="active" href="insights.html">行业洞察</a><a href="about.html">关于 DSG</a></div><a class="nav-cta" href="contact.html">预约咨询</a><a class="lang-toggle" href="insights-en.html">EN</a></nav></header>
+  <main><section class="section surface-dark"><div class="container split"><div><span class="eyebrow">Insights</span><h1>让活动之后的观点继续产生价值。</h1><p class="muted">行业洞察承载视频回放、专家访谈、活动纪要、白皮书和案例文章，是长期内容资产中心。</p></div><div class="media-frame"><img src="assets/optimized/module-insights-v2.webp" alt="行业洞察"></div></div></section><section class="section"><div class="container"><div class="insight-grid"><template x-for="item in insights"><article class="insight-card"><div class="meta" x-text="item.type + ' · ' + item.date"></div><h3 x-text="item.title"></h3><p x-text="item.summary"></p><div class="actions"><button class="btn secondary" @click="openVideo(item.title)" x-text="item.type.includes('视频') ? '观看视频' : '阅读详情'"></button></div></article></template></div></div></section><section class="section surface-white"><div class="container split"><div><span class="eyebrow">Video Library</span><h2>视频与洞察合并为一个内容频道。</h2><p>视频回放、案例讲解和专家访谈都可以作为洞察内容的一种类型，后续后台只需要维护一个内容库。</p></div><div class="video-shell"><div><button class="play" @click="openVideo('年度峰会回放样板')">▶</button><strong>年度峰会回放样板</strong></div></div></div></section></main>
+  <footer class="footer"><div class="footer-inner"><div>DSG 行业洞察</div><div><a href="events.html?v=20261117i">活动中心</a></div><div class="footer-legal">© 2026 数创时代 DSG 保留所有权利 · <a href="privacy.html">隐私条款</a>
+<!-- 备案号占位：取得 ICP 备案号后，把下面整行替换为
+     <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">沪ICP备XXXXXXXX号</a> -->
+</div>
+  </div></footer>
+  <div class="modal" x-cloak x-show="selectedVideo"><div class="modal-panel"><div class="modal-head"><h2 x-text="selectedVideo"></h2><button class="close" @click="closeVideo()">×</button></div><div class="video-shell"><div><div class="play">▶</div><p>内容详情或视频播放器占位。</p></div></div></div></div>
+<script src="assets/dsg-sync.js?v=20260917-eventsync"></script>
+</body></html>

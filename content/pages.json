@@ -1,0 +1,211 @@
+[
+  {
+    "id": "PAGE-INDEX",
+    "zhUrl": "index.html",
+    "enUrl": "index-en.html",
+    "title": "首页",
+    "language": "zh-CN",
+    "translationStatus": "static",
+    "seo": {
+      "title": "首页 | DSG 数创时代",
+      "description": "DSG 数创时代以年度峰会、城市沙龙和私董会连接产业决策者，并通过供应链 AI 创新专区帮助企业把技术转化为增长能力。",
+      "keywords": [
+        "DSG",
+        "数创时代",
+        "首页"
+      ]
+    },
+    "editableRegions": [],
+    "layoutOwner": "engineering"
+  },
+  {
+    "id": "PAGE-EVENTS",
+    "zhUrl": "events.html",
+    "enUrl": "events-en.html",
+    "title": "活动中心",
+    "language": "zh-CN",
+    "translationStatus": "static",
+    "seo": {
+      "title": "活动中心 | DSG 数创时代",
+      "description": "DSG 活动中心汇总年度峰会、城市沙龙与精英六人谈，可按活动层级、城市和日期筛选，并直达报名与申请席位。",
+      "keywords": [
+        "DSG",
+        "数创时代",
+        "活动中心"
+      ]
+    },
+    "editableRegions": [],
+    "layoutOwner": "engineering"
+  },
+  {
+    "id": "PAGE-EVENTS-SUMMITS",
+    "zhUrl": "events-summits.html",
+    "enUrl": "events-summits-en.html",
+    "title": "年度峰会",
+    "language": "zh-CN",
+    "translationStatus": "static",
+    "seo": {
+      "title": "年度峰会 | DSG 数创时代",
+      "description": "DSG 年度峰会面向企业决策者，围绕全球化与创新议题，汇聚行业专家、标杆案例与可落地的转型方法。",
+      "keywords": [
+        "DSG",
+        "数创时代",
+        "年度峰会"
+      ]
+    },
+    "editableRegions": [],
+    "layoutOwner": "engineering"
+  },
+  {
+    "id": "PAGE-EVENTS-CITY",
+    "zhUrl": "events-city.html",
+    "enUrl": "events-city-en.html",
+    "title": "城市沙龙",
+    "language": "zh-CN",
+    "translationStatus": "static",
+    "seo": {
+      "title": "城市沙龙 | DSG 数创时代",
+      "description": "DSG 城市沙龙走进产业一线城市，以小规模深度交流连接区域企业负责人，聚焦真实业务问题与解决方案。",
+      "keywords": [
+        "DSG",
+        "数创时代",
+        "城市沙龙"
+      ]
+    },
+    "editableRegions": [],
+    "layoutOwner": "engineering"
+  },
+  {
+    "id": "PAGE-EVENTS-ELITE-TALKS",
+    "zhUrl": "events-elite-talks.html",
+    "enUrl": "events-elite-talks-en.html",
+    "title": "精英六人谈",
+    "language": "zh-CN",
+    "translationStatus": "static",
+    "seo": {
+      "title": "精英六人谈 | DSG 数创时代",
+      "description": "DSG 精英六人谈是 6-15 人闭门私董会，围绕供应链韧性与数字化转型做不公开的实战复盘。",
+      "keywords": [
+        "DSG",
+        "数创时代",
+        "精英六人谈"
+      ]
+    },
+    "editableRegions": [],
+    "layoutOwner": "engineering"
+  },
+  {
+    "id": "PAGE-EVENTS-CALENDAR",
+    "zhUrl": "events-calendar.html",
+    "enUrl": "events-calendar-en.html",
+    "title": "活动日历",
+    "language": "zh-CN",
+    "translationStatus": "static",
+    "seo": {
+      "title": "活动日历 | DSG 数创时代",
+      "description": "按月份查看 DSG 全量活动排期，月历视图快速发现，详情页完成报名决策。",
+      "keywords": [
+        "DSG",
+        "数创时代",
+        "活动日历"
+      ]
+    },
+    "editableRegions": [],
+    "layoutOwner": "engineering"
+  },
+  {
+    "id": "PAGE-EVENT-DETAIL",
+    "zhUrl": "event-detail.html",
+    "enUrl": "event-detail-en.html",
+    "title": "活动详情",
+    "language": "zh-CN",
+    "translationStatus": "static",
+    "seo": {
+      "title": "活动详情 | DSG 数创时代",
+      "description": "查看单场 DSG 活动的议程、嘉宾、地点、规模与报名方式。",
+      "keywords": [
+        "DSG",
+        "数创时代",
+        "活动详情"
+      ]
+    },
+    "editableRegions": [],
+    "layoutOwner": "engineering"
+  },
+  {
+    "id": "PAGE-SUPPLY-CHAIN-AI",
+    "zhUrl": "supply-chain-ai.html",
+    "enUrl": "supply-chain-ai-en.html",
+    "title": "供应链AI创新专区",
+    "language": "zh-CN",
+    "translationStatus": "static",
+    "seo": {
+      "title": "供应链AI创新专区 | DSG 数创时代",
+      "description": "以真实案例呈现 DSG 供应链 AI 解决方案：行业痛点、产品能力、业务价值、视频演示与 Demo 预约。",
+      "keywords": [
+        "DSG",
+        "数创时代",
+        "供应链AI创新专区"
+      ]
+    },
+    "editableRegions": [],
+    "layoutOwner": "engineering"
+  },
+  {
+    "id": "PAGE-INSIGHTS",
+    "zhUrl": "insights.html",
+    "enUrl": "insights-en.html",
+    "title": "行业洞察",
+    "language": "zh-CN",
+    "translationStatus": "static",
+    "seo": {
+      "title": "行业洞察 | DSG 数创时代",
+      "description": "DSG 行业洞察沉淀峰会回放、专家访谈、闭门纪要与行业文章，面向经营者与数字化负责人。",
+      "keywords": [
+        "DSG",
+        "数创时代",
+        "行业洞察"
+      ]
+    },
+    "editableRegions": [],
+    "layoutOwner": "engineering"
+  },
+  {
+    "id": "PAGE-ABOUT",
+    "zhUrl": "about.html",
+    "enUrl": "about-en.html",
+    "title": "关于 DSG",
+    "language": "zh-CN",
+    "translationStatus": "static",
+    "seo": {
+      "title": "关于 DSG | DSG 数创时代",
+      "description": "DSG 数创时代以活动连接产业、以 AI 重构供应链，是跨越技术鸿沟的修桥人。",
+      "keywords": [
+        "DSG",
+        "数创时代",
+        "关于 DSG"
+      ]
+    },
+    "editableRegions": [],
+    "layoutOwner": "engineering"
+  },
+  {
+    "id": "PAGE-CONTACT",
+    "zhUrl": "contact.html",
+    "enUrl": "contact-en.html",
+    "title": "联系我们",
+    "language": "zh-CN",
+    "translationStatus": "static",
+    "seo": {
+      "title": "联系我们 | DSG 数创时代",
+      "description": "报名参会、预约供应链 AI Demo、发起商务合作或媒体合作，联系 DSG 数创时代。",
+      "keywords": [
+        "DSG",
+        "数创时代",
+        "联系我们"
+      ]
+    },
+    "editableRegions": [],
+    "layoutOwner": "engineering"
+  }
+]

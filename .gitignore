@@ -1,0 +1,4 @@
+# 由本地工程目录同步生成
+*.bak-*
+Thumbs.db
+.DS_Store

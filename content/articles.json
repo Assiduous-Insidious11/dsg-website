@@ -1,0 +1,68 @@
+[
+  {
+    "id": "ART-2026-0001",
+    "urlName": "art-2026-0001",
+    "title": "供应链 AI 从试点到规模化落地的三个关键条件",
+    "type": "行业文章",
+    "author": null,
+    "date": "2026-05-20",
+    "summary": "从数据基础、业务场景和组织协同三个角度，拆解企业如何避免 AI 项目停留在演示阶段。",
+    "body": null,
+    "tags": [],
+    "coverImage": null,
+    "relatedEventIds": [],
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "approvedBy": null,
+    "seo": {
+      "title": "供应链 AI 从试点到规模化落地的三个关键条件 | DSG 行业洞察",
+      "description": "从数据基础、业务场景和组织协同三个角度，拆解企业如何避免 AI 项目停留在演示阶段。",
+      "keywords": []
+    }
+  },
+  {
+    "id": "ART-2026-0002",
+    "urlName": "art-2026-0002",
+    "title": "年度峰会回放：AI 如何重塑采购与供应商管理",
+    "type": "视频回放",
+    "author": null,
+    "date": "2026-04-12",
+    "summary": "来自制造、快消和新能源企业的实践分享，覆盖风险预警、采购降本和供应商绩效管理。",
+    "body": null,
+    "tags": [],
+    "coverImage": null,
+    "relatedEventIds": [],
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "approvedBy": null,
+    "seo": {
+      "title": "年度峰会回放：AI 如何重塑采购与供应商管理 | DSG 行业洞察",
+      "description": "来自制造、快消和新能源企业的实践分享，覆盖风险预警、采购降本和供应商绩效管理。",
+      "keywords": []
+    }
+  },
+  {
+    "id": "ART-2026-0003",
+    "urlName": "art-2026-0003",
+    "title": "DSG 精英六人谈纪要：从 CEO 视角看供应链韧性",
+    "type": "闭门纪要",
+    "author": null,
+    "date": "2026-03-28",
+    "summary": "小范围闭门讨论后的匿名化观点整理，适合 CXO 和供应链负责人快速阅读。",
+    "body": null,
+    "tags": [],
+    "coverImage": null,
+    "relatedEventIds": [],
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "approvedBy": null,
+    "seo": {
+      "title": "DSG 精英六人谈纪要：从 CEO 视角看供应链韧性 | DSG 行业洞察",
+      "description": "小范围闭门讨论后的匿名化观点整理，适合 CXO 和供应链负责人快速阅读。",
+      "keywords": []
+    }
+  }
+]

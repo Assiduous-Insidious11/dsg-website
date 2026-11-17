@@ -1,0 +1,1725 @@
+/*!
+ * DSG 官网 2026 改版 · 设计系统覆盖层
+ * ---------------------------------------------------------------
+ * 建立时间：2026-11-06
+ * 用途：在不改动 assets/styles.css 的前提下，统一修正栅格、字阶、对齐与节奏。
+ * 针对问题（来源：2026-09-17 郭总评审 + 2026-11-05 复盘）：
+ *   1. 全站左边界不一致（导航 144px / 正文 72px，差 72px）→ 统一栅格
+ *   2. 标题在句子中间断行，末行只剩两三个字 → 收敛字阶 + text-wrap: balance
+ *   3. 卡片不等高、按钮不在同一水平线 → flex 布局 + margin-top:auto
+ *   4. 留白无节奏、信息密度过低 → 统一区间间距
+ *   5. 中英文版排版不一致 → 同一套栅格与字阶，不区分语种
+ *   6. Logo 因缩放模糊 → 固定高度 + 按比例，不用 max-height 挤压
+ * 引入方式：在每个 HTML 的 styles.css 之后加一行 <link>
+ */
+
+:root {
+  /* —— 栅格：全站唯一基准 —— */
+  --page-max: 1240px;
+  --gutter: clamp(20px, 5vw, 64px);
+  --page-w: min(calc(var(--page-max) + var(--gutter) * 2), 100%);
+
+  /* —— 纵向节奏 —— */
+  --sec-y: clamp(64px, 7.5vw, 108px);
+  --sec-y-sm: clamp(40px, 4.5vw, 64px);
+
+  /* —— 字体：标题宋、正文黑（2026-11-12 定案 D+A）——
+     宋体只出现在 18px 以上，14px 以下宋体笔画发虚，一律黑体。
+     现在走系统字体栈（STSong/SimSun），正式上线前要自托管思源宋体子集，
+     否则访客机器上会掉到中易宋体，大字号发僵。 */
+  --ff-hei: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  --ff-song: "STSong", "Songti SC", "Noto Serif SC", "Source Han Serif SC", "SimSun", "宋体", serif;
+
+  /* —— 字阶：五档，不再出现第六档 —— */
+  --fs-display: clamp(32px, 3.6vw, 44px);
+  /* 首屏大标题字号（首页与活动页共用同一个值，两处标题必须一样大） */
+  --fs-hero: clamp(34px, 3.7vw, 54px);
+  --fs-h2: clamp(26px, 2.9vw, 38px);
+  --fs-h3: clamp(19px, 1.6vw, 22px);
+  --fs-body: 15px;
+  --fs-small: 13px;
+
+  --lh-display: 1.3;
+  --lh-h2: 1.3;
+  --lh-body: 1.85;
+
+  /* 副标相对主标题的缩放（改这一个值就能整体收回/放大副标） */
+  --sub-scale: .64;
+}
+
+/* ============ 一、栅格统一 ============ */
+
+/* 正文一律走黑体变量；标题由 h1/h2/h3 单独切到宋体（2026-11-12 D+A 定案） */
+body,
+.nav,
+.btn,
+input,
+select,
+textarea,
+.tag-row .tag,
+.event-facts .fact .v {
+  font-family: var(--ff-hei);
+}
+
+/* 导航：去掉 header 与 nav 的双重内边距 */
+.site-header {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+.nav {
+  width: var(--page-w);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  height: 72px;
+  gap: clamp(16px, 2vw, 28px);
+}
+.nav-links {
+  gap: clamp(14px, 1.8vw, 26px);
+  font-size: 14.5px;
+}
+
+/* 首屏：与正文同一条左边界 */
+.hero {
+  width: var(--page-w);
+  margin: 0 auto;
+}
+.hero-inner {
+  padding: clamp(52px, 6.5vw, 84px) var(--gutter) clamp(36px, 4.5vw, 52px);
+}
+
+/* 正文容器 */
+.container {
+  width: var(--page-w);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+/* 区块纵向节奏 */
+.section {
+  padding: var(--sec-y) 0;
+}
+.section.section-tight {
+  padding: var(--sec-y-sm) 0;
+}
+
+/* ============ 二、标题与正文排版 ============ */
+
+/* 中文标题：平衡断行，避免末行只剩两三个字
+   注意：中文排版不能用 ch 限制宽度——1ch 只有半个汉字宽，
+   用 ch 会把标题提前掐断成"…继续产生 / 价值。"这种孤行。
+   这里统一改用 em（1em = 1 个汉字宽）。 */
+h1 {
+  max-width: 15em;
+  font-family: var(--ff-hei);
+  font-weight: 800;
+  font-size: var(--fs-display);
+  line-height: var(--lh-display);
+  letter-spacing: -.01em;
+  text-wrap: balance;
+  /* 注意：不要用 word-break: keep-all —— 英文靠它防断词，中文却会因此禁止换行，
+     整句被挤成"…产生价 / 值。"这类孤行。中文用 normal，靠 text-wrap:balance 平衡。 */
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+/* 标题按语义断行（2026-11-12）：由 site.js 的 titleHtml() 输出多个 .title-line，
+   每行独立成块，「暨」「——」这类连接词跟着下一行走，不再出现"…峰会暨苏 / 州农商行…"
+   这种词中腰断。行内仍允许在极窄屏折行，靠 overflow-wrap 兜底。 */
+.title-line {
+  display: block;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+/* 副标行（2026-11-12 晚，D 方案）：由标题的「暨 / —— / 冒号之后」切出来的那一行，
+   它是协办说明或说明句，不是标题续文，所以降一号、转黑体、转次色。
+   由 site.js 的 titleHtml() 打 .title-sub 类，CSS 不猜内容。
+   数值统一用 --sub-scale 控制，不散落魔法数字。 */
+.title-sub {
+  font-family: var(--ff-hei);
+  font-size: var(--sub-scale);
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0;
+  /* 用 inherit + 透明度，不写死颜色：同一套规则要同时服务白底卡片和深色首屏，
+     写死 --ink-2 会让详情页深色首屏上的副标直接看不见。 */
+  color: inherit;
+  opacity: .62;
+  margin-top: .42em;
+}
+h1 .title-line + .title-line {
+  margin-top: .16em;
+}
+.event-card .title-line,
+.calendar-item .title-line,
+.archive-item .title-line,
+.detail-band .title-line {
+  /* 卡片与列表里两行等重，只做块级分行（副标行由 .title-sub 单独收小） */
+  font-size: inherit;
+}
+h2 {
+  font-family: var(--ff-hei);
+  font-weight: 800;
+  font-size: var(--fs-h2);
+  line-height: var(--lh-h2);
+  letter-spacing: -.008em;
+  text-wrap: balance;
+  word-break: normal;
+}
+h3 {
+  font-family: var(--ff-hei);
+  font-weight: 700;
+  font-size: var(--fs-h3);
+  line-height: 1.45;
+  letter-spacing: -.005em;
+}
+p {
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  max-width: 34em;
+}
+.hero p {
+  max-width: 30em;
+  font-size: 17px;
+  line-height: 1.82;
+}
+
+/* 英文版：字母语言的字距与行宽单独处理 */
+html[lang="en"] h1 { letter-spacing: -.02em; max-width: 22ch; }
+html[lang="en"] p { max-width: 66ch; }
+
+/* 小标签 */
+.eyebrow {
+  font-size: 12px;
+  letter-spacing: .16em;
+  margin-bottom: 2px;
+}
+
+/* ============ 三、区块头：标题与说明统一左对齐 ============
+   2026-11-15 定案：原先区块头是「左标题 + 右说明」两栏，说明右对齐且底对齐。
+   问题是标题一旦折行，右侧那行小字就悬在标题下半部，左右两块的基线互不相干，
+   看起来像一块孤立的浮字（首页「业务架构」「近期活动」两处最明显）。
+   改为单栏：说明紧跟标题下方、同一条左边界，标题字号与正文层级不变。
+   30 处区块头共用这一条规则，改一处全站一致。 */
+.section-head {
+  display: block;
+  margin-bottom: clamp(28px, 3.5vw, 44px);
+}
+.section-head > div { display: block; }
+.section-head h2 {
+  margin: 6px 0 0;
+  max-width: 17em;
+}
+/* 标题的语义分行：每行独立成块，由人工决定断点，不交给浏览器自动折。
+   用于需要「上下两行等宽」的对句标题。 */
+.h2-line { display: block; }
+.section-head p {
+  font-size: 15px;
+  line-height: 1.75;
+  /* 与标题左边界齐平，另加 14px 让说明与标题留一口气，
+     不用两栏时那个 56px 的大间距 */
+  margin: 14px 0 0;
+  max-width: 52em;
+  text-align: left;
+}
+/* 旧标记保留兼容：HTML 里写了 align-right 的说明，现在也走左对齐，
+   避免与上面的单栏规则打架（首页 / 关于页曾用过这个类）。 */
+.section-head .align-right {
+  text-align: left;
+  justify-self: start;
+}
+
+/* 标题与副标题上下堆叠时（窄容器/单栏页面） */
+.section-head.stack {
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+.section-head.stack .align-right {
+  text-align: left;
+  justify-self: start;
+}
+
+/* ============ 四、卡片：等高 + 底部动作对齐 ============ */
+
+.business-grid,
+.event-grid,
+.case-grid,
+.insight-grid {
+  align-items: stretch;
+}
+
+.business-card,
+.event-card,
+.case-card,
+.insight-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* 卡片内的动作区贴底 */
+.business-card > a:last-child,
+.case-card .actions,
+.insight-card > a:last-child {
+  margin-top: auto;
+  padding-top: 18px;
+}
+
+/* 2026-11-12 第1批：活动卡的贴底元素改为 .tag-row（见 styles.css .event-body .tag-row），
+   此处必须让 .actions 让出 auto，否则两个 auto 平分空隙，标签仍随正文长度浮动。 */
+.event-card .event-body .actions {
+  margin-top: 0;
+  padding-top: 18px;
+}
+
+/* 卡片正文给固定下限，避免不同行数导致高度跳动 */
+.business-card p,
+.case-card p,
+.insight-card p {
+  margin-bottom: 0;
+}
+
+/* 活动卡片：图片比例统一 */
+.event-card img {
+  aspect-ratio: 16 / 10;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* ============ 五、指标区：五条已核实/估算数据排一行 ============ */
+
+/* 2026-11-16：首页指标按评审口径 5 条排布（对齐参考站大数字横排）；
+   estimated 项由 metricText 自动加"约"前缀，pending 不渲染 */
+.hero-metrics {
+  grid-template-columns: repeat(5, 1fr);
+  max-width: 1080px;
+  margin-top: clamp(28px, 3.4vw, 40px);
+}
+.metric {
+  padding: 18px 18px;
+}
+.metric strong {
+  font-size: clamp(24px, 2.4vw, 32px);
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+.metric span {
+  display: block;
+  margin-top: 6px;
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+@media (max-width: 1080px) {
+  .hero-metrics {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 860px) {
+  .hero-metrics {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ============ 六、按钮：高度与内边距统一 ============ */
+
+.btn {
+  min-height: 44px;
+  padding: 0 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14.5px;
+  letter-spacing: .02em;
+}
+.btn.secondary,
+.btn.gold {
+  min-height: 44px;
+}
+
+/* ============ 七、Logo：保持清晰，不挤压变形 ============ */
+
+.brand img {
+  width: auto;
+  height: 34px;
+  max-height: none;
+  object-fit: contain;
+  /* 位图缩小时关闭锐化，避免二次插值发虚 */
+  image-rendering: auto;
+}
+
+/* 中英文 logo 原始比例不同（中文 1200×822 / 英文 1200×576）
+   统一按高度约束，宽度自适应，两版导航高度才一致 */
+html[lang="en"] .brand img {
+  height: 34px;
+}
+
+/* ============ 八、关于页首屏：消除双重内边距，标题一行放得下 ============ */
+
+/* 原样式是 width: 100%-144px 再加 padding:0 72px，等于左右各缩 216px，
+   与其他页面不一致；这里并入全局栅格 */
+.about-hero {
+  width: var(--page-w);
+  padding: clamp(28px, 4vw, 44px) var(--gutter);
+  grid-template-columns: minmax(0, 1fr) minmax(300px, .62fr);
+  gap: clamp(24px, 3.5vw, 48px);
+}
+/* 「传统制造业与先进科技的修桥人」15 字。
+   原来 60px 时 15×60=900px 超过左栏宽度，断成「…与先 / 进科技的修桥人」，
+   把「先进」拆到两行。降到 44px 上限后可整行容纳。 */
+.about-hero-copy h1 {
+  font-size: clamp(30px, 3.4vw, 44px);
+  max-width: none;
+  line-height: 1.26;
+  margin-bottom: 18px;
+}
+.about-hero-copy p {
+  font-size: 16.5px;
+  line-height: 1.8;
+  max-width: 34em;
+}
+
+/* ============ 九、页脚：统一栅格 + 备案区位 ============ */
+
+.footer {
+  /* 页脚底板必须通栏：原来被 styles.css 的 width: var(--page-w) 收成中间一条，
+     宽屏两侧留白，法务行又挂在容器外，于是「活动中心」和「© 2026」左右对不上。
+     现在：底板 100%，内容交给 .footer-inner 的同一套栅格与内边距。 */
+  width: 100%;
+  margin: 0;
+  padding: 40px 0 32px;
+}
+.footer-inner {
+  width: var(--page-w);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 32px;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+}
+.footer-legal {
+  width: 100%;
+  padding-top: 16px;
+  margin-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, .12);
+  font-size: 12.5px;
+  line-height: 1.7;
+  opacity: .72;
+}
+.footer-legal a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ============ 九、全站同步活动模块：降级为普通区块，不抢主视觉 ============ */
+
+[data-dsg-sync],
+.dsg-sync-block {
+  border-top: 1px solid var(--line);
+}
+
+/* ============ 十、响应式 ============ */
+
+@media (max-width: 1080px) {
+  .section-head {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    align-items: start;
+  }
+  .section-head .align-right {
+    text-align: left;
+    justify-self: start;
+  }
+  .section-head h2 {
+    max-width: 100%;
+  }
+  h1 {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 720px) {
+  :root {
+    --fs-display: clamp(28px, 7.6vw, 36px);
+    --fs-h2: clamp(23px, 6vw, 30px);
+    --sec-y: 56px;
+  }
+  .nav {
+    height: 64px;
+  }
+  .brand img,
+  html[lang="en"] .brand img {
+    height: 28px;
+  }
+  .hero p {
+    font-size: 15.5px;
+  }
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}
+
+/* 打印：保留栅格，去掉装饰 */
+@media print {
+  .site-header,
+  .footer,
+  [data-dsg-sync] {
+    display: none !important;
+  }
+  .hero,
+  .container,
+  .hero-inner,
+  .footer-inner {
+    width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+/* ------------------------------------------------------------------
+   月历格子（2026-11-12）：活动名在格子里原来会撑出 3~4 行、溢出到相邻格，
+   视觉上非常乱。这里限定两行 + 省略号，完整标题在格子下方列表和详情页看。
+   ------------------------------------------------------------------ */
+.day-cell {
+  min-width: 0;
+  overflow: hidden;
+}
+.day-event {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  max-height: 3.2em;
+  line-height: 1.3;
+  word-break: normal;
+}
+
+/* ------------------------------------------------------------------
+   白底卡片标题被深色区块染色（2026-11-12）：
+   .surface-dark 设了 color:#fff，首页"近期活动"三张卡背景是白的，
+   但标题没单独设色，继承成白字白底 → 看起来"卡片没有标题"。
+   这里给所有白底卡片的标题显式上墨色，与页面其它卡片一致。
+   ------------------------------------------------------------------ */
+.event-card h3,
+.case-card h3,
+.insight-card h3,
+.business-card h3,
+.showcase-card h3,
+.calendar-item h3,
+.archive-item strong {
+  color: var(--ink);
+}
+
+/* 卡片标题：没有标点可分的长标题，交给平衡折行，避免一行挤满一行只剩两三个字。
+   同时把字号/行高拉回字阶变量（2026-11-12 晚）：styles.css 用 .event-card h3
+   把字号写死成 22px/1.25，特异性高于覆盖层的 h3 规则，宋体行高因此被压紧。 */
+.event-card h3,
+.showcase-card h3,
+.case-card h3,
+.insight-card h3,
+.calendar-item h3 {
+  font-size: var(--fs-h3);
+  line-height: 1.45;
+  text-wrap: balance;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+/* ------------------------------------------------------------------
+   活动卡「事实行」（2026-11-12 晚）
+   问题：同一行位置，第一张卡写「主题口号：」、第二张写「主题：」、第三张什么都不写；
+        自由文本长度不一，三张卡的灰字左边永远对不齐。
+   做法：标签列固定宽度、行高固定，值永远从同一列起步；标签由数据层统一给出，
+        不允许再在文案里手写「主题：」这种前缀。
+   ------------------------------------------------------------------ */
+.event-facts {
+  display: grid;
+  grid-auto-rows: 1.7em;
+  margin: 4px 0 0;
+}
+.event-facts .fact {
+  display: grid;
+  grid-template-columns: 3em minmax(0, 1fr);
+  column-gap: 8px;
+  align-items: baseline;
+  min-width: 0;
+}
+.event-facts .fact .k {
+  font-family: var(--ff-song);
+  color: #98a2a8;
+  font-size: 12.5px;
+  letter-spacing: .04em;
+  white-space: nowrap;
+}
+.event-facts .fact .k::after { content: "："; }
+html[lang="en"] .event-facts .fact .k::after { content: ":"; margin-right: 2px; }
+.event-facts .fact .v {
+  color: #4a5459;
+  font-size: 13.5px;
+  line-height: 1.55;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 卡片标题行数统一：同一排三张卡的标题占位一致，下面的灰字才会在同一高度起步 */
+.event-grid .event-card h3 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  min-height: calc(3 * 1.45em);
+  margin-bottom: 12px;
+}
+
+/* ============ 第二批 #12/#13：首页只放一张活动卡 + 无未来场次空态 ============ */
+.event-grid-single {
+  grid-template-columns: minmax(0, 760px);
+  justify-content: start;
+}
+.event-grid-single .event-card { width: 100%; }
+
+@media (max-width: 1024px) {
+  .event-grid-single { grid-template-columns: 1fr; }
+}
+
+.surface-dark .event-empty {
+  border: 1px dashed rgba(255, 255, 255, .28);
+  border-radius: 14px;
+  padding: 40px 28px;
+  text-align: center;
+}
+.surface-dark .event-empty p {
+  margin: 0 0 8px;
+  color: rgba(255, 255, 255, .9);
+  font-size: 16px;
+}
+.surface-dark .event-empty .event-empty-sub {
+  margin: 0;
+  color: rgba(255, 255, 255, .58);
+  font-size: 13.5px;
+}
+
+/* ============ 第二批 #11：业务卡由 3 张增至 4 张（新增「轻咨询」） ============ */
+.business-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+@media (max-width: 1180px) {
+  .business-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 920px) {
+  .business-grid { grid-template-columns: 1fr; }
+}
+.mark.consult { background: var(--ink); }
+
+/* ============ 第二批 #8/#9：首屏分块排版 ============
+   用块级 span 代替 <br>：桌面端标题仍是规整的两行，
+   窄屏按块自然折行，不会像 <br> 那样把内容撑出屏幕右边界。 */
+.h1-line,
+.h1-brand,
+.h1-sub { display: block; }
+
+/* 首屏说明文字（2026-11-16 改）：放弃三行短句。
+   原写法把「年度峰会…聚在一起 / 所有活动统一发布、统一报名、不再散落各处 /
+   用 AI 重构供应链，从一个可预约的排产 Demo 开始」拆成三个块级 span。
+   读出来是三条标语而不是一句介绍：第二行讲的是改版目标（对内的），
+   「不再散落各处」等于向访客交代我们此前散落；第三行既重复标题，
+   又把整家公司的第一印象压在一个排产 Demo 上。
+   改为一段连贯的业务说明，一句讲清服务谁、提供什么、AI 那条线怎么承接；
+   行宽放到 40em，让整段落在两行内，与参照站副标题的节奏一致。 */
+.hero .hero-lead {
+  max-width: 40em;
+  margin-top: 24px;
+  /* 2026-11-16：这里不用 balance。
+     整段 70 字在 40em 下只能折两行，balance 为把两行拉齐，
+     会把「城市」拆成「城 / 市沙龙」——拆词比长短不齐更不能接受。
+     段落允许末行短，但对句标题不允许，两种规则分开用：
+     标题一行排死，副标交回自然折行，只用 pretty 防末行孤字。 */
+  text-wrap: pretty;
+}
+
+/* 首屏标题（2026-11-16 二次返工）：
+   原先把整句 12 个字排成一行（约 812px），横跨大半个屏幕，既挤掉右侧画面，
+   又让标题和副标各占一条长度，读起来像一张横幅。现在改成两行——
+   「以 AI 重构供应链，」/「以活动连接产业决策者」，行宽收到左半边，
+   右侧留给照片与留白，参照评审给的参考图：文字成块压在左侧，右边是图。
+   活动页首屏标题共用 --fs-hero，两处字号必须一模一样。 */
+.hero h1 {
+  max-width: 15em;
+  font-size: var(--fs-hero);
+  line-height: 1.22;
+  letter-spacing: -.012em;
+  /* 手工两行，不要再让 balance 二次折断 */
+  text-wrap: initial;
+}
+/* 首屏文字块收在左半边（约 660px），标题、正文、按钮同一宽度上限；
+   数字带例外——五格要铺满，否则挤在左边会挤成两行。 */
+.hero-inner > .eyebrow,
+.hero-inner > h1,
+.hero-inner > .hero-lead,
+.hero-inner > .hero-actions {
+  max-width: 660px;
+}
+
+/* 英文首屏标题：两句改为等长（30 与 29 字符），两行宽度基本齐平。
+   全局 h1 的 22ch 行宽会把它折成四行，这里单独放到底。 */
+html[lang="en"] .hero h1 {
+  max-width: 34ch;
+}
+
+@media (max-width: 620px) {
+  /* 手机上这行放不进一行：整句 14 个全角位（12 汉字 + 逗号 + AI），
+     390px 屏内容宽约 350px，要一行需字号压到 22px，比正文大不了多少，层级就没了。
+     所以手机端接受两行，但要让它折在逗号上、并且两行接近等宽——
+     靠 .hero h1 的 text-wrap: balance 完成（实测折成「以活动连接产业，」8 位
+     与「以AI重构供应链」6 位加 AI，两行差约 1 个字宽，不是原来桌面那种一长一短）。 */
+  .hero h1 { font-size: clamp(27px, 7vw, 34px); line-height: 1.24; }
+  .hero-lead { font-size: 15.5px; line-height: 1.7; }
+  /* 「数创时代 DSG · DIGITAL SERVICE GROUP」在 360px 屏差一点放不下会折成两行，
+     这里收一档字号与字距，保证标签一行到底、不破坏左边界。 */
+  .hero .eyebrow { font-size: 10.5px; letter-spacing: .1em; }
+  /* 整段约 70 字，15.5px 一行约 24 字，自然折成三行，不留孤字孤行。 */
+  .hero .hero-lead { margin-top: 18px; }
+}
+
+/* 窄屏导航兜底：.nav-links 是 flex 项且内容 nowrap，
+   缺 min-width:0 时它的 min-content 会把 .nav 撑开，进而把整个 body 撑宽，
+   导致首页正文在手机上被右边界切掉。加这一行后导航保持自身横向滚动，不再外溢。 */
+@media (max-width: 920px) {
+  .nav-links { min-width: 0; }
+}
+
+/* ================================================================
+ * 十、活动栏目改版（2026-11-16）
+ * 依据 2026-11-06《DST 官网原型评审与需求沟通会议》：
+ *   · 少放主题文字，改用大数字 + 级别统计
+ *   · 近期活动用真实照片与真实 KV，不用 AI 图
+ *   · 活动按类型分级（峰会 / 城市沙龙 / 精英论坛 / 闭门会 / 外部承办），一类一面
+ *   · 日历改为按年 12 格，点月份看该月活动与月度海报
+ *   · 详情页栏目顺序：议程 → 适用人群与交流价值 → 分享嘉宾 → 主办与合作伙伴
+ *   · 信息分行加冒号，标题同一行加粗、说明另起一行
+ * 前缀：st- 数字带 / evf- 首页精选 / cat- 分类区 / evc- 活动大卡 / kvx- KV 卡
+ *      caly- 年历 / dt- 详情页 / avx- 首字头像
+ * ================================================================ */
+
+/* ---------- 数字带 ---------- */
+.hero .st-band { background: rgba(8, 10, 13, .74); }
+.st-band {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0;
+  border-top: 1px solid rgba(255, 255, 255, .16);
+  border-bottom: 1px solid rgba(255, 255, 255, .16);
+}
+.st-band .st-item {
+  padding: 26px 22px 24px;
+  border-right: 1px solid rgba(255, 255, 255, .12);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+.st-band .st-item:last-child { border-right: 0; }
+.st-band .st-num {
+  font-family: var(--ff-song);
+  font-size: clamp(34px, 3.4vw, 48px);
+  line-height: 1;
+  letter-spacing: -.02em;
+  color: #fff;
+}
+.st-band .st-num .u {
+  font-family: var(--ff-hei);
+  font-size: 13px;
+  font-style: normal;
+  margin-left: 6px;
+  color: var(--gold);
+  letter-spacing: 0;
+}
+.st-band .st-lab { font-size: 13px; color: rgba(255, 255, 255, .72); }
+.st-band.on-light { border-color: var(--line); }
+.st-band.on-light .st-item { border-right-color: var(--line); }
+.st-band.on-light .st-num { color: var(--ink); }
+.st-band.on-light .st-lab { color: var(--muted); }
+.st-note { margin-top: 14px; font-size: 12px; color: var(--muted); }
+
+/* ---------- 首页：近期活动（主卡 + 次卡） ---------- */
+.evf-wrap {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  align-items: stretch;
+}
+.evf-main {
+  display: grid;
+  /* 左图右文：活动 KV 多是竖版海报，横铺会在 16:10 里把文字裁掉，所以给竖版留一列 */
+  grid-template-columns: minmax(0, 44%) minmax(0, 1fr);
+  background: rgba(255, 255, 255, .04);
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.evf-main .evf-media { position: relative; height: 400px; align-self: stretch; background: #0e1114; }
+.evf-main .evf-media img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+.evf-body { padding: 26px 30px 28px; display: flex; flex-direction: column; justify-content: center; }
+.evf-flags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+.evf-flags .pill {
+  font-size: 12px; padding: 4px 10px; border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, .28); color: rgba(255, 255, 255, .86);
+}
+.evf-flags .pill.on { background: var(--gold); border-color: var(--gold); color: #14110b; }
+.evf-body h3 { font-size: clamp(21px, 1.9vw, 27px); line-height: 1.35; margin: 0 0 14px; color: #fff; }
+.evf-body .title-line { display: block; }
+.evf-body .title-sub { font-size: .72em; color: rgba(255, 255, 255, .7); font-weight: 400; margin-top: 4px; }
+.evf-side { display: grid; grid-template-columns: 1fr; gap: 20px; }
+.evf-mini.no-img { grid-template-columns: 1fr; }
+.evf-mini {
+  display: grid; grid-template-columns: 120px 1fr; gap: 16px;
+  background: rgba(255, 255, 255, .04);
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: var(--radius); overflow: hidden; min-height: 0;
+}
+.evf-mini img { width: 120px; height: 100%; min-height: 118px; max-height: 132px; object-fit: cover; object-position: top center; display: block; }
+.evf-mini .mini-body {
+  padding: 16px 22px 16px 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.evf-mini.no-img .mini-body { padding-left: 18px; }
+.evf-mini .meta { color: rgba(255, 255, 255, .6); font-size: 12px; }
+.evf-mini h4 { margin: 6px 0 8px; font-size: 15px; line-height: 1.5; color: #fff; font-weight: 600; }
+.evf-mini .mini-go { font-size: 12px; color: var(--gold); }
+
+/* 分段信息行：主题口号 / 参会人员 / 活动形式（标签 + 冒号 + 值） */
+.dt-rows { display: grid; gap: 10px; margin: 0; }
+.dt-rows .row { display: grid; grid-template-columns: 96px 1fr; gap: 12px; align-items: start; }
+.dt-rows .k { font-size: 13px; color: var(--muted); }
+.dt-rows .k::after { content: "："; }
+.dt-rows .v { font-size: 15px; line-height: 1.7; }
+.surface-dark .dt-rows .k { color: rgba(255, 255, 255, .6); }
+.surface-dark .dt-rows .v { color: rgba(255, 255, 255, .92); }
+
+/* ---------- KV 卡（没有真实照片时，用排版卡替代 AI 图） ---------- */
+.kvx {
+  position: relative; display: flex; flex-direction: column; justify-content: space-between;
+  padding: 22px; color: #fff; background: #1b1f24; min-height: 100%;
+  background-image:
+    radial-gradient(circle at 88% 12%, rgba(255, 255, 255, .16), transparent 46%),
+    linear-gradient(140deg, #232a31, #14181c);
+}
+.kvx.teal { background-image: radial-gradient(circle at 88% 12%, rgba(0, 192, 176, .34), transparent 48%), linear-gradient(140deg, #10282a, #0d1417); }
+.kvx.indigo { background-image: radial-gradient(circle at 86% 14%, rgba(86, 116, 255, .34), transparent 50%), linear-gradient(140deg, #161a33, #0e1018); }
+.kvx.amber { background-image: radial-gradient(circle at 86% 14%, rgba(184, 146, 74, .38), transparent 50%), linear-gradient(140deg, #2b2317, #14110b); }
+.kvx.rose { background-image: radial-gradient(circle at 86% 14%, rgba(210, 90, 120, .32), transparent 50%), linear-gradient(140deg, #2c1720, #140d11); }
+.kvx .kv-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.kvx .kv-type { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: rgba(255, 255, 255, .66); }
+.kvx .kv-no { font-family: var(--ff-song); font-size: 34px; line-height: 1; color: rgba(255, 255, 255, .92); }
+.kvx .kv-title { font-family: var(--ff-song); font-size: 20px; line-height: 1.45; margin: 18px 0 0; }
+.kvx .kv-meta { font-size: 12px; color: rgba(255, 255, 255, .7); margin-top: 14px; display: grid; gap: 4px; }
+.kvx .kv-hint { font-size: 11px; color: rgba(255, 255, 255, .45); margin-top: 12px; }
+
+/* ---------- 活动中心：分类区 ---------- */
+.cat-block { padding: 56px 0 8px; border-top: 1px solid var(--line); }
+.cat-block:first-of-type { border-top: 0; }
+.cat-head { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: end; margin-bottom: 26px; }
+.cat-head .cat-title { display: flex; align-items: baseline; gap: 14px; }
+.cat-head h2 { margin: 0; font-size: clamp(24px, 2.4vw, 32px); }
+.cat-head .cat-count { font-size: 13px; color: var(--muted); }
+.cat-head .cat-desc { margin: 8px 0 0; color: var(--muted); font-size: 14px; }
+.cat-head .cat-more { font-size: 13px; color: var(--ink); border-bottom: 1px solid var(--gold); padding-bottom: 2px; white-space: nowrap; }
+/* 3 列时 7 场会剩 2 个空位（一整行白洞），改成按可用宽度自动排 4 列，最多只空 1 格 */
+.cat-cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; }
+.cat-cards.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+/* 活动大卡 */
+.evc {
+  display: flex; flex-direction: column; min-width: 0;
+  background: #fff; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
+}
+.evc .evc-media { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: #14181c; }
+.evc .evc-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.evc .evc-media .kvx { position: absolute; inset: 0; }
+.evc .evc-tag {
+  position: absolute; left: 14px; top: 14px; z-index: 2;
+  font-size: 11px; padding: 4px 9px; border-radius: 3px;
+  background: rgba(17, 19, 21, .72); color: #fff; backdrop-filter: blur(4px);
+}
+.evc .evc-body { padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+.evc .evc-meta { font-size: 12px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 10px; }
+.evc h3 { margin: 0; font-size: 18px; line-height: 1.5; }
+.evc h3 .title-line { display: block; }
+.evc h3 .title-sub { font-size: .82em; color: var(--muted); font-weight: 400; }
+.evc .evc-agenda { display: grid; gap: 7px; margin: 0; padding: 0; list-style: none; }
+.evc .evc-agenda li { display: grid; grid-template-columns: 92px 1fr; gap: 10px; font-size: 13px; line-height: 1.6; color: var(--ink-2); }
+.evc .evc-agenda .t { color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.evc .evc-people { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.evc .evc-foot { margin-top: auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 12px; padding-top: 6px; }
+.evc .evc-foot .btn { white-space: nowrap; flex: 0 0 auto; margin-left: auto; }
+.evc .evc-foot .meta { flex: 1 0 100%; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block; }
+
+/* 首字头像 */
+.avx {
+  width: 34px; height: 34px; border-radius: 50%; flex: 0 0 34px;
+  display: grid; place-items: center; font-size: 14px; font-weight: 600; color: #fff;
+  background: #3a4249;
+}
+.avx.tone-1 { background: #2f5d50; }
+.avx.tone-2 { background: #3a4a72; }
+.avx.tone-3 { background: #6b4a2f; }
+.avx.tone-4 { background: #522f3f; }
+.avx.tone-5 { background: #2f4a5d; }
+.avx.lg { width: 52px; height: 52px; flex-basis: 52px; font-size: 19px; }
+
+/* ---------- 年历（12 格） ---------- */
+.caly-bar { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; margin-bottom: 22px; }
+.caly-years { display: flex; gap: 8px; }
+.caly-years button {
+  padding: 8px 18px; border: 1px solid var(--line); background: #fff; border-radius: 999px;
+  font-size: 14px; cursor: pointer; color: var(--ink-2);
+}
+.caly-years button.on { background: var(--ink); border-color: var(--ink); color: #fff; }
+.caly-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.caly-m {
+  text-align: left; background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 18px 18px 16px; cursor: pointer; min-height: 132px;
+  display: flex; flex-direction: column; gap: 8px; transition: border-color .15s, transform .15s;
+}
+.caly-m:hover { border-color: var(--ink); transform: translateY(-2px); }
+.caly-m.empty { background: var(--paper); color: var(--muted); cursor: default; }
+.caly-m.empty:hover { border-color: var(--line); transform: none; }
+.caly-m .m-top { display: flex; align-items: baseline; justify-content: space-between; }
+.caly-m .m-name { font-family: var(--ff-song); font-size: 22px; }
+.caly-m .m-count { font-size: 12px; color: var(--gold); }
+.caly-m .m-lead { font-size: 13px; line-height: 1.55; color: var(--ink-2); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.caly-m .m-cats { display: flex; gap: 6px; margin-top: auto; }
+.caly-m .m-cats i { width: 7px; height: 7px; border-radius: 50%; background: var(--muted); display: block; }
+.caly-m .m-cats i.summit { background: var(--ink); }
+.caly-m .m-cats i.city { background: var(--teal); }
+.caly-m .m-cats i.elite { background: var(--blue); }
+.caly-m .m-cats i.closed { background: var(--gold); }
+
+/* 月份弹层 */
+.caly-pop { position: fixed; inset: 0; z-index: 60; background: rgba(10, 12, 14, .55); display: grid; place-items: center; padding: 24px; }
+.caly-panel {
+  width: min(760px, 100%); max-height: 86vh; overflow: auto; background: #fff;
+  border-radius: 10px; box-shadow: var(--shadow); padding: 26px 28px 28px;
+}
+.caly-panel .p-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 18px; }
+.caly-panel h3 { margin: 0; font-size: 22px; }
+.caly-pop-list { display: grid; gap: 12px; }
+.caly-row { display: grid; grid-template-columns: 92px 1fr auto; gap: 16px; align-items: center; padding: 14px 0; border-top: 1px solid var(--line); }
+.caly-row .d { font-variant-numeric: tabular-nums; font-size: 13px; color: var(--muted); }
+.caly-row strong { display: block; font-size: 15px; line-height: 1.5; }
+.caly-row small { color: var(--muted); font-size: 12px; }
+.caly-poster {
+  margin-top: 22px; display: grid; grid-template-columns: 200px 1fr; gap: 20px; align-items: center;
+  border-top: 1px solid var(--line); padding-top: 20px;
+}
+.caly-poster .ph {
+  aspect-ratio: 3 / 4; border-radius: 6px; overflow: hidden;
+  display: grid; place-items: center; text-align: center; padding: 14px;
+  background: linear-gradient(150deg, #232a31, #11151a); color: #fff;
+}
+.caly-poster .ph b { font-family: var(--ff-song); font-size: 20px; display: block; line-height: 1.4; }
+.caly-poster .ph span { font-size: 11px; color: rgba(255, 255, 255, .6); display: block; margin-top: 8px; }
+
+/* ---------- 详情页 ---------- */
+.dt-hero-facts { display: flex; flex-wrap: wrap; gap: 28px; margin-top: 20px; }
+.dt-hero-facts .f strong { font-family: var(--ff-song); font-size: 26px; display: block; line-height: 1.1; }
+.dt-hero-facts .f span { font-size: 12px; color: var(--muted); }
+
+.dt-band { display: grid; grid-template-columns: 130px 1fr; gap: 28px; padding: 34px 0; border-top: 1px solid var(--line); }
+.dt-band:first-child { border-top: 0; }
+.dt-band > .lab { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); padding-top: 6px; }
+.dt-band h2 { margin: 0 0 16px; font-size: clamp(20px, 1.9vw, 26px); }
+
+.dt-agenda { display: grid; gap: 0; }
+.dt-agenda .row { display: grid; grid-template-columns: 108px 26px 1fr; gap: 14px; padding: 14px 0; border-top: 1px dashed var(--line); align-items: start; }
+.dt-agenda .row:first-child { border-top: 0; }
+.dt-agenda .t { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; padding-top: 2px; }
+.dt-agenda .n { font-size: 12px; color: var(--gold); padding-top: 2px; }
+.dt-agenda .x { font-size: 15px; line-height: 1.7; }
+
+.dt-topic { display: grid; gap: 14px; }
+.dt-topic .t-item { border-left: 2px solid var(--gold); padding: 2px 0 2px 14px; }
+.dt-topic .t-title { font-size: 15px; font-weight: 600; line-height: 1.6; }
+.dt-topic .t-supp { font-size: 13px; color: var(--muted); line-height: 1.7; margin-top: 4px; }
+
+.dt-speakers { display: grid; grid-template-columns: repeat(auto-fill, minmax(248px, 1fr)); gap: 16px; }
+/* 详情页栅格覆盖：styles.css 的 .72fr/.28fr 会把左侧压到 550 以内，嘉宾卡只剩一列且字挤在头像上 */
+.detail-overview { grid-template-columns: minmax(0, 1fr) minmax(280px, 320px); gap: 44px; }
+.dt-band { grid-template-columns: 104px minmax(0, 1fr); gap: 26px; }
+.dt-speaker { display: flex; align-items: center; gap: 12px; }
+.dt-speaker .avx, .dt-speaker img { flex: 0 0 52px; }
+.dt-speaker .avx { color: #fff !important; font-weight: 600; }
+.dt-speaker > div { min-width: 0; }
+
+.dt-speaker { display: grid; grid-template-columns: 52px 1fr; gap: 12px; align-items: center; padding: 14px; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; }
+.dt-speaker img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; }
+.dt-speaker strong { display: block; font-size: 15px; line-height: 1.4; }
+.dt-speaker span { display: block; font-size: 12px; color: var(--muted); line-height: 1.5; margin-top: 2px; }
+
+/* 合作伙伴墙：合并成一面，不按场次分散 */
+.dt-wall { display: flex; flex-wrap: wrap; gap: 10px; }
+.dt-wall .w-item { padding: 10px 16px; border: 1px solid var(--line); border-radius: 999px; font-size: 13px; color: var(--ink-2); background: #fff; }
+
+.dt-photos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.dt-photos img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 4px; display: block; }
+.dt-photos .empty-slot {
+  aspect-ratio: 4 / 3; border: 1px dashed var(--line); border-radius: 4px;
+  display: grid; place-items: center; text-align: center; font-size: 12px; color: var(--muted); padding: 10px;
+}
+
+@media (max-width: 1080px) {
+  .st-band { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .st-band .st-item:nth-child(3n) { border-right: 0; }
+  .evf-main { grid-template-columns: 1fr; }
+  .evf-main .evf-media { max-height: 420px; }
+  .cat-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .caly-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .dt-band { grid-template-columns: 1fr; gap: 12px; }
+  .dt-photos { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 720px) {
+  .st-band { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .st-band .st-item { border-right: 0; border-bottom: 1px solid rgba(255, 255, 255, .12); }
+  .cat-cards, .cat-cards.two { grid-template-columns: 1fr; }
+  .caly-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cat-head { grid-template-columns: 1fr; }
+  .dt-hero-facts { gap: 18px; }
+  .dt-agenda .row { grid-template-columns: 1fr; gap: 4px; }
+  .dt-agenda .n { display: none; }
+  .dt-photos { grid-template-columns: repeat(2, 1fr); }
+  .caly-poster { grid-template-columns: 1fr; }
+}
+/* 详情页头图：竖版海报会把 hero 撑到 700px 以上，标题孤零零浮在中间，固定图高裁顶部 */
+.program-hero .program-visual { max-height: 460px; overflow: hidden; border-radius: var(--radius); }
+.program-hero .program-visual > img { width: 100%; height: 460px; object-fit: cover; object-position: top center; display: block; }
+.program-hero .program-visual .kvx { height: 460px; min-height: 0; }
+.dt-agenda .row { grid-template-columns: 84px 24px minmax(0, 1fr); }
+/* 详情页 H1 的副标：标题被「—— / 暨」切开的后半句降一号字，不再和主标题一样大 */
+.program-hero h1 .title-line { display: block; }
+.program-hero h1 .title-sub { font-size: .6em; font-weight: 400; line-height: 1.5; margin-top: 10px; color: rgba(255, 255, 255, .74); }
+/* 活动中心底部的年度迷你预览：12 格，一眼看全年分布 */
+.caly-mini { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 8px; }
+.caly-mini .cm {
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  padding: 12px 4px; border: 1px solid var(--line); border-radius: 6px;
+  font-size: 12px; color: var(--ink-2); background: #fff;
+}
+.caly-mini .cm i { font-style: normal; color: var(--muted); font-size: 11px; }
+.caly-mini .cm b { font-family: var(--ff-song); font-size: 20px; line-height: 1; }
+.caly-mini .cm.off { background: var(--paper); color: var(--muted); }
+.caly-mini .cm.off b { color: #c9ced3; }
+@media (max-width: 720px) { .caly-mini { grid-template-columns: repeat(6, minmax(0, 1fr)); } }
+/* 移动端：--site-pad 一直是 72px，390 宽时正文被挤出屏幕右侧（历史遗留）。
+   这里只在窄屏收窄内边距，不动桌面端。 */
+@media (max-width: 860px) {
+  :root { --site-pad: 20px; }
+  .hero-inner { padding-left: 20px; padding-right: 20px; }
+  /* .split 的第二列写死 minmax(340px, .55fr)，窄屏会把整页顶出屏幕 */
+  .split { grid-template-columns: 1fr !important; gap: 24px; }
+  .split .media-frame img, .split img { max-width: 100%; height: auto; }
+  .program-hero .container { grid-template-columns: 1fr !important; }
+}
+
+/* ---------- 活动页：类型列表（链接式逐条，2026-11-17 重做） ----------
+   三条硬要求：
+   1) 读序「上下 → 左右」，所以用 CSS 多栏（column-count）而不是 grid：
+      grid 是先左右后上下，会把 48 期排到 47 期右边；多栏才是先顺着左侧往下走到底、
+      再接着右侧，跟看邮件列表一个习惯。
+   2) 城市沙龙与精英六人谈共用同一套行样式，只差有没有期号那一列。
+   3) 行不跨栏断开（break-inside: avoid）。 */
+.ev-browser { margin-top: 4px; }
+
+.ev-search { position: relative; max-width: 460px; margin: 0 auto 14px; }
+.ev-search input {
+  width: 100%; height: 42px; padding: 0 40px;
+  border: 1px solid var(--line); border-radius: 999px; background: #fff;
+  font-size: 14px; color: var(--ink); font-family: inherit;
+}
+.ev-search input:focus { outline: none; border-color: var(--gold); }
+.ev-search input::-webkit-search-cancel-button { display: none; }
+.ev-search .ic { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); width: 15px; height: 15px; color: var(--muted); pointer-events: none; }
+.ev-search .clr {
+  position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+  width: 20px; height: 20px; border: 0; border-radius: 50%; background: var(--paper);
+  color: var(--muted); font-size: 13px; line-height: 1; cursor: pointer; padding: 0;
+}
+.ev-search .clr:hover { color: var(--ink); }
+.ev-search-note { margin: 0 0 12px; text-align: center; font-size: 12.5px; color: var(--muted); }
+
+.ev-list { column-count: 2; column-gap: 40px; }
+.ev-row {
+  display: grid;
+  grid-template-columns: 66px 62px 40px minmax(0, 1fr) 10px;
+  gap: 10px;
+  align-items: center;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 14px;
+  text-decoration: none;
+  color: var(--ink);
+  break-inside: avoid;
+}
+.ev-row.city { grid-template-columns: 62px 40px minmax(0, 1fr) 10px; }
+.ev-row:hover .ev-row-title { color: var(--gold); }
+.ev-row-no { font-size: 12px; color: var(--gold); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.ev-row-date { font-size: 12.5px; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.ev-row-city { font-size: 12.5px; color: var(--muted); white-space: nowrap; }
+.ev-row-title { min-width: 0; line-height: 1.5; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ev-row-go { color: var(--muted); font-size: 16px; text-align: right; }
+.ev-empty { margin: 26px 0 6px; text-align: center; font-size: 13px; color: var(--muted); }
+
+/* 分页条：页码 + 每页条数 + 跳转（对齐邮箱那套控件） */
+.ev-pager {
+  display: flex; align-items: center; justify-content: flex-end; gap: 18px; flex-wrap: wrap;
+  margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line);
+}
+.ev-pages { display: flex; align-items: center; gap: 3px; }
+.ev-pg, .ev-pg-nav {
+  min-width: 30px; height: 30px; padding: 0 8px;
+  border: 1px solid transparent; border-radius: 5px; background: none;
+  font-size: 13px; font-family: inherit; color: var(--ink); cursor: pointer;
+  font-variant-numeric: tabular-nums;
+}
+.ev-pg:hover, .ev-pg-nav:hover:not(:disabled) { background: var(--paper); }
+.ev-pg.active { background: var(--ink); border-color: var(--ink); color: #fff; }
+.ev-pg-nav:disabled { color: #c9ced3; cursor: default; }
+.ev-pg-dots { padding: 0 3px; color: var(--muted); font-size: 13px; }
+.ev-pager-meta { display: flex; align-items: center; gap: 14px; font-size: 13px; color: var(--ink-2); }
+.ev-size select {
+  height: 30px; padding: 0 6px; border: 1px solid var(--line); border-radius: 5px;
+  background: #fff; font-size: 13px; font-family: inherit; color: var(--ink); min-width: 92px;
+}
+.ev-jump { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+.ev-jump input {
+  width: 46px; height: 30px; padding: 0 4px; text-align: center;
+  border: 1px solid var(--line); border-radius: 5px; background: #fff;
+  font-size: 13px; font-family: inherit; color: var(--ink); font-variant-numeric: tabular-nums;
+}
+.ev-jump input:focus { outline: none; border-color: var(--gold); }
+.ev-jump b { font-weight: 600; color: var(--ink); }
+
+/* 年度峰会卡：标题一行 + 「日期 / 时段 / 内容」三列议程 + 嘉宾人数一行 */
+.cat-cards.two .evc h3 {
+  font-size: 18px; line-height: 1.5;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.evc .evc-plan { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
+/* 两张峰会卡并排时，左卡两行都只有一行字、右卡第一行折成两行，
+   「嘉宾人数」就会一高一低。这里把议程块锁成「2 个时段 × 每段最多 2 行」的固定高度，
+   下面所有行（嘉宾人数 / 适用人群 / 按钮）就都落在同一条水平线上。
+   只在并排（>1200px）生效：单列时卡片上下排，不需要留这段等高空白。 */
+@media (min-width: 1401px) {
+  .cat-cards.two .evc .evc-plan { height: calc(4 * 20.8px + 6px); grid-auto-rows: 1fr; overflow: hidden; }
+}
+.evc .evc-plan li {
+  display: grid; grid-template-columns: 52px 54px minmax(0, 1fr); gap: 10px;
+  align-items: start; font-size: 13px; line-height: 1.6; color: var(--ink-2);
+}
+.evc .evc-plan .p-date { color: var(--ink); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.evc .evc-plan .p-tag { color: var(--muted); font-size: 12px; letter-spacing: .02em; white-space: nowrap; }
+.evc .evc-plan .p-text {
+  min-width: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.evc .evc-fact {
+  display: flex; align-items: baseline; gap: 2px;
+  padding-top: 10px; border-top: 1px solid var(--line);
+  font-size: 13px; color: var(--ink-2);
+}
+.evc .evc-fact .k { color: var(--muted); font-size: 12.5px; }
+.evc .evc-fact .v b { font-family: var(--ff-song); font-size: 16px; color: var(--ink); }
+
+@media (max-width: 1400px) {
+  /* 并排时每栏正文只有 432px，而「第四届…社区金融游学研讨会」要 479px —— 一行放不下就会被省略号切掉。
+     宁可不并排，也不截标题：1400px 以下两张卡上下排，各占满一行。 */
+  .cat-cards.two { grid-template-columns: 1fr; }
+}
+@media (max-width: 1100px) {
+  /* 单栏后每行有 700px 给标题，不用再截成「精英六人谈·全行业 AI…」 */
+  .ev-list { column-count: 1; }
+}
+@media (max-width: 560px) {
+  .ev-row { grid-template-columns: 66px 1fr; grid-auto-rows: auto; row-gap: 2px; }
+  .ev-row.city { grid-template-columns: 66px 1fr; }
+  .ev-row-no { grid-column: 1; }
+  .ev-row-date, .ev-row-city { display: none; }
+  .ev-row-title { white-space: normal; }
+  .ev-row-go { display: none; }
+  .ev-pager { justify-content: space-between; }
+  .ev-pager-meta { width: 100%; justify-content: space-between; }
+  .ev-search { max-width: none; }
+}
+
+
+/* ---------- 首屏左边界对齐（2026-11-16 返工） ----------
+   上一版给标题加了 -.072em 的左边距去「补偿宋体字面留白」，
+   结果是标题整块左移 4px，反而比下方说明文字更靠左——
+   盒模型上的错位比字面留白更显眼，删掉，所有元素回落到同一条 0 线。
+   另一处错位在标签行：.eyebrow:before 是行内 28px 金线 + 10px 间距，
+   把标签文字整体右推 38px，于是"标签 / 标题 / 正文 / 按钮"是四条不同的起始线。
+   全站统一改成金线在上、标签在下，金线自身也起于 0，四项落在同一竖线上。 */
+.hero h1 { margin-left: 0; }
+
+.eyebrow { display: block; }
+.eyebrow::before {
+  display: block;
+  width: 34px;
+  height: 2px;
+  margin-bottom: 12px;
+}
+
+/* 数字带是一块带边框的深色面板，首格数字保留 22px 内边距：
+   面板边缘与标题同起于 0，数字缩在面板里是「框内文字」，不是错位；
+   强行贴到 0 会让数字压住边框线。 */
+
+/* KV 标题最多三行，超出截断（原先是 JS 按 18 字硬切，会切出「· 制…」这种断字） */
+.kvx .kv-title { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* 活动页首屏说明：行宽放到 36em，62 字的介绍落在两行内，不留「业看真实系统。」这种孤行 */
+.split .muted { max-width: 42em; text-wrap: pretty; }
+
+/* 详情页栏目序号：用 CSS 计数器，隐藏的栏目（无嘉宾/无照片）不占号，
+   避免出现「02 适用人群 → 04 主办与合作伙伴」跳号 */
+.detail-main { counter-reset: dtband; }
+.detail-main .dt-band > .lab::before {
+  counter-increment: dtband;
+  content: counter(dtband, decimal-leading-zero) "  ";
+}
+
+/* 手机端横向溢出根因：.nav-links 是 flex:1 且内容不换行，
+   没有 overflow 时它的 min-content（6 个链接约 500px）会把 body 撑宽，
+   于是 100% 的容器都按 500px 算，正文右侧被屏幕切掉。
+   这里让导航自己横向滚动，body 回到 390px。 */
+@media (max-width: 920px) {
+  .nav { min-width: 0; overflow-x: auto; scrollbar-width: none; }
+  .nav::-webkit-scrollbar { display: none; }
+  .nav-links { min-width: 0; flex: 0 0 auto; justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-cta, .lang-toggle { flex: 0 0 auto; }
+}
+
+/* ================================================================
+ * 十一、首屏与活动分类（2026-11-16 第三次返工）
+ * 依据本轮反馈：①首页标题太长要分两行、文字收在左半边；
+ * ②活动页标题「从千人峰会，到十人深聊」并成一行，字号与首页统一；
+ * ③活动必须是五类——年度峰会 / 城市沙龙 / 精英论坛 / 闭门会 / 外部承办。
+ * ================================================================ */
+
+/* 活动页首屏标题：与首页共用 --fs-hero，桌面端锁一行。
+   12 个全角位（含两个逗号、一个句号）在 54px 下约 648px，
+   左栏可用宽度 700px 左右，放得下；窄屏再放开折行。 */
+.ev-hero-copy h1 {
+  font-size: var(--fs-hero);
+  line-height: 1.22;
+  letter-spacing: -.012em;
+  max-width: none;
+  text-wrap: initial;
+}
+@media (min-width: 921px) {
+  .ev-hero-copy h1 { white-space: nowrap; }
+}
+@media (max-width: 920px) {
+  .ev-hero-copy h1 { white-space: normal; text-wrap: balance; }
+}
+
+/* 分类胶囊：五类在小屏也要能一眼数清个数，不要挤成一条糊掉的横排 */
+.evf-flags { row-gap: 8px; }
+.evf-flags .pill { font-size: 12.5px; padding: 5px 12px; white-space: nowrap; }
+
+/* ---------- 外部承办：没有可核实的场次，就按能力与已知合作方呈现 ---------- */
+.ext-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 8px;
+}
+.ext-card {
+  padding: 26px 24px 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+}
+.ext-card .ext-no {
+  font-family: var(--ff-hei);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .14em;
+  color: var(--gold-deep, #9a7b3f);
+}
+.ext-card h3 { margin: 10px 0 8px; font-size: 19px; line-height: 1.4; }
+.ext-card p { margin: 0; font-size: 14px; line-height: 1.75; color: var(--ink-2, #555); max-width: none; }
+.ext-card .ext-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.ext-card .ext-tags span {
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--ink-2, #555);
+}
+.ext-note {
+  margin: 20px 0 0;
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--muted, #7a7a7a);
+  max-width: 60em;
+}
+@media (max-width: 920px) {
+  .ext-grid { grid-template-columns: 1fr; }
+}
+
+/* 活动页首屏：原来是 .section 的通用上下留白（最大 108px×2）加 400px 图，
+   标题结束后还剩 180px 空的深色，看着像没做完。这里单独收一档，
+   图高降到 360px，文字块垂直居中，底部留白与首页首屏接近。 */
+.ev-hero { padding: clamp(48px, 5vw, 78px) 0 clamp(38px, 4vw, 58px); }
+.ev-hero .media-frame img { height: 360px; }
+@media (max-width: 920px) {
+  .ev-hero { padding: 36px 0 34px; }
+  .ev-hero .media-frame img { height: 240px; }
+}
+
+/* 适用人群为空时不占行（闭门会这类只有规模、没有受众描述的场次） */
+.evc .evc-foot .meta:empty { display: none; }
+
+/* 日历页首屏与活动页同一套字号与留白：两页都是「活动」下的一级页，
+   标题如果一页 54px、一页 44px，来回点会觉得不是一个网站。 */
+.ev-hero h1 { font-size: var(--fs-hero); line-height: 1.22; letter-spacing: -.012em; max-width: none; }
+
+/* ---------- 首屏说明段落：两端对齐，两行收住（2026-11-16） ----------
+   原来中文段落靠左对齐，每行行尾长短不一，右边看着是锯齿；
+   文案 92 字又超出两行容量，末行只剩「整场活动。」四个字，非常难看。
+   这里两件事：①中文段落两端对齐，行尾落到同一条右边线；
+   ②限宽放到 46em，把 82 字压进两行，不留孤行。 */
+.hero .muted,
+.ev-hero-copy .muted {
+  max-width: 43em;
+  text-align: justify;
+  text-justify: inter-ideograph;
+  text-wrap: pretty;
+}
+
+/* 「千人峰会 / 百人沙龙 / 十人深聊」这类数量+名词的组合不允许跨行拆开：
+   上一版断成了「…区域产业带，十 / 人深聊拆解…」，十和人分在两行，读起来是断的。 */
+.nw { white-space: nowrap; }
+
+/* ================================================================
+ * 十二、五类活动总览（2026-11-16）
+ * 活动日历下方一条五格横带：类型名 + 场次数 + 定位 + 最近一场。
+ * 目的：五类在一屏内数得清，不用往下翻才知道到底有几类。
+ * ================================================================ */
+#cat-overview { background: #f7f5f1; }
+.cat-overview {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 4px;
+}
+.ov-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 22px 20px 18px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  transition: border-color .18s ease, transform .18s ease;
+}
+.ov-card:hover { border-color: var(--gold, #b08d4f); transform: translateY(-2px); }
+.ov-top { display: flex; align-items: baseline; gap: 8px; }
+.ov-no {
+  font-family: var(--ff-hei);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .14em;
+  color: #9a7b3f;
+}
+.ov-card h3 { margin: 0; font-size: 19px; line-height: 1.3; }
+.ov-num { display: flex; align-items: baseline; gap: 5px; }
+.ov-num b {
+  font-family: var(--ff-hei);
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -.02em;
+  color: #14110c;
+}
+.ov-num span { font-size: 13px; color: #7a7a7a; }
+.ov-desc {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.7;
+  color: #555;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.ov-last { margin-top: auto; padding-top: 4px; font-size: 12px; color: #8a8a8a; }
+@media (max-width: 1100px) { .cat-overview { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 760px) { .cat-overview { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 460px) { .cat-overview { grid-template-columns: 1fr; } }
+
+/* ================================================================
+ * 十四、2026-11-17 一级导航改版连带（首页）
+ * 依据：11-16 评审（删外部承办、闭门会并入精英六人谈、三类活动）
+ *       11-17 指令（首屏四个入口、四卡顺序对齐导航、海报不裁、次卡统一）
+ * ================================================================ */
+
+/* ---------- 首屏四个入口：一行、等高、等距 ---------- */
+.hero-actions-4 {
+  flex-wrap: nowrap;
+  gap: 10px;
+}
+.hero-actions-4 .btn {
+  flex: 0 0 auto;
+  min-height: 44px;
+  padding: 0 18px;
+  font-size: 14px;
+  letter-spacing: .01em;
+  white-space: nowrap;
+  width: auto;
+}
+/* 四个都不同色，但仍分主次：金（主行动）→ 白（最亮）→ 蓝（AI 线）→ 描边（最轻） */
+.btn.light { background: #fff; border-color: #fff; color: #14110c; }
+.btn.light:hover { background: #f1efe8; border-color: #f1efe8; }
+.btn.blue { background: #2f6bff; border-color: #2f6bff; color: #fff; }
+.btn.blue:hover { background: #1f56e0; border-color: #1f56e0; }
+.btn.ghost { background: transparent; border-color: rgba(255, 255, 255, .55); color: #fff; }
+.btn.ghost:hover { border-color: #fff; background: rgba(255, 255, 255, .08); }
+
+/* ---------- 主卡海报：整张放全 ---------- */
+/* cover 会把竖版海报的上下切掉，而时间、地点、二维码恰好压在最下面，
+   切了等于把报名入口切没。改 contain，图完整可见，两侧留白用卡片底色吃掉。 */
+.evf-main .evf-media img {
+  object-fit: contain;
+  object-position: center;
+  background: #0b0d10;
+}
+
+/* ---------- 次卡：统一左侧视觉块 ---------- */
+/* 次卡只剩一场，横铺成一条：视觉块 320×180（16:9），实拍照按原比例裁切，
+   右侧文字整体垂直居中，与主卡左右边界对齐。图一律 cover 填满，不留白边。 */
+.evf-mini { grid-template-columns: 320px minmax(0, 1fr); align-items: stretch; }
+.mini-media {
+  width: 320px;
+  height: 180px;
+  background: #0b0d10;
+  overflow: hidden;
+}
+.mini-media img {
+  width: 100%;
+  height: 100%;
+  /* 早期规则给次卡图设了 max-height:132px，会把 140 高的图块下方顶出 8px 空条 */
+  max-height: none;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+.mini-kv {
+  width: 100%;
+  height: 180px;
+  padding: 14px 14px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-image: linear-gradient(140deg, #2b2317, #14110b);
+}
+.mini-kv.teal { background-image: linear-gradient(140deg, #10282a, #0d1417); }
+.mini-kv.indigo { background-image: linear-gradient(140deg, #161a33, #0e1018); }
+.mini-kv.rose { background-image: linear-gradient(140deg, #2c1720, #140d11); }
+.mini-kv .mk-type {
+  font-size: 11px;
+  letter-spacing: .12em;
+  color: rgba(255, 255, 255, .62);
+}
+.mini-kv .mk-title {
+  font-family: var(--ff-song);
+  font-size: 16px;
+  line-height: 1.5;
+  color: #fff;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.mini-kv .mk-meta {
+  margin-top: auto;
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, .55);
+}
+
+/* 手机端：四个入口排不下，改 2×2，不再一个按钮占一整行 */
+@media (max-width: 640px) {
+  .hero-actions-4 { flex-wrap: wrap; width: 100%; }
+  .hero-actions-4 .btn {
+    flex: 1 1 calc(50% - 5px);
+    width: auto;
+    padding: 0 10px;
+    font-size: 13.5px;
+  }
+}
+
+/* ---------- 活动页三类后总览带改 3 列 ---------- */
+.cat-overview { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 760px) { .cat-overview { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 460px) { .cat-overview { grid-template-columns: 1fr; } }
+
+/* ---------- 主卡排版封面（无海报场次） ---------- */
+/* 主卡左图区约 480×400，比活动页的 KV 卡大一圈。
+   20px 的 kv-title 放在这个尺寸里压不住版面，中段会空出一大片；
+   这里只放大主卡这一处标题，活动页与详情页的 KV 字号不动。 */
+.kvx-lead {
+  padding: 32px;
+  /* 角标压左上、标题压左下，读起来像一张海报；
+     日期已从右上角移除（与左下「11.24 · 北京」重复），
+     所以不再需要居中式留白来平衡右侧的大号数字。 */
+  justify-content: space-between;
+}
+.kvx-lead .kv-title {
+  font-size: clamp(24px, 1.9vw, 30px);
+  line-height: 1.35;
+  margin-top: 0;
+}
+.kvx-lead .kv-no { font-size: 44px; }
+.kvx-lead .kv-meta { margin-top: 16px; font-size: 13px; }
+
+/* 轻咨询页只有两条服务线，四列栅格会空出两格 */
+.business-grid.two-col {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 860px;
+}
+@media (max-width: 920px) {
+  .business-grid.two-col { grid-template-columns: 1fr; max-width: none; }
+}
+
+
+/* ---------- 次卡在手机上并排会挤成两条 ---------- */
+/* 两块各 200px 视觉块，两列并排时正文只剩 80px，标题会被压成竖排；
+   768 以下改成上下堆叠，视觉块保持 200×140 不变。 */
+@media (max-width: 768px) {
+  .evf-side { grid-template-columns: 1fr; }
+}
+/* 手机窄屏：左右分栏会把正文压到 160px 以内，标题断成四五行，
+   视觉块也被拉成竖条。改成图上文下，图铺满卡片宽度。 */
+@media (max-width: 560px) {
+  .evf-mini { grid-template-columns: 1fr; }
+  .mini-media, .mini-kv { width: 100%; height: 156px; }
+  .evf-mini .mini-body { padding: 14px 16px 16px; }
+}
+
+/* 主卡两个按钮等高对齐（原第三个「活动日历 →」文字链已去掉：
+   与下方「更多活动」胶囊是同一个出口，重复出现只会分散点击） */
+.evf-body .actions { align-items: center; }
+
+@media (max-width: 560px) {
+  .evf-mini { grid-template-columns: 1fr; }
+  .mini-media, .mini-kv { width: 100%; height: 180px; }
+}
+
+/* 笔记本宽度（561–1200）：视觉块 320 占掉一半，标题会被挤成两行；
+   降到 260×146 后正文多出 60px，「智造·韧行——…」能收在一行里。 */
+@media (min-width: 561px) and (max-width: 1200px) {
+  .evf-mini { grid-template-columns: 260px minmax(0, 1fr); }
+  .mini-media, .mini-kv { width: 260px; height: 146px; }
+}
+
+/* ================================================================
+ * 十五、2026-11-17 活动页改版（依据 11-16 评审）
+ * ① 首屏与数字带之间的三类卡，去掉标题与说明，只留计数
+ * ② 筛选按钮置于「活动日历」标题与日历之间
+ * ③ 日历改为系统日历排法：周一起首、含前后月补格、右上选年选月
+ * ④ 各类型内容不再向下堆叠，全部收进筛选视图
+ * ================================================================ */
+
+/* ---------- 三类卡：数字带下方，与上方五格数字带同一条左右边界 ---------- */
+.ev-cats { margin-top: 34px; }
+
+/* ---------- 筛选按钮：与日历面板同宽、同一条左边界 ---------- */
+.ev-filters { margin: 0 0 18px; }
+.ev-filters .filter {
+  padding: 9px 20px;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 10px;
+}
+
+/* ---------- 日历面板 ---------- */
+.syscal {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.syscal-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--line);
+}
+.syscal-bar h3 {
+  margin: 0;
+  font-family: var(--ff-hei);
+  font-size: 20px;
+  line-height: 1.3;
+  letter-spacing: .01em;
+}
+.syscal-pick { display: flex; align-items: center; gap: 8px; }
+.syscal-pick select {
+  appearance: none;
+  -webkit-appearance: none;
+  height: 34px;
+  padding: 0 30px 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background-color: #fff;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%236a7178' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 10px 7px;
+  color: var(--ink);
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.syscal-pick select:first-of-type { min-width: 100px; }
+.syscal-pick select:last-of-type { min-width: 88px; }
+.syscal-pick select:focus { outline: 2px solid rgba(184, 146, 74, .35); outline-offset: 1px; }
+.syscal-nav { display: flex; gap: 6px; }
+.syscal-nav button {
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background .15s ease, border-color .15s ease;
+}
+.syscal-nav button:hover { background: #f5f6f3; border-color: #c9d0d6; }
+
+.syscal-week {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  background: #fafaf7;
+  border-bottom: 1px solid var(--line);
+}
+.syscal-week span {
+  padding: 9px 0;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  color: var(--muted);
+}
+
+.syscal-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); }
+.syscal-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+  min-height: 104px;
+  padding: 8px 8px 7px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.syscal-cell:nth-child(7n) { border-right: 0; }
+/* 最后一行去掉下边框，避免与面板外框叠成双线 */
+.syscal-cell:nth-last-child(-n + 7) { border-bottom: 0; }
+.syscal-cell.outside { background: #fbfbf9; }
+.syscal-cell.outside .sc-day { color: #b9bfc3; }
+
+.sc-day {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--ink);
+}
+.syscal-cell.today .sc-day { background: var(--gold); color: #fff; }
+
+.sc-evs { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.sc-ev {
+  display: block;
+  padding: 3px 7px;
+  border-radius: 5px;
+  border-left: 3px solid var(--gold);
+  background: #f5f2e9;
+  color: var(--ink);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.35;
+  /* 单行截断在 1024 这类宽屏上只剩「智造·韧行—…」，两行能读全大半个标题 */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+  word-break: normal;
+  overflow: hidden;
+  transition: background .15s ease;
+}
+.sc-ev:hover { background: #efe9d8; }
+.sc-ev.city { border-left-color: var(--teal); background: #eef7f6; }
+.sc-ev.city:hover { background: #e2f2f0; }
+.sc-ev.elite { border-left-color: #6b5bd2; background: #f1f0fa; }
+.sc-ev.elite:hover { background: #e8e6f7; }
+.sc-more { padding-left: 2px; font-size: 10.5px; font-weight: 700; color: var(--muted); }
+
+/* ---------- 单类视图：紧接筛选按钮，不再叠加一层顶部留白与分隔线 ---------- */
+.ev-cat-view { padding-top: 0; border-top: 0; }
+
+/* ---------- 窄屏 ---------- */
+/* 手机上格子放不下文字，把活动压成圆点，行列仍然对齐 */
+@media (max-width: 820px) {
+  .syscal-bar { flex-wrap: wrap; gap: 10px; padding: 12px 14px; }
+  .syscal-bar h3 { font-size: 17px; }
+  .syscal-cell { min-height: 66px; padding: 5px 4px; gap: 3px; }
+  .sc-day { width: 22px; height: 22px; font-size: 12px; }
+  .sc-evs { flex-direction: row; flex-wrap: wrap; gap: 4px; }
+  .sc-ev {
+    width: 7px;
+    height: 7px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: var(--gold);
+    text-indent: -9999px;
+  }
+  .sc-ev.city { background: var(--teal); }
+  .sc-ev.elite { background: #6b5bd2; }
+  .sc-more {
+    border: 0;
+    text-indent: 0;
+    font-size: 9px;
+    background: none;
+    width: auto;
+    height: auto;
+    padding: 0;
+  }
+}
+@media (max-width: 560px) {
+  .syscal-week span { font-size: 11px; padding: 7px 0; }
+  .syscal-cell { min-height: 58px; }
+  .ev-filters .filter { padding: 8px 14px; font-size: 13px; }
+}
+
+/* 手机上四个筛选按钮排不下一行，会折成 3+1；改成 2×2 等宽，四块对齐 */
+@media (max-width: 560px) {
+  .ev-filters { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .ev-filters .filter { width: 100%; padding: 9px 8px; }
+}

@@ -1,0 +1,59 @@
+[
+  {
+    "title": "新能源企业供应风险预警",
+    "industry": "新能源",
+    "pain": "多级供应商信息分散，风险信号滞后，采购与生产计划难以及时联动。",
+    "product": "AI 供应商洞察平台",
+    "value": "建立供应商画像与风险信号雷达，帮助管理层提前识别供应中断、价格波动与合规风险。",
+    "video": "2 分钟场景演示",
+    "image": "assets/module-supply-ai-v2.png",
+    "id": "AIC-0001",
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "approvedBy": null,
+    "provenance": {
+      "sourceFile": "data/ai-cases.json（历史迁移）",
+      "verifiedBy": null,
+      "verifiedOn": null
+    }
+  },
+  {
+    "title": "快消企业多渠道需求预测",
+    "industry": "快消零售",
+    "pain": "渠道促销、季节波动和新品上市导致预测误差放大，库存与缺货并存。",
+    "product": "AI 需求预测助手",
+    "value": "整合销售、活动、渠道和外部因素，为区域团队提供可解释的预测与补货建议。",
+    "video": "案例讲解视频",
+    "image": "assets/module-supply-ai-v2.png",
+    "id": "AIC-0002",
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "approvedBy": null,
+    "provenance": {
+      "sourceFile": "data/ai-cases.json（历史迁移）",
+      "verifiedBy": null,
+      "verifiedOn": null
+    }
+  },
+  {
+    "title": "制造企业采购降本机会识别",
+    "industry": "先进制造",
+    "pain": "历史采购数据难以沉淀，品类机会、价格异常和供应商集中度风险无法快速识别。",
+    "product": "AI 采购分析助手",
+    "value": "自动生成品类分析、价格趋势、供应商比较和降本机会清单，支持采购负责人决策。",
+    "video": "产品操作演示",
+    "image": "assets/module-supply-ai-v2.png",
+    "id": "AIC-0003",
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "approvedBy": null,
+    "provenance": {
+      "sourceFile": "data/ai-cases.json（历史迁移）",
+      "verifiedBy": null,
+      "verifiedOn": null
+    }
+  }
+]

@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="assets/optimized/logo_favicon.png">
+  <title>供应链AI创新专区 | DSG 数创时代</title>
+  <link rel="stylesheet" href="assets/styles.css?v=20261117i">
+  <link rel="stylesheet" href="assets/dsg-2026.css?v=20261117i">
+  <script defer src="assets/alpine.min.js"></script>
+  <script src="assets/embedded-data.js?v=20261117i"></script>
+  <script src="assets/site.js?v=20261117i"></script>
+  <script src="assets/forms.js?v=20260917-eventsync"></script>
+<!-- seo:begin 由 tools/build.py 生成，勿手动修改 -->
+  <meta name="description" content="以真实案例呈现 DSG 供应链 AI 解决方案：行业痛点、产品能力、业务价值、视频演示与 Demo 预约。">
+  <link rel="canonical" href="https://www.dsgcorp.cn/supply-chain-ai.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://www.dsgcorp.cn/supply-chain-ai.html">
+  <link rel="alternate" hreflang="en" href="https://www.dsgcorp.cn/supply-chain-ai-en.html">
+  <link rel="alternate" hreflang="x-default" href="https://www.dsgcorp.cn/supply-chain-ai.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="数创时代 DSG">
+  <meta property="og:title" content="供应链AI创新专区 | DSG 数创时代">
+  <meta property="og:description" content="以真实案例呈现 DSG 供应链 AI 解决方案：行业痛点、产品能力、业务价值、视频演示与 Demo 预约。">
+  <meta property="og:url" content="https://www.dsgcorp.cn/supply-chain-ai.html">
+  <meta property="og:image" content="https://www.dsgcorp.cn/assets/optimized/module-home-v2.webp">
+  <meta property="og:locale" content="zh_CN">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="供应链AI创新专区 | DSG 数创时代">
+  <meta name="twitter:description" content="以真实案例呈现 DSG 供应链 AI 解决方案：行业痛点、产品能力、业务价值、视频演示与 Demo 预约。">
+  <meta name="twitter:image" content="https://www.dsgcorp.cn/assets/optimized/module-home-v2.webp">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "name": "数创时代 DSG", "alternateName": "Digital Service Group", "url": "https://www.dsgcorp.cn", "logo": "https://www.dsgcorp.cn/assets/logo_full.png", "email": "jason.huang@dsgcorp.cn", "telephone": "+86 189 1635 8954", "address": {"@type": "PostalAddress", "streetAddress": "上海市徐汇区钦州北路1066号70号楼3楼"}}, {"@type": "WebSite", "name": "数创时代 DSG", "url": "https://www.dsgcorp.cn", "inLanguage": "zh-CN"}, {"@type": "WebPage", "name": "供应链AI创新专区 | DSG 数创时代", "url": "https://www.dsgcorp.cn/supply-chain-ai.html", "isPartOf": {"@type": "WebSite", "url": "https://www.dsgcorp.cn"}}]}</script>
+<!-- seo:end -->
+</head>
+<body x-data="dsgApp('ai')">
+  <header class="site-header"><nav class="nav"><a class="brand" href="index.html"><img src="assets/optimized/logo_full.webp" alt="DSG"></a><div class="nav-links"><a href="index.html">首页</a><div class="nav-item"><a href="events.html?v=20261117i">活动</a><div class="dropdown"><a href="events-calendar.html">活动日历</a><a href="events-summits.html">年度峰会</a><a href="events-city.html">城市沙龙</a><a href="events-elite-talks.html">精英六人谈</a></div></div><a class="active" href="supply-chain-ai.html">供应链AI创新专区</a><a href="consult.html">轻咨询</a><a href="insights.html">行业洞察</a><a href="about.html">关于 DSG</a></div><a class="nav-cta" href="contact.html">预约咨询</a><a class="lang-toggle" href="supply-chain-ai-en.html">EN</a></nav></header>
+  <main>
+    <section class="section surface-dark">
+      <div class="container split">
+        <div>
+          <span class="eyebrow">AI in Supply Chain Lab</span>
+          <h1>用案例展示产品，<br>用场景说服客户。</h1>
+          <p class="muted">专区采用“案例卡片 + 应用场景 + 视频演示 + 预约 Demo”的结构，不把产品孤立展示，而是把产品放回真实供应链问题里。</p>
+          <div class="actions"><a class="btn gold" href="#demo">预约 Demo</a><a class="btn secondary" href="#cases" style="color:#fff;border-color:rgba(255,255,255,.45)">查看案例</a></div>
+        </div>
+        <div class="media-frame"><img src="assets/optimized/module-supply-ai-v2.webp" alt="供应链AI创新专区"></div>
+      </div>
+    </section>
+    <section id="cases" class="section">
+      <div class="container">
+        <div class="section-head"><div><span class="eyebrow">Case Based Product Cards</span><h2>每张卡片都是一个业务场景。</h2></div><p>卡片同时展示行业、痛点、产品、价值、视频和预约入口，方便销售和员工后续维护。</p></div>
+        <div class="case-grid">
+          <template x-for="item in aiCases" :key="item.title">
+            <article class="case-card">
+              <img :src="item.image" :alt="item.title">
+              <div class="event-body">
+                <div class="meta" x-text="item.industry + ' · ' + item.product"></div>
+                <h3 x-text="item.title"></h3>
+                <p><strong>痛点：</strong><span x-text="item.pain"></span></p>
+                <p><strong>价值：</strong><span x-text="item.value"></span></p>
+                <div class="actions"><button class="btn secondary" @click="openVideo(item.video)">视频演示</button><a class="btn gold" href="#demo">预约 Demo</a></div>
+              </div>
+            </article>
+          </template>
+        </div>
+      </div>
+    </section>
+    <section class="section surface-white">
+      <div class="container">
+        <div class="section-head"><div><span class="eyebrow">Scenarios</span><h2>围绕供应链链路组织产品能力。</h2></div><p>未来后台可以维护应用场景、绑定案例、绑定视频和预约表单。</p></div>
+        <div class="business-grid">
+          <article class="business-card"><div class="mark ai">1</div><h3>需求预测</h3><p>整合销售、渠道、活动、季节与外部因素，输出可解释预测和补货建议。</p></article>
+          <article class="business-card"><div class="mark ai">2</div><h3>采购决策</h3><p>识别品类机会、价格异常、供应商集中度和合同风险。</p></article>
+          <article class="business-card"><div class="mark ai">3</div><h3>风险预警</h3><p>基于供应商画像和外部信号，追踪供应中断、合规和价格波动风险。</p></article>
+        </div>
+      </div>
+    </section>
+    <section id="demo" class="section">
+      <div class="container split">
+        <div><span class="eyebrow">Book a Demo</span><h2>预约一次供应链 AI 场景诊断。</h2><p>这个表单未来会写入预约 Demo 数据库，并进入后台分配跟进人。</p></div>
+        <form class="form-grid lead-form" novalidate @submit.prevent="submitRegistration($event)" @focusin.once="$el.elements.formStartedAt.value = Date.now()">
+        <input type="hidden" name="formStartedAt" value="">
+        <div class="hp" aria-hidden="true"><label>website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+        <div class="field"><input name="name" placeholder="姓名" autocomplete="name" required><template x-if="formState.errors.name"><p class="field-error" x-text="formState.errors.name"></p></template></div>
+        <div class="field"><input name="company" placeholder="公司" autocomplete="organization" required><template x-if="formState.errors.company"><p class="field-error" x-text="formState.errors.company"></p></template></div>
+        <div class="field"><input name="jobTitle" placeholder="职位" autocomplete="organization-title"></div>
+        <div class="field"><input name="phone" placeholder="手机" inputmode="tel" autocomplete="tel" required><template x-if="formState.errors.phone"><p class="field-error" x-text="formState.errors.phone"></p></template></div>
+        <div class="field full"><input name="email" type="email" placeholder="邮箱" autocomplete="email" required><template x-if="formState.errors.email"><p class="field-error" x-text="formState.errors.email"></p></template></div>
+        <div class="field full"><select name="interest"><option>感兴趣场景：需求预测</option><option>我想报名参会</option><option>我想申请私董会席位</option><option>我想预约供应链 AI Demo</option><option>我想了解商务合作</option><option>我想了解后续场次</option></select></div>
+        <div class="field full"><textarea name="message" placeholder="希望交流的问题"></textarea></div>
+        <div class="field full form-consent">
+          <label><input type="checkbox" name="consent"> 我已阅读并同意 <a href="privacy.html" target="_blank" rel="noopener">DSG 隐私条款</a>，同意 DSG 按条款处理我的信息（条款版本 <span x-text="DSGForms ? DSGForms.policyVersion : ''"></span>）</label>
+          <template x-if="formState.errors.consent"><p class="field-error" x-text="formState.errors.consent"></p></template>
+        </div>
+        <button class="btn gold full" type="submit" :disabled="formState.submitting" x-text="formState.submitting ? '提交中…' : '提交'"></button>
+        <p class="form-message full" x-show="formState.message" x-text="formState.message"></p>
+      </form>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="footer-inner"><div>DSG 供应链AI创新专区</div><div><a href="contact.html">预约 Demo</a></div><div class="footer-legal">© 2026 数创时代 DSG 保留所有权利 · <a href="privacy.html">隐私条款</a>
+<!-- 备案号占位：取得 ICP 备案号后，把下面整行替换为
+     <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">沪ICP备XXXXXXXX号</a> -->
+</div>
+  </div></footer>
+  <div class="modal" x-cloak x-show="selectedVideo"><div class="modal-panel"><div class="modal-head"><h2 x-text="selectedVideo"></h2><button class="close" @click="closeVideo()">×</button></div><div class="video-shell"><div><div class="play">▶</div><p>视频播放器占位。正式版可接入本地 MP4、阿里云 OSS 或第三方视频链接。</p></div></div></div></div>
+<script src="assets/dsg-sync.js?v=20260917-eventsync"></script>
+</body>
+</html>

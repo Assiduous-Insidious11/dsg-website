@@ -1,0 +1,543 @@
+[
+  {
+    "id": "ORG-DSG",
+    "name": "数创时代 DSG",
+    "logo": "assets/logo_full.png",
+    "category": "主办方",
+    "participationRole": "主办",
+    "website": "https://www.dsgcorp.cn",
+    "logoLicense": {
+      "status": "owned",
+      "sourceFile": "assets/logo_full.png",
+      "grantedBy": "DSG 市场部",
+      "expiry": null
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-QIXIN",
+    "name": "合合信息·启信慧眼",
+    "logo": null,
+    "category": "合作方",
+    "participationRole": "联合主办",
+    "website": "https://www.qixin.com",
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作方",
+      "expiry": null
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-DNB",
+    "name": "邓白氏",
+    "logo": null,
+    "category": "合作方",
+    "participationRole": "演讲支持",
+    "website": "https://www.dnb.com",
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作方",
+      "expiry": null
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-ZTE",
+    "name": "中兴通讯",
+    "logo": null,
+    "category": "参会企业",
+    "participationRole": "参会嘉宾企业",
+    "website": "https://www.zte.com.cn",
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作方",
+      "expiry": null
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-MCKINSEY",
+    "name": "麦肯锡",
+    "logo": null,
+    "category": "专家机构",
+    "participationRole": "演讲嘉宾企业",
+    "website": "https://www.mckinsey.com.cn",
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作方",
+      "expiry": null
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-HICHANGE",
+    "name": "海辰储能",
+    "logo": null,
+    "category": "参会企业",
+    "participationRole": "参会嘉宾企业",
+    "website": "https://www.hithium.com",
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作方",
+      "expiry": null
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-JOY",
+    "name": "交个朋友",
+    "logo": null,
+    "category": "参访企业",
+    "participationRole": "走访企业",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作方",
+      "expiry": null
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-JOINSON",
+    "name": "均胜汽车安全",
+    "logo": null,
+    "category": "参访企业",
+    "participationRole": "走访企业",
+    "website": "https://www.joyson safety.com",
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作方",
+      "expiry": null
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-NETEASE",
+    "name": "网易",
+    "logo": null,
+    "category": "参访企业",
+    "participationRole": "走访企业",
+    "website": "https://www.163.com",
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作方",
+      "expiry": null
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-CISCO",
+    "name": "思科",
+    "logo": null,
+    "category": "合作方",
+    "participationRole": "场地与技术支持",
+    "website": "https://www.cisco.com",
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作方",
+      "expiry": null
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-SRCB",
+    "name": "上海农村商业银行",
+    "logo": null,
+    "category": "合作方",
+    "participationRole": "金融峰会联合主办",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作方",
+      "expiry": null
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-EIPM",
+    "name": "EIPM 采购供应链研究院",
+    "logo": null,
+    "category": "合作方",
+    "participationRole": "学术支持",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作方",
+      "expiry": null
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-VOLVO",
+    "name": "沃尔沃",
+    "logo": null,
+    "category": "参会企业",
+    "participationRole": "参会嘉宾企业",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作方",
+      "expiry": null
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-ZEEKR",
+    "name": "极氪科技",
+    "logo": null,
+    "category": "参会企业",
+    "participationRole": "参会嘉宾企业",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作方",
+      "expiry": null
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-BOSCH",
+    "name": "博世",
+    "logo": null,
+    "category": "参会企业",
+    "participationRole": "参会嘉宾企业",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作方",
+      "expiry": null
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-INFINEON",
+    "name": "英飞凌",
+    "logo": null,
+    "category": "参会企业",
+    "participationRole": "参会嘉宾企业",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作方",
+      "expiry": null
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-WUXI",
+    "name": "药明康德",
+    "logo": null,
+    "category": "参会企业",
+    "participationRole": "参会嘉宾企业",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作方",
+      "expiry": null
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-ZAIDING",
+    "name": "再鼎医药",
+    "logo": null,
+    "category": "参会企业",
+    "participationRole": "参会嘉宾企业",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作方",
+      "expiry": null
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-AMGEN",
+    "name": "安进(Amgen)",
+    "logo": null,
+    "category": "参会企业",
+    "participationRole": "参会嘉宾企业",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作方",
+      "expiry": null
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-YUM",
+    "name": "百胜中国",
+    "logo": null,
+    "category": "参会企业",
+    "participationRole": "参会嘉宾企业",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作方",
+      "expiry": null
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-LULU",
+    "name": "lululemon",
+    "logo": null,
+    "category": "参会企业",
+    "participationRole": "参会嘉宾企业",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作方",
+      "expiry": null
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-DYSON",
+    "name": "戴森",
+    "logo": null,
+    "category": "参会企业",
+    "participationRole": "参会嘉宾企业",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作方",
+      "expiry": null
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-DOMINOS",
+    "name": "达美乐",
+    "logo": null,
+    "category": "参会企业",
+    "participationRole": "参会嘉宾企业",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作方",
+      "expiry": null
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-3F",
+    "name": "相宜本草",
+    "logo": null,
+    "category": "参会企业",
+    "participationRole": "参会嘉宾企业",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作方",
+      "expiry": null
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-CHINT",
+    "name": "正泰新能",
+    "logo": null,
+    "category": "参会企业",
+    "participationRole": "参会嘉宾企业",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作方",
+      "expiry": null
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-HUADI",
+    "name": "中国华电集团",
+    "logo": null,
+    "category": "参会企业",
+    "participationRole": "参会嘉宾企业",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作方",
+      "expiry": null
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-GCL",
+    "name": "协鑫集成",
+    "logo": null,
+    "category": "参会企业",
+    "participationRole": "参会嘉宾企业",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作方",
+      "expiry": null
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-RISESUN",
+    "name": "东方日升",
+    "logo": null,
+    "category": "参会企业",
+    "participationRole": "参会嘉宾企业",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作方",
+      "expiry": null
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-METRO",
+    "name": "麦德龙",
+    "logo": null,
+    "category": "参会企业",
+    "participationRole": "参会嘉宾企业",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作方",
+      "expiry": null
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-UNILEVER",
+    "name": "联合利华",
+    "logo": null,
+    "category": "参会企业",
+    "participationRole": "参会嘉宾企业",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作方",
+      "expiry": null
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-LOREAL",
+    "name": "欧莱雅",
+    "logo": null,
+    "category": "参会企业",
+    "participationRole": "参会嘉宾企业",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作方",
+      "expiry": null
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-NESTLE",
+    "name": "雀巢",
+    "logo": null,
+    "category": "参会企业",
+    "participationRole": "参会嘉宾企业",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作方",
+      "expiry": null
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-PG",
+    "name": "宝洁",
+    "logo": null,
+    "category": "参会企业",
+    "participationRole": "参会嘉宾企业",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作方",
+      "expiry": null
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-NIO",
+    "name": "蔚来汽车",
+    "logo": null,
+    "category": "参会企业",
+    "participationRole": "参会嘉宾企业",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作方",
+      "expiry": null
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-GEELY",
+    "name": "吉利汽车",
+    "logo": null,
+    "category": "参会企业",
+    "participationRole": "参会嘉宾企业",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作方",
+      "expiry": null
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-ABBOTT",
+    "name": "雅培",
+    "logo": null,
+    "category": "参会企业",
+    "participationRole": "参会嘉宾企业",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作方",
+      "expiry": null
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  }
+]

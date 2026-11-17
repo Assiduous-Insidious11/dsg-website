@@ -1,0 +1,646 @@
+[
+  {
+    "id": "MED-0001",
+    "fileName": "2024FDS.jpg",
+    "path": "assets/2024FDS.jpg",
+    "purpose": "往届活动实拍",
+    "width": 1667,
+    "height": 7565,
+    "sizeBytes": 1012630,
+    "altText": null,
+    "copyrightSource": null,
+    "license": {
+      "status": "licensed",
+      "grantedBy": "上海数响科技有限公司（DSG 数创时代）",
+      "sourceFile": "数创时代DSG-案例集锦（公司自有活动影像素材）",
+      "expiry": null
+    },
+    "uploader": null,
+    "uploadedOn": null,
+    "derivatives": {
+      "webp": "assets/optimized/2024FDS.webp",
+      "thumbnail": "assets/optimized/2024FDS-thumb.webp"
+    }
+  },
+  {
+    "id": "MED-0002",
+    "fileName": "2024SIE.jpg",
+    "path": "assets/2024SIE.jpg",
+    "purpose": "往届活动实拍",
+    "width": 960,
+    "height": 358,
+    "sizeBytes": 335944,
+    "altText": null,
+    "copyrightSource": null,
+    "license": {
+      "status": "licensed",
+      "grantedBy": "上海数响科技有限公司（DSG 数创时代）",
+      "sourceFile": "数创时代DSG-案例集锦（公司自有活动影像素材）",
+      "expiry": null
+    },
+    "uploader": null,
+    "uploadedOn": null,
+    "derivatives": {
+      "webp": "assets/optimized/2024SIE.webp",
+      "thumbnail": "assets/optimized/2024SIE-thumb.webp"
+    }
+  },
+  {
+    "id": "MED-0003",
+    "fileName": "2024SIE_1.jpg",
+    "path": "assets/2024SIE_1.jpg",
+    "purpose": "往届活动实拍",
+    "width": 1314,
+    "height": 1314,
+    "sizeBytes": 1404054,
+    "altText": null,
+    "copyrightSource": null,
+    "license": {
+      "status": "licensed",
+      "grantedBy": "上海数响科技有限公司（DSG 数创时代）",
+      "sourceFile": "数创时代DSG-案例集锦（公司自有活动影像素材）",
+      "expiry": null
+    },
+    "uploader": null,
+    "uploadedOn": null,
+    "derivatives": {
+      "webp": "assets/optimized/2024SIE_1.webp",
+      "thumbnail": "assets/optimized/2024SIE_1-thumb.webp"
+    }
+  },
+  {
+    "id": "MED-0004",
+    "fileName": "about-bridge-ai-v1.png",
+    "path": "assets/about-bridge-ai-v1.png",
+    "purpose": "关于我们配图",
+    "width": 1672,
+    "height": 941,
+    "sizeBytes": 1839233,
+    "altText": null,
+    "copyrightSource": null,
+    "license": {
+      "status": "licensed",
+      "grantedBy": "上海数响科技有限公司（DSG 数创时代）",
+      "sourceFile": "数创时代DSG-案例集锦（公司自有活动影像素材）",
+      "expiry": null
+    },
+    "uploader": null,
+    "uploadedOn": null,
+    "derivatives": {
+      "webp": "assets/optimized/about-bridge-ai-v1.webp",
+      "thumbnail": "assets/optimized/about-bridge-ai-v1-thumb.webp"
+    }
+  },
+  {
+    "id": "MED-0005",
+    "fileName": "about-innovation-gears-v1.png",
+    "path": "assets/about-innovation-gears-v1.png",
+    "purpose": "关于我们配图",
+    "width": 1672,
+    "height": 941,
+    "sizeBytes": 1696373,
+    "altText": null,
+    "copyrightSource": null,
+    "license": {
+      "status": "licensed",
+      "grantedBy": "上海数响科技有限公司（DSG 数创时代）",
+      "sourceFile": "数创时代DSG-案例集锦（公司自有活动影像素材）",
+      "expiry": null
+    },
+    "uploader": null,
+    "uploadedOn": null,
+    "derivatives": {
+      "webp": "assets/optimized/about-innovation-gears-v1.webp",
+      "thumbnail": "assets/optimized/about-innovation-gears-v1-thumb.webp"
+    }
+  },
+  {
+    "id": "MED-0006",
+    "fileName": "logo_full.png",
+    "path": "assets/logo_full.png",
+    "purpose": "品牌 Logo",
+    "width": 1772,
+    "height": 1214,
+    "sizeBytes": 128470,
+    "altText": null,
+    "copyrightSource": null,
+    "license": {
+      "status": "licensed",
+      "grantedBy": "上海数响科技有限公司（DSG 数创时代）",
+      "sourceFile": "数创时代DSG-案例集锦（公司自有活动影像素材）",
+      "expiry": null
+    },
+    "uploader": null,
+    "uploadedOn": null,
+    "derivatives": {
+      "webp": "assets/logo_full.png",
+      "thumbnail": "assets/logo_full.png"
+    }
+  },
+  {
+    "id": "MED-0007",
+    "fileName": "module-about-v2.png",
+    "path": "assets/module-about-v2.png",
+    "purpose": "页面模块配图",
+    "width": 1672,
+    "height": 941,
+    "sizeBytes": 1920519,
+    "altText": null,
+    "copyrightSource": null,
+    "license": {
+      "status": "licensed",
+      "grantedBy": "上海数响科技有限公司（DSG 数创时代）",
+      "sourceFile": "数创时代DSG-案例集锦（公司自有活动影像素材）",
+      "expiry": null
+    },
+    "uploader": null,
+    "uploadedOn": null,
+    "derivatives": {
+      "webp": "assets/optimized/module-about-v2.webp",
+      "thumbnail": "assets/optimized/module-about-v2-thumb.webp"
+    }
+  },
+  {
+    "id": "MED-0008",
+    "fileName": "module-about.png",
+    "path": "assets/module-about.png",
+    "purpose": "页面模块配图",
+    "width": 1672,
+    "height": 941,
+    "sizeBytes": 1907458,
+    "altText": null,
+    "copyrightSource": null,
+    "license": {
+      "status": "licensed",
+      "grantedBy": "上海数响科技有限公司（DSG 数创时代）",
+      "sourceFile": "数创时代DSG-案例集锦（公司自有活动影像素材）",
+      "expiry": null
+    },
+    "uploader": null,
+    "uploadedOn": null,
+    "derivatives": {
+      "webp": "assets/optimized/module-about.webp",
+      "thumbnail": "assets/optimized/module-about-thumb.webp"
+    }
+  },
+  {
+    "id": "MED-0009",
+    "fileName": "module-calendar-v2.png",
+    "path": "assets/module-calendar-v2.png",
+    "purpose": "页面模块配图",
+    "width": 1672,
+    "height": 941,
+    "sizeBytes": 1815273,
+    "altText": null,
+    "copyrightSource": null,
+    "license": {
+      "status": "licensed",
+      "grantedBy": "上海数响科技有限公司（DSG 数创时代）",
+      "sourceFile": "数创时代DSG-案例集锦（公司自有活动影像素材）",
+      "expiry": null
+    },
+    "uploader": null,
+    "uploadedOn": null,
+    "derivatives": {
+      "webp": "assets/optimized/module-calendar-v2.webp",
+      "thumbnail": "assets/optimized/module-calendar-v2-thumb.webp"
+    }
+  },
+  {
+    "id": "MED-0010",
+    "fileName": "module-calendar.png",
+    "path": "assets/module-calendar.png",
+    "purpose": "页面模块配图",
+    "width": 1672,
+    "height": 941,
+    "sizeBytes": 1476950,
+    "altText": null,
+    "copyrightSource": null,
+    "license": {
+      "status": "licensed",
+      "grantedBy": "上海数响科技有限公司（DSG 数创时代）",
+      "sourceFile": "数创时代DSG-案例集锦（公司自有活动影像素材）",
+      "expiry": null
+    },
+    "uploader": null,
+    "uploadedOn": null,
+    "derivatives": {
+      "webp": "assets/optimized/module-calendar.webp",
+      "thumbnail": "assets/optimized/module-calendar-thumb.webp"
+    }
+  },
+  {
+    "id": "MED-0011",
+    "fileName": "module-city-v2.png",
+    "path": "assets/module-city-v2.png",
+    "purpose": "页面模块配图",
+    "width": 1672,
+    "height": 941,
+    "sizeBytes": 2147155,
+    "altText": null,
+    "copyrightSource": null,
+    "license": {
+      "status": "licensed",
+      "grantedBy": "上海数响科技有限公司（DSG 数创时代）",
+      "sourceFile": "数创时代DSG-案例集锦（公司自有活动影像素材）",
+      "expiry": null
+    },
+    "uploader": null,
+    "uploadedOn": null,
+    "derivatives": {
+      "webp": "assets/optimized/module-city-v2.webp",
+      "thumbnail": "assets/optimized/module-city-v2-thumb.webp"
+    }
+  },
+  {
+    "id": "MED-0012",
+    "fileName": "module-city.png",
+    "path": "assets/module-city.png",
+    "purpose": "页面模块配图",
+    "width": 1672,
+    "height": 941,
+    "sizeBytes": 2044556,
+    "altText": null,
+    "copyrightSource": null,
+    "license": {
+      "status": "licensed",
+      "grantedBy": "上海数响科技有限公司（DSG 数创时代）",
+      "sourceFile": "数创时代DSG-案例集锦（公司自有活动影像素材）",
+      "expiry": null
+    },
+    "uploader": null,
+    "uploadedOn": null,
+    "derivatives": {
+      "webp": "assets/optimized/module-city.webp",
+      "thumbnail": "assets/optimized/module-city-thumb.webp"
+    }
+  },
+  {
+    "id": "MED-0013",
+    "fileName": "module-contact-v2.png",
+    "path": "assets/module-contact-v2.png",
+    "purpose": "页面模块配图",
+    "width": 1672,
+    "height": 941,
+    "sizeBytes": 1797994,
+    "altText": null,
+    "copyrightSource": null,
+    "license": {
+      "status": "licensed",
+      "grantedBy": "上海数响科技有限公司（DSG 数创时代）",
+      "sourceFile": "数创时代DSG-案例集锦（公司自有活动影像素材）",
+      "expiry": null
+    },
+    "uploader": null,
+    "uploadedOn": null,
+    "derivatives": {
+      "webp": "assets/optimized/module-contact-v2.webp",
+      "thumbnail": "assets/optimized/module-contact-v2-thumb.webp"
+    }
+  },
+  {
+    "id": "MED-0014",
+    "fileName": "module-contact.png",
+    "path": "assets/module-contact.png",
+    "purpose": "页面模块配图",
+    "width": 1672,
+    "height": 941,
+    "sizeBytes": 1647598,
+    "altText": null,
+    "copyrightSource": null,
+    "license": {
+      "status": "licensed",
+      "grantedBy": "上海数响科技有限公司（DSG 数创时代）",
+      "sourceFile": "数创时代DSG-案例集锦（公司自有活动影像素材）",
+      "expiry": null
+    },
+    "uploader": null,
+    "uploadedOn": null,
+    "derivatives": {
+      "webp": "assets/optimized/module-contact.webp",
+      "thumbnail": "assets/optimized/module-contact-thumb.webp"
+    }
+  },
+  {
+    "id": "MED-0015",
+    "fileName": "module-elite-v2.png",
+    "path": "assets/module-elite-v2.png",
+    "purpose": "页面模块配图",
+    "width": 1672,
+    "height": 941,
+    "sizeBytes": 1779336,
+    "altText": null,
+    "copyrightSource": null,
+    "license": {
+      "status": "licensed",
+      "grantedBy": "上海数响科技有限公司（DSG 数创时代）",
+      "sourceFile": "数创时代DSG-案例集锦（公司自有活动影像素材）",
+      "expiry": null
+    },
+    "uploader": null,
+    "uploadedOn": null,
+    "derivatives": {
+      "webp": "assets/optimized/module-elite-v2.webp",
+      "thumbnail": "assets/optimized/module-elite-v2-thumb.webp"
+    }
+  },
+  {
+    "id": "MED-0016",
+    "fileName": "module-elite.png",
+    "path": "assets/module-elite.png",
+    "purpose": "页面模块配图",
+    "width": 1672,
+    "height": 941,
+    "sizeBytes": 1947840,
+    "altText": null,
+    "copyrightSource": null,
+    "license": {
+      "status": "licensed",
+      "grantedBy": "上海数响科技有限公司（DSG 数创时代）",
+      "sourceFile": "数创时代DSG-案例集锦（公司自有活动影像素材）",
+      "expiry": null
+    },
+    "uploader": null,
+    "uploadedOn": null,
+    "derivatives": {
+      "webp": "assets/optimized/module-elite.webp",
+      "thumbnail": "assets/optimized/module-elite-thumb.webp"
+    }
+  },
+  {
+    "id": "MED-0017",
+    "fileName": "module-events-v2.png",
+    "path": "assets/module-events-v2.png",
+    "purpose": "页面模块配图",
+    "width": 1672,
+    "height": 941,
+    "sizeBytes": 1928272,
+    "altText": null,
+    "copyrightSource": null,
+    "license": {
+      "status": "licensed",
+      "grantedBy": "上海数响科技有限公司（DSG 数创时代）",
+      "sourceFile": "数创时代DSG-案例集锦（公司自有活动影像素材）",
+      "expiry": null
+    },
+    "uploader": null,
+    "uploadedOn": null,
+    "derivatives": {
+      "webp": "assets/optimized/module-events-v2.webp",
+      "thumbnail": "assets/optimized/module-events-v2-thumb.webp"
+    }
+  },
+  {
+    "id": "MED-0018",
+    "fileName": "module-events.png",
+    "path": "assets/module-events.png",
+    "purpose": "页面模块配图",
+    "width": 1672,
+    "height": 941,
+    "sizeBytes": 2039057,
+    "altText": null,
+    "copyrightSource": null,
+    "license": {
+      "status": "licensed",
+      "grantedBy": "上海数响科技有限公司（DSG 数创时代）",
+      "sourceFile": "数创时代DSG-案例集锦（公司自有活动影像素材）",
+      "expiry": null
+    },
+    "uploader": null,
+    "uploadedOn": null,
+    "derivatives": {
+      "webp": "assets/optimized/module-events.webp",
+      "thumbnail": "assets/optimized/module-events-thumb.webp"
+    }
+  },
+  {
+    "id": "MED-0019",
+    "fileName": "module-home-v2.png",
+    "path": "assets/module-home-v2.png",
+    "purpose": "页面模块配图",
+    "width": 1672,
+    "height": 941,
+    "sizeBytes": 1851274,
+    "altText": null,
+    "copyrightSource": null,
+    "license": {
+      "status": "licensed",
+      "grantedBy": "上海数响科技有限公司（DSG 数创时代）",
+      "sourceFile": "数创时代DSG-案例集锦（公司自有活动影像素材）",
+      "expiry": null
+    },
+    "uploader": null,
+    "uploadedOn": null,
+    "derivatives": {
+      "webp": "assets/optimized/module-home-v2.webp",
+      "thumbnail": "assets/optimized/module-home-v2-thumb.webp"
+    }
+  },
+  {
+    "id": "MED-0020",
+    "fileName": "module-home.png",
+    "path": "assets/module-home.png",
+    "purpose": "页面模块配图",
+    "width": 1672,
+    "height": 941,
+    "sizeBytes": 2055413,
+    "altText": null,
+    "copyrightSource": null,
+    "license": {
+      "status": "licensed",
+      "grantedBy": "上海数响科技有限公司（DSG 数创时代）",
+      "sourceFile": "数创时代DSG-案例集锦（公司自有活动影像素材）",
+      "expiry": null
+    },
+    "uploader": null,
+    "uploadedOn": null,
+    "derivatives": {
+      "webp": "assets/optimized/module-home.webp",
+      "thumbnail": "assets/optimized/module-home-thumb.webp"
+    }
+  },
+  {
+    "id": "MED-0021",
+    "fileName": "module-insights-v2.png",
+    "path": "assets/module-insights-v2.png",
+    "purpose": "页面模块配图",
+    "width": 1672,
+    "height": 941,
+    "sizeBytes": 1912837,
+    "altText": null,
+    "copyrightSource": null,
+    "license": {
+      "status": "licensed",
+      "grantedBy": "上海数响科技有限公司（DSG 数创时代）",
+      "sourceFile": "数创时代DSG-案例集锦（公司自有活动影像素材）",
+      "expiry": null
+    },
+    "uploader": null,
+    "uploadedOn": null,
+    "derivatives": {
+      "webp": "assets/optimized/module-insights-v2.webp",
+      "thumbnail": "assets/optimized/module-insights-v2-thumb.webp"
+    }
+  },
+  {
+    "id": "MED-0022",
+    "fileName": "module-insights.png",
+    "path": "assets/module-insights.png",
+    "purpose": "页面模块配图",
+    "width": 1672,
+    "height": 941,
+    "sizeBytes": 1714020,
+    "altText": null,
+    "copyrightSource": null,
+    "license": {
+      "status": "licensed",
+      "grantedBy": "上海数响科技有限公司（DSG 数创时代）",
+      "sourceFile": "数创时代DSG-案例集锦（公司自有活动影像素材）",
+      "expiry": null
+    },
+    "uploader": null,
+    "uploadedOn": null,
+    "derivatives": {
+      "webp": "assets/optimized/module-insights.webp",
+      "thumbnail": "assets/optimized/module-insights-thumb.webp"
+    }
+  },
+  {
+    "id": "MED-0023",
+    "fileName": "module-summit-v2.png",
+    "path": "assets/module-summit-v2.png",
+    "purpose": "页面模块配图",
+    "width": 1672,
+    "height": 941,
+    "sizeBytes": 2126288,
+    "altText": null,
+    "copyrightSource": null,
+    "license": {
+      "status": "licensed",
+      "grantedBy": "上海数响科技有限公司（DSG 数创时代）",
+      "sourceFile": "数创时代DSG-案例集锦（公司自有活动影像素材）",
+      "expiry": null
+    },
+    "uploader": null,
+    "uploadedOn": null,
+    "derivatives": {
+      "webp": "assets/optimized/module-summit-v2.webp",
+      "thumbnail": "assets/optimized/module-summit-v2-thumb.webp"
+    }
+  },
+  {
+    "id": "MED-0024",
+    "fileName": "module-summit.png",
+    "path": "assets/module-summit.png",
+    "purpose": "页面模块配图",
+    "width": 1672,
+    "height": 941,
+    "sizeBytes": 2100588,
+    "altText": null,
+    "copyrightSource": null,
+    "license": {
+      "status": "licensed",
+      "grantedBy": "上海数响科技有限公司（DSG 数创时代）",
+      "sourceFile": "数创时代DSG-案例集锦（公司自有活动影像素材）",
+      "expiry": null
+    },
+    "uploader": null,
+    "uploadedOn": null,
+    "derivatives": {
+      "webp": "assets/optimized/module-summit.webp",
+      "thumbnail": "assets/optimized/module-summit-thumb.webp"
+    }
+  },
+  {
+    "id": "MED-0025",
+    "fileName": "module-supply-ai-v2.png",
+    "path": "assets/module-supply-ai-v2.png",
+    "purpose": "页面模块配图",
+    "width": 1672,
+    "height": 941,
+    "sizeBytes": 1834713,
+    "altText": null,
+    "copyrightSource": null,
+    "license": {
+      "status": "licensed",
+      "grantedBy": "上海数响科技有限公司（DSG 数创时代）",
+      "sourceFile": "数创时代DSG-案例集锦（公司自有活动影像素材）",
+      "expiry": null
+    },
+    "uploader": null,
+    "uploadedOn": null,
+    "derivatives": {
+      "webp": "assets/optimized/module-supply-ai-v2.webp",
+      "thumbnail": "assets/optimized/module-supply-ai-v2-thumb.webp"
+    }
+  },
+  {
+    "id": "MED-0026",
+    "fileName": "module-supply-ai.png",
+    "path": "assets/module-supply-ai.png",
+    "purpose": "页面模块配图",
+    "width": 1672,
+    "height": 941,
+    "sizeBytes": 1765095,
+    "altText": null,
+    "copyrightSource": null,
+    "license": {
+      "status": "licensed",
+      "grantedBy": "上海数响科技有限公司（DSG 数创时代）",
+      "sourceFile": "数创时代DSG-案例集锦（公司自有活动影像素材）",
+      "expiry": null
+    },
+    "uploader": null,
+    "uploadedOn": null,
+    "derivatives": {
+      "webp": "assets/optimized/module-supply-ai.webp",
+      "thumbnail": "assets/optimized/module-supply-ai-thumb.webp"
+    }
+  },
+  {
+    "id": "MED-0027",
+    "fileName": "pic01.jpg",
+    "path": "assets/pic01.jpg",
+    "purpose": "通用配图",
+    "width": 438,
+    "height": 438,
+    "sizeBytes": 6953,
+    "altText": null,
+    "copyrightSource": null,
+    "license": {
+      "status": "licensed",
+      "grantedBy": "上海数响科技有限公司（DSG 数创时代）",
+      "sourceFile": "数创时代DSG-案例集锦（公司自有活动影像素材）",
+      "expiry": null
+    },
+    "uploader": null,
+    "uploadedOn": null,
+    "derivatives": {
+      "webp": "assets/optimized/pic01.webp",
+      "thumbnail": "assets/optimized/pic01-thumb.webp"
+    }
+  },
+  {
+    "id": "MED-0028",
+    "fileName": "pic03.jpg",
+    "path": "assets/pic03.jpg",
+    "purpose": "通用配图",
+    "width": 438,
+    "height": 438,
+    "sizeBytes": 6828,
+    "altText": null,
+    "copyrightSource": null,
+    "license": {
+      "status": "licensed",
+      "grantedBy": "上海数响科技有限公司（DSG 数创时代）",
+      "sourceFile": "数创时代DSG-案例集锦（公司自有活动影像素材）",
+      "expiry": null
+    },
+    "uploader": null,
+    "uploadedOn": null,
+    "derivatives": {
+      "webp": "assets/optimized/pic03.webp",
+      "thumbnail": "assets/optimized/pic03-thumb.webp"
+    }
+  }
+]

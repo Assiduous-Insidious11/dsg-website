@@ -1,0 +1,1384 @@
+[
+  {
+    "id": "SPK-0001",
+    "name": "石云飞",
+    "company": "麦肯锡",
+    "jobTitle": "副董事合伙人、中国区供应链负责人",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2024-ELITE-01",
+      "EVT-2026-ELITE-36",
+      "EVT-2026-CITY-CQ-1023",
+      "EVT-2026-SUP",
+      "EVT-2026-CITY-HZ-0626"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0002",
+    "name": "Edward Allan Gabor",
+    "company": "上海美国商会",
+    "jobTitle": "荣誉主席、默克中国前总裁",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0003",
+    "name": "沈东辉",
+    "company": "合合信息",
+    "jobTitle": "数据事业部副总经理",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-CITY-GZ-0424",
+      "EVT-2026-SUP",
+      "EVT-2026-CITY-SH-0526"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0004",
+    "name": "徐晓卓",
+    "company": "海辰储能",
+    "jobTitle": "人工智能研究院院长",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-CITY-SZ-0521",
+      "EVT-2026-SUP",
+      "EVT-2026-CITY-HZ-0626"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0005",
+    "name": "查晓隽",
+    "company": "上海农村商业银行",
+    "jobTitle": "金融科技部副总经理兼研发测试中心副总经理",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-41",
+      "EVT-2025-ELITE-16",
+      "EVT-2026-ELITE-47",
+      "EVT-2026-ELITE-35",
+      "EVT-2025-ELITE-20",
+      "EVT-2026-FIN"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0006",
+    "name": "林炳贤",
+    "company": "厦门国际银行",
+    "jobTitle": "科技发展部副总经理",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-FIN"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0007",
+    "name": "任荣",
+    "company": "国泰海通",
+    "jobTitle": "数据管理应用部总经理助理",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-FIN"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0008",
+    "name": "赵岩",
+    "company": "国华人寿",
+    "jobTitle": "副总经理",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-FIN"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0009",
+    "name": "朱才才",
+    "company": "光大证券",
+    "jobTitle": "数据团队负责人",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-FIN"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0010",
+    "name": "韩泽原",
+    "company": "e签宝",
+    "jobTitle": "品牌市场中心总经理",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-FIN"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0011",
+    "name": "曹刚",
+    "company": "网易智企",
+    "jobTitle": "行业解决方案总监",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-FIN",
+      "EVT-2025-VISIT-01"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0012",
+    "name": "何秉卫",
+    "company": "太保科技",
+    "jobTitle": "数据架构师",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-FIN"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0013",
+    "name": "李岩峰",
+    "company": "阳光产险",
+    "jobTitle": "信息技术部总经理",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-FIN",
+      "EVT-2026-ELITE-47"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0014",
+    "name": "陈敏",
+    "company": "合合信息",
+    "jobTitle": "智能解决方案事业部银行业解决方案负责人",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-CITY-GZ-0424",
+      "EVT-2026-SUP",
+      "EVT-2026-CITY-SH-0526"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0015",
+    "name": "顾卫东",
+    "company": "某知名MCN公司",
+    "jobTitle": "采购负责人、中国首批CPM认证持有者",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0016",
+    "name": "朱毅",
+    "company": "数字化采购",
+    "jobTitle": "旅美供应链专家、数字化采购导师",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0017",
+    "name": "Samuel Lee",
+    "company": "某知名汽车企业",
+    "jobTitle": "采购供应链负责人",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0018",
+    "name": "Jason",
+    "company": "某国际知名MNC消费品上市公司",
+    "jobTitle": "数字化变革专家",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0019",
+    "name": "陈颖",
+    "company": "橋盈新奢品牌管理",
+    "jobTitle": "供应链副总裁",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0020",
+    "name": "海正药业AI负责人",
+    "company": "海正药业",
+    "jobTitle": "AI负责人",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-39",
+      "EVT-2026-ELITE-42A"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0021",
+    "name": "卡博特CIO",
+    "company": "卡博特",
+    "jobTitle": "首席信息官",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-46",
+      "EVT-2026-ELITE-43",
+      "EVT-2026-ELITE-45"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0022",
+    "name": "金拱门供应链运营",
+    "company": "金拱门",
+    "jobTitle": "供应链运营负责人",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2024-ELITE-01",
+      "EVT-2026-CITY-CQ-1023",
+      "EVT-2026-ELITE-36"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0023",
+    "name": "百胜IT资深总监",
+    "company": "百胜中国",
+    "jobTitle": "IT资深总监",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-37",
+      "EVT-2026-ELITE-42B"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0024",
+    "name": "lululemon技术总监",
+    "company": "lululemon",
+    "jobTitle": "技术总监",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-37",
+      "EVT-2026-ELITE-42B"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0025",
+    "name": "戴森Head of IT",
+    "company": "戴森",
+    "jobTitle": "Head of IT",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-37",
+      "EVT-2026-ELITE-42B"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0026",
+    "name": "达美乐CIO",
+    "company": "达美乐",
+    "jobTitle": "首席信息官",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-37",
+      "EVT-2026-ELITE-42B"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0027",
+    "name": "麦德龙CIO",
+    "company": "麦德龙",
+    "jobTitle": "首席信息官",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-37",
+      "EVT-2026-ELITE-42B"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0028",
+    "name": "药明康德数字化负责人",
+    "company": "药明康德",
+    "jobTitle": "数字化负责人",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-39",
+      "EVT-2026-ELITE-42A"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0029",
+    "name": "再鼎医药IT AD",
+    "company": "再鼎医药",
+    "jobTitle": "IT AD",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-39",
+      "EVT-2026-ELITE-42A"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0030",
+    "name": "凯西医药ICT Leader",
+    "company": "凯西医药",
+    "jobTitle": "ICT Leader",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-39",
+      "EVT-2026-ELITE-42A"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0031",
+    "name": "海辰储能AI研究院院长",
+    "company": "海辰储能",
+    "jobTitle": "人工智能研究院院长",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-CITY-SZ-0521",
+      "EVT-2026-SUP",
+      "EVT-2026-CITY-HZ-0626"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0032",
+    "name": "阿克苏诺贝尔IT总监",
+    "company": "阿克苏诺贝尔",
+    "jobTitle": "IT总监",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-46",
+      "EVT-2026-ELITE-45"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0033",
+    "name": "克鲁勃润滑剂SCM需求计划经理",
+    "company": "克鲁勃润滑剂",
+    "jobTitle": "SCM需求计划经理",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-45"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0034",
+    "name": "美敦力IT BSA",
+    "company": "美敦力",
+    "jobTitle": "IT BSA",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-39",
+      "EVT-2026-ELITE-42A"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0035",
+    "name": "道达尔能源采购总监",
+    "company": "道达尔能源",
+    "jobTitle": "采购总监",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2024-ELITE-01",
+      "EVT-2026-CITY-CQ-1023",
+      "EVT-2026-ELITE-36",
+      "EVT-2026-ELITE-45"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0036",
+    "name": "采埃孚数字化负责人",
+    "company": "采埃孚",
+    "jobTitle": "数字化负责人",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-40",
+      "EVT-2026-ELITE-46",
+      "EVT-2026-ELITE-38",
+      "EVT-2026-ELITE-43",
+      "EVT-2026-ELITE-45"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0037",
+    "name": "安道麦中国区CIO",
+    "company": "安道麦",
+    "jobTitle": "中国区首席信息官",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-45"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0038",
+    "name": "迪卡侬工业采购技能管理",
+    "company": "迪卡侬",
+    "jobTitle": "工业采购技能管理",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2024-ELITE-01",
+      "EVT-2026-CITY-CQ-1023",
+      "EVT-2026-ELITE-36"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0039",
+    "name": "昕诺菲高级采购经理",
+    "company": "昕诺菲",
+    "jobTitle": "高级采购经理",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2024-ELITE-01",
+      "EVT-2026-CITY-CQ-1023",
+      "EVT-2026-ELITE-36"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0040",
+    "name": "上汽集团采购供应链总监",
+    "company": "上汽集团",
+    "jobTitle": "采购供应链总监",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0041",
+    "name": "飞利浦采购总监",
+    "company": "飞利浦",
+    "jobTitle": "采购总监",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2024-ELITE-01",
+      "EVT-2026-CITY-CQ-1023",
+      "EVT-2026-ELITE-36"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0042",
+    "name": "诺基亚贝尔采购VP",
+    "company": "诺基亚贝尔",
+    "jobTitle": "采购副总裁",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0043",
+    "name": "信达生物采购经理",
+    "company": "信达生物",
+    "jobTitle": "采购经理",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-39",
+      "EVT-2026-ELITE-42A"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0044",
+    "name": "英飞凌CIO",
+    "company": "英飞凌",
+    "jobTitle": "首席信息官",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-40",
+      "EVT-2026-ELITE-46",
+      "EVT-2026-ELITE-38",
+      "EVT-2026-ELITE-43",
+      "EVT-2026-ELITE-45"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0045",
+    "name": "卓易信息CTO",
+    "company": "卓易信息",
+    "jobTitle": "首席技术官",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0046",
+    "name": "均胜汽车安全IT CIO",
+    "company": "均胜汽车安全",
+    "jobTitle": "IT CIO",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-40",
+      "EVT-2026-ELITE-38",
+      "EVT-2025-ELITE-22",
+      "EVT-2026-VISIT-03",
+      "EVT-2026-ELITE-44"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0047",
+    "name": "极氪科技集团研发负责人",
+    "company": "极氪科技",
+    "jobTitle": "研发负责人",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-44",
+      "EVT-2025-ELITE-22"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0048",
+    "name": "沃尔沃供应链总监",
+    "company": "沃尔沃",
+    "jobTitle": "供应链总监",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-44",
+      "EVT-2026-SUP",
+      "EVT-2025-ELITE-22"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0049",
+    "name": "佛吉亚数字化转型负责人",
+    "company": "佛吉亚",
+    "jobTitle": "数字化转型负责人",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-40",
+      "EVT-2026-ELITE-38"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0050",
+    "name": "博世IT总监",
+    "company": "博世",
+    "jobTitle": "IT总监",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-40",
+      "EVT-2026-ELITE-46",
+      "EVT-2026-ELITE-38",
+      "EVT-2025-ELITE-22",
+      "EVT-2026-ELITE-44",
+      "EVT-2026-ELITE-43",
+      "EVT-2026-SUP",
+      "EVT-2026-ELITE-45"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0051",
+    "name": "交个朋友副总裁",
+    "company": "交个朋友",
+    "jobTitle": "副总裁",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-VISIT-02"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0052",
+    "name": "祖名豆制品CIO",
+    "company": "祖名豆制品",
+    "jobTitle": "首席信息官",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0053",
+    "name": "相宜本草IT总监",
+    "company": "相宜本草",
+    "jobTitle": "IT总监",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-37",
+      "EVT-2026-ELITE-42B"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0054",
+    "name": "伽蓝集团数字化总监",
+    "company": "伽蓝集团",
+    "jobTitle": "数字化总监",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0055",
+    "name": "中国华电集团营销总监",
+    "company": "中国华电集团",
+    "jobTitle": "营销总监",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0056",
+    "name": "协鑫集成IT总监",
+    "company": "协鑫集成",
+    "jobTitle": "IT总监",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0057",
+    "name": "正泰新能信息管理总监",
+    "company": "正泰新能",
+    "jobTitle": "信息管理总监",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0058",
+    "name": "东方日升CIO",
+    "company": "东方日升",
+    "jobTitle": "首席信息官",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0059",
+    "name": "上海农商银行金融科技部高级工程师",
+    "company": "上海农村商业银行",
+    "jobTitle": "金融科技部高级工程师",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-41",
+      "EVT-2025-ELITE-16",
+      "EVT-2026-ELITE-47",
+      "EVT-2026-ELITE-35",
+      "EVT-2025-ELITE-20",
+      "EVT-2026-FIN"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0060",
+    "name": "霍尼韦尔高级产品安全分析师",
+    "company": "霍尼韦尔",
+    "jobTitle": "高级产品安全分析师",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-35",
+      "EVT-2025-ELITE-20",
+      "EVT-2026-ELITE-41",
+      "EVT-2025-ELITE-16"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0061",
+    "name": "雅培信息安全总监",
+    "company": "雅培",
+    "jobTitle": "信息安全总监",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-41",
+      "EVT-2026-ELITE-42A",
+      "EVT-2025-ELITE-16",
+      "EVT-2026-ELITE-39",
+      "EVT-2026-ELITE-35",
+      "EVT-2025-ELITE-20"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0062",
+    "name": "中兴通讯供应链总监",
+    "company": "中兴通讯",
+    "jobTitle": "供应链总监",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-SUP",
+      "EVT-2026-CITY-SZ-0521"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0063",
+    "name": "邓白氏行业专家",
+    "company": "邓白氏",
+    "jobTitle": "行业专家",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2024-ELITE-01",
+      "EVT-2026-CITY-SZ-0521",
+      "EVT-2026-ELITE-36",
+      "EVT-2026-CITY-CQ-1023",
+      "EVT-2026-CITY-SH-0526",
+      "EVT-2026-CITY-GZ-0424",
+      "EVT-2026-SUP",
+      "EVT-2026-CITY-HZ-0626"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG 活动合作嘉宾（案例集锦）",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "zh-CN",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  }
+]
