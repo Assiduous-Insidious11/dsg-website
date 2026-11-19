@@ -235,7 +235,9 @@ html[lang="en"] p { max-width: 66ch; }
    用于需要「上下两行等宽」的对句标题。 */
 .h2-line { display: block; }
 .section-head p {
-  font-size: 15px;
+  /* 2026-11-19：15px 换成 --fs-body（值相同），与首屏副文共用同一个字号来源。
+     以后要调这类说明文字的大小，只改 --fs-body 一处，全站一起动。 */
+  font-size: var(--fs-body);
   line-height: 1.75;
   /* 与标题左边界齐平，另加 14px 让说明与标题留一口气，
      不用两栏时那个 56px 的大间距 */
@@ -2634,12 +2636,33 @@ html[lang="en"] .program-hero p {
 @media (min-width: 1200px) {
   .page-home .hero-inner > h1 {
     white-space: nowrap;
-    max-width: 552px;
+    max-width: 558px;
     text-align-last: justify;
   }
 }
 .page-home .hero-inner > .hero-lead {
-  max-width: 552px;
+  max-width: 558px;
   text-align: justify;
   text-justify: inter-ideograph;
+}
+
+/* ============ 首屏副文字号并到全站「标题下小灰字」（2026-11-19 第四轮）============
+   用户反馈：首屏那段「DSG 数创时代围绕……」的字号，和首页其它 banner
+   （BUSINESS ARCHITECTURE / RECENT EVENTS …）标题下面那句小灰字不一样大。
+
+   实测差距（1440 视口）：
+     首屏副文 .hero-lead         23.47px / 行高 38.02px   ← clamp(14px, 1.63vw, 23.5px)
+     区块小灰字 .section-head p  15px    / 行高 26.25px   ← 现为 var(--fs-body)
+   两者同屏、同性质（都是标题下面的说明文字），却差了 8.5px，块与块之间跳档。
+
+   这里把副文降到与 .section-head p 完全同源的 var(--fs-body) 与行高 1.75
+   （= 26.25px），字号、行高、字距三样一致，不再各写各的数。
+
+   对齐规则一字未改：仍是 max-width 552px + 两端对齐，左右边界与 38px 标题
+   同宽；只是字变小后每行装的字多了（552px 下约 36 字一行），
+   整段由 4 行变 2 行，末行按 justify 规则自然留空。 */
+.page-home .hero-inner > .hero-lead {
+  font-size: var(--fs-body);
+  line-height: 1.75;
+  letter-spacing: normal;
 }
