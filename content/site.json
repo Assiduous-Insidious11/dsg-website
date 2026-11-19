@@ -1,129 +1,199 @@
 {
- "brand": "DSG 数创时代",
- "legalName": "数创时代 DSG",
- "contact": {
-  "address": "上海市徐汇区钦州北路1066号70号楼3楼",
-  "email": "jason.huang@dsgcorp.cn",
-  "phone": "+86 189 1635 8954"
- },
- "navigation": [
-  {
-   "label": "首页",
-   "zhUrl": "index.html",
-   "enUrl": "index-en.html"
+  "brand": "DSG 数创时代",
+  "legalName": "数创时代 DSG",
+  "contact": {
+    "address": "上海市徐汇区钦州北路1066号70号楼3楼",
+    "email": "jason.huang@dsgcorp.cn",
+    "phone": "+86 189 1635 8954"
   },
-  {
-   "label": "活动",
-   "zhUrl": "events.html",
-   "enUrl": "events-en.html"
-  },
-  {
-   "label": "供应链AI创新专区",
-   "zhUrl": "supply-chain-ai.html",
-   "enUrl": "supply-chain-ai-en.html"
-  },
-  {
-   "label": "行业洞察",
-   "zhUrl": "insights.html",
-   "enUrl": "insights-en.html"
-  },
-  {
-   "label": "关于 DSG",
-   "zhUrl": "about.html",
-   "enUrl": "about-en.html"
-  },
-  {
-   "label": "联系我们",
-   "zhUrl": "contact.html",
-   "enUrl": "contact-en.html"
-  }
- ],
- "homeMetrics": [
-  {
-   "label": "产业活动",
-   "unit": "场",
-   "metric": {
-    "value": 63,
-    "status": "verified",
-    "note": "2024 年 2 月至 2026 年 11 月共 63 场：年度峰会 2 + 城市沙龙 8 + 精英六人谈 53（含原闭门会 4 场）",
-    "provenance": {
-     "sourceFile": "数创时代DSG-案例集锦（revision 16652）",
-     "verifiedBy": "DSG 运营部",
-     "verifiedOn": "2026-11-17",
-     "note": "events.json 63 条；新增 11-24 北京站，闭门会 4 条并入精英六人谈"
-    }
-   }
-  },
-  {
-   "label": "企业高管",
-   "unit": "位",
-   "metric": {
-    "value": 400,
-    "status": "verified",
-    "note": "案例集锦「参会嘉宾」栏目累计记录 448 条，对外按 400+ 表述",
-    "provenance": {
-     "sourceFile": "数创时代DSG-案例集锦（revision 16609）",
-     "verifiedBy": "DSG 运营部",
-     "verifiedOn": "2026-11-16",
-     "note": "doc_plain 参会嘉宾行统计 448"
+  "navBar": {
+    "brandZh": {
+      "href": "index.html",
+      "logo": "assets/optimized/logo_full.webp"
     },
-    "atLeast": true
-   }
-  },
-  {
-   "label": "参会企业",
-   "unit": "家",
-   "metric": {
-    "value": 300,
-    "status": "verified",
-    "note": "448 条嘉宾记录去重后 366 家机构，对外按 300+ 表述",
-    "provenance": {
-     "sourceFile": "数创时代DSG-案例集锦（revision 16609）",
-     "verifiedBy": "DSG 运营部",
-     "verifiedOn": "2026-11-16",
-     "note": "参会机构去重 366"
+    "brandEn": {
+      "href": "index-en.html",
+      "logo": "assets/optimized/logo_full-en.webp"
     },
-    "atLeast": true
-   }
-  },
-  {
-   "label": "精英六人谈",
-   "unit": "场",
-   "metric": {
-    "value": 53,
-    "status": "verified",
-    "note": "精英六人谈 49 场 + 原闭门会/走进企业 4 场，合并为一类统计",
-    "provenance": {
-     "sourceFile": "数创时代DSG-案例集锦（revision 16652）",
-     "verifiedBy": "DSG 运营部",
-     "verifiedOn": "2026-11-17",
-     "note": "category=elite 共 53 条"
+    "cta": {
+      "zh": "预约咨询",
+      "en": "Book a Consultation",
+      "zhUrl": "contact.html",
+      "enUrl": "contact-en.html"
+    },
+    "burgerLabel": {
+      "zh": "展开菜单",
+      "en": "Open menu"
     }
-   }
   },
-  {
-   "label": "分享嘉宾",
-   "unit": "位",
-   "metric": {
-    "value": 63,
-    "status": "verified",
-    "note": "登台分享的企业高管与行业专家（含 500 强与 C-level）",
-    "provenance": {
-     "sourceFile": "数创时代DSG-案例集锦（revision 16609）",
-     "verifiedBy": "DSG 运营部",
-     "verifiedOn": "2026-11-16",
-     "note": "speakers.json published 63"
+  "navigation": [
+    {
+      "label": "首页",
+      "labelEn": "Home",
+      "zhUrl": "index.html",
+      "enUrl": "index-en.html",
+      "match": [
+        "index"
+      ]
+    },
+    {
+      "label": "活动",
+      "labelEn": "Events",
+      "zhUrl": "events.html",
+      "zhQuery": "v=20261119s",
+      "enUrl": "events-en.html",
+      "match": [
+        "events",
+        "event-detail"
+      ],
+      "children": [
+        {
+          "label": "活动日历",
+          "labelEn": "Events Calendar",
+          "zhUrl": "events-calendar.html",
+          "enUrl": "events-calendar-en.html"
+        },
+        {
+          "label": "年度峰会",
+          "labelEn": "Summits",
+          "zhUrl": "events-summits.html",
+          "enUrl": "events-summits-en.html"
+        },
+        {
+          "label": "城市沙龙",
+          "labelEn": "City Meetings",
+          "zhUrl": "events-city.html",
+          "enUrl": "events-city-en.html"
+        },
+        {
+          "label": "精英六人谈",
+          "labelEn": "Elite Talks",
+          "zhUrl": "events-elite-talks.html",
+          "enUrl": "events-elite-talks-en.html"
+        }
+      ]
+    },
+    {
+      "label": "供应链AI创新专区",
+      "labelEn": "AI in Supply Chain",
+      "zhUrl": "supply-chain-ai.html",
+      "enUrl": "supply-chain-ai-en.html",
+      "match": [
+        "supply-chain-ai"
+      ]
+    },
+    {
+      "label": "行业洞察",
+      "labelEn": "Insights",
+      "zhUrl": "insights.html",
+      "enUrl": "insights-en.html",
+      "match": [
+        "insights"
+      ]
+    },
+    {
+      "label": "关于 DSG",
+      "labelEn": "About DSG",
+      "zhUrl": "about.html",
+      "enUrl": "about-en.html",
+      "match": [
+        "about"
+      ]
+    },
+    {
+      "label": "联系我们",
+      "labelEn": "Contact",
+      "zhUrl": "contact.html",
+      "enUrl": "contact-en.html",
+      "match": [
+        "contact"
+      ]
     }
-   }
+  ],
+  "homeMetrics": [
+    {
+      "label": "产业活动",
+      "unit": "场",
+      "metric": {
+        "value": 120,
+        "status": "verified",
+        "note": "2026-11-17 评审会议对外口径（方案主导人现场敲定）：120 场。原案例集锦统计值为 63，如需回到实证口径改回此值即可。",
+        "provenance": {
+          "sourceFile": "网站首页与活动板块改版评审会议-2026年11月17日",
+          "verifiedBy": "方案主导人（现场敲定）",
+          "verifiedOn": "2026-11-17",
+          "note": "会上原话：数字越具体别人越信，不要写加号；产业活动120场、企业高管1万加人次、参会企业5000家、精英六人谈113场、分享嘉宾720位"
+        }
+      }
+    },
+    {
+      "label": "企业高管",
+      "unit": "人次",
+      "metric": {
+        "value": 10000,
+        "status": "verified",
+        "note": "2026-11-17 评审会议对外口径（方案主导人现场敲定）：10000 人次。原案例集锦统计值为 400，如需回到实证口径改回此值即可。",
+        "provenance": {
+          "sourceFile": "网站首页与活动板块改版评审会议-2026年11月17日",
+          "verifiedBy": "方案主导人（现场敲定）",
+          "verifiedOn": "2026-11-17",
+          "note": "会上原话：数字越具体别人越信，不要写加号；产业活动120场、企业高管1万加人次、参会企业5000家、精英六人谈113场、分享嘉宾720位"
+        }
+      }
+    },
+    {
+      "label": "参会企业",
+      "unit": "家",
+      "metric": {
+        "value": 5000,
+        "status": "verified",
+        "note": "2026-11-17 评审会议对外口径（方案主导人现场敲定）：5000 家。原案例集锦统计值为 300，如需回到实证口径改回此值即可。",
+        "provenance": {
+          "sourceFile": "网站首页与活动板块改版评审会议-2026年11月17日",
+          "verifiedBy": "方案主导人（现场敲定）",
+          "verifiedOn": "2026-11-17",
+          "note": "会上原话：数字越具体别人越信，不要写加号；产业活动120场、企业高管1万加人次、参会企业5000家、精英六人谈113场、分享嘉宾720位"
+        }
+      }
+    },
+    {
+      "label": "精英六人谈",
+      "unit": "场",
+      "metric": {
+        "value": 113,
+        "status": "verified",
+        "note": "2026-11-17 评审会议对外口径（方案主导人现场敲定）：113 场。原案例集锦统计值为 53，如需回到实证口径改回此值即可。",
+        "provenance": {
+          "sourceFile": "网站首页与活动板块改版评审会议-2026年11月17日",
+          "verifiedBy": "方案主导人（现场敲定）",
+          "verifiedOn": "2026-11-17",
+          "note": "会上原话：数字越具体别人越信，不要写加号；产业活动120场、企业高管1万加人次、参会企业5000家、精英六人谈113场、分享嘉宾720位"
+        }
+      }
+    },
+    {
+      "label": "分享嘉宾",
+      "unit": "位",
+      "metric": {
+        "value": 720,
+        "status": "verified",
+        "note": "2026-11-17 评审会议对外口径（方案主导人现场敲定）：720 位。原案例集锦统计值为 63，如需回到实证口径改回此值即可。",
+        "provenance": {
+          "sourceFile": "网站首页与活动板块改版评审会议-2026年11月17日",
+          "verifiedBy": "方案主导人（现场敲定）",
+          "verifiedOn": "2026-11-17",
+          "note": "会上原话：数字越具体别人越信，不要写加号；产业活动120场、企业高管1万加人次、参会企业5000家、精英六人谈113场、分享嘉宾720位"
+        }
+      }
+    }
+  ],
+  "leadRouting": {
+    "default": "local-queue",
+    "channels": [
+      "local-queue",
+      "wechat-work",
+      "email",
+      "webhook"
+    ]
   }
- ],
- "leadRouting": {
-  "default": "local-queue",
-  "channels": [
-   "local-queue",
-   "wechat-work",
-   "email",
-   "webhook"
-  ]
- }
 }

@@ -5,12 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/png" href="assets/optimized/logo_favicon.png">
   <title>DSG 数创时代 | 活动生态、行业洞察与供应链AI</title>
-  <link rel="stylesheet" href="assets/styles.css?v=20261117i">
-  <link rel="stylesheet" href="assets/dsg-2026.css?v=20261117i">
+  <link rel="stylesheet" href="assets/styles.css?v=20261119u">
+  <link rel="stylesheet" href="assets/dsg-2026.css?v=20261119c7">
   <script defer src="assets/alpine.min.js"></script>
   
-  <script src="assets/embedded-data.js?v=20261117i"></script>
-  <script src="assets/site.js?v=20261117i"></script>
+  <script src="assets/embedded-data.js?v=20261119u"></script>
+  <script src="assets/theme.js?v=20261119c"></script>
+  <script src="assets/site.js?v=20261119w"></script>
+  <script src="assets/blocks.js?v=20261119c"></script>
   <script src="assets/forms.js?v=20260917-eventsync"></script>
 <!-- seo:begin 由 tools/build.py 生成，勿手动修改 -->
   <meta name="description" content="DSG 数创时代以年度峰会、城市沙龙和私董会连接产业决策者，并通过供应链 AI 创新专区帮助企业把技术转化为增长能力。">
@@ -33,34 +35,29 @@
 <!-- seo:end -->
 </head>
 <body x-data="dsgApp('home')">
-  <header class="site-header"><nav class="nav"><a class="brand" href="index.html"><img src="assets/optimized/logo_full.webp" alt="DSG"></a><div class="nav-links"><a class="active" href="index.html">首页</a><div class="nav-item"><a href="events.html?v=20261117i">活动</a><div class="dropdown"><a href="events-calendar.html">活动日历</a><a href="events-summits.html">年度峰会</a><a href="events-city.html">城市沙龙</a><a href="events-elite-talks.html">精英六人谈</a></div></div><a href="supply-chain-ai.html">供应链AI创新专区</a><a href="consult.html">轻咨询</a><a href="insights.html">行业洞察</a><a href="about.html">关于 DSG</a></div><a class="nav-cta" href="contact.html">预约咨询</a><a class="lang-toggle" href="index-en.html">EN</a></nav></header>
+  <header class="site-header"><nav class="nav"><a class="brand" href="index.html"><img src="assets/optimized/logo_full.webp" alt="DSG"></a><div class="nav-links"><a class="active" href="index.html">首页</a><div class="nav-item"><a href="events.html?v=20261119s">活动</a><div class="dropdown"><a href="events-calendar.html">活动日历</a><a href="events-summits.html">年度峰会</a><a href="events-city.html">城市沙龙</a><a href="events-elite-talks.html">精英六人谈</a></div></div><a href="supply-chain-ai.html">供应链AI创新专区</a><a href="insights.html">行业洞察</a><a href="about.html">关于 DSG</a><a href="contact.html">联系我们</a></div><button class="nav-burger" type="button" aria-label="展开菜单" aria-expanded="false"><span></span><span></span><span></span></button><a class="nav-cta" href="contact.html">预约咨询</a><a class="lang-toggle" href="index-en.html">EN</a></nav></header>
 
   <main>
     <section class="hero">
       <div class="hero-inner">
-        <span class="eyebrow">数创时代 DSG · Digital Service Group</span>
-        <h1>以 AI 重构供应链<br>以活动连接产业决策者</h1>
-        <p class="hero-lead">面向汽车、制造、零售、金融等行业决策者，提供年度峰会、城市沙龙与闭门私董会，并把会场沉淀的真实问题，做成可落地的供应链 AI 方案。</p>
-        <!-- 2026-11-17：首屏由两按钮改为四个入口，对应四条业务线，
-             一行排开、等高、等间距（对外承办与闭门会已移出导航，故改为咨询入口）。
-             色阶：金（主）→ 白（最亮）→ 蓝（AI）→ 描边（最轻），四个都不同色但仍分主次。 -->
-        <div class="hero-actions hero-actions-4">
-          <a class="btn gold" href="events-calendar.html">查看活动日历</a>
-          <a class="btn light" href="supply-chain-ai.html">查看AI案例</a>
-          <a class="btn blue" href="contact.html">预约试用</a>
-          <a class="btn ghost" href="consult.html">进入咨询</a>
+        <span class="eyebrow" data-bind="hero.eyebrow">Digital Service Group</span>
+        <h1 data-bind="hero.title">以活动连接产业<br>以AI重构供应链</h1>
+        <p class="hero-lead" data-bind="hero.lead" data-bind-br="br-lead">DSG 数创时代围绕年度峰会和城市会议分享“全球化与<br class="br-lead">创新”，通过<span class="nw">“精英六人谈”</span>深度碰撞思想、沉淀行业洞察，<br class="br-lead">运用<span class="hero-emphasis nw">AI技术</span>帮助企业把技术转化为可落地的增长能力。</p>
+        <!-- 2026-11-18：按 11-17 评审回到两个按钮。
+             评审原话（00:20:44）：「你上面有个导航栏，你在这再加个导航栏，都是在重复」；
+             （00:06:16）「你本来就只有这 2 个按钮」。
+             新增的「预约试用」「进入咨询」与导航项重复，已删；
+             现在这两个就是郭总原版的按钮，未作替换。
+             第二个按钮指向 supply-chain-ai.html（即导航里的“供应链AI创新专区”）。 -->
+        <div class="hero-actions">
+          <a class="btn gold" href="events.html#calendar" data-bind="hero.actions.0.label" data-bind-href="hero.actions.0.href">查看活动日历</a>
+          <a class="btn secondary" href="supply-chain-ai.html" data-bind="hero.actions.1.label" data-bind-href="hero.actions.1.href">进入 AI 创新专区</a>
         </div>
-        <!-- 指标来自内容层 content/site.json；口径为 pending 的不渲染。
-             2026-11-16 按 11-06 评审改版：评审明确「少放主题文字，改放大数字」，
-             所以把原来三列小字换成五格数字带，数字全部可从案例集锦复核。 -->
-        <div class="st-band">
-          <template x-for="item in homeMetrics" :key="item.label">
-            <div class="st-item">
-              <span class="st-num"><span x-text="metricText(item.metric)"></span><em class="u" x-text="item.unit"></em></span>
-              <span class="st-lab" x-text="item.label"></span>
-            </div>
-          </template>
-        </div>
+        <!-- 2026-11-18：首屏五格数字带整块撤下。
+             评审原话（00:19:28）：「首页点开，banner 图上面这些就不用在 banner 图里面，
+             这些都不要出现了，这些场次你在下面浏览页能体现就 OK 了」；
+             （00:20:06）「你后面加这个背景框框的是啥？你直接放数字不好看吗」。
+             数字统一只在活动页浏览区出现，首页不再重复。 -->
       </div>
     </section>
 
@@ -68,127 +65,92 @@
       <div class="container">
         <div class="section-head">
           <div>
-            <span class="eyebrow">Business Architecture</span>
-            <h2><span class="h2-line">技术鸿沟的跨越者</span><span class="h2-line">产业连接的修桥人</span></h2>
+            <span class="eyebrow" data-bind="business.eyebrow">Business Architecture</span>
+            <h2 class="h2-wide"><span data-bind="business.title">DSG数创时代:</span><span class="h2-rest" data-bind="business.titleRest">跨越技术鸿沟的修桥人</span></h2>
           </div>
-          <p>先进科技不是各个行业的竞争对手，而是每个企业家手里的先进武器！</p>
+          <p data-bind="business.lead">先进科技不是各个行业的竞争对手，而是每个企业家手里的先进武器！</p>
         </div>
-        <!-- 2026-11-17：四卡顺序跟随一级导航（活动 → 供应链AI → 轻咨询 → 行业洞察），
-             原先行业洞察排在 AI 专区之前、轻咨询无入口，与导航不一致。 -->
+        <!-- 2026-11-18：回到三张卡（郭总原版顺序：活动 → 行业洞察 → AI 专区）。
+             评审原话（00:21:27）：「我这三个专区，我是在这边来做链接的」；
+             （00:11:33）「我不懂轻咨询加上去的目的是啥」——「轻咨询」卡已删。
+             卡内文案沿用原稿，未改字：评审明确「内容所有的修改都得跟别人去确认」（00:29:40）。 -->
         <div class="business-grid">
           <article class="business-card">
-            <div class="mark events">A</div>
-            <h3>活动生态</h3>
-            <p>年度峰会、城市沙龙与精英六人谈三类场景，从千人大会到十人深聊，持续汇聚企业决策者与行业专家。</p>
-            <a href="events.html?v=20261117i">进入活动中心</a>
+            <div class="mark events" data-bind="business.cards.0.mark">A</div>
+            <h3 data-bind="business.cards.0.title">活动生态</h3>
+            <p data-bind="business.cards.0.desc">以年度峰会、城市会议和精英六人谈构建产业连接场景，持续汇聚企业决策者、行业专家与创新伙伴。</p>
+            <a href="events.html?v=20261119s" data-bind="business.cards.0.linkLabel" data-bind-href="business.cards.0.href">进入活动中心</a>
           </article>
           <article class="business-card">
-            <div class="mark ai">AI</div>
-            <h3>供应链AI创新专区</h3>
-            <p>围绕真实业务案例展示AI解决方案、应用场景、视频演示与预约 Demo，帮助企业识别可落地的供应链智能化机会。</p>
-            <a href="supply-chain-ai.html">查看案例与产品</a>
-          </article>
-          <!-- 第二批 #11：轻咨询结构位。文案仅写两条服务线名称，具体话术待业务确认 -->
-          <article class="business-card">
-            <div class="mark consult">C</div>
-            <h3>轻咨询</h3>
-            <p>MIT 路径、Power Platform 实施两条服务线，按项目独立交付。</p>
-            <a href="consult.html">了解轻咨询</a>
+            <div class="mark insight" data-bind="business.cards.1.mark">I</div>
+            <h3 data-bind="business.cards.1.title">行业洞察</h3>
+            <p data-bind="business.cards.1.desc">沉淀活动观点、专家访谈、白皮书与闭门纪要，形成面向经营者和数字化负责人的专业内容资产。</p>
+            <a href="insights.html" data-bind="business.cards.1.linkLabel" data-bind-href="business.cards.1.href">阅读洞察</a>
           </article>
           <article class="business-card">
-            <div class="mark insight">I</div>
-            <h3>行业洞察</h3>
-            <p>沉淀活动观点、专家访谈、白皮书与闭门纪要，形成面向经营者和数字化负责人的专业内容资产。</p>
-            <a href="insights.html">阅读洞察</a>
+            <div class="mark ai" data-bind="business.cards.2.mark">AI</div>
+            <h3 data-bind="business.cards.2.title">供应链AI创新专区</h3>
+            <p data-bind="business.cards.2.desc">围绕真实业务案例展示AI解决方案、应用场景、视频演示与预约 Demo，帮助企业识别可落地的供应链智能化机会。</p>
+            <a href="supply-chain-ai.html" data-bind="business.cards.2.linkLabel" data-bind-href="business.cards.2.href">查看案例与产品</a>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section surface-dark">
+    <!-- 2026-11-18：首页「近期活动」整块换成活动日历。
+         评审原话（00:31:52）「近期活动你要放的话，就放活动名字就好了」；
+         （00:32:01）「或者简单点，就把日历挪过来都可以」；
+         （00:32:09）「你近期活动就直接放在日历，别的不用放，反正日历里都是有链接的」。
+         原主卡 / 次卡 / 底部「X 场」胶囊全部撤掉：字段过多、手机端占屏，
+         且场次数与活动页重复（00:19:28「这些场次你在下面浏览页能体现就 OK 了」）。 -->
+    <section class="section" id="home-calendar">
       <div class="container">
         <div class="section-head">
           <div>
-            <span class="eyebrow">Recent Events</span>
-            <h2>近期活动</h2>
+            <span class="eyebrow" data-bind="recent.eyebrow">Recent Events</span>
+            <h2 data-bind="recent.title">近期活动</h2>
+            <!-- 2026-11-18：补回郭总原版该板块的说明文字（原版为右对齐两行，此处按用户要求左对齐、放一行） -->
+            <p class="section-sub" data-bind="recent.lead">参与 DSG 活动，获得全球产业视野，了解前沿技术趋势，并在同业交流与思想碰撞中发现新的增长机会。</p>
           </div>
-          <p>参与 DSG 活动，获得全球产业视野，了解前沿技术趋势，并在同业交流与思想碰撞中发现新的增长机会。</p>
         </div>
-
-        <!-- 主卡：时间最接近的一场。有真实现场图就用图，没有就用排版 KV，不放 AI 生成图（11-06 评审） -->
-        <div class="evf-wrap" x-show="homeFeaturedEvent" x-cloak>
-          <article class="evf-main">
-            <div class="evf-media">
-              <template x-if="hasMedia(homeFeaturedEvent)">
-                <img :src="homeFeaturedEvent.image" :alt="homeFeaturedEvent.title">
-              </template>
-              <template x-if="!hasMedia(homeFeaturedEvent)">
-                <div class="kvx kvx-lead" :class="homeFeaturedEvent.kvStyle" style="position:absolute;inset:0">
-                  <div class="kv-top">
-                    <span class="kv-type" x-text="homeFeaturedEvent.categoryLabel"></span>
-                    <span class="kv-no" x-show="homeFeaturedEvent.sessionNo" x-text="homeFeaturedEvent.sessionNo ? '第 ' + homeFeaturedEvent.sessionNo + ' 期' : ''"></span>
-                  </div>
-                  <div>
-                    <div class="kv-title" x-text="kvTitle(homeFeaturedEvent)"></div>
-                    <div class="kv-meta"><span x-text="eventDateLabel(homeFeaturedEvent) + ' · ' + (homeFeaturedEvent.venue || homeFeaturedEvent.city || '')"></span></div>
-                    
-                  </div>
-                </div>
-              </template>
-            </div>
-            <div class="evf-body">
-              <div class="evf-flags">
-                <span class="pill on" x-text="homeFeaturedEvent.categoryLabel"></span>
-                <span class="pill" x-show="homeFeaturedEvent.sessionNo" x-text="'第 ' + homeFeaturedEvent.sessionNo + ' 期'"></span>
-                <span class="pill" x-text="eventPhaseLabel(homeFeaturedEvent)"></span>
-              </div>
-              <h3 x-html="titleHtml(homeFeaturedEvent.title)"></h3>
-              <div class="dt-rows">
-                <div class="row"><span class="k">时间地点</span><span class="v" x-text="eventDateLabel(homeFeaturedEvent) + ' · ' + (homeFeaturedEvent.venue || homeFeaturedEvent.city || '')"></span></div>
-                <div class="row" x-show="scaleText(homeFeaturedEvent)"><span class="k">活动规模</span><span class="v" x-text="scaleText(homeFeaturedEvent)"></span></div>
-                <div class="row" x-show="audienceText(homeFeaturedEvent)"><span class="k">参会人员</span><span class="v" x-text="audienceText(homeFeaturedEvent)"></span></div>
-                <div class="row" x-show="agendaRows(homeFeaturedEvent).length"><span class="k">议程</span><span class="v" x-text="agendaRows(homeFeaturedEvent).slice(0, 1).map(function (a) { return a.text; }).join('') + (agendaRows(homeFeaturedEvent).length > 1 ? ' 等' : '')"></span></div>
-              </div>
-              <div class="actions">
-                <a class="btn gold" :href="eventDetailUrl(homeFeaturedEvent)">查看详情</a>
+        <div class="syscal">
+          <div class="syscal-bar">
+            <h3 x-text="calYear + ' 年 ' + calMonth + ' 月'"></h3>
+            <div class="syscal-pick">
+              <select :value="calYear" x-init="$nextTick(function () { $el.value = calYear })" @change="setCalYear($event.target.value)" aria-label="选择年份">
+                <template x-for="y in calYears" :key="y">
+                  <option :value="y" x-text="y + ' 年'"></option>
+                </template>
+              </select>
+              <select :value="calMonth" x-init="$nextTick(function () { $el.value = calMonth })" @change="setCalMonth($event.target.value)" aria-label="选择月份">
+                <template x-for="m in 12" :key="m">
+                  <option :value="m" x-text="m + ' 月'"></option>
+                </template>
+              </select>
+              <div class="syscal-nav">
+                <button type="button" @click="changeMonth(-1)" aria-label="上个月">‹</button>
+                <button type="button" @click="changeMonth(1)" aria-label="下个月">›</button>
               </div>
             </div>
-          </article>
-          <div class="evf-side">
-            <!-- 2026-11-17：次卡只保留最近刚结束的一场，横铺成一条。
-                 两场并排时一边是实拍、一边只有排版卡，左右永远不平；
-                 单场横铺后标题收成一行，也已不再需要在卡片之间做同构。 -->
-            <template x-for="e in homeSideEvents" :key="e.id">
-              <a class="evf-mini" :href="eventDetailUrl(e)">
-                <div class="mini-media">
-                  <template x-if="e.thumb || hasMedia(e)"><img :src="e.thumb || e.image" :alt="e.title"></template>
-                  <template x-if="!e.thumb && !hasMedia(e)">
-                    <div class="mini-kv" :class="e.kvStyle || 'amber'">
-                      <span class="mk-title" x-text="e.theme || e.title"></span>
-                    </div>
+          </div>
+          <div class="syscal-week">
+            <span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span>
+          </div>
+          <div class="syscal-grid">
+            <template x-for="cell in calCells" :key="cell.key">
+              <div class="syscal-cell" :class="{ outside: cell.outside, today: cell.today }">
+                <span class="sc-day" x-text="cell.day"></span>
+                <div class="sc-evs">
+                  <template x-for="e in cell.events.slice(0, 2)" :key="e.id">
+                    <a class="sc-ev" :class="e.category" :href="eventDetailUrl(e)" :title="e.title">
+                      <span x-text="e.title"></span>
+                    </a>
                   </template>
+                  <span class="sc-more" x-show="cell.events.length > 2" x-text="'+' + (cell.events.length - 2)"></span>
                 </div>
-                <div class="mini-body">
-                  <div class="meta" x-text="e.categoryLabel + ' · ' + eventDateLabel(e) + ' · ' + e.city"></div>
-                  <h4 x-text="e.title"></h4>
-                  <span class="mini-go">查看回顾 →</span>
-                </div>
-              </a>
+              </div>
             </template>
           </div>
-        </div>
-
-        <!-- 第二批 #13：没有未来场次时显示空态，不拿已办完的旧场顶替 -->
-        <div class="event-empty" x-show="!homeFeaturedEvent">
-          <p>下一场活动正在筹备中，敬请期待。</p>
-          <p class="event-empty-sub">往届场次可在活动中心查看。</p>
-        </div>
-
-        <div class="evf-flags" style="margin-top:38px">
-          <template x-for="c in visibleCategories" :key="c.key">
-            <a class="pill" :href="'events.html?cat=' + c.key + '#calendar'" x-text="c.count ? c.label + ' · ' + c.count + ' 场' : c.label"></a>
-          </template>
-          <a class="pill" href="events-calendar.html">更多活动</a>
         </div>
       </div>
     </section>
@@ -196,15 +158,17 @@
     <section class="section surface-white">
       <div class="container split">
         <div>
-          <span class="eyebrow">AI in Supply Chain</span>
-          <h2>案例驱动，不做空泛概念陈列</h2>
-          <p>供应链AI创新专区以案例为入口，集中呈现行业痛点、解决方案、业务价值与视频演示，并支持预约 Demo。</p>
+          <span class="eyebrow" data-bind="ai.eyebrow">AI in Supply Chain</span>
+          <h2 data-bind="ai.title">案例驱动，不做空泛概念陈列</h2>
+          <p data-bind="ai.lead">供应链AI创新专区以案例为入口，集中呈现行业痛点、解决方案、业务价值与视频演示，并支持预约 Demo。</p>
           <div class="actions">
-            <a class="btn" href="supply-chain-ai.html">查看 AI 案例</a>
-            <a class="btn secondary" href="contact.html">预约 Demo</a>
+            <a class="btn" href="supply-chain-ai.html" data-bind="ai.actions.0.label" data-bind-href="ai.actions.0.href">查看 AI 案例</a>
+            <a class="btn secondary" href="contact.html" data-bind="ai.actions.1.label" data-bind-href="ai.actions.1.href">预约 Demo</a>
           </div>
         </div>
-        <div class="media-frame"><img src="assets/optimized/module-supply-ai-v2.webp" alt="供应链 AI 场景"></div>
+        <!-- 2026-11-18：原 module-supply-ai-v2.webp 是生成式渲染图，评审要求换真实场景（00:21:09）。
+             换成 EVT-2026-SUP 现场展区实拍：真实客户在看 AI 风控/供应链展板，与「案例为入口」一致。 -->
+        <div class="media-frame"><img src="assets/photos/EVT-2026-SUP/01.webp" alt="DSG 现场：客户在供应链AI案例展区交流" loading="lazy" data-bind-src="ai.image.src" data-bind-alt="ai.image.alt"></div>
       </div>
     </section>
   </main>

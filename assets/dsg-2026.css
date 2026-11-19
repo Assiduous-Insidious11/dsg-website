@@ -14,14 +14,24 @@
  */
 
 :root {
+  /* —— 版式倍率（后台「外观设置」写入，默认 1 = 与设计稿完全一致）——
+     只做乘法，不改各断点自己的 clamp 曲线，所以调档不会打乱响应式节奏。
+     由 assets/theme.js 按 content/theme.json 注入到 <html> 的内联样式。 */
+  --t-hero: 1;
+  --t-display: 1;
+  --t-h2: 1;
+  --t-h3: 1;
+  --t-sec: 1;
+  --t-sec-sm: 1;
+
   /* —— 栅格：全站唯一基准 —— */
   --page-max: 1240px;
   --gutter: clamp(20px, 5vw, 64px);
   --page-w: min(calc(var(--page-max) + var(--gutter) * 2), 100%);
 
   /* —— 纵向节奏 —— */
-  --sec-y: clamp(64px, 7.5vw, 108px);
-  --sec-y-sm: clamp(40px, 4.5vw, 64px);
+  --sec-y: calc(clamp(64px, 7.5vw, 108px) * var(--t-sec, 1));
+  --sec-y-sm: calc(clamp(40px, 4.5vw, 64px) * var(--t-sec-sm, 1));
 
   /* —— 字体：标题宋、正文黑（2026-11-12 定案 D+A）——
      宋体只出现在 18px 以上，14px 以下宋体笔画发虚，一律黑体。
@@ -31,11 +41,11 @@
   --ff-song: "STSong", "Songti SC", "Noto Serif SC", "Source Han Serif SC", "SimSun", "宋体", serif;
 
   /* —— 字阶：五档，不再出现第六档 —— */
-  --fs-display: clamp(32px, 3.6vw, 44px);
+  --fs-display: calc(clamp(32px, 3.6vw, 44px) * var(--t-display, 1));
   /* 首屏大标题字号（首页与活动页共用同一个值，两处标题必须一样大） */
-  --fs-hero: clamp(34px, 3.7vw, 54px);
-  --fs-h2: clamp(26px, 2.9vw, 38px);
-  --fs-h3: clamp(19px, 1.6vw, 22px);
+  --fs-hero: calc(clamp(34px, 3.7vw, 54px) * var(--t-hero, 1));
+  --fs-h2: calc(clamp(26px, 2.9vw, 38px) * var(--t-h2, 1));
+  --fs-h3: calc(clamp(19px, 1.6vw, 22px) * var(--t-h3, 1));
   --fs-body: 15px;
   --fs-small: 13px;
 
@@ -70,13 +80,25 @@ textarea,
 .nav {
   width: var(--page-w);
   margin: 0 auto;
-  padding: 0 var(--gutter);
+  /* 导航内容要和首屏标题、板块内容压在同一条左线上：
+     = gutter + 导航自身比板块多出来的那截的一半。
+     1440 下 = 64 + (1368-1255)/2 ≈ 120 → logo 落在 136，与标题齐；
+     1920 下后一项为 0 → 64，logo 落在 320，与标题齐。
+     原来只写 gutter，1440 下 logo 在 80、标题在 136，错开 56px。 */
+  padding: 0 calc(var(--gutter) + max(0px, (var(--page-w) - min(var(--site-max), 100% - (var(--site-pad) * 2))) / 2));
   height: 72px;
   gap: clamp(16px, 2vw, 28px);
 }
 .nav-links {
   gap: clamp(14px, 1.8vw, 26px);
   font-size: 14.5px;
+}
+
+/* styles.css 在 920 以下把导航改成「品牌一行、链接第二行」、高度自适应；
+   本文件的 .nav 写在它之后、又给了 height:72px，把两行压进 72px，
+   第二行就溢出来盖在首屏上。这里只还原高度，横向内边距仍走上面那条公式。 */
+@media (max-width: 920px) {
+  .nav { height: auto; min-height: 70px; padding-top: 12px; padding-bottom: 0; }
 }
 
 /* 首屏：与正文同一条左边界 */
@@ -297,6 +319,16 @@ html[lang="en"] p { max-width: 66ch; }
 .metric {
   padding: 18px 18px;
 }
+/* 2026-11-19：首屏底图改成「铺满 + 左侧压黑」之后，英文首页那排指标
+   （.hero-metrics）正好落在图片下半部。原底色是 rgba(17,19,21,.72)，
+   72% 透明度会让旋涡亮带从格子里透出来，数字看着发糊。
+   这里只对首屏内的格子补实感：底色提到 .9，再加一层模糊背景，
+   图在格子后面化成一片柔光，既干净又不丢氛围。中文首页没有这排数据，不受影响。 */
+.hero .metric {
+  background: rgba(11, 13, 16, 0.9);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
 .metric strong {
   font-size: clamp(24px, 2.4vw, 32px);
   line-height: 1.1;
@@ -441,9 +473,9 @@ html[lang="en"] .brand img {
 
 @media (max-width: 720px) {
   :root {
-    --fs-display: clamp(28px, 7.6vw, 36px);
-    --fs-h2: clamp(23px, 6vw, 30px);
-    --sec-y: 56px;
+    --fs-display: calc(clamp(28px, 7.6vw, 36px) * var(--t-display, 1));
+    --fs-h2: calc(clamp(23px, 6vw, 30px) * var(--t-h2, 1));
+    --sec-y: calc(56px * var(--t-sec, 1));
   }
   .nav {
     height: 64px;
@@ -604,9 +636,11 @@ html[lang="en"] .event-facts .fact .k::after { content: ":"; margin-right: 2px; 
   font-size: 13.5px;
 }
 
-/* ============ 第二批 #11：业务卡由 3 张增至 4 张（新增「轻咨询」） ============ */
+/* ============ 第二批 #11：业务卡由 3 张增至 4 张（新增「轻咨询」） ============
+   2026-11-18 回退：评审否掉「轻咨询」（00:11:33 / 00:27:04），卡数回到 3 张，
+   栅格随之回到 3 列；下面两条断点不变。 */
 .business-grid {
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
 }
 @media (max-width: 1180px) {
   .business-grid { grid-template-columns: repeat(2, 1fr); }
@@ -988,6 +1022,10 @@ html[lang="en"] .hero h1 {
 @media (max-width: 720px) {
   .st-band { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .st-band .st-item { border-right: 0; border-bottom: 1px solid rgba(255, 255, 255, .12); }
+  /* 活动页数字带在手机上不必占掉一屏（评审：手机翻三屏才看到日历）；
+     收紧上下留白，五格压到两屏内解决。 */
+  .ev-stats .st-band .st-item { padding: 16px 14px 15px; gap: 3px; }
+  .ev-stats .st-band .st-num { font-size: 26px; }
   .cat-cards, .cat-cards.two { grid-template-columns: 1fr; }
   .caly-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .cat-head { grid-template-columns: 1fr; }
@@ -1655,23 +1693,26 @@ html[lang="en"] .hero h1 {
 
 .sc-evs { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
 .sc-ev {
+  /* 2026-11-18：原来第二行字底被裁、第三行还露一条边（13 日、24 日两场都这样）。
+     根因是 <a> 上直接做 -webkit-line-clamp 不生效（computed display 被算成 flow-root），
+     文字按 3 行排、只被 overflow 硬切。改为在 <a> 里那层 span 上做两行截断。 */
   display: block;
-  padding: 3px 7px;
+  padding: 4px 7px 5px;
   border-radius: 5px;
   border-left: 3px solid var(--gold);
   background: #f5f2e9;
   color: var(--ink);
   font-size: 11px;
   font-weight: 700;
-  line-height: 1.35;
-  /* 单行截断在 1024 这类宽屏上只剩「智造·韧行—…」，两行能读全大半个标题 */
+  line-height: 1.45;
+  overflow: hidden;
+  transition: background .15s ease;
+}
+.sc-ev > span {
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  white-space: normal;
-  word-break: normal;
   overflow: hidden;
-  transition: background .15s ease;
 }
 .sc-ev:hover { background: #efe9d8; }
 .sc-ev.city { border-left-color: var(--teal); background: #eef7f6; }
@@ -1722,4 +1763,797 @@ html[lang="en"] .hero h1 {
 @media (max-width: 560px) {
   .ev-filters { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
   .ev-filters .filter { width: 100%; padding: 9px 8px; }
+}
+
+/* ================================================================
+ * 十六、首页按 11-17 评审返工（2026-11-18）
+ * 依据：2026-11-17《网站首页与活动板块改版评审会议》
+ * ①首屏回到 2 个按钮、撤掉五格数字带；②业务卡回到 3 张；
+ * ③「近期活动」整块换成活动日历；④首屏底图换真实会场照。
+ * ================================================================ */
+
+/* ---------- ① 首屏底图：主会场全景 ----------
+   2026-11-18：按用户指定，换成飞书《数创时代-案例集锦》里
+   「260820-21|第四届 DSG 金融领袖峰会」活动照片第一张——主会场全景
+   （水晶吊灯 + 舞台大屏 + 白色剧院式座椅）。
+   原图经飞书导出被权限拦截（permission_denied），可取到的最大版本为
+   1080×719，放大到 1920 并轻度锐化补偿。
+
+   为什么不用整幅铺底：这张照片正中间就是一块会议大屏，屏上写着
+   「2026 第四届 DSG 金融领袖峰会」。整幅铺底 + 压暗的结果，是屏上那行字
+   被压成半明半暗的一团，正好顶在首屏标题后面，两层字打架。
+   所以改成左右分离：左侧纯深色只放文字，照片从 46% 起接到右边并做柔化过渡，
+   大屏留在照片那半边，不再与标题重叠。 */
+/* 2026-11-19 11:35：按用户给的参照图（1920×989，1.94:1）完全重做。
+   ── 之前所有方案都错在同一个前提上：以为「图要塞进右边一栏」。
+   参照图的本质恰恰不是塞：它是「整张图铺满整个首屏，左侧盖一层黑放文案」。
+   它的画布比例 1.94 ≈ 原图 1.93，所以铺满时零裁切。这才是它能同时做到
+   「上下撑满 + 图完整」的原因——不是技巧，是比例对上了。
+   我们原来的首屏是 1368×580 = 2.36:1，比图宽出一大截，怎么铺都得裁掉 1/3。
+   所以这里把首屏高度按参照图的比例锁死：aspect-ratio: 1920/989。
+     · 1440 视口 → hero 1368×705，图 cover 铺满 = 零裁切
+     · 1920 视口 → hero 1368×705（页面宽度封顶 1368），同样零裁切
+   内容用 flex 垂直居中，文案位置与参照图一致。 */
+.hero {
+  position: relative;
+  isolation: isolate;
+  background-color: #0b0d10;
+  background-image: none;
+  display: flex;
+  align-items: center;
+  aspect-ratio: 1920 / 989;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("photos/hero-tech/hero-tech-1600.webp");
+  background-position: right center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: -2;
+}
+/* 渐变层复刻参照图：从 38% 起、到 50% 全透明。
+   参照图纯黑段压到正文右端就收手，让旋涡尽量往左露出来。
+   正文右端约 39.7%（540/1360），这里 38% 起过渡、到 41% 只有极淡一层，
+   视觉上不会压到字，但能让图的可见区比「42→56」多出 6 个百分点。 */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(
+    to right,
+    #0b0d10 0%,
+    #0b0d10 38%,
+    rgba(11, 13, 16, 0.85) 41.5%,
+    rgba(11, 13, 16, 0.4) 45.5%,
+    rgba(11, 13, 16, 0) 50%
+  );
+  pointer-events: none;
+  z-index: -1;
+}
+.hero-inner { position: relative; width: 100%; box-sizing: border-box; padding: 40px var(--gutter); }
+/* 正文段落原先是满宽，1024 左右会一直排到右边照片上去，压住横幅文字。
+   限到 560px：1440 下几乎不变（本来就约 560 宽），1024 下改成四行，不再越界。
+   2026-11-19：右侧改成"整张不裁切"的峰会图后，1200~1439 之间 560px 正文会顶到照片上，
+   所以再叠一层 min()——窄于 1400 时正文自动收窄，保证与照片之间始终留出缝。 */
+.hero-inner > p.hero-lead { max-width: min(560px, calc(45vw - 70px)); }
+/* 英文版标题比中文长一倍（1087px），不设限会直接压到右侧图上。
+   中文 h1 本来就断成两行且远窄于 560，这条对中文无可见影响。 */
+.hero-inner > h1 { max-width: min(560px, calc(45vw - 70px)); }
+/* 英文版另有一条 html[lang="en"] h1{max-width:22ch}（约 1087px），特异性更高，
+   这里补一条同权重的覆盖，否则上面那条压不住它。 */
+html[lang="en"] .hero-inner > h1 { max-width: min(560px, calc(45vw - 70px)); }
+/* 英文页标题被限宽后行数变多、首屏被撑高，图居中会悬在半空，所以英文页单独上移一点。 */
+html[lang="en"] .hero::before {
+  background-position-x: calc(100% - var(--swirl-inset, 0px));
+  background-position-y: 30%;
+}
+/* 首屏副文三行对齐：断点固定在「，」后与「AI技术」后，
+   三行宽 467 / 462 / 323px，前两行齐平、第三行是一整句动宾，
+   避免出现「把技术」挂在行末、「转化」单独起行的断法。
+   窄屏不下硬断行，交给自然换行（那里行宽不足 560，硬断会碎成四五行）。 */
+.br-lead { display: none; }
+@media (min-width: 600px) {
+  .br-lead { display: inline; }
+}
+@media (min-width: 901px) and (max-width: 1199px) {
+  /* 这一档窄屏，但 1024 视口下 hero = 1024×528 = 1.94:1，跟原图比例仍然咬合，
+     所以图照样铺满零裁切，唯一要改的是渐变位置：正文最右约 530px ≈ 52%，
+     纯黑段推到 54%（=553px），过渡到 66%。 */
+  .hero::after {
+    background-image: linear-gradient(
+      to right,
+      #0b0d10 0%,
+      #0b0d10 54%,
+      rgba(11, 13, 16, 0.78) 58%,
+      rgba(11, 13, 16, 0.35) 62%,
+      rgba(11, 13, 16, 0) 66%
+    );
+  }
+  .hero-inner > p.hero-lead { max-width: calc(54vw - 90px); }
+  /* 正文被压到 463~557px 后，原来那句硬断行会把「分享」劈成两行，
+     这一段取消硬断，交给自然换行。 */
+  .br-lead { display: none; }
+}
+
+/* 窄屏：照片收到顶部成一条带，文字落到下方的深色区，同样不叠在屏上 */
+@media (max-width: 900px) {
+  /* aspect-ratio 在手机上会让首屏只有 200px 高，这里改回由内容撑高 */
+  .hero { min-height: 620px; background-color: #0b0d10; display: block; aspect-ratio: auto; }
+  /* 窄屏：图带高度跟图片自身比例一致（1.931:1 → 51.8vw），正好完整放下。 */
+  .hero::before {
+    content: none;
+  }
+  .hero::after {
+    inset: 0 0 auto 0;
+    width: 100%;
+    height: 51.8vw;
+    background-image: url("photos/hero-tech/hero-tech-1600.webp");
+    background-position: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    /* 竖屏没有「左→右」，改成「上→下」：底边 12% 淡出到黑底。 */
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 88%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 88%, transparent 100%);
+  }
+  /* 四边写死像素：简写的 padding:40px var(--gutter) 与 860 断点里那条
+     padding-left/right 会互相覆盖，手机上曾出现右内边距丢失、正文顶出屏幕。
+     这里明确四边，并给正文自己兜一层右内边距，不留歧义。 */
+  .hero { overflow: hidden; }
+  .hero-inner { width: auto; box-sizing: border-box; min-width: 0; padding: calc(51.8vw + 28px) 20px 40px; }
+  .hero-inner > h1,
+  .hero-inner > p.hero-lead,
+  html[lang="en"] .hero-inner > h1 { max-width: 100%; padding-right: 8px; }
+}
+
+/* 撤掉数字带后首屏变矮，把最小高度压回一屏内又不至于太空 */
+.hero { min-height: 520px; }
+
+/* 两个按钮：左金右白，横向排开，手机端各占一行 */
+.hero-inner > .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero-inner > .hero-actions .btn { min-width: 168px; justify-content: center; }
+@media (max-width: 560px) {
+  .hero-inner > .hero-actions { display: grid; grid-template-columns: 1fr; }
+  .hero-inner > .hero-actions .btn { width: 100%; min-width: 0; }
+}
+
+/* ---------- ④ 首页日历 ----------
+   日历是从活动页原样搬来的，样式复用 .syscal；
+   首页这一块背景是默认纸色，与上下两块白色区分，保住纵向节奏。 */
+#home-calendar .section-head { margin-bottom: 26px; }
+#home-calendar .syscal { background: var(--white); }
+
+/* ================================================================
+ * 手机端导航：汉堡菜单（2026-11-18）
+ * 背景：补回「联系我们」后一级导航变六项，390 宽下内容 371px 挤在 350px 容器里，
+ * 最后一项要横滑才看得见；360 宽更差。评审问的「手机版还可以看吗」就卡在这。
+ * 做法：≤680px 收起 .nav-links，右上角给汉堡按钮，点开变成一屏内的纵向抽屉，
+ * 「活动」的四个子项在抽屉里静态展开，不依赖 hover。
+ * ================================================================ */
+.nav-burger {
+  display: none;
+  flex: 0 0 auto;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  width: 38px;
+  height: 38px;
+  padding: 0 9px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: #fff;
+  cursor: pointer;
+}
+.nav-burger span { display: block; height: 2px; border-radius: 2px; background: var(--ink); transition: transform .18s ease, opacity .18s ease; }
+.site-header.nav-open .nav-burger span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.site-header.nav-open .nav-burger span:nth-child(2) { opacity: 0; }
+.site-header.nav-open .nav-burger span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+@media (max-width: 680px) {
+  .nav-burger { display: inline-flex; }
+  .nav { gap: 10px; }
+  .nav-links { display: none; }
+  /* 顺序：品牌 → 预约咨询 → EN → 汉堡（汉堡固定在最右，避免看起来像 Logo 的附属） */
+  .nav-cta { margin-left: auto; order: 1; }
+  .lang-toggle { order: 2; }
+  .nav-burger { order: 3; }
+  .site-header.nav-open .nav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 60;
+    padding: 6px 0 10px;
+    background: #fff;
+    border-bottom: 1px solid var(--line);
+    box-shadow: 0 22px 36px -24px rgba(0, 0, 0, .35);
+    max-height: 72vh;
+    overflow-y: auto;
+  }
+  .site-header.nav-open .nav-links > a,
+  .site-header.nav-open .nav-links > .nav-item > a {
+    display: block;
+    padding: 12px 20px;
+    font-size: 15px;
+    border-bottom: 1px solid #f0f1f4;
+  }
+  .site-header.nav-open .nav-links > a:last-child { border-bottom: 0; }
+  /* 「活动」的子项在抽屉里静态展开，不靠 hover */
+  .site-header.nav-open .nav-links .dropdown {
+    position: static;
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    border: 0;
+    padding: 0;
+    background: #fafafb;
+  }
+  .site-header.nav-open .nav-links .dropdown a {
+    display: block;
+    padding: 10px 20px 10px 34px;
+    font-size: 14px;
+    color: var(--ink2);
+    border-bottom: 1px solid #f0f1f4;
+  }
+}
+
+/* ---------- 手机端导航：六项挤不进 350px，先缩字距让它们排得下 ----------
+   实测（390 宽）：补回「联系我们」后导航内容 386px，容器 350px，
+   最后一项又跑到屏幕外，得横滑才看得见。这里把字号与间距各收一档，
+   目标是把六项压到 350px 以内，不再需要横滑。 */
+@media (max-width: 560px) {
+  .nav-links { font-size: 13px; gap: 11px; }
+  .nav-cta { padding-left: 14px; padding-right: 14px; }
+}
+
+/* ---------- 英文版手机导航：CTA 文案比中文长一倍 ----------
+   "Book a Consultation" 在 390 宽下把汉堡按钮挤到第二行（实测 burger y=56，
+   而 CTA / CN 都在 y=12）。收字号与内边距，让四项回到一行。 */
+@media (max-width: 560px) {
+  html[lang="en"] .nav-cta {
+    font-size: 11px;
+    padding-left: 9px;
+    padding-right: 9px;
+    letter-spacing: 0;
+  }
+}
+
+/* ---------- 手机端导航：六项必须一行横向滚动，不许折行截字 ----------
+   实测（390 宽）：导航内容 373px 挤在 350px 容器里，
+   「关于 DSG」被切在屏外——评审问的「手机版还可以看吗」就卡在这。 */
+@media (max-width: 920px) {
+  .nav-links {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .nav-links a, .nav-links .nav-item { flex: 0 0 auto; white-space: nowrap; }
+}
+
+/* 首屏第二个按钮：.btn.secondary 默认是深色字（给白底区块用的），
+   压在图上看不见，这里单独改成白字描边——与郭总原版首屏第二个按钮一致。 */
+.hero .btn.secondary {
+  color: #fff;
+  border-color: rgba(255, 255, 255, .55);
+}
+.hero .btn.secondary:hover {
+  background: rgba(255, 255, 255, .14);
+  color: #fff;
+}
+
+/* ---------- 业务架构标题在窄屏不许二次折行 ----------
+   2026-11-18：首页 h2 恢复郭总原版「DSG数创时代:跨越技术鸿沟的修桥人」，
+   人工断成两行，第二行 11 字。390 宽下字号 32px、容器 310px，11 字要 352px，
+   浏览器把它又折成「跨越技术鸿 / 沟的修桥人」，读起来断在词中间。
+   这里按栏宽把字号收到刚好一行放得下（最小 21px，360 宽仍完整）。 */
+/* 宽屏（≥1100）：标题并成一行，去掉 17em 的宽度上限，不许折 */
+@media (min-width: 1100px) {
+  .section-head h2.h2-wide { max-width: none; white-space: nowrap; }
+  /* 冒号后给一点呼吸空间（中文冒号紧贴下文太挤） */
+  .section-head h2.h2-wide .h2-rest { margin-left: .3em; }
+}
+
+/* 窄屏：第二部分强制换到第二行（断在冒号后，不在词中间折） */
+@media (max-width: 1099px) {
+  .h2-rest { display: block; }
+}
+
+/* 更窄（≤460）：按栏宽收字号，保证第二行 11 字一行放得下 */
+@media (max-width: 460px) {
+  .section-head h2.h2-wide { font-size: clamp(21px, 6.8vw, 27px); }
+}
+
+/* 「近期活动」标题下的说明：原版是右对齐两行，此处改左对齐紧跟标题、宽屏放一行 */
+#home-calendar .section-sub {
+  margin: 14px 0 0;
+  max-width: 56em;
+  text-align: left;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.75;
+}
+#home-calendar .section-head { margin-bottom: 26px; }
+
+/* 首屏副文里的书名号/引号词组不许被折断（“全球化与创新”被拆成“全球/化与创新”） */
+.nw { white-space: nowrap; }
+
+/* 手机端说明文字不要保留原版的人工断行，交给容器自然排，省两行高度 */
+@media (max-width: 560px) {
+  #home-calendar .section-sub br { display: none; }
+}
+
+/* ============================================================
+   十七、活动页按 11-17 评审重做（2026-11-18 第一版）
+   会议明确的三件事，按顺序落地：
+   ① banner 只留一整幅现场图，标题用白色大字直接压在图上，
+      不再单独排一行文字；banner 下面那三枚分类 pill、三张大卡一并去掉，
+      手机打开一屏就能看见日历，不用翻三屏。
+   ② 分类筛选留在日历上方（全部活动 / 年度峰会 / 城市沙龙 / 精英六人谈），
+      每项右侧挂场次数；场次数字留在活动页，首页已撤掉。
+   ③ 城市沙龙、精英六人谈每类只列最近 6 场，按时间由新到旧，
+      去掉「第 N 期」、关键词搜索框、分页跳转与条数选择。
+   ============================================================ */
+
+/* ---------- ① 首屏横幅：整幅图 + 白色大字 ---------- */
+.ev-banner {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: clamp(340px, 33vw, 470px);
+  overflow: hidden;
+  background: #0b0d10;
+}
+.ev-banner-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url("photos/EVT-2026-FIN/01.webp");
+  background-size: cover;
+  background-position: center 42%;
+}
+/* 左侧渐深蒙版：让白字压得住，同时把原图上的大屏文字压暗，不跟标题抢 */
+.ev-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    #0b0d10 0%,
+    #0b0d10 40%,
+    rgba(11, 13, 16, .88) 50%,
+    rgba(11, 13, 16, .38) 66%,
+    rgba(11, 13, 16, 0) 80%
+  );
+}
+.ev-banner-inner {
+  position: relative;
+  z-index: 2;
+  padding-top: clamp(56px, 7vw, 96px);
+  padding-bottom: clamp(34px, 4.2vw, 58px);
+  color: #fff;
+}
+.ev-banner-inner .eyebrow { color: #c9a86a; }
+.ev-banner-inner h1 {
+  margin: 12px 0 0;
+  color: #fff;
+  font-size: clamp(30px, 4.4vw, 60px);
+  line-height: 1.16;
+  max-width: 14em;
+  text-shadow: 0 2px 26px rgba(0, 0, 0, .5);
+}
+
+/* ---------- ② 筛选按钮上的场次数 ---------- */
+.ev-filters .filter { display: inline-flex; align-items: center; gap: 7px; }
+.ev-filters .fnum {
+  font-style: normal;
+  font-size: 11.5px;
+  line-height: 1;
+  padding: 3px 5px;
+  border-radius: 4px;
+  background: rgba(17, 19, 21, .07);
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.ev-filters .filter.active .fnum { background: rgba(255, 255, 255, .2); color: #fff; }
+
+/* ---------- ③ 最近 6 场：一行一场，不写期号 ---------- */
+.ev-recent { margin-top: 4px; }
+/* 两列按「行」读：11.24 | 11.13 同一行，1→2→3… 顺着时间往下走，
+   不用 column 是因为多栏是「先左到底再右」，6 条时会读成 1/2/3 然后才 4/5/6。 */
+.ev-recent .ev-list {
+  column-count: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 40px;
+}
+@media (max-width: 1100px) {
+  .ev-recent .ev-list { grid-template-columns: 1fr; }
+}
+.ev-row.elite { grid-template-columns: 62px 40px minmax(0, 1fr) 10px; }
+.ev-recent-more {
+  margin: 18px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  font-size: 12.5px;
+  color: var(--muted);
+}
+
+@media (max-width: 900px) {
+  /* 竖屏/平板：改成「上黑下亮」——标题落在纯黑区，照片在下半部露出来，
+     不再横向切一条窄黑带把标题挤成两行半。 */
+  .ev-banner { min-height: 360px; align-items: flex-start; }
+  .ev-banner::after {
+    background: linear-gradient(
+      180deg,
+      #0b0d10 0%,
+      rgba(11, 13, 16, .95) 40%,
+      rgba(11, 13, 16, .48) 74%,
+      rgba(11, 13, 16, .18) 100%
+    );
+  }
+  .ev-banner-inner { padding-top: 38px; padding-bottom: 26px; }
+  .ev-banner-inner h1 { font-size: clamp(26px, 7vw, 34px); max-width: none; margin-top: 8px; }
+}
+/* 手机上别把日期和城市藏掉（评审要求列表看得出城市与主题），改成「日期·城市」一行、标题一行 */
+@media (max-width: 560px) {
+  .ev-recent .ev-row { display: block; padding: 12px 0; }
+  .ev-recent .ev-row-date,
+  .ev-recent .ev-row-city { display: inline; font-size: 12px; }
+  .ev-recent .ev-row-city::before { content: "· "; }
+  .ev-recent .ev-row-title { display: block; margin-top: 4px; white-space: normal; line-height: 1.45; }
+  .ev-recent .ev-row-go { display: none; }
+}
+
+/* 日历收紧：活动页整月原来 728px 高，空格子占掉大半屏（评审原话「太多了，缩小一点」）。
+   这里只压活动页日历（首页 #home-calendar 不动），格高 104→78，整月落到 600 上下。 */
+#calendar .syscal-cell { min-height: 78px; padding: 6px 7px; gap: 4px; }
+#calendar .sc-ev { padding: 3px 6px 4px; line-height: 1.4; }
+
+/* ================================================================
+ * 首屏 Banner · 照参照图等比复刻（2026-11-19）
+ * ================================================================
+ * 参照图 = 1920 × 989（实测：eyebrow y147-169、标题 y232-344 / 377-489、
+ * 副文三行 y563-591 / 616-644 / 668-695、按钮 y779-865、左边界 x109）。
+ *
+ * 本页盒子宽 = --page-w（1440 视口下 1368），换算系数 = 1368 / 1920 = 0.7125。
+ * 所有尺寸一律由参照图 × 0.7125 得出，绝不再自行拍数：
+ *   左内边距 109→保持全站 gutter（与下方板块同一条线）
+ *   上内边距 147→105   下内边距 124→88
+ *   eyebrow  23→21px   标题 128→91px / 行高 145→1.133
+ *   副文     33→23.5px / 行高 53→38px   按钮 87→62px
+ * 结果：内容自然撑出 1368 × 705，与参照图同比例（1.94:1）。
+ *
+ * 高度不写死：不设 height / aspect-ratio，只由 padding + 内容决定。
+ * 这样任何缩放级别内容都不会被 overflow 裁掉（旧版锁死比例 + 固定高度，
+ * 缩放时按钮和文字会先消失）。
+ *
+ * 图片：取自 PPT 原图 4000×2250（旋涡真实比例），重排成 3060×1200、右侧齐备。
+ *   background-size: auto 100% + right center —— 按高度贴右，
+ *   旋涡恒为盒高的 68.2%（原图实测 68.3%），窄盒只裁左侧空白，不裁旋涡。
+ *   素材暗部已对齐盒底色 #0d182d，手机端图带下沿不露接缝。
+ */
+.hero {
+  position: relative;
+  isolation: isolate;
+  /* 外框与下方 .section 用同一条规则（styles.css 里 .section 的写法）：
+     min(--site-max, 100% - 2*--site-pad)。
+     原来写 var(--page-w)，与板块是两套基准：1920 下首屏比板块窄 184px（凹进去），
+     1440 下又比板块宽 56px（凸出来）。改成同一条规则后，
+     任何视口下首屏的左右边 = 下方板块的左右边。 */
+  width: min(var(--site-max), calc(100% - (var(--site-pad) * 2)));
+  max-width: none;
+  margin: 0 auto;
+  padding: 0;
+  display: block;
+  box-sizing: border-box;
+  height: auto;
+  aspect-ratio: auto;
+  overflow: hidden;
+  background-color: #0d182d;
+  background-image: none;
+  color: #f7f8fa;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("photos/hero-aurora/hero-aurora-3060.webp?v=20261119h");
+  /* 按高度贴合、靠右对齐（2026-11-19 第四版，素材取自 PPT 原图 4000×2250）。
+     首屏盒子比例随视口在 1.61（1024）～2.50（1920 无滚动条）之间变化，
+     任何固定比例的图用 cover 都会在某一档被裁。
+     auto 100% 把图高锁成盒高 → 旋涡恒为盒高的 68.2%，
+     与 PPT 原图实测的 68.3% 一致（原图旋涡 y 15.3%~83.5%）。
+     盒宽不足 2.55 倍图高时只从左边裁掉空白区，旋涡一个部件都不缺。
+     旧素材是从截图里截的，旋涡被放大到 96% 高、上下切掉，所以显得"太大"。 */
+  /* 2026-11-19 第五版：图案整体从右边框往里挪一点，让"图案左缘↔文字"与
+     "图案右缘↔右边框"两段留白看起来相等。
+     实测（1920 视口，盒宽 1760）：文字字形右界 819、图案可视左缘 1030、
+     可视右缘 1742 —— 左留白 211、右留白 18，一边挤一边松。
+     把图案左移 L 后两侧应相等：L = (211 - 18) / 2 ≈ 96。
+     盒越窄图案占比越大、左侧本来就越贴文字（1440 下只差 30/20），
+     所以左移量按视口宽度线性放开：≤1440 不挪，1920 挪到 120px 封顶。
+     素材右缘已按行平滑收到 #0d182d（3010~3059 这段是图案外的暗背景，
+     无任何内容像素），左移后右侧露出的是首屏纯底色，接缝为 0。
+     第六版（用户："还可以再左平移一点"）：首轮按"含柔光晕的外轮廓"算已等距
+     （左 127 / 右 130），但图案的视觉重量全压在右下的亮丝带上，
+     外轮廓等距看起来仍偏右。改按"亮部主体"（lum>120）衡量：
+     主体左 988、主体右 1629 → 左 169 / 右 130，还差 39。
+     再左移 22px（98 → 120），两种尺度的偏差都落在 ±10 以内。
+     第七版（用户再次说"还可以左移动一点"）：120 → 150，
+     图案亮部中心推到 1258（右半区 819~1760 的中心是 1289，据此略偏左偏紧文字一侧）。 */
+  --swirl-inset: clamp(0px, calc((100vw - 1440px) * 0.3125), 150px);
+  background-position-x: calc(100% - var(--swirl-inset));
+  background-position-y: center;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  filter: none;
+  -webkit-mask-image: none;
+  mask-image: none;
+  pointer-events: none;
+  z-index: 0;
+}
+.hero::after { content: none; }
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  /* 文字区与板块里的 .container 用同一条规则：宽度 --page-w、居中、内缩 gutter。
+     这样标题左边界 = 下方板块标题左边界（1920 下同为 320，1440 下同为 80），
+     不像原来那样在宽屏上比板块多缩进一截。 */
+  width: var(--page-w);
+  max-width: 100%;
+  margin: 0 auto;
+  display: block;
+  box-sizing: border-box;
+  /* 105 / 88 = 参照图 147 / 124 × 0.7125；右侧 40% 是旋涡的地盘 */
+  padding: clamp(58px, 7.29vw, 105px) max(var(--gutter), 40%) clamp(50px, 6.1vw, 88px) var(--gutter);
+}
+
+/* —— 标签：参照图字高 23 → 21px，金色、宽字距 —— */
+.hero .eyebrow {
+  display: block;
+  margin: 0 0 clamp(14px, 1.67vw, 24px);
+  font-size: clamp(12px, 1.18vw, 17px);
+  line-height: 1.2;
+  font-weight: 500;
+  letter-spacing: .14em;
+  color: #c9a86a;
+  text-transform: uppercase;
+}
+.hero .eyebrow::before { content: none; }
+
+/* —— 主标题：参照图 128px / 行高 145 → 91px / 1.133，纯白 —— */
+/* 2026-11-19 清晰度修正：字重 800 在 Windows 上会被浏览器"合成加粗"——
+   雅黑/苹方只有 700 这一档真粗体，800 是靠算法把 700 再描粗一圈，
+   字号到 70px 以上时笔画边缘发毛、笔画之间粘在一起，看着就"糊"。
+   改回 700（真实字重）+ 字距归零，与参考模板一致，笔画立刻干净。 */
+.hero-inner > h1 {
+  margin: 0;
+  max-width: none;
+  font-family: var(--ff-hei);
+  /* 后台「外观设置 → 首屏标题字号」改的就是这个倍率；1 = 与定稿一致 */
+  font-size: calc(clamp(34px, 5.35vw, 77px) * var(--t-hero, 1));
+  font-weight: 700;
+  line-height: 1.34;
+  letter-spacing: 0;
+  color: #ffffff;
+  text-wrap: initial;
+}
+
+/* —— 副文：参照图 33px / 行高 53 → 23.5px / 38px —— */
+.hero-inner > p.hero-lead {
+  max-width: 29em;     /* 参照图行宽 774 × 0.7125 ≈ 552px；这里给到 29em 是因为
+                         宽屏（1920）字号顶到 23.5px 后，参照图第 2 行
+                         「创新”，通过…沉淀行业洞察，」需要 658px 才不二次折行，
+                         26em 只有 611px，会把「察，」挤到第 3 行变成孤行。
+                         br-lead 已是硬断行，加宽不会改变断点位置。 */
+  margin: clamp(20px, 2.25vw, 32px) 0 0;
+  font-size: clamp(14px, 1.63vw, 23.5px);
+  line-height: 1.62;
+  /* 2026-11-19：原 #b9c1cf 是灰蓝，压在深色底上对比度不足、显得发虚。
+     提到近白，和参考模板一样清楚；字重仍保持常规，不跟着标题加粗。 */
+  color: #eef1f6;
+  text-wrap: initial;
+}
+/* 参照图里「AI技术」没有高亮，同色同重 */
+.hero .hero-emphasis { color: inherit; font-weight: inherit; }
+/* 参照图三行断在「全球化与 / 洞察，/ 转化」处。
+   只在够宽的屏上按 .br-lead 硬断（此时宽度够、断点与参照图一致）；
+   1280 以下文字区变窄，硬断必然二次折行、切出「全/球化与」这种残行，
+   所以交给自然折行。 */
+.hero .br-lead { display: inline; }
+@media (max-width: 1280px) { .hero .br-lead { display: none; } }
+
+/* —— 按钮：参照图 87px 高 → 62px，圆角 6，两枚间距 26 —— */
+.hero-inner > .hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(12px, 1.8vw, 26px);
+  margin-top: clamp(28px, 3.4vw, 49px);
+}
+.hero-inner > .hero-actions .btn {
+  min-width: 0;
+  min-height: 0;
+  height: clamp(46px, 4.3vw, 62px);
+  padding: 0 clamp(20px, 2.36vw, 34px);
+  border-radius: 6px;
+  font-size: clamp(13px, 1.32vw, 19px);
+  font-weight: 600;
+  letter-spacing: .02em;
+  line-height: 1;
+  white-space: nowrap;
+}
+.hero-inner > .hero-actions .btn.gold {
+  border: 1px solid transparent;
+  background-image: linear-gradient(112deg, #e2cba6 0%, #d6b588 46%, #b8925f 100%);
+  color: #241b0e;
+}
+.hero-inner > .hero-actions .btn.gold:hover { filter: brightness(1.05); }
+.hero-inner > .hero-actions .btn.secondary {
+  border: 1px solid rgba(201, 168, 106, .85);
+  background: transparent;
+  color: #c9a86a;
+}
+.hero-inner > .hero-actions .btn.secondary:hover {
+  border-color: #ddc49a;
+  background: rgba(201, 168, 106, .1);
+  color: #ddc49a;
+}
+
+/* —— 英文版：拉丁字母同字号会长出一大截，单独降一档 —— */
+/* 2026-11-19 英文版对齐中文版：中文首屏标题是两行，英文原来是三行
+   （"Events That Connect Industries" 单行需 726px，而文字区只有 600px）。
+   根因：.hero-inner 的 padding-right:40% 是按**首屏盒子宽**算的
+   （1920 下 40%×1760=704），把文字区压到 600。
+   英文版单独收到 35%（内容宽 688），字号上限 47px（每行 656），
+   两行放得下；文字右界 800，图案左缘 895，仍留 95px 空隙。 */
+html[lang="en"] .hero-inner {
+  padding-right: max(var(--gutter), 35%);
+  /* 英文标题只有两行 47px（中文两行 77px）＋副文更短，首屏自然矮一截：
+     1920 下 615 vs 中文 742。首屏背景图是按盒高缩放的（auto 100%），
+     盒矮 127px 图案也跟着小 17%，中英切换时图案大小会跳。
+     这里把差值按 vw 补进上下 padding，让英文首屏高度回到中文的水平。 */
+  padding-top: calc(clamp(58px, 7.29vw, 105px) + 3.3vw);
+  padding-bottom: calc(clamp(50px, 6.1vw, 88px) + 3.3vw);
+}
+html[lang="en"] .hero-inner > h1 {
+  max-width: 15em;
+  font-size: clamp(30px, 3.2vw, 47px);
+  line-height: 1.16;
+  letter-spacing: -.02em;
+}
+html[lang="en"] .hero-inner > p.hero-lead {
+  max-width: 30em;
+  font-size: clamp(14px, 1.1vw, 16.5px);
+  line-height: 1.9;
+}
+
+/* 英文档数字带的单位是整词（events / attendees），不是中文量词：
+   沿用 6px 会挤成「120events」，这里按整词留白，并稍微放大单位字号（2026-11-19） */
+html[lang="en"] .st-band .st-num .u {
+  margin-left: 10px;
+  font-size: 14px;
+  letter-spacing: .01em;
+}
+
+/* 详情页 / 三类活动页首屏标题：中文标题 20 来字排两行，英文同一句话要长一倍。
+   同字号下会折成 6 行、"·"还被挤到行首，视觉重量远超中文版；
+   英文档降一档字号并放宽行宽，行数回到 3—4 行，与中文首屏观感对齐（2026-11-19）。 */
+html[lang="en"] .program-hero h1 {
+  max-width: min(1000px, 100%);
+  font-size: clamp(25px, 2.05vw, 31px);
+  line-height: 1.22;
+  letter-spacing: -.01em;
+  text-wrap: balance;
+}
+html[lang="en"] .program-hero p {
+  font-size: 16.5px;
+  line-height: 1.75;
+}
+
+/* —— 1200 以下：右边界收紧，字号随之下降（比例仍然一致） —— */
+@media (max-width: 1200px) {
+  .hero-inner {
+    padding-right: max(var(--gutter), 47%);
+  }
+  .hero-inner > p.hero-lead { max-width: none; }
+}
+
+/* —— 900 以下：单列。图带在上、文字在下 —— */
+@media (max-width: 900px) {
+  .hero {
+    display: block;
+    padding: 0;
+    background-color: #0d182d;
+  }
+  .hero::before {
+    inset: 0 0 auto 0;
+    /* 手机上图带单独一档比例：3:2。素材是 2.47:1 的宽幅，
+       直接铺成 2.47:1 会压成一条很扁的带子、旋涡只剩一小团；
+       3:2 配 right center，从右侧取景，旋涡完整且大小合适。 */
+    height: auto;
+    aspect-ratio: 3 / 2;
+    background-size: cover;
+    background-position: right center;
+  }
+  .hero-inner {
+    /* 66.7% = 2/3，跟上面的 aspect-ratio 同值；padding 的百分比按宽度算，
+       所以这里正好让出图带那条高度。 */
+    padding: calc(66.7% + 26px) var(--gutter) 40px;
+  }
+  /* 英文版在桌面把差值补进了上下 padding（见 html[lang="en"] .hero-inner），
+     手机端要退回「让出图带」这一档，否则图带会被压掉。 */
+  html[lang="en"] .hero-inner {
+    padding: calc(66.7% + 26px) var(--gutter) 40px;
+  }
+  .hero .eyebrow { margin-bottom: 14px; font-size: 12px; letter-spacing: .12em; }
+  .hero-inner > h1 {
+    max-width: none;
+    font-size: clamp(26px, 7.4vw, 36px);
+    line-height: 1.28;
+  }
+  .hero-inner > p.hero-lead {
+    max-width: none;
+    margin-top: 16px;
+    font-size: 14.5px;
+    line-height: 1.8;
+  }
+  .hero .br-lead { display: none; }
+  html[lang="en"] .hero-inner > h1 { max-width: none; font-size: clamp(24px, 6.6vw, 32px); }
+  html[lang="en"] .hero-inner > p.hero-lead { max-width: none; font-size: 14px; }
+  .hero-inner > .hero-actions { margin-top: 24px; gap: 12px; }
+  .hero-inner > .hero-actions .btn { height: 44px; padding: 0 20px; font-size: 14.5px; }
+}
+
+@media (max-width: 460px) {
+  .hero-inner > .hero-actions { display: grid; grid-template-columns: 1fr; }
+  .hero-inner > .hero-actions .btn { width: 100%; }
+}
+
+/* 锚点跳转给吸顶导航留位：「查看活动日历」跳到 events.html#calendar 时，
+   标题不能被 68px 的 header 压住。 */
+#calendar { scroll-margin-top: 78px; }
+
+/* 英文首页数据带（2026-11-19）：从首屏里搬出来单独成条。
+   原来这排指标在 .hero-inner 里，6 格会折行、还把首屏顶高。搬出来后
+   首屏恢复与中文版一致的尺寸，这一条紧贴首屏下沿、同色 #0d182d。 */
+.hero-metrics-band {
+  /* 必须与首屏用同一条宽度规则，否则英文首页数据带会比首屏/板块宽出一圈 */
+  width: min(var(--site-max), calc(100% - (var(--site-pad) * 2)));
+  margin: 0 auto;
+  background: #0d182d;
+  border-top: 1px solid rgba(255, 255, 255, .07);
+}
+.hero-metrics-band .hero-metrics {
+  /* 与 .hero-inner 同一条内容线：宽 --page-w、居中、内缩 gutter */
+  width: var(--page-w);
+  max-width: 100%;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 20px var(--gutter) 22px;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  /* 基础样式里有 rgba 白底 + gap:1px 当分隔线，搬到深色带里会透一层灰，清掉 */
+  background: transparent;
+  gap: 0;
+}
+.hero-metrics-band .metric {
+  padding: 6px 18px 6px 18px;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-left: 1px solid rgba(255, 255, 255, .1);
+}
+.hero-metrics-band .metric:first-child { border-left: 0; padding-left: 0; }
+.hero-metrics-band .metric strong { color: #fff; }
+.hero-metrics-band .metric span { color: rgba(255, 255, 255, .6); }
+@media (max-width: 900px) {
+  .hero-metrics-band .hero-metrics { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 14px; padding: 18px var(--gutter); }
+  .hero-metrics-band .metric:nth-child(4) { border-left: 0; padding-left: 0; }
 }

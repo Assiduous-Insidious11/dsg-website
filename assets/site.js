@@ -71,9 +71,17 @@
     if (!metric || metric.value == null || metric.status === "pending") return "";
     var isEn = (document.documentElement.lang || "").toLowerCase() === "en";
     // 不再输出「约 / 大概 / ~」：数字要么是确切值，要么是 N+ 门槛值
-    var text = String(metric.value);
-    // 门槛值（至少 N）：显示「300+」，不加"约""大概"，避免把精确数写成估数
-    if (metric.atLeast) text += "+";
+    var n = Number(metric.value);
+    var text;
+    // 五位数以上折成「万」，否则 10000 位会顶破数字带（2026-11-18）
+    // 英文版不能出现「万」：按英文习惯写 10,000
+    if (n >= 10000) {
+      text = isEn ? n.toLocaleString("en-US") : String(Math.round(n / 1000) / 10).replace(/\.0$/, "") + "万";
+    } else {
+      text = isEn ? n.toLocaleString("en-US") : String(metric.value);
+      // 门槛值（至少 N）：显示「300+」，不加"约""大概"，避免把精确数写成估数
+      if (metric.atLeast) text += "+";
+    }
     return unit ? text + " " + unit : text;
   }
 
@@ -291,7 +299,13 @@
       get summitCases() { return this.legacyCases.filter((i) => i.category === "峰会" || i.category === "年度峰会"); },
       get cityCases() { return this.legacyCases.filter((i) => i.category === "城市沙龙"); },
       get eliteCases() { return this.legacyCases.filter((i) => i.category === "精英六人谈"); },
-      get visitCases() { return this.legacyCases.filter((i) => i.category === "走进企业"); },
+      /* 「走进企业」案例：英文数据里这一类叫 "Enterprise Visit"，
+         原来写死中文分类，导致英文页这块恒为空。 */
+      get visitCases() {
+        var isEn = (document.documentElement.lang || "").toLowerCase() === "en";
+        var key = isEn ? "Enterprise Visit" : "走进企业";
+        return this.legacyCases.filter((i) => i.category === key);
+      },
       recentCasesByCategory(category, limit) {
         limit = limit || 6;
         return this.legacyCases
@@ -316,7 +330,12 @@
        * ---------------------------------------------------------------- */
       get eventCategories() {
         var self = this;
-        var defs = [
+        var isEn = (document.documentElement.lang || "").toLowerCase() === "en";
+        var defs = isEn ? [
+          { key: "summit", label: "Annual Summit", desc: "1,000+ attendees, twice a year.", anchor: "summit" },
+          { key: "city", label: "City Salon", desc: "100+ attendees, into regional industrial belts, bringing industry topics down to local companies.", anchor: "city" },
+          { key: "elite", label: "Elite Six Talks", desc: "A 10-person private board, 1–2 sessions a week, one concrete problem per industry.", anchor: "elite" }
+        ] : [
           { key: "summit", label: "年度峰会", desc: "千人规模，一年两场。", anchor: "summit" },
           { key: "city", label: "城市沙龙", desc: "百人规模，走进区域产业带，把行业议题落到本地企业。", anchor: "city" },
           { key: "elite", label: "精英六人谈", desc: "十人私董会，每周 1—2 场，按行业拆解一个具体问题。", anchor: "elite" }
@@ -335,6 +354,19 @@
         return this.eventsOfCategory(key).slice().sort(function (a, b) {
           return (a.date || "") > (b.date || "") ? -1 : ((a.date || "") < (b.date || "") ? 1 : 0);
         });
+      },
+      /**
+       * 活动页单类列表（2026-11-18 评审）：
+       *   城市沙龙、精英六人谈各只列最近 6 场，按日期由新到旧，不写期号。
+       *   方案主导人原话：只列最近 5、6 场就够，详细内容去日历里点，
+       *   「不希望竞争对手太容易拷贝我」；搜索框与分页跳转也不要。
+       */
+      recentRows(key, limit) {
+        return this.eventsOfCategorySorted(key).slice(0, limit || 6);
+      },
+      /** 最近 N 场之外还剩多少场，用于列表末尾那句提示 */
+      hiddenCountOf(key, limit) {
+        return Math.max(0, this.eventsOfCategory(key).length - (limit || 6));
       },
       /** 五类总览卡上的「最近一场」：日期 + 城市；没有场次时给一句兜底 */
       latestCategoryEvent(key) {
@@ -658,7 +690,12 @@
         var key = match ? match[1] : "";
         if (["summit", "city", "elite"].indexOf(key) !== -1) this.typeFilter = key;
       },
-      monthShortLabel(month) { return month + " 月"; },
+      monthShortLabel(month) {
+        var isEn = (document.documentElement.lang || "").toLowerCase() === "en";
+        if (!isEn) return month + " 月";
+        var names = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        return names[Number(month) - 1] || String(month);
+      },
 
       /* ---------------------------- 卡片/详情通用小工具 */
       /** 无头像时用的首字头像：中文取首字，英文取首字母 */
@@ -678,17 +715,18 @@
       /** 一行信息：把「主题口号 / 参会人员 / 活动形式」分行加冒号呈现（11-06 明确要求） */
       infoRows(event) {
         if (!event) return [];
+        var isEn = (document.documentElement.lang || "").toLowerCase() === "en";
         var rows = [];
         var theme = event.theme || "";
         var bare = function (x) { return String(x || "").replace(/[\s——\-—：:，,。、·]/g, ""); };
         // 主题口号与标题几乎一样时不重复第二遍（案例集锦里多处「活动主题」就是标题原文）
         if (theme && bare(theme) === bare(event.title)) theme = "";
         if (theme && bare(event.title).indexOf(bare(theme)) === 0 && bare(theme).length >= bare(event.title).length * 0.8) theme = "";
-        if (theme) rows.push({ k: "主题口号", v: theme });
+        if (theme) rows.push({ k: isEn ? "Theme" : "主题口号", v: theme });
         var aud = this.audienceText(event);
-        if (aud) rows.push({ k: "参会人员", v: aud });
+        if (aud) rows.push({ k: isEn ? "Who" : "参会人员", v: aud });
         var form = (event.agendaDetail || []).map(function (a) { return a.text; }).filter(Boolean);
-        if (form.length && event.category === "summit") rows.push({ k: "活动形式", v: form.join("；") });
+        if (form.length && event.category === "summit") rows.push({ k: isEn ? "Format" : "活动形式", v: form.join(isEn ? " / " : "；") });
         return rows;
       },
       agendaRows(event) {
@@ -719,12 +757,14 @@
         return a;
       },
       cardPeopleNote(event) {
+        var isEn = (document.documentElement.lang || "").toLowerCase() === "en";
         var orgs = {};
         (event && event.attendees || []).forEach(function (p) { if (p.org) orgs[p.org] = true; });
         var n = Object.keys(orgs).length;
-        if (n) return "等 " + n + " 家参会企业";
+        if (n) return isEn ? (n + (n === 1 ? " company" : " companies")) : "等 " + n + " 家参会企业";
         var sp = this.cardSpeakers(event).length;
-        return sp ? sp + " 位分享嘉宾" : "";
+        if (!sp) return "";
+        return isEn ? (sp + (sp === 1 ? " speaker" : " speakers")) : sp + " 位分享嘉宾";
       },
       photoWall(event) { return (event && event.gallery) || []; },
       /** 图位是否有真实素材（现场照或运营给的活动海报），没有就退回排版 KV，绝不放模块插画假装现场 */
@@ -741,12 +781,14 @@
       /** 关键数字（详情页顶部） */
       keyNumbers(event) {
         if (!event) return [];
+        // 英文详情页顶部这四组数字也要出英文，否则页面上会冒「活动规模 / 300 人」
+        var isEn = (document.documentElement.lang || "").toLowerCase() === "en";
         var out = [];
         var exp = event.scale && event.scale.expected && event.scale.expected.value;
-        if (exp) out.push({ v: exp + " 人", k: "活动规模" });
-        if (event.city) out.push({ v: event.city, k: "举办城市" });
-        if ((event.topics || []).length) out.push({ v: event.topics.length + " 个", k: "讨论话题" });
-        if ((event.attendees || []).length) out.push({ v: event.attendees.length + " 家", k: "参会企业" });
+        if (exp) out.push({ v: isEn ? exp + " people" : exp + " 人", k: isEn ? "Attendance" : "活动规模" });
+        if (event.city) out.push({ v: event.city, k: isEn ? "City" : "举办城市" });
+        if ((event.topics || []).length) out.push({ v: isEn ? event.topics.length : event.topics.length + " 个", k: isEn ? "Topics" : "讨论话题" });
+        if ((event.attendees || []).length) out.push({ v: isEn ? event.attendees.length : event.attendees.length + " 家", k: isEn ? "Companies" : "参会企业" });
         return out.slice(0, 4);
       },
 
@@ -936,7 +978,10 @@
         push();
 
         // 二级断点：某一行仍然过长（>16 字）时，在并列连词处再断一次
+        // 英文不适用：这几类连词是中文的，英文标题里只有「·」会被切，
+        // 切完第二行就以「· All Industries …」起头，看着像排版事故（2026-11-19）
         var secondary = ["·", "与", "和", "及", "、"];
+        if ((document.documentElement.lang || "").toLowerCase() === "en") secondary = [];
         var refined = [];
         lines.forEach(function (line, idx) {
           // 副标行（「暨」「——」开头）不做二次切分：它已经是小字说明，
@@ -1066,7 +1111,7 @@
         // 已报名只在核过后才显示：早期把估算值当已报名写上去，读起来像真实签到数，会误导
         var registered = ((scale.registered || {}).status === "verified") ? metricText(scale.registered, unit) : "";
         if (!expected) return "";
-        return registered ? expected + " · 已报名 " + registered : expected;
+        return registered ? expected + (isEn ? " · registered " : " · 已报名 ") + registered : expected;
       },
       /** 剩余席位文案，无口径时返回空串（避免渲染 "剩余 null 席"） */
       seatsText(event) {
@@ -1074,7 +1119,9 @@
         var expected = (scale.expected || {}).value;
         var registered = (scale.registered || {}).value;
         if (expected == null || registered == null) return "";
-        return "剩余 " + Math.max(expected - registered, 0) + " 席";
+        var isEn = (document.documentElement.lang || "").toLowerCase() === "en";
+        var left = Math.max(expected - registered, 0);
+        return isEn ? (left + (left === 1 ? " seat left" : " seats left")) : "剩余 " + left + " 席";
       },
       metricText(metric, unit) { return metricText(metric, unit); },
       /** 未授权嘉宾只显示姓氏 + 公司，不显示实名与头像 */
@@ -1082,6 +1129,12 @@
         if (!speaker) return "";
         var lic = (speaker.license || {}).status;
         if (lic === "owned" || lic === "licensed") return speaker.name;
+        var isEn = (document.documentElement.lang || "").toLowerCase() === "en";
+        if (isEn) {
+          // 英文页不能拼出「张先生/女士」：只留姓（首词）+ 职位空缺
+          var parts = String(speaker.name || "").trim().split(/\s+/);
+          return parts[0] || "";
+        }
         return (speaker.name || "").slice(0, 1) + "先生/女士";
       },
       speakerPortrait(speaker) {
@@ -1131,11 +1184,42 @@
             return;
           }
           this.formState.ok = true;
-          this.formState.message = "已收到，我们会在 1 个工作日内与你联系。";
+          var isEn = (document.documentElement.lang || "").toLowerCase() === "en";
+          this.formState.message = isEn
+            ? "Received — we will get back to you within one business day."
+            : "已收到，我们会在 1 个工作日内与你联系。";
           form.reset();
           setTimeout(() => this.closeRegistration(), 1200);
         });
       }
     };
   };
+
+/* ==================================================================
+ * 手机端导航抽屉（2026-11-18）
+ * 只做一件事：点 .nav-burger 给 .site-header 加/去 .nav-open。
+ * 用事件委托挂在 document 上，27 个页面共用一份，不必逐页写脚本；
+ * 点菜单项或点页面空白处都会收起。
+ * ================================================================== */
+(function (global) {
+  function close(header, btn) {
+    header.classList.remove("nav-open");
+    if (btn) btn.setAttribute("aria-expanded", "false");
+  }
+  document.addEventListener("click", function (e) {
+    var btn = e.target.closest ? e.target.closest(".nav-burger") : null;
+    var header = document.querySelector(".site-header");
+    if (!header) return;
+    if (btn) {
+      var open = header.classList.toggle("nav-open");
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+      return;
+    }
+    if (!header.classList.contains("nav-open")) return;
+    // 点了抽屉里的链接就收起
+    if (e.target.closest && e.target.closest(".nav-links a")) { close(header, header.querySelector(".nav-burger")); return; }
+    // 点外面也收起
+    if (!e.target.closest(".nav")) close(header, header.querySelector(".nav-burger"));
+  });
+})(window);
 })(window);

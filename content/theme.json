@@ -1,0 +1,31 @@
+{
+  "_comment": "版式令牌。倍率 1 = 与 2026-11 定稿完全一致；改数字即全站等比缩放。前台由 assets/theme.js 注入到 <html> 的内联样式，不修改 CSS 源文件。",
+  "scale": {
+    "hero": 1,
+    "display": 1,
+    "h2": 1,
+    "h3": 1,
+    "sectionY": 1,
+    "sectionYSm": 1
+  },
+  "layout": {
+    "pageMax": 1240,
+    "gutterMin": 20,
+    "gutterVw": 5,
+    "gutterMax": 64
+  },
+  "shape": {
+    "radius": 8
+  },
+  "color": {
+    "ink": "#111315",
+    "ink2": "#1d2328",
+    "muted": "#6a7178",
+    "line": "#dfe4e8",
+    "paper": "#f7f6f1",
+    "gold": "#b8924a",
+    "teal": "#00c0b0",
+    "blue": "#1070f8",
+    "green": "#41765f"
+  }
+}
