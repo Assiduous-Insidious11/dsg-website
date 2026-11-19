@@ -2609,3 +2609,37 @@ html[lang="en"] .program-hero p {
   font-weight: 800;                        /* 与下方 h2 对齐，不再是 700 对 800 */
   -webkit-text-stroke: 0.15px currentColor;
 }
+
+/* ============ 首页首屏标题单行 + 与副文左右对齐（2026-11-19 第三轮）============
+   用户反馈：① 首屏仍不如其它区块清晰；② 标题要写成一行
+   「以活动连接产业·以AI重构供应链」，且副文与之整体左右对齐。
+
+   清晰度的真实成因（实测，非猜测）：
+   其它页面的 h1 都带负字距（.ev-hero h1 / 关于页 / AI 专区均为 -.01em ~
+   -.012em），唯独首屏 h1 在第 2339 行被写成 letter-spacing: 0 ——
+   那是字号还是 77px 时为了压掉"合成加粗发毛"做的修正，字号降到 38px 后
+   这条只剩副作用：字距松、笔画分散、整块发虚。这里补回 -.01em。
+
+   第二项是行数本身：两行标题的「过渡像素/实心笔画」比值为 0.446，
+   同一元素改单行后降到 0.231，几乎腰斩。所以"一行"不只是版式要求，
+   本身就把边缘发软消掉大半，两个诉求方向是一致的。
+
+   对齐做法：宽度锁 552px。38px 下这一行自然宽 541px，多出的 11px 由
+   text-align-last 平均摊到 15 个字隙（约 0.7px/隙，肉眼不可见），
+   换来标题右边界与副文右边界严格齐平；副文用两端对齐补齐右边界。
+   1200px 以下可用宽不足（1080 视口仅 442px），放开为自然折行。 */
+.page-home .hero-inner > h1 {
+  letter-spacing: -0.01em;
+}
+@media (min-width: 1200px) {
+  .page-home .hero-inner > h1 {
+    white-space: nowrap;
+    max-width: 552px;
+    text-align-last: justify;
+  }
+}
+.page-home .hero-inner > .hero-lead {
+  max-width: 552px;
+  text-align: justify;
+  text-justify: inter-ideograph;
+}
