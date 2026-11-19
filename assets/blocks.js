@@ -57,7 +57,9 @@
   function pageKey() {
     var file = String(location.pathname || "").split("/").pop() || "";
     var name = file.replace(/\.html?$/i, "").replace(/-en$/, "");
-    if (!name) name = document.body.getAttribute("data-page") || "";
+    // 目录形式访问（形如 /dsg-website/，末尾不带文件名）时 pop() 得到空串，
+    // 这里就是首页。早先回退成空串会让线上首页整页绑定失效（文字还在，但改数据没反应）。
+    if (!name) name = document.body.getAttribute("data-page") || "index";
     return PAGE_ALIAS[name] || name;
   }
 
