@@ -17,16 +17,21 @@
     scale: { hero: 1, display: 1, h2: 1, h3: 1, sectionY: 1, sectionYSm: 1 },
     layout: { pageMax: 1240, gutterMin: 20, gutterVw: 5, gutterMax: 64 },
     shape: { radius: 8 },
+    image: { heroBg: "" },
     color: {
       ink: "#111315", ink2: "#1d2328", muted: "#6a7178", line: "#dfe4e8",
       paper: "#f7f6f1", gold: "#b8924a", teal: "#00c0b0", blue: "#1070f8",
-      green: "#41765f"
+      green: "#41765f",
+      /* 2026-11-19：把首屏底色、深色区底色、深色区文字也纳入可配置，
+         原来这三个值是写死在样式表里的（#0d182d / #0b0d10 / #f7f8fa）。 */
+      heroBase: "#0d182d", darkBase: "#0b0d10", onDark: "#f7f8fa"
     }
   };
 
   var COLOR_VARS = {
     ink: "--ink", ink2: "--ink-2", muted: "--muted", line: "--line",
-    paper: "--paper", gold: "--gold", teal: "--teal", blue: "--blue", green: "--green"
+    paper: "--paper", gold: "--gold", teal: "--teal", blue: "--blue", green: "--green",
+    heroBase: "--hero-base", darkBase: "--dark-base", onDark: "--on-dark"
   };
 
   function num(v, fallback) {
@@ -85,6 +90,17 @@
       set(COLOR_VARS[key], val, val.toLowerCase() === String(DEFAULT.color[key]).toLowerCase());
     });
 
+    // 首屏背景图：留空表示沿用样式表里的默认图（内容不做任何改变）。
+    // 用绝对地址写入，避免 url() 的相对路径按 <html> 内联样式解析而 404。
+    var heroBg = String(rawOf(cfg, "image", "heroBg") || "").trim();
+    if (heroBg) {
+      var abs = heroBg;
+      try { abs = new URL(heroBg, location.href).href; } catch (e) { /* 保持原样 */ }
+      root.style.setProperty("--hero-bg", 'url("' + abs + '")');
+    } else {
+      root.style.removeProperty("--hero-bg");
+    }
+
     global.DSG_THEME = cfg;
     document.dispatchEvent(new CustomEvent("dsg:theme", { detail: cfg }));
   }
@@ -96,12 +112,15 @@
 
   function load() {
     var sync = fromEmbedded();
-    if (sync) { apply(sync); return; }
-    // 直接打开 content/ 目录调试时走这条路；线上发布包走内嵌数据，不会闪
+    if (sync) apply(sync);
+    // file:// 下直接双击打开时只认内嵌快照（fetch 会被 CORS 拦，报了也没用）；
+    // 线上（http/https）先套快照保证首屏不闪，再拉一次源文件——
+    // 后台改完 content/theme.json 后刷新即生效，不必重建内嵌快照。
+    if (sync && location.protocol === "file:") return;
     fetch("content/theme.json", { cache: "no-store" })
       .then(function (r) { return r.ok ? r.json() : null; })
       .then(function (cfg) { if (cfg) apply(cfg); })
-      .catch(function () { /* 读不到就用 CSS 里的默认值，不影响渲染 */ });
+      .catch(function () { /* 读不到就沿用已应用的值，不影响渲染 */ });
   }
 
   global.DSGTheme = { apply: apply, load: load, defaults: DEFAULT };

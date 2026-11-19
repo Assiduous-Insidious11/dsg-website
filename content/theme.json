@@ -17,6 +17,9 @@
   "shape": {
     "radius": 8
   },
+  "image": {
+    "heroBg": ""
+  },
   "color": {
     "ink": "#111315",
     "ink2": "#1d2328",
@@ -26,6 +29,9 @@
     "gold": "#b8924a",
     "teal": "#00c0b0",
     "blue": "#1070f8",
-    "green": "#41765f"
+    "green": "#41765f",
+    "heroBase": "#0d182d",
+    "darkBase": "#0b0d10",
+    "onDark": "#f7f8fa"
   }
 }

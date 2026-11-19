@@ -1437,7 +1437,7 @@ html[lang="en"] .hero h1 {
 .evf-main .evf-media img {
   object-fit: contain;
   object-position: center;
-  background: #0b0d10;
+  background: var(--dark-base, #0b0d10);
 }
 
 /* ---------- 次卡：统一左侧视觉块 ---------- */
@@ -1447,7 +1447,7 @@ html[lang="en"] .hero h1 {
 .mini-media {
   width: 320px;
   height: 180px;
-  background: #0b0d10;
+  background: var(--dark-base, #0b0d10);
   overflow: hidden;
 }
 .mini-media img {
@@ -1797,7 +1797,7 @@ html[lang="en"] .hero h1 {
 .hero {
   position: relative;
   isolation: isolate;
-  background-color: #0b0d10;
+  background-color: var(--dark-base, #0b0d10);
   background-image: none;
   display: flex;
   align-items: center;
@@ -2108,7 +2108,7 @@ html[lang="en"] .hero::before {
   align-items: flex-end;
   min-height: clamp(340px, 33vw, 470px);
   overflow: hidden;
-  background: #0b0d10;
+  background: var(--dark-base, #0b0d10);
 }
 .ev-banner-bg {
   position: absolute;
@@ -2255,15 +2255,18 @@ html[lang="en"] .hero::before {
   height: auto;
   aspect-ratio: auto;
   overflow: hidden;
-  background-color: #0d182d;
+  background-color: var(--hero-base, #0d182d);
   background-image: none;
-  color: #f7f8fa;
+  color: var(--on-dark, #f7f8fa);
 }
 .hero::before {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("photos/hero-aurora/hero-aurora-3060.webp?v=20261119h");
+  /* 2026-11-19：首屏背景图改为可配置。默认值仍是这张旋涡图，
+     后台「外观设置 → 首屏背景图」填新路径后由 theme.js 写入 --hero-bg，
+     换季/换场次直接换图，不用改这张样式表。 */
+  background-image: var(--hero-bg, url("photos/hero-aurora/hero-aurora-3060.webp?v=20261119h"));
   /* 按高度贴合、靠右对齐（2026-11-19 第四版，素材取自 PPT 原图 4000×2250）。
      首屏盒子比例随视口在 1.61（1024）～2.50（1920 无滚动条）之间变化，
      任何固定比例的图用 cover 都会在某一档被裁。
@@ -2470,7 +2473,7 @@ html[lang="en"] .program-hero p {
   .hero {
     display: block;
     padding: 0;
-    background-color: #0d182d;
+    background-color: var(--hero-base, #0d182d);
   }
   .hero::before {
     inset: 0 0 auto 0;
@@ -2527,7 +2530,7 @@ html[lang="en"] .program-hero p {
   /* 必须与首屏用同一条宽度规则，否则英文首页数据带会比首屏/板块宽出一圈 */
   width: min(var(--site-max), calc(100% - (var(--site-pad) * 2)));
   margin: 0 auto;
-  background: #0d182d;
+  background: var(--hero-base, #0d182d);
   border-top: 1px solid rgba(255, 255, 255, .07);
 }
 .hero-metrics-band .hero-metrics {
@@ -2556,4 +2559,15 @@ html[lang="en"] .program-hero p {
 @media (max-width: 900px) {
   .hero-metrics-band .hero-metrics { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 14px; padding: 18px var(--gutter); }
   .hero-metrics-band .metric:nth-child(4) { border-left: 0; padding-left: 0; }
+}
+
+/* ============ 首页四个区块主标题统一字阶（2026-11-19）============
+   用户要求：首屏 h1、「DSG数创时代:跨越技术鸿沟的修桥人」、「近期活动」、
+   「案例驱动，不做空泛概念陈列」四块主标题同字号，基准取「案例驱动」那一档
+   —— 即 --fs-h2（1440 视口下 38px；原首屏 77px、另两块 52px）。
+   只改 font-size：行高倍数、字距、宽度上限、手工换行位置一律保持原样。
+   用 .page-home 限定作用域，其它页面的区块标题不受影响。 */
+.page-home .hero-inner > h1,
+.page-home .section-head h2 {
+  font-size: var(--fs-h2);
 }
