@@ -2571,3 +2571,41 @@ html[lang="en"] .program-hero p {
 .page-home .section-head h2 {
   font-size: var(--fs-h2);
 }
+
+/* ============ 首页主标题清晰度修正（2026-11-19 第二轮）============
+   现象：字号统一到 38px 后，首屏白字看起来比下方黑字"糊"。
+   实测排查（截图 + 像素统计）结论是两件事叠加，不是字体或渲染坏掉：
+
+   ① 字号可能是小数。--fs-h2 是 clamp(26px, 2.9vw, 38px)，只有视口
+      ≥1310px 时才稳定为整数 38px；1280 视口算出 37.12px、1080 算出
+      31.32px。实测过渡像素占比：整数 38px 为 0.38，小数 37.12px 为 0.46
+      —— 字号一落小数，字形就压在非整数像素上被灰度抗锯齿，整段发虚。
+      所以桌面端（≥721px）用 round() 把字号取整到 1px，任何窗口宽度都是
+      整数。round() 不支持的浏览器回退到上一行 var(--fs-h2)，行为不变。
+      720px 以下走移动端断点自己的字号，不受影响。
+
+   ② 白字压深色大图的视觉重量天然轻于黑字白底（光渗/irradiance 错觉）。
+      同字号同字重下，白字边缘的抗锯齿过渡占比更高，观感偏"软"。
+      给 0.15px 同色极细描边补回笔画密度：实测实心像素 +10%、
+      过渡/实心比 0.38→0.31，等于边缘变干净而不显粗。
+      0.15px 只增厚 0.3px，不改变字宽与折行，也不会有笔画粘连。 */
+@media (min-width: 721px) {
+  .page-home .hero-inner > h1,
+  .page-home .section-head h2 {
+    font-size: var(--fs-h2);
+    font-size: round(calc(clamp(26px, 2.9vw, 38px) * var(--t-h2, 1)), 1px);
+  }
+}
+/* 移动端同理：720px 以下 --fs-h2 是 clamp(23px, 6vw, 30px)，
+   390px 屏算出 23.4px 同样是小数字号，一并取整。 */
+@media (max-width: 720px) {
+  .page-home .hero-inner > h1,
+  .page-home .section-head h2 {
+    font-size: var(--fs-h2);
+    font-size: round(calc(clamp(23px, 6vw, 30px) * var(--t-h2, 1)), 1px);
+  }
+}
+.page-home .hero-inner > h1 {
+  font-weight: 800;                        /* 与下方 h2 对齐，不再是 700 对 800 */
+  -webkit-text-stroke: 0.15px currentColor;
+}
