@@ -2696,3 +2696,64 @@ html[lang="en"] .program-hero p {
     align-items: center;
   }
 }
+
+/* ============ 首页业务卡：图标与标题并到同一行（2026-11-20）============
+   用户原话："这个 banner，三个条并列嘛，'活动生态'往上一行跟 A 一行，
+   行业洞察跟 I 一行，供应链AI创新专区跟 AI 一行"。
+   即：圆形图标（A / I / AI）不再单独占一行、拉开 32px 再放标题，
+   而是图标在左、标题在右，垂直居中对齐成一条卡头。
+
+   做法：把卡片从 flex 列改成三行网格，不改任何 HTML 结构
+   （data-bind 绑定、文案、链接一个都不动）：
+     第 1 行：[图标 42px] [标题]      ← 两者 align-self: center
+     第 2 行：说明文字（跨两列）
+     第 3 行：底部链接（跨两列，1fr 行把它顶到卡底）
+   卡片仍是等高、底部动作仍贴底，min-height 260 不变。
+
+   只作用于首页（body.page-home）：咨询页与 AI 专区的卡片用的是同一个
+   .business-card，本轮按"只改说的那一处"原则不动它们。 */
+:is(.page-home, .page-home-en) .business-card {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-rows: auto auto 1fr;
+  /* 间距 10px 而不是 16px：三列在 1181~1200 最挤，卡片内宽只有 186px 左右，
+     图标 42 + 间距 16 之后留给标题的只剩 152px，而「供应链AI创新专区」
+     在 24px 下量得 188.4px —— 差几像素就折成两行；一折，这行的正文就比
+     旁边两张卡低 35px，三张卡立刻不齐。收 6px + 下面那条负字距（省 2.4px），
+     最窄的 1181 处仍有 2px 余量，全区间单行。 */
+  column-gap: 10px;
+  align-content: start;
+}
+:is(.page-home, .page-home-en) .business-card > .mark {
+  grid-column: 1;
+  grid-row: 1;
+  margin: 0;
+  align-self: center;
+}
+:is(.page-home, .page-home-en) .business-card > h3 {
+  grid-column: 2;
+  grid-row: 1;
+  margin: 0;
+  align-self: center;
+  /* 与全站标题一致的负字距，顺带把上面的 4px 余量补到 5px 以上 */
+  letter-spacing: -0.01em;
+}
+:is(.page-home, .page-home-en) .business-card > p {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  margin-top: 18px;
+}
+:is(.page-home, .page-home-en) .business-card > a:last-child {
+  grid-column: 1 / -1;
+  grid-row: 3;
+  align-self: end;
+}
+
+/* 英文首页卡头：拉丁字母同字号比中文长一截。
+   「AI in Supply Chain」24px 下约 200px，而三列在 1181~1260 区间
+   留给标题的只有 194px 左右 → 会折成两行，这一行的正文就比旁边两张
+   低 35px。这里给英文卡头单独一条随视口收放的曲线：
+   1200 档约 21px（175px 宽，一行放得下），1440 以上仍是 24px，与原设计一致。 */
+.page-home-en .business-card > h3 {
+  font-size: clamp(21px, 1.65vw, 24px);
+}
