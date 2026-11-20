@@ -5,11 +5,11 @@
   <link rel="icon" type="image/png" href="assets/optimized/logo_favicon.png">
   <title>活动中心 | DSG 数创时代</title>
   <link rel="stylesheet" href="assets/styles.css?v=20261119u">
-  <link rel="stylesheet" href="assets/dsg-2026.css?v=20261120c">
+  <link rel="stylesheet" href="assets/dsg-2026.css?v=20261120h">
   <script defer src="assets/alpine.min.js"></script>
   <script src="assets/embedded-data.js?v=20261120d"></script>
   <script src="assets/theme.js?v=20261119a"></script>
-  <script src="assets/site.js?v=20261119w"></script>
+  <script src="assets/site.js?v=20261120a"></script>
   <script src="assets/blocks.js?v=20261119d"></script>
   <script src="assets/forms.js?v=20260917-eventsync"></script>
 <!-- seo:begin 由 tools/build.py 生成，勿手动修改 -->
@@ -39,16 +39,16 @@
          只留一整幅现场横幅，标题用白色大字直接压在图上，不再单独排一行副文；
          banner 下面的三枚分类 pill 一并去掉，手机打开一屏就能看见日历。 -->
     <section class="ev-banner">
-      <div class="ev-banner-bg" role="img" aria-label="DSG 年度峰会现场"></div>
-      <div class="container ev-banner-inner">
+      <div class="ev-banner-bg" role="img" aria-label="DSG 活动生态"></div>
+      <div class="ev-banner-inner">
         <span class="eyebrow" data-bind="events.s1.eye">Events</span>
-        <h1 data-bind="events.s1.h1">从一场峰会 · 到一桌深谈</h1>
-      </div>
-    </section>
-
-    <section class="section compact surface-white ev-stats">
-      <div class="container">
-        <div class="st-band on-light">
+        <h1 data-bind="events.s1.h1" data-bind-br="br-title">从年度峰会到闭门深聊，<br class="br-title">构建 DSG 的活动生态。</h1>
+        <p class="ev-lead" data-bind="events.s1.lead" data-bind-br="br-ev">活动中心按照三层结构组织：年度峰会负责品牌势能，<br class="br-ev">城市会议负责区域转化，精英六人谈负责高密度交流。</p>
+        <!-- 数字带（2026-11-20）：原为 banner 下方独立一屏（.ev-stats），
+             按用户要求移入首屏、压在文字下方；原来的独立 section 已删，避免同一组数字出现两次。
+             五项数据仍读 site.json 的 homeMetrics，页面不写死数值。
+             左边界与上方文字同一条竖线，右侧对称内收，五格等分不换行。 -->
+        <div class="st-band ev-hero-band">
           <template x-for="item in homeMetrics" :key="item.label">
             <div class="st-item">
               <span class="st-num"><span x-text="metricText(item.metric)"></span><em class="u" x-text="item.unit"></em></span>

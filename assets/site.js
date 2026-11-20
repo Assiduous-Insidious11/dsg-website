@@ -69,6 +69,12 @@
 
   function metricText(metric, unit) {
     if (!metric || metric.value == null || metric.status === "pending") return "";
+    // 后台可填 display 直接决定展示文本（例：「10000+」「1.2万」「300+」）。
+    // 有了它就不必为了一个加号改数值，也不用在页面里写死；留空则走下面的自动规则。
+    if (metric.display != null && String(metric.display).trim() !== "") {
+      var shown = String(metric.display).trim();
+      return unit ? shown + " " + unit : shown;
+    }
     var isEn = (document.documentElement.lang || "").toLowerCase() === "en";
     // 不再输出「约 / 大概 / ~」：数字要么是确切值，要么是 N+ 门槛值
     var n = Number(metric.value);
