@@ -57,18 +57,13 @@
     },
     "ai": {
       "eyebrow": "AI in Supply Chain",
-      "title": "案例驱动，不做空泛概念陈列",
-      "lead": "供应链AI创新专区以案例为入口，集中呈现行业痛点、解决方案、业务价值与视频演示，并支持预约 Demo。",
+      "title": "DSG AI 排产小助手",
+      "lead": "面向制造业排产场景的 AI 助手，可先预约看 Demo。",
       "actions": [
         {
-          "label": "查看 AI 案例",
-          "href": "supply-chain-ai.html",
-          "variant": "primary"
-        },
-        {
-          "label": "预约 Demo",
+          "label": "预约看 Demo",
           "href": "contact.html",
-          "variant": "secondary"
+          "variant": "primary"
         }
       ],
       "image": {
