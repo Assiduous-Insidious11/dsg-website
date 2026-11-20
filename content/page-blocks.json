@@ -61,7 +61,7 @@
       "lead": "面向制造业排产场景的 AI 助手，可先预约看 Demo。",
       "actions": [
         {
-          "label": "预约看 Demo",
+          "label": "预约Demo",
           "href": "contact.html",
           "variant": "primary"
         }
