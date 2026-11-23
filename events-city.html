@@ -86,17 +86,18 @@
 
     <section class="section compact">
       <div class="container">
-        <div class="section-head"><div><span class="eyebrow" data-bind="events-city.s4.eye">Cases</span><h2 data-bind="events-city.s4.h2">城市沙龙历史案例</h2></div><p data-bind="events-city.s4.p">已办城市沙龙的主题、城市与交流重点。</p></div>
-        <div class="case-mini-grid">
-          <template x-for="item in recentCasesByCategory('城市沙龙', 6)" :key="item.id">
-            <article class="case-mini">
-              <div class="meta" x-text="item.dateText + ' · ' + item.city + ' · ' + item.format"></div>
-              <h3 x-text="item.title"></h3>
-              <p x-text="item.topic"></p>
-              <div class="tag-row"><span class="tag" x-text="item.audience"></span></div>
-              <ul><template x-for="point in item.highlights.slice(0, 2)"><li x-text="point"></li></template></ul>
-            </article>
-          </template>
+        <div class="section-head"><div><span class="eyebrow" data-bind="events-city.s4.eye">Cases</span><h2 data-bind="events-city.s4.h2">城市沙龙历史场次</h2></div><p data-bind="events-city.s4.p">按时间由新到旧，最近 6 场的城市与主题。</p></div>
+        <div class="ev-recent">
+          <div class="ev-list">
+            <template x-for="e in archivedEventsByType('city', 6)" :key="e.id">
+              <a class="ev-row city" :href="eventDetailUrl(e)">
+                <span class="ev-row-date" x-text="eventDateLabel(e)"></span>
+                <span class="ev-row-city" x-text="e.city || ''"></span>
+                <span class="ev-row-title" x-text="e.title"></span>
+                <span class="ev-row-go">›</span>
+              </a>
+            </template>
+          </div>
         </div>
       </div>
     </section>

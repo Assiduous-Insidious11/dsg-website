@@ -856,6 +856,55 @@
           .sort((a, b) => new Date(b.date) - new Date(a.date))
           .slice(0, limit);
       },
+      /**
+       * 二级页（年度峰会 / 城市沙龙 / 精英六人谈）的场次列表：
+       * 同一类型全部场次按日期由新到旧，不区分是否已结束——
+       * 原来这几种页面用的是另一份手写旧案例（23 条，日期写作 240119，标题被截断），
+       * 与活动页的 63 场对不上，也没有活动自身的图片。这里统一回到 events.json。
+       */
+      eventsOfTypeSorted(type, limit) {
+        var list = this.events
+          .filter(function (e) { return e.type === type; })
+          .slice()
+          .sort(function (a, b) {
+            return (a.date || "") > (b.date || "") ? -1 : ((a.date || "") < (b.date || "") ? 1 : 0);
+          });
+        return limit ? list.slice(0, limit) : list;
+      },
+      /** 现场照片墙：只取真有 gallery 的场次（现已核实的 3 场），没有就返回空数组，板块自动不显示 */
+      photoStripOfType(type, limit) {
+        var out = [];
+        var max = limit || 4;
+        this.eventsOfTypeSorted(type).forEach(function (e) {
+          var g = (e && e.gallery) || [];
+          g.forEach(function (src) {
+            if (out.length < max && src && out.indexOf(src) === -1) out.push(src);
+          });
+        });
+        return out;
+      },
+      /** 2024 两届大会的官方主视觉；其余年份没有图，卡片退回排版 KV */
+      archivePoster(c) {
+        var t = String((c && (c.title || c.name)) || "");
+        if (t.indexOf("SIE") !== -1) return "assets/2024SIE.jpg";
+        if (t.indexOf("FDS") !== -1) return "assets/2024FDS.jpg";
+        return "";
+      },
+      /** 往期大会档案：2024 年起（近三年），按日期由新到旧 */
+      get summitArchive() {
+        return this.legacyCases
+          .filter(function (i) {
+            return (i.category === "峰会" || i.category === "年度峰会") && Number(i.year || 0) >= 2024;
+          })
+          .sort(function (a, b) { return (a.date || "") > (b.date || "") ? -1 : 1; });
+      },
+      /** 走进企业：标题里带「走进」的真实场次，按日期由新到旧 */
+      get visitEvents() {
+        return this.events
+          .filter(function (e) { return String(e.title || "").indexOf("走进") !== -1; })
+          .slice()
+          .sort(function (a, b) { return (a.date || "") > (b.date || "") ? -1 : 1; });
+      },
       get archivedEventGroups() {
         if (this.typeFilter === "all") return [];
         var cutoff = archiveCutoffYear;

@@ -92,17 +92,28 @@
 
     <section class="section compact">
       <div class="container">
-        <div class="section-head"><div><span class="eyebrow" data-bind="events-summits.s4.eye">Archive</span><h2 data-bind="events-summits.s4.h2">往期峰会</h2></div><p data-bind="events-summits.s4.p">近三年大会的主题、议题与到场嘉宾。</p></div>
+        <div class="section-head"><div><span class="eyebrow" data-bind="events-summits.s4.eye">Archive</span><h2 data-bind="events-summits.s4.h2">往期峰会</h2></div><p data-bind="events-summits.s4.p">已举办大会的主题、议程与到场规模。</p></div>
         <div class="showcase-grid">
-          <template x-for="item in recentCasesByCategory('峰会', 4)" :key="item.id">
+          <template x-for="e in archivedEventsByType('summit', 4)" :key="e.id">
             <article class="showcase-card">
-              <img :src="item.title.includes('金融') || item.title.includes('科产融') ? 'assets/2024FDS.jpg' : 'assets/2024SIE.jpg'" :alt="item.title">
+              <template x-if="hasMedia(e)">
+                <img :src="e.image" :alt="e.title">
+              </template>
+              <template x-if="!hasMedia(e)">
+                <div class="kvx" :class="e.kvStyle">
+                  <div class="kv-top"><span class="kv-type" x-text="e.categoryLabel"></span></div>
+                  <div>
+                    <div class="kv-title" x-text="kvTitle(e)"></div>
+                    <div class="kv-meta"><span x-text="eventDateLabel(e)"></span></div>
+                  </div>
+                </div>
+              </template>
               <div class="showcase-body">
-                <div class="meta" x-text="item.dateText + ' · ' + item.city + ' · ' + item.format"></div>
-                <h3 x-text="item.title"></h3>
-                <p x-text="item.topic"></p>
-                <div class="tag-row"><span class="tag" data-bind="events-summits.s4.span">大会主题</span><span class="tag" data-bind="events-summits.s4.span2">现场照片</span><span class="tag" data-bind="events-summits.s4.span3">嘉宾观点</span></div>
-                <ul><template x-for="point in item.highlights"><li x-text="point"></li></template></ul>
+                <div class="meta" x-text="eventDateLabel(e) + ' · ' + (e.city || '') + ' · ' + scaleText(e)"></div>
+                <h3 x-text="e.title"></h3>
+                <p x-text="e.summary || e.theme || ''"></p>
+                <div class="tag-row"><template x-for="t in (e.tags || [])" :key="t"><span class="tag" x-text="t"></span></template></div>
+                <ul><template x-for="(a, i) in summitAgenda(e)" :key="'a' + i"><li x-text="[a.date, a.tag, a.text].filter(Boolean).join(' · ')"></li></template></ul>
               </div>
             </article>
           </template>

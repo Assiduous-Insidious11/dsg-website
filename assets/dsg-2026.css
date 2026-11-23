@@ -871,6 +871,7 @@ html[lang="en"] .hero h1 {
 /* 3 列时 7 场会剩 2 个空位（一整行白洞），改成按可用宽度自动排 4 列，最多只空 1 格 */
 .cat-cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; }
 .cat-cards.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.cat-cards.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 
 /* 活动大卡 */
 .evc {
@@ -1029,7 +1030,7 @@ html[lang="en"] .hero h1 {
      收紧上下留白，五格压到两屏内解决。 */
   .ev-stats .st-band .st-item { padding: 16px 14px 15px; gap: 3px; }
   .ev-stats .st-band .st-num { font-size: 26px; }
-  .cat-cards, .cat-cards.two { grid-template-columns: 1fr; }
+  .cat-cards, .cat-cards.two, .cat-cards.three { grid-template-columns: 1fr; }
   .caly-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .cat-head { grid-template-columns: 1fr; }
   .dt-hero-facts { gap: 18px; }
@@ -1179,6 +1180,10 @@ html[lang="en"] .hero h1 {
 }
 .evc .evc-fact .k { color: var(--muted); font-size: 12.5px; }
 .evc .evc-fact .v b { font-family: var(--ff-song); font-size: 16px; color: var(--ink); }
+/* 二级页案例卡：交流话题（有就列，没有则整块不占高） */
+.evc .evc-topics { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+.evc .evc-topics li { position: relative; padding-left: 13px; font-size: 13px; color: var(--ink-2); }
+.evc .evc-topics li::before { content: ""; position: absolute; left: 2px; top: .62em; width: 4px; height: 4px; border-radius: 50%; background: var(--gold); }
 
 @media (max-width: 1400px) {
   /* 并排时每栏正文只有 432px，而「第四届…社区金融游学研讨会」要 479px —— 一行放不下就会被省略号切掉。

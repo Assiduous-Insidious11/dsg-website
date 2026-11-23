@@ -92,16 +92,18 @@
 
     <section class="section compact">
       <div class="container">
-        <div class="section-head"><div><span class="eyebrow" data-bind="events-elite-talks.s4.eye">Closed-door Cases</span><h2 data-bind="events-elite-talks.s4.h2">闭门会历史案例</h2></div><p data-bind="events-elite-talks.s4.p">每场记录主题、参会对象与讨论问题。</p></div>
-        <div class="case-mini-grid">
-          <template x-for="item in recentCasesByCategory('精英六人谈', 6)" :key="item.id">
-            <article class="case-mini">
-              <div class="meta" x-text="item.dateText + ' · ' + item.city + ' · ' + item.format"></div>
-              <h3 x-text="item.title"></h3>
-              <p x-text="item.topic"></p>
-              <ul><template x-for="point in item.highlights"><li x-text="point"></li></template></ul>
-            </article>
-          </template>
+        <div class="section-head"><div><span class="eyebrow" data-bind="events-elite-talks.s4.eye">Closed-door Cases</span><h2 data-bind="events-elite-talks.s4.h2">闭门会历史场次</h2></div><p data-bind="events-elite-talks.s4.p">按时间由新到旧，最近 6 场的城市与主题。</p></div>
+        <div class="ev-recent">
+          <div class="ev-list">
+            <template x-for="e in archivedEventsByType('elite', 6)" :key="e.id">
+              <a class="ev-row elite" :href="eventDetailUrl(e)">
+                <span class="ev-row-date" x-text="eventDateLabel(e)"></span>
+                <span class="ev-row-city" x-text="e.city || ''"></span>
+                <span class="ev-row-title" x-text="e.title"></span>
+                <span class="ev-row-go">›</span>
+              </a>
+            </template>
+          </div>
         </div>
       </div>
     </section>
