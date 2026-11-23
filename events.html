@@ -5,7 +5,7 @@
   <link rel="icon" type="image/png" href="assets/optimized/logo_favicon.png">
   <title>活动中心 | DSG 数创时代</title>
   <link rel="stylesheet" href="assets/styles.css?v=20261119u">
-  <link rel="stylesheet" href="assets/dsg-2026.css?v=20261123c">
+  <link rel="stylesheet" href="assets/dsg-2026.css?v=20261123d">
   <script defer src="assets/alpine.min.js"></script>
   <script src="assets/embedded-data.js?v=20261123c"></script>
   <script src="assets/theme.js?v=20261119a"></script>
@@ -71,10 +71,10 @@
         <!-- 筛选：全部活动 / 年度峰会 / 城市沙龙 / 精英六人谈，右侧带场次数。
              点哪一个就只显示哪一类，类型内容不再在下面层层堆叠。 -->
         <div class="filters ev-filters">
-          <button class="filter" :class="{active: typeFilter === 'all'}" @click="typeFilter = 'all'">全部活动<em class="fnum" x-text="events.length"></em></button>
-          <button class="filter" :class="{active: typeFilter === 'summit'}" @click="typeFilter = 'summit'">年度峰会<em class="fnum" x-text="countOfCategory('summit')"></em></button>
-          <button class="filter" :class="{active: typeFilter === 'city'}" @click="typeFilter = 'city'">城市沙龙<em class="fnum" x-text="countOfCategory('city')"></em></button>
-          <button class="filter" :class="{active: typeFilter === 'elite'}" @click="typeFilter = 'elite'">精英六人谈<em class="fnum" x-text="countOfCategory('elite')"></em></button>
+          <button class="filter" :class="{active: typeFilter === 'all'}" @click="typeFilter = 'all'">全部活动</button>
+          <button class="filter" :class="{active: typeFilter === 'summit'}" @click="typeFilter = 'summit'">年度峰会</button>
+          <button class="filter" :class="{active: typeFilter === 'city'}" @click="typeFilter = 'city'">城市沙龙</button>
+          <button class="filter" :class="{active: typeFilter === 'elite'}" @click="typeFilter = 'elite'">精英六人谈</button>
         </div>
 
         <!-- 全部活动：月历。按系统日历的排法——周一起第一列，含前后月补格，
@@ -172,7 +172,7 @@
                       <span class="meta" x-text="audienceText(e)"></span>
                       <div class="evc-actions">
                         <a class="btn secondary" :href="eventDetailUrl(e)" data-bind="events.s3.a">查看详情</a>
-                        <button type="button" class="btn gold" @click="openRegistration(e)" x-text="eventPhaseLabel(e) === '已结束' ? '预约同类' : '报名参会'"></button>
+                        <button type="button" class="btn gold" x-show="eventPhaseLabel(e) !== '已结束'" @click="openRegistration(e)" x-text="e.type === 'elite' ? '申请席位' : '报名参会'"></button>
                       </div>
                     </div>
                   </div>
@@ -197,7 +197,7 @@
                       <span class="ev-row-meta" x-text="rowMeta(e)" x-show="rowMeta(e)"></span>
                     </span>
                     <span class="ev-row-tail">
-                      <span class="ev-row-apply" role="button" tabindex="0" @click.prevent.stop="openRegistration(e)" @keydown.enter.prevent.stop="openRegistration(e)">报名</span>
+                      <span class="ev-row-apply" role="button" tabindex="0" x-show="eventPhaseLabel(e) !== '已结束'" @click.prevent.stop="openRegistration(e)" @keydown.enter.prevent.stop="openRegistration(e)">报名</span>
                       <span class="ev-row-go">›</span>
                     </span>
                   </a>
@@ -225,7 +225,7 @@
               <span class="day-pop-type" x-text="e.categoryLabel"></span>
               <span class="day-pop-title" x-text="e.title"></span>
             </a>
-            <button type="button" class="btn gold sm" @click="openRegistration(e)" x-text="eventPhaseLabel(e) === '已结束' ? '预约同类' : '报名'"></button>
+            <button type="button" class="btn gold sm" x-show="eventPhaseLabel(e) !== '已结束'" @click="openRegistration(e)">报名</button>
           </div>
         </template>
       </div>

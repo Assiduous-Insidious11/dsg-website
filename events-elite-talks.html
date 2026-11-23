@@ -6,7 +6,7 @@
   <link rel="icon" type="image/png" href="assets/optimized/logo_favicon.png">
   <title>精英六人谈 | DSG 数创时代</title>
   <link rel="stylesheet" href="assets/styles.css?v=20261119u">
-  <link rel="stylesheet" href="assets/dsg-2026.css?v=20261123c">
+  <link rel="stylesheet" href="assets/dsg-2026.css?v=20261123d">
   <script defer src="assets/alpine.min.js"></script>
   <script src="assets/embedded-data.js?v=20261123c"></script>
   <script src="assets/theme.js?v=20261119a"></script>
@@ -111,7 +111,7 @@
                   <span class="ev-row-meta" x-text="rowMeta(e)" x-show="rowMeta(e)"></span>
                 </span>
                 <span class="ev-row-tail">
-                      <span class="ev-row-apply" role="button" tabindex="0" @click.prevent.stop="openRegistration(e)" @keydown.enter.prevent.stop="openRegistration(e)">报名</span>
+                      <span class="ev-row-apply" role="button" tabindex="0" x-show="eventPhaseLabel(e) !== '已结束'" @click.prevent.stop="openRegistration(e)" @keydown.enter.prevent.stop="openRegistration(e)">报名</span>
                       <span class="ev-row-go">›</span>
                     </span>
               </a>

@@ -5,7 +5,7 @@
   <link rel="icon" type="image/png" href="assets/optimized/logo_favicon-en.png">
   <title>Events | DSG</title>
   <link rel="stylesheet" href="assets/styles.css?v=20261119u">
-  <link rel="stylesheet" href="assets/dsg-2026.css?v=20261123c">
+  <link rel="stylesheet" href="assets/dsg-2026.css?v=20261123d">
   <script defer src="assets/alpine.min.js"></script>
   <script src="assets/embedded-data.js?v=20261123c"></script>
   <script src="assets/theme.js?v=20261119a"></script>
@@ -66,10 +66,10 @@
         </div>
 
         <div class="filters ev-filters">
-          <button class="filter" :class="{active: typeFilter === 'all'}" @click="typeFilter = 'all'">All Events<em class="fnum" x-text="events.length"></em></button>
-          <button class="filter" :class="{active: typeFilter === 'summit'}" @click="typeFilter = 'summit'">Annual Summits<em class="fnum" x-text="countOfCategory('summit')"></em></button>
-          <button class="filter" :class="{active: typeFilter === 'city'}" @click="typeFilter = 'city'">City Meetings<em class="fnum" x-text="countOfCategory('city')"></em></button>
-          <button class="filter" :class="{active: typeFilter === 'elite'}" @click="typeFilter = 'elite'">Elite Six Talks<em class="fnum" x-text="countOfCategory('elite')"></em></button>
+          <button class="filter" :class="{active: typeFilter === 'all'}" @click="typeFilter = 'all'">All Events</button>
+          <button class="filter" :class="{active: typeFilter === 'summit'}" @click="typeFilter = 'summit'">Annual Summits</button>
+          <button class="filter" :class="{active: typeFilter === 'city'}" @click="typeFilter = 'city'">City Meetings</button>
+          <button class="filter" :class="{active: typeFilter === 'elite'}" @click="typeFilter = 'elite'">Elite Six Talks</button>
         </div>
 
         <div class="syscal" x-show="typeFilter === 'all'">
@@ -180,7 +180,7 @@
                       <span class="ev-row-meta" x-text="rowMeta(e)" x-show="rowMeta(e)"></span>
                     </span>
                     <span class="ev-row-tail">
-                      <span class="ev-row-apply" role="button" tabindex="0" @click.prevent.stop="openRegistration(e)" @keydown.enter.prevent.stop="openRegistration(e)">Register</span>
+                      <span class="ev-row-apply" role="button" tabindex="0" x-show="eventPhaseLabel(e) !== 'Archived'" @click.prevent.stop="openRegistration(e)" @keydown.enter.prevent.stop="openRegistration(e)">Register</span>
                       <span class="ev-row-go">›</span>
                     </span>
                   </a>

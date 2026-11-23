@@ -3144,14 +3144,6 @@ html[lang="en"] .program-hero p {
   }
 }
 
-/* ---------- 活动相关页面收窄（2026-11-17 评审：“这个太宽了，缩小很多”）
-   全站正文容器 --site-max 是 1760，1440 屏下实际排到 1296；
-   活动页以列表与卡片为主，排太宽会拉散读序，只在活动六类页面收窄。 */
-body.page-events { --site-max: 1120px; }
-@media (max-width: 1180px) {
-  body.page-events { --site-max: 100%; }
-}
-
 /* ---------- 合作伙伴墙（11-17 评审：合作方 logo 集中一面墙，不按场次分散） ---------- */
 .pw-wall { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
 .pw-card {
