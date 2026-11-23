@@ -106,6 +106,17 @@
   };
 
   global.dsgApp = function dsgApp(page) {
+    /* 首屏数字与标题同步出现（2026-11-23）：
+       assets/embedded-data.js 里已经有一份同源 site 快照（构建时生成），
+       先拿它当初始值，Alpine 一启动就能画出首屏数字带，
+       不用等 content/site.json 的网络请求；请求回来后仍用最新数据覆盖。
+       英文页取 site-en，避免中文口径在英文页闪一下。 */
+    function embeddedSite() {
+      var bag = global.DSG_EMBEDDED || {};
+      var isEn = (document.documentElement.lang || "").toLowerCase() === "en";
+      return (isEn ? bag["site-en"] : bag.site) || bag.site || {};
+    }
+
     var parts = chinaParts();
     var chinaToday = parts.year + "-" + parts.month + "-" + parts.day;
     var archiveCutoffYear = Number(parts.year) - 2;
@@ -141,7 +152,7 @@
       dataError: false,
       content: {
         events: [], articles: [], organizations: [], speakers: [], media: [],
-        aiCases: [], legacyCases: [], pages: [], site: {}
+        aiCases: [], legacyCases: [], pages: [], site: embeddedSite()
       },
       formState: { submitting: false, errors: {}, message: "", ok: false },
 
@@ -161,16 +172,18 @@
           var isEn = (document.documentElement.lang || "").toLowerCase() === "en";
           var prefix = isEn ? "content-en/" : "content/";
           var fallbackPrefix = isEn ? "content-en/" : "content/";
-          var names = Object.keys(CONTENT_FILES);
-          var results = await Promise.all(names.map((key) =>
-            this.fetchJson(prefix + CONTENT_FILES[key] + ".json")
-                .catch(function () { return global.fetchJsonFallback(fallbackPrefix + CONTENT_FILES[key] + ".json"); })
-          ));
+          var names = Object.keys(CONTENT_FILES).concat(["site"]);
+          /* site.json 原来要等其余文件全部下完才单独 await（多排一轮往返），
+             而首屏那五个数字只在 site.json 里，等于永远是最后一个到的内容。
+             现在并进同一批请求里，一轮拿全，不再多等一轮。 */
+          var results = await Promise.all(names.map((key) => {
+            var file = key === "site" ? "site" : CONTENT_FILES[key];
+            var request = this.fetchJson(prefix + file + ".json")
+                .catch(function () { return global.fetchJsonFallback(fallbackPrefix + file + ".json"); });
+            return key === "site" ? request.catch(function () { return {}; }) : request;
+          }));
           var loaded = {};
           names.forEach(function (key, index) { loaded[key] = results[index]; });
-          var site = await this.fetchJson(prefix + "site.json")
-            .catch(function () { return global.fetchJsonFallback(fallbackPrefix + "site.json").catch(function () { return {}; }); });
-          loaded.site = site;
           // Demo 模式发布桥接：后台点击"发布到前台（Demo）"后，
           // 数据写入 localStorage（dsg-demo-published-v1），前台优先读取，
           // 实现"后台发布 → 刷新前台即见"的演示闭环；正式上线由后端数据库驱动。
