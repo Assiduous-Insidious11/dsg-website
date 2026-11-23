@@ -5,12 +5,12 @@
   <link rel="icon" type="image/png" href="assets/optimized/logo_favicon-en.png">
   <title>Events | DSG</title>
   <link rel="stylesheet" href="assets/styles.css?v=20261119u">
-  <link rel="stylesheet" href="assets/dsg-2026.css?v=20261123a">
+  <link rel="stylesheet" href="assets/dsg-2026.css?v=20261123c">
   <script defer src="assets/alpine.min.js"></script>
-  <script src="assets/embedded-data.js?v=20261120d"></script>
+  <script src="assets/embedded-data.js?v=20261123c"></script>
   <script src="assets/theme.js?v=20261119a"></script>
-  <script src="assets/site.js?v=20261123a"></script>
-  <script src="assets/blocks.js?v=20261119d"></script>
+  <script src="assets/site.js?v=20261123c"></script>
+  <script src="assets/blocks.js?v=20261123c"></script>
   <script src="assets/forms.js?v=20260917-eventsync"></script>
 <!-- seo:begin 由 tools/build.py 生成，勿手动修改 -->
   <meta name="description" content="The DSG Events Center aggregates annual summits, city salons and Elite Six Talks, filterable by event tier, city and date, with direct registration and seat application.">
@@ -32,7 +32,7 @@
   <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "name": "DSG (Digital Service Group)", "alternateName": "Digital Service Group", "url": "https://www.dsgcorp.cn", "logo": "https://www.dsgcorp.cn/assets/logo_full.png", "email": "jason.huang@dsgcorp.cn", "telephone": "+86 189 1635 8954", "address": {"@type": "PostalAddress", "streetAddress": "上海市徐汇区钦州北路1066号70号楼3楼"}}, {"@type": "WebSite", "name": "DSG (Digital Service Group)", "url": "https://www.dsgcorp.cn", "inLanguage": "en-US"}, {"@type": "WebPage", "name": "Events | DSG Digital Service Group", "url": "https://www.dsgcorp.cn/events-en.html", "isPartOf": {"@type": "WebSite", "url": "https://www.dsgcorp.cn"}}]}</script>
 <!-- seo:end -->
 </head>
-<body x-data="dsgApp('events')" x-init="applyCatFromUrl()">
+<body x-data="dsgApp('events')" x-init="applyCatFromUrl()" class="page-events">
   <header class="site-header"><nav class="nav"><a class="brand" href="index-en.html"><img src="assets/optimized/logo_full-en.webp" alt="DSG"></a><div class="nav-links"><a href="index-en.html">Home</a><div class="nav-item"><a class="active" href="events-en.html">Events</a><div class="dropdown"><a href="events-calendar-en.html">Events Calendar</a><a href="events-summits-en.html">Summits</a><a href="events-city-en.html">City Meetings</a><a href="events-elite-talks-en.html">Elite Talks</a></div></div><a href="supply-chain-ai-en.html">AI in Supply Chain</a><a href="insights-en.html">Insights</a><a href="about-en.html">About DSG</a><a href="contact-en.html">Contact</a></div><button class="nav-burger" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button><a class="nav-cta" href="contact-en.html">Book a Consultation</a><a class="lang-toggle" href="events.html">CN</a></nav></header>
   <main>
     <section class="ev-banner">
@@ -179,7 +179,10 @@
                       <span class="ev-row-title" x-text="e.title"></span>
                       <span class="ev-row-meta" x-text="rowMeta(e)" x-show="rowMeta(e)"></span>
                     </span>
-                    <span class="ev-row-go">›</span>
+                    <span class="ev-row-tail">
+                      <span class="ev-row-apply" role="button" tabindex="0" @click.prevent.stop="openRegistration(e)" @keydown.enter.prevent.stop="openRegistration(e)">Register</span>
+                      <span class="ev-row-go">›</span>
+                    </span>
                   </a>
                 </template>
               </div>

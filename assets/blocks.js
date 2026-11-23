@@ -107,11 +107,26 @@
       var scope = this.scope();
       if (!scope) return;
       var nodes = document.querySelectorAll("[data-bind],[data-bind-src],[data-bind-alt]");
+      var self = this;
+
+      /** data-bind 允许写全路径（events-city.s1.span）也允许写相对路径（s1.span）；
+          全路径先在本页子树里找不到，就剥掉页名前缀再取一次。 */
+      function valueOf(path) {
+        if (!path) return undefined;
+        var v = pick(scope, path);
+        if (v == null && self.page && path.indexOf(self.page + ".") === 0) {
+          v = pick(scope, path.slice(self.page.length + 1));
+        }
+        if (v == null && self.page && path.indexOf(self.page + ".") !== 0) {
+          v = pick(self.data, self.page + "." + path);
+        }
+        return v;
+      }
 
       Array.prototype.forEach.call(nodes, function (el) {
         var path = el.getAttribute("data-bind");
         if (path) {
-          var v = pick(scope, path);
+          var v = valueOf(path);
           if (v != null && v !== "") {
             var attr = el.getAttribute("data-bind-attr");
             if (attr) el.setAttribute(attr, String(v));
@@ -121,7 +136,7 @@
         ["href", "src", "alt"].forEach(function (name) {
           var p = el.getAttribute("data-bind-" + name);
           if (!p) return;
-          var val = pick(scope, p);
+          var val = valueOf(p);
           if (val != null && val !== "") el.setAttribute(name, String(val));
         });
       });

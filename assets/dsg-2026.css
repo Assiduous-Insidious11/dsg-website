@@ -28,7 +28,6 @@
   --page-max: 1240px;
   --gutter: clamp(20px, 5vw, 64px);
   --page-w: min(calc(var(--page-max) + var(--gutter) * 2), 100%);
-
   /* —— 纵向节奏 —— */
   --sec-y: calc(clamp(64px, 7.5vw, 108px) * var(--t-sec, 1));
   --sec-y-sm: calc(clamp(40px, 4.5vw, 64px) * var(--t-sec-sm, 1));
@@ -547,6 +546,11 @@ html[lang="en"] .brand img {
   color: var(--ink);
 }
 
+/* 整卡可点：往期场次不再只能靠标题猜能不能进详情（11-17 评审：列表点击就能看到详情） */
+.showcase-card.card-link { display: block; text-decoration: none; color: inherit; transition: transform .2s, box-shadow .2s; }
+.showcase-card.card-link:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+.showcase-card.card-link:hover h3 { color: var(--gold); }
+
 /* 卡片标题：没有标点可分的长标题，交给平衡折行，避免一行挤满一行只剩两三个字。
    同时把字号/行高拉回字阶变量（2026-11-12 晚）：styles.css 用 .event-card h3
    把字号写死成 22px/1.25，特异性高于覆盖层的 h3 规则，宋体行高因此被压紧。 */
@@ -871,7 +875,6 @@ html[lang="en"] .hero h1 {
 /* 3 列时 7 场会剩 2 个空位（一整行白洞），改成按可用宽度自动排 4 列，最多只空 1 格 */
 .cat-cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; }
 .cat-cards.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.cat-cards.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 
 /* 活动大卡 */
 .evc {
@@ -898,6 +901,8 @@ html[lang="en"] .hero h1 {
 .evc .evc-people { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .evc .evc-foot { margin-top: auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 12px; padding-top: 6px; }
 .evc .evc-foot .btn { white-space: nowrap; flex: 0 0 auto; margin-left: auto; }
+.evc .evc-actions { display: flex; align-items: center; gap: 8px; flex: 0 0 auto; margin-left: auto; flex-wrap: wrap; }
+.evc .evc-actions .btn { margin-left: 0; }
 .evc .evc-foot .meta { flex: 1 0 100%; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block; }
 
 /* 首字头像 */
@@ -1030,7 +1035,7 @@ html[lang="en"] .hero h1 {
      收紧上下留白，五格压到两屏内解决。 */
   .ev-stats .st-band .st-item { padding: 16px 14px 15px; gap: 3px; }
   .ev-stats .st-band .st-num { font-size: 26px; }
-  .cat-cards, .cat-cards.two, .cat-cards.three { grid-template-columns: 1fr; }
+  .cat-cards, .cat-cards.two { grid-template-columns: 1fr; }
   .caly-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .cat-head { grid-template-columns: 1fr; }
   .dt-hero-facts { gap: 18px; }
@@ -1047,6 +1052,14 @@ html[lang="en"] .hero h1 {
 /* 详情页 H1 的副标：标题被「—— / 暨」切开的后半句降一号字，不再和主标题一样大 */
 .program-hero h1 .title-line { display: block; }
 .program-hero h1 .title-sub { font-size: .6em; font-weight: 400; line-height: 1.5; margin-top: 10px; color: rgba(255, 255, 255, .74); }
+/* 详情页返回入口：放在小标签上方，不给访客只能走导航才能回列表 */
+.dt-back {
+  display: inline-block; margin-bottom: 18px; padding: 6px 14px 6px 12px;
+  border: 1px solid rgba(255, 255, 255, .28); border-radius: 999px;
+  color: rgba(255, 255, 255, .82); font-size: 13px; letter-spacing: .02em;
+  text-decoration: none; transition: border-color .2s, color .2s, background .2s;
+}
+.dt-back:hover { color: #fff; border-color: rgba(201, 168, 106, .7); background: rgba(201, 168, 106, .1); }
 /* 活动中心底部的年度迷你预览：12 格，一眼看全年分布 */
 .caly-mini { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 8px; }
 .caly-mini .cm {
@@ -1099,7 +1112,7 @@ html[lang="en"] .hero h1 {
 .ev-list { column-count: 2; column-gap: 40px; }
 .ev-row {
   display: grid;
-  grid-template-columns: 66px 62px 40px minmax(0, 1fr) 10px;
+  grid-template-columns: 66px 62px 40px minmax(0, 1fr) auto;
   gap: 10px;
   align-items: center;
   padding: 11px 0;
@@ -1109,16 +1122,32 @@ html[lang="en"] .hero h1 {
   color: var(--ink);
   break-inside: avoid;
 }
-.ev-row.city { grid-template-columns: 62px 40px minmax(0, 1fr) 10px; }
+.ev-row.city { grid-template-columns: 62px 40px minmax(0, 1fr) auto; }
 .ev-row:hover .ev-row-title { color: var(--gold); }
+/* 列表行尾：报名入口 + 详情箭头。报名不再必须绕到详情页（11-17 评审：点活动就能报名） */
+.ev-row-tail { display: flex; align-items: center; gap: 8px; justify-self: end; }
+.ev-row-apply {
+  flex: 0 0 auto; padding: 3px 10px; border: 1px solid rgba(201, 168, 106, .55); border-radius: 999px;
+  color: #8a6a2f; font-size: 12px; line-height: 1.5; cursor: pointer; white-space: nowrap;
+  background: rgba(201, 168, 106, .08); transition: background .18s, color .18s, border-color .18s;
+}
+.ev-row-apply:hover { background: #c9a86a; border-color: #c9a86a; color: #fff; }
+.ev-row-apply:focus-visible { outline: 2px solid #c9a86a; outline-offset: 2px; }
+/* 日历 +N 浮层：当天全部场次 */
+.day-pop-panel { width: min(560px, 100%); }
+.day-pop-list { display: grid; gap: 2px; }
+.day-pop-row { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.day-pop-row:last-child { border-bottom: 0; }
+.day-pop-link { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 4px; text-decoration: none; color: var(--ink); }
+.day-pop-link:hover .day-pop-title { color: var(--gold); }
+.day-pop-type { font-size: 11.5px; letter-spacing: .06em; color: var(--gold); text-transform: uppercase; }
+.day-pop-title { font-size: 15px; line-height: 1.5; }
+.day-pop-row .btn { flex: 0 0 auto; padding: 7px 14px; font-size: 13px; }
 .ev-row-no { font-size: 12px; color: var(--gold); white-space: nowrap; font-variant-numeric: tabular-nums; }
 .ev-row-date { font-size: 12.5px; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
 .ev-row-city { font-size: 12.5px; color: var(--muted); white-space: nowrap; }
 .ev-row-title { min-width: 0; line-height: 1.5; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .ev-row-go { color: var(--muted); font-size: 16px; text-align: right; }
-/* 列表行主栏：标题 + 副行（行业 · 人群），2026-11-23 按 11-17 评审补上行业与人群信息 */
-.ev-row-main { min-width: 0; display: flex; flex-direction: column; gap: 3px; }
-.ev-row-meta { font-size: 12px; line-height: 1.3; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .ev-empty { margin: 26px 0 6px; text-align: center; font-size: 13px; color: var(--muted); }
 
 /* 分页条：页码 + 每页条数 + 跳转（对齐邮箱那套控件） */
@@ -1180,10 +1209,6 @@ html[lang="en"] .hero h1 {
 }
 .evc .evc-fact .k { color: var(--muted); font-size: 12.5px; }
 .evc .evc-fact .v b { font-family: var(--ff-song); font-size: 16px; color: var(--ink); }
-/* 二级页案例卡：交流话题（有就列，没有则整块不占高） */
-.evc .evc-topics { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; }
-.evc .evc-topics li { position: relative; padding-left: 13px; font-size: 13px; color: var(--ink-2); }
-.evc .evc-topics li::before { content: ""; position: absolute; left: 2px; top: .62em; width: 4px; height: 4px; border-radius: 50%; background: var(--gold); }
 
 @media (max-width: 1400px) {
   /* 并排时每栏正文只有 432px，而「第四届…社区金融游学研讨会」要 479px —— 一行放不下就会被省略号切掉。
@@ -1201,6 +1226,7 @@ html[lang="en"] .hero h1 {
   .ev-row-date, .ev-row-city { display: none; }
   .ev-row-title { white-space: normal; }
   .ev-row-go { display: none; }
+  .ev-row-tail { grid-column: 1 / -1; justify-self: start; margin-top: 4px; }
   .ev-pager { justify-content: space-between; }
   .ev-pager-meta { width: 100%; justify-content: space-between; }
   .ev-search { max-width: none; }
@@ -1731,6 +1757,10 @@ html[lang="en"] .hero h1 {
 .sc-ev.elite { border-left-color: #6b5bd2; background: #f1f0fa; }
 .sc-ev.elite:hover { background: #e8e6f7; }
 .sc-more { padding-left: 2px; font-size: 10.5px; font-weight: 700; color: var(--muted); }
+button.sc-more { border: 0; background: none; cursor: pointer; font-family: inherit; }
+button.sc-more:hover { color: var(--gold); text-decoration: underline; }
+.caly-row-actions { display: flex; align-items: center; gap: 8px; flex: 0 0 auto; }
+.caly-row-actions .btn { padding: 7px 13px; font-size: 13px; white-space: nowrap; }
 
 /* ---------- 单类视图：紧接筛选按钮，不再叠加一层顶部留白与分隔线 ---------- */
 .ev-cat-view { padding-top: 0; border-top: 0; }
@@ -2186,7 +2216,7 @@ html[lang="en"] .hero::before {
 @media (max-width: 1100px) {
   .ev-recent .ev-list { grid-template-columns: 1fr; }
 }
-.ev-row.elite { grid-template-columns: 62px 40px minmax(0, 1fr) 10px; }
+.ev-row.elite { grid-template-columns: 62px 40px minmax(0, 1fr) auto; }
 .ev-recent-more {
   margin: 18px 0 0;
   padding-top: 14px;
@@ -3113,3 +3143,33 @@ html[lang="en"] .program-hero p {
       0 1px 10px rgba(0, 0, 0, .6);
   }
 }
+
+/* ---------- 活动相关页面收窄（2026-11-17 评审：“这个太宽了，缩小很多”）
+   全站正文容器 --site-max 是 1760，1440 屏下实际排到 1296；
+   活动页以列表与卡片为主，排太宽会拉散读序，只在活动六类页面收窄。 */
+body.page-events { --site-max: 1120px; }
+@media (max-width: 1180px) {
+  body.page-events { --site-max: 100%; }
+}
+
+/* ---------- 合作伙伴墙（11-17 评审：合作方 logo 集中一面墙，不按场次分散） ---------- */
+.pw-wall { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.pw-card {
+  display: flex; align-items: center; gap: 16px; padding: 22px 20px;
+  background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+  min-height: 104px;
+}
+.pw-logo { max-width: 108px; max-height: 52px; object-fit: contain; flex: 0 0 auto; }
+.pw-mono {
+  flex: 0 0 52px; width: 52px; height: 52px; border-radius: 8px;
+  display: grid; place-items: center; text-align: center;
+  background: var(--paper); color: var(--gold); font-size: 12px; line-height: 1.25; font-weight: 700;
+}
+.pw-body { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.pw-body strong { font-family: var(--ff-song); font-size: 16px; color: var(--ink); }
+.pw-body span { font-size: 12.5px; color: var(--muted); }
+.pw-note { display: grid; gap: 10px; max-width: 760px; }
+.pw-note p { margin: 0; color: var(--ink-2); line-height: 1.8; }
+.pw-note .actions { margin-top: 10px; display: flex; gap: 12px; flex-wrap: wrap; }
+@media (max-width: 960px) { .pw-wall { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .pw-wall { grid-template-columns: 1fr; } }

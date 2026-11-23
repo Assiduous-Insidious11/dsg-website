@@ -11,7 +11,7 @@
   "use strict";
 
   // 缓存版本号：内容更新时同步修改，用于绕过浏览器与 CDN 缓存
-  var CONTENT_VERSION = "20260906-content1";
+  var CONTENT_VERSION = "20261123b";
 
   var CONTENT_FILES = {
     events: "events",
@@ -135,6 +135,7 @@
       menuOpen: false,
       typeFilter: "all",
       selectedEvent: null,
+      dayPanel: null,
       selectedVideo: null,
       dataReady: false,
       dataError: false,
@@ -522,6 +523,37 @@
         };
       },
 
+      /* 日历格子「+N」：当天超过 2 场时点开，列出当天全部场次（每条可进详情、可报名），
+         不再让第 3 场起被折叠吞掉。评审原话：点一下要能看到。 */
+      get dayPanelLabel() {
+        if (!this.dayPanel) return "";
+        var p = this.dayPanel.iso.split("-");
+        return p[0] + " 年 " + Number(p[1]) + " 月 " + Number(p[2]) + " 日 · " + this.dayPanel.events.length + " 场";
+      },
+      openDayPanel(cell) {
+        if (!cell || !cell.events || !cell.events.length) return;
+        this.dayPanel = { iso: cell.iso, events: cell.events.slice() };
+      },
+      closeDayPanel() { this.dayPanel = null; },
+
+      /* 合作伙伴墙：只取已授权展示的合作方与主办方，
+         参会企业属于客户名单，不在站内公开列示（11-17 评审：不希望给竞争对手便利）。 */
+      get partnerOrgs() {
+        return (this.content.organizations || []).filter(function (o) {
+          return o && (o.category === "合作方" || o.category === "主办方");
+        });
+      },
+      get partnerRoles() {
+        var set = {};
+        this.partnerOrgs.forEach(function (o) { if (o.participationRole) set[o.participationRole] = true; });
+        return Object.keys(set);
+      },
+      get partnerCities() {
+        var set = {};
+        (this.events || []).forEach(function (e) { if (e.city) set[e.city] = true; });
+        return Object.keys(set).length;
+      },
+
       /* ---------------------------- 活动页：类型筛选视图 */
       /** 当前筛选对应的类型定义（全部活动时为 null） */
       get activeCategory() {
@@ -762,23 +794,18 @@
         if (/^(约?\s*\d+\s*(-\s*\d+)?\s*人|规模\s*\d+\s*人|约?\s*\d+\s*[\-—–~～]\s*\d*|\d+)$/.test(a)) return "";
         return a;
       },
-      /**
-       * 列表行的「行业」标签（2026-11-17 评审：列表要展示城市、行业、人群，不写期数）。
-       * tags 里混了三类东西：类型名、城市、行业词，这里跳过前两类取第一个行业词。
-       */
+      /** 列表行副行：行业 · 人群（没有人群就落到规模），内部口径词不上页面 */
       industryOf(event) {
-        var skip = ["精英六人谈", "城市沙龙", "年度峰会", "峰会", "私董会", "沙龙", "闭门会", "城市站"];
         var city = String((event && event.city) || "").trim();
+        var skip = ["精英六人谈", "城市沙龙", "年度峰会", "峰会", "私董会", "沙龙", "闭门会", "城市站", "案例集锦"];
         var tags = (event && event.tags) || [];
-        for (var i = 0; i < tags.length; i += 1) {
+        for (var i = 0; i < tags.length; i++) {
           var t = String(tags[i] || "").trim();
-          if (!t || t === city) continue;
-          if (skip.indexOf(t) !== -1) continue;
+          if (!t || t === city || skip.indexOf(t) !== -1) continue;
           return t;
         }
         return "";
       },
-      /** 列表行副行：行业 · 人群（没有人群就落到规模），内部口径词不上页面 */
       rowMeta(event) {
         var bits = [];
         var ind = this.industryOf(event);
@@ -789,7 +816,7 @@
           .replace(/\d+\s*[-–—~～]\s*\d+\s*人(规模)?/g, "")
           .replace(/\d+\s*人(规模|左右|上下|余)?/g, "")
           .replace(/[·、，,]{2,}/g, "·")
-          .replace(/^[·、，,\s]+|[·、，,\s]+$/g, "")
+          .replace(/^[·、，,]+|[·、，,]+$/g, "")
           .trim();
         if (ind && who.indexOf(ind) === 0) who = who.slice(ind.length).replace(/^[·、,，\/\s]+/, "").trim();
         if (who.length > 16) {
@@ -797,7 +824,10 @@
           who = (head.length > 12 ? head.slice(0, 12) + "…" : head) + (who.indexOf("/") !== -1 ? " 等" : "");
         }
         if (who) bits.push(who);
-        else if (event && event.capacity) bits.push(event.capacity + "人");
+        else {
+          var cap = event && event.scale && event.scale.expected && event.scale.expected.value;
+          if (cap) bits.push(cap + "人");
+        }
         return bits.join(" · ");
       },
       cardPeopleNote(event) {
@@ -855,55 +885,6 @@
           .filter((e) => !this.isUpcoming(e))
           .sort((a, b) => new Date(b.date) - new Date(a.date))
           .slice(0, limit);
-      },
-      /**
-       * 二级页（年度峰会 / 城市沙龙 / 精英六人谈）的场次列表：
-       * 同一类型全部场次按日期由新到旧，不区分是否已结束——
-       * 原来这几种页面用的是另一份手写旧案例（23 条，日期写作 240119，标题被截断），
-       * 与活动页的 63 场对不上，也没有活动自身的图片。这里统一回到 events.json。
-       */
-      eventsOfTypeSorted(type, limit) {
-        var list = this.events
-          .filter(function (e) { return e.type === type; })
-          .slice()
-          .sort(function (a, b) {
-            return (a.date || "") > (b.date || "") ? -1 : ((a.date || "") < (b.date || "") ? 1 : 0);
-          });
-        return limit ? list.slice(0, limit) : list;
-      },
-      /** 现场照片墙：只取真有 gallery 的场次（现已核实的 3 场），没有就返回空数组，板块自动不显示 */
-      photoStripOfType(type, limit) {
-        var out = [];
-        var max = limit || 4;
-        this.eventsOfTypeSorted(type).forEach(function (e) {
-          var g = (e && e.gallery) || [];
-          g.forEach(function (src) {
-            if (out.length < max && src && out.indexOf(src) === -1) out.push(src);
-          });
-        });
-        return out;
-      },
-      /** 2024 两届大会的官方主视觉；其余年份没有图，卡片退回排版 KV */
-      archivePoster(c) {
-        var t = String((c && (c.title || c.name)) || "");
-        if (t.indexOf("SIE") !== -1) return "assets/2024SIE.jpg";
-        if (t.indexOf("FDS") !== -1) return "assets/2024FDS.jpg";
-        return "";
-      },
-      /** 往期大会档案：2024 年起（近三年），按日期由新到旧 */
-      get summitArchive() {
-        return this.legacyCases
-          .filter(function (i) {
-            return (i.category === "峰会" || i.category === "年度峰会") && Number(i.year || 0) >= 2024;
-          })
-          .sort(function (a, b) { return (a.date || "") > (b.date || "") ? -1 : 1; });
-      },
-      /** 走进企业：标题里带「走进」的真实场次，按日期由新到旧 */
-      get visitEvents() {
-        return this.events
-          .filter(function (e) { return String(e.title || "").indexOf("走进") !== -1; })
-          .slice()
-          .sort(function (a, b) { return (a.date || "") > (b.date || "") ? -1 : 1; });
       },
       get archivedEventGroups() {
         if (this.typeFilter === "all") return [];

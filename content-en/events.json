@@ -1,0 +1,6727 @@
+[
+  {
+    "id": "EVT-2024-ELITE-01",
+    "urlName": "evt-2024-elite-01",
+    "title": "Elite Six Talks · Procurement: Career Development Choices for Procurement Executives",
+    "type": "elite",
+    "typeLabel": "Elite Six Talks",
+    "businessLine": "Elite Six Talks",
+    "eyebrow": "Elite Six Talks",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Archived",
+    "registrationOpen": false,
+    "date": "2024-02-03",
+    "dateText": "2.3",
+    "time": "15:00–18:00+Dinner",
+    "city": "Shanghai",
+    "venue": "Shanghai",
+    "scale": {
+      "expected": {
+        "value": 15,
+        "status": "estimated",
+        "note": "10-person private board",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-elite-v2.png",
+    "summary": "Elite Six Talks · procurement track review. A 10-person private board for enterprise CIO/IT and procurement & supply chain leaders; closed-door exchange.",
+    "agenda": [
+      "Self-introduction (clockwise)",
+      "Kick-off Sharing",
+      "Interactive Discussion",
+      "Closed-Door Dinner"
+    ],
+    "tags": [
+      "Elite Six Talks",
+      "Procurement",
+      "Shanghai"
+    ],
+    "speakerIds": [
+      "SPK-0001",
+      "SPK-0022",
+      "SPK-0035",
+      "SPK-0038",
+      "SPK-0039",
+      "SPK-0041",
+      "SPK-0063"
+    ],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "Elite Six Talks · Procurement: Career Development Choices for Procurement Executives | DSG",
+      "description": "Elite Six Talks · procurement track review. A 10-person private board for enterp",
+      "keywords": [
+        "elite talks"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2024-ELITE-02",
+    "urlName": "evt-2024-elite-02",
+    "title": "Elite Six Talks · Cross-Industry: 2024 Supply Chain Frontier — Igniting Innovation and Sustainability",
+    "type": "elite",
+    "typeLabel": "Elite Six Talks",
+    "businessLine": "Elite Six Talks",
+    "eyebrow": "Elite Six Talks",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Archived",
+    "registrationOpen": false,
+    "date": "2024-02-25",
+    "dateText": "2.25",
+    "time": "15:00–18:00+Dinner",
+    "city": "Shanghai",
+    "venue": "Shanghai",
+    "scale": {
+      "expected": {
+        "value": 15,
+        "status": "estimated",
+        "note": "10-person private board",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-elite-v2.png",
+    "summary": "Elite Six Talks · supply chain track review. A 10-person private board for enterprise CIO/IT and procurement & supply chain leaders; closed-door exchange.",
+    "agenda": [
+      "Self-introduction (clockwise)",
+      "Kick-off Sharing",
+      "Interactive Discussion",
+      "Closed-Door Dinner"
+    ],
+    "tags": [
+      "Elite Six Talks",
+      "Supply Chain",
+      "Shanghai"
+    ],
+    "speakerIds": [],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "Elite Six Talks · Cross-Industry: 2024 Supply Chain Frontier — Igniting Innovation and Sustainability | DSG",
+      "description": "Elite Six Talks · supply chain track review. A 10-person private board for enter",
+      "keywords": [
+        "elite talks",
+        "supply chain"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2024-ELITE-03",
+    "urlName": "evt-2024-elite-03",
+    "title": "Elite Six Talks · Automotive: Building a Sustainable and Efficient Global Supply Chain (1)",
+    "type": "elite",
+    "typeLabel": "Elite Six Talks",
+    "businessLine": "Elite Six Talks",
+    "eyebrow": "Elite Six Talks",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Archived",
+    "registrationOpen": false,
+    "date": "2024-03-03",
+    "dateText": "3.3",
+    "time": "15:00–18:00+Dinner",
+    "city": "Shanghai",
+    "venue": "Shanghai",
+    "scale": {
+      "expected": {
+        "value": 15,
+        "status": "estimated",
+        "note": "10-person private board",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-elite-v2.png",
+    "summary": "Elite Six Talks · automotive track review. A 10-person private board for enterprise CIO/IT and procurement & supply chain leaders; closed-door exchange.",
+    "agenda": [
+      "Self-introduction (clockwise)",
+      "Kick-off Sharing",
+      "Interactive Discussion",
+      "Closed-Door Dinner"
+    ],
+    "tags": [
+      "Elite Six Talks",
+      "Automotive",
+      "Shanghai"
+    ],
+    "speakerIds": [],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "Elite Six Talks · Automotive: Building a Sustainable and Efficient Global Supply Chain (1) | DSG",
+      "description": "Elite Six Talks · automotive track review. A 10-person private board for enterpr",
+      "keywords": [
+        "elite talks"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2024-ELITE-04",
+    "urlName": "evt-2024-elite-04",
+    "title": "Elite Six Talks · Retail: Building a Sustainable and Efficient Global Supply Chain (2)",
+    "type": "elite",
+    "typeLabel": "Elite Six Talks",
+    "businessLine": "Elite Six Talks",
+    "eyebrow": "Elite Six Talks",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Archived",
+    "registrationOpen": false,
+    "date": "2024-03-27",
+    "dateText": "3.27",
+    "time": "15:00–18:00+Dinner",
+    "city": "Shanghai",
+    "venue": "Shanghai",
+    "scale": {
+      "expected": {
+        "value": 15,
+        "status": "estimated",
+        "note": "10-person private board",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-elite-v2.png",
+    "summary": "Elite Six Talks · retail track review. A 10-person private board for enterprise CIO/IT and procurement & supply chain leaders; closed-door exchange.",
+    "agenda": [
+      "Self-introduction (clockwise)",
+      "Kick-off Sharing",
+      "Interactive Discussion",
+      "Closed-Door Dinner"
+    ],
+    "tags": [
+      "Elite Six Talks",
+      "Retail",
+      "Shanghai"
+    ],
+    "speakerIds": [],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "Elite Six Talks · Retail: Building a Sustainable and Efficient Global Supply Chain (2) | DSG",
+      "description": "Elite Six Talks · retail track review. A 10-person private board for enterprise ",
+      "keywords": [
+        "elite talks"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2024-ELITE-05",
+    "urlName": "evt-2024-elite-05",
+    "title": "Elite Six Talks · Semiconductor: Mind Maps for the Chip Era",
+    "type": "elite",
+    "typeLabel": "Elite Six Talks",
+    "businessLine": "Elite Six Talks",
+    "eyebrow": "Elite Six Talks",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Archived",
+    "registrationOpen": false,
+    "date": "2024-04-27",
+    "dateText": "4.27",
+    "time": "15:00–18:00+Dinner",
+    "city": "Shanghai",
+    "venue": "Shanghai",
+    "scale": {
+      "expected": {
+        "value": 15,
+        "status": "estimated",
+        "note": "10-person private board",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-elite-v2.png",
+    "summary": "Elite Six Talks · semiconductor track review. A 10-person private board for enterprise CIO/IT and procurement & supply chain leaders; closed-door exchange.",
+    "agenda": [
+      "Self-introduction (clockwise)",
+      "Kick-off Sharing",
+      "Interactive Discussion",
+      "Closed-Door Dinner"
+    ],
+    "tags": [
+      "Elite Six Talks",
+      "Semiconductor",
+      "Shanghai"
+    ],
+    "speakerIds": [],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "Elite Six Talks · Semiconductor: Mind Maps for the Chip Era | DSG",
+      "description": "Elite Six Talks · semiconductor track review. A 10-person private board for ente",
+      "keywords": [
+        "elite talks"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2024-ELITE-10",
+    "urlName": "evt-2024-elite-10",
+    "title": "Elite Six Talks · Manufacturing: Exploring the Intersection of AI LLMs and Industry",
+    "type": "elite",
+    "typeLabel": "Elite Six Talks",
+    "businessLine": "Elite Six Talks",
+    "eyebrow": "Elite Six Talks",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Archived",
+    "registrationOpen": false,
+    "date": "2024-05-25",
+    "dateText": "5.25",
+    "time": "15:00–18:00+Dinner",
+    "city": "Guangzhou",
+    "venue": "Guangzhou",
+    "scale": {
+      "expected": {
+        "value": 15,
+        "status": "estimated",
+        "note": "10-person private board",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-elite-v2.png",
+    "summary": "Elite Six Talks · manufacturing track review. A 10-person private board for enterprise CIO/IT and procurement & supply chain leaders; closed-door exchange.",
+    "agenda": [
+      "Self-introduction (clockwise)",
+      "Kick-off Sharing",
+      "Interactive Discussion",
+      "Closed-Door Dinner"
+    ],
+    "tags": [
+      "Elite Six Talks",
+      "Manufacturing",
+      "Guangzhou"
+    ],
+    "speakerIds": [],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "Elite Six Talks · Manufacturing: Exploring the Intersection of AI LLMs and Industry | DSG",
+      "description": "Elite Six Talks · manufacturing track review. A 10-person private board for ente",
+      "keywords": [
+        "elite talks"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2024-ELITE-06",
+    "urlName": "evt-2024-elite-06",
+    "title": "Elite Six Talks · Pharma: AI LLMs and Edge Computing (1)",
+    "type": "elite",
+    "typeLabel": "Elite Six Talks",
+    "businessLine": "Elite Six Talks",
+    "eyebrow": "Elite Six Talks",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Archived",
+    "registrationOpen": false,
+    "date": "2024-06-14",
+    "dateText": "6.14",
+    "time": "15:00–18:00+Dinner",
+    "city": "Shanghai",
+    "venue": "Shanghai",
+    "scale": {
+      "expected": {
+        "value": 15,
+        "status": "estimated",
+        "note": "10-person private board",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-elite-v2.png",
+    "summary": "Elite Six Talks · pharma track review. A 10-person private board for enterprise CIO/IT and procurement & supply chain leaders; closed-door exchange.",
+    "agenda": [
+      "Self-introduction (clockwise)",
+      "Kick-off Sharing",
+      "Interactive Discussion",
+      "Closed-Door Dinner"
+    ],
+    "tags": [
+      "Elite Six Talks",
+      "Pharma",
+      "Shanghai"
+    ],
+    "speakerIds": [],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "Elite Six Talks · Pharma: AI LLMs and Edge Computing (1) | DSG",
+      "description": "Elite Six Talks · pharma track review. A 10-person private board for enterprise ",
+      "keywords": [
+        "elite talks"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2024-ELITE-07",
+    "urlName": "evt-2024-elite-07",
+    "title": "Elite Six Talks · Pharma: AI LLMs and Edge Computing Empowering Pharma",
+    "type": "elite",
+    "typeLabel": "Elite Six Talks",
+    "businessLine": "Elite Six Talks",
+    "eyebrow": "Elite Six Talks",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Archived",
+    "registrationOpen": false,
+    "date": "2024-07-06",
+    "dateText": "7.6",
+    "time": "15:00–18:00+Dinner",
+    "city": "Shanghai",
+    "venue": "Shanghai",
+    "scale": {
+      "expected": {
+        "value": 15,
+        "status": "estimated",
+        "note": "10-person private board",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-elite-v2.png",
+    "summary": "Elite Six Talks · pharma track review. A 10-person private board for enterprise CIO/IT and procurement & supply chain leaders; closed-door exchange.",
+    "agenda": [
+      "Self-introduction (clockwise)",
+      "Kick-off Sharing",
+      "Interactive Discussion",
+      "Closed-Door Dinner"
+    ],
+    "tags": [
+      "Elite Six Talks",
+      "Pharma",
+      "Shanghai"
+    ],
+    "speakerIds": [],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "Elite Six Talks · Pharma: AI LLMs and Edge Computing Empowering Pharma | DSG",
+      "description": "Elite Six Talks · pharma track review. A 10-person private board for enterprise ",
+      "keywords": [
+        "elite talks"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2024-ELITE-08",
+    "urlName": "evt-2024-elite-08",
+    "title": "Elite Six Talks · Finance: 2024 Asset Management Technology Leadership",
+    "type": "elite",
+    "typeLabel": "Elite Six Talks",
+    "businessLine": "Elite Six Talks",
+    "eyebrow": "Elite Six Talks",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Archived",
+    "registrationOpen": false,
+    "date": "2024-07-30",
+    "dateText": "7.30",
+    "time": "15:00–18:00+Dinner",
+    "city": "Shanghai",
+    "venue": "Shanghai",
+    "scale": {
+      "expected": {
+        "value": 15,
+        "status": "estimated",
+        "note": "10-person private board",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-elite-v2.png",
+    "summary": "Elite Six Talks · finance track review. A 10-person private board for enterprise CIO/IT and procurement & supply chain leaders; closed-door exchange.",
+    "agenda": [
+      "Self-introduction (clockwise)",
+      "Kick-off Sharing",
+      "Interactive Discussion",
+      "Closed-Door Dinner"
+    ],
+    "tags": [
+      "Elite Six Talks",
+      "Finance",
+      "Shanghai"
+    ],
+    "speakerIds": [],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "Elite Six Talks · Finance: 2024 Asset Management Technology Leadership | DSG",
+      "description": "Elite Six Talks · finance track review. A 10-person private board for enterprise",
+      "keywords": [
+        "elite talks"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2024-ELITE-09",
+    "urlName": "evt-2024-elite-09",
+    "title": "Elite Six Talks · High-End Manufacturing: Building Critical Systems Driven by Global Security Acts",
+    "type": "elite",
+    "typeLabel": "Elite Six Talks",
+    "businessLine": "Elite Six Talks",
+    "eyebrow": "Elite Six Talks",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Archived",
+    "registrationOpen": false,
+    "date": "2024-08-31",
+    "dateText": "8.31",
+    "time": "15:00–18:00+Dinner",
+    "city": "Shanghai",
+    "venue": "Shanghai",
+    "scale": {
+      "expected": {
+        "value": 15,
+        "status": "estimated",
+        "note": "10-person private board",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-elite-v2.png",
+    "summary": "Elite Six Talks · high-end manufacturing track review. A 10-person private board for enterprise CIO/IT and procurement & supply chain leaders; closed-door exchange.",
+    "agenda": [
+      "Self-introduction (clockwise)",
+      "Kick-off Sharing",
+      "Interactive Discussion",
+      "Closed-Door Dinner"
+    ],
+    "tags": [
+      "Elite Six Talks",
+      "High-End Manufacturing",
+      "Shanghai"
+    ],
+    "speakerIds": [],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "Elite Six Talks · High-End Manufacturing: Building Critical Systems Driven by Global Security Acts | DSG",
+      "description": "Elite Six Talks · high-end manufacturing track review. A 10-person private board",
+      "keywords": [
+        "elite talks"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2024-ELITE-11",
+    "urlName": "evt-2024-elite-11",
+    "title": "Elite Six Talks · Foreign-Funded FMCG: AI-Empowered Digital Transformation and Innovation",
+    "type": "elite",
+    "typeLabel": "Elite Six Talks",
+    "businessLine": "Elite Six Talks",
+    "eyebrow": "Elite Six Talks",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Archived",
+    "registrationOpen": false,
+    "date": "2024-11-28",
+    "dateText": "11.28",
+    "time": "15:00–18:00+Dinner",
+    "city": "Shanghai",
+    "venue": "Shanghai",
+    "scale": {
+      "expected": {
+        "value": 15,
+        "status": "estimated",
+        "note": "10-person private board",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-elite-v2.png",
+    "summary": "Elite Six Talks · FMCG track review. A 10-person private board for enterprise CIO/IT and procurement & supply chain leaders; closed-door exchange.",
+    "agenda": [
+      "Self-introduction (clockwise)",
+      "Kick-off Sharing",
+      "Interactive Discussion",
+      "Closed-Door Dinner"
+    ],
+    "tags": [
+      "Elite Six Talks",
+      "Consumer",
+      "Shanghai"
+    ],
+    "speakerIds": [],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "Elite Six Talks · Foreign-Funded FMCG: AI-Empowered Digital Transformation and Innovation | DSG",
+      "description": "Elite Six Talks · FMCG track review. A 10-person private board for enterprise CI",
+      "keywords": [
+        "elite talks"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2025-ELITE-12",
+    "urlName": "evt-2025-elite-12",
+    "title": "Elite Six Talks · Manufacturing: DeepSeek AI LLM Special Session",
+    "type": "elite",
+    "typeLabel": "Elite Six Talks",
+    "businessLine": "Elite Six Talks",
+    "eyebrow": "Elite Six Talks",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Archived",
+    "registrationOpen": false,
+    "date": "2025-02-23",
+    "dateText": "2.23",
+    "time": "15:00–18:00+Dinner",
+    "city": "Shanghai",
+    "venue": "Shanghai",
+    "scale": {
+      "expected": {
+        "value": 15,
+        "status": "estimated",
+        "note": "10-person private board",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-elite-v2.png",
+    "summary": "Elite Six Talks · manufacturing track review. A 10-person private board for enterprise CIO/IT and procurement & supply chain leaders; closed-door exchange.",
+    "agenda": [
+      "Self-introduction (clockwise)",
+      "Kick-off Sharing",
+      "Interactive Discussion",
+      "Closed-Door Dinner"
+    ],
+    "tags": [
+      "Elite Six Talks",
+      "Manufacturing",
+      "Shanghai"
+    ],
+    "speakerIds": [],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "Elite Six Talks · Manufacturing: DeepSeek AI LLM Special Session | DSG",
+      "description": "Elite Six Talks · manufacturing track review. A 10-person private board for ente",
+      "keywords": [
+        "elite talks"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2025-ELITE-13",
+    "urlName": "evt-2025-elite-13",
+    "title": "Elite Six Talks · Manufacturing: Breaking Through Challenges, Building a Stable Information System Foundation",
+    "type": "elite",
+    "typeLabel": "Elite Six Talks",
+    "businessLine": "Elite Six Talks",
+    "eyebrow": "Elite Six Talks",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Archived",
+    "registrationOpen": false,
+    "date": "2025-04-25",
+    "dateText": "4.25",
+    "time": "15:00–18:00+Dinner",
+    "city": "Shanghai",
+    "venue": "Shanghai",
+    "scale": {
+      "expected": {
+        "value": 15,
+        "status": "estimated",
+        "note": "10-person private board",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-elite-v2.png",
+    "summary": "Elite Six Talks · manufacturing track review. A 10-person private board for enterprise CIO/IT and procurement & supply chain leaders; closed-door exchange.",
+    "agenda": [
+      "Self-introduction (clockwise)",
+      "Kick-off Sharing",
+      "Interactive Discussion",
+      "Closed-Door Dinner"
+    ],
+    "tags": [
+      "Elite Six Talks",
+      "Manufacturing",
+      "Shanghai"
+    ],
+    "speakerIds": [],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "Elite Six Talks · Manufacturing: Breaking Through Challenges, Building a Stable Information System Foundation | DSG",
+      "description": "Elite Six Talks · manufacturing track review. A 10-person private board for ente",
+      "keywords": [
+        "elite talks"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2025-ELITE-14",
+    "urlName": "evt-2025-elite-14",
+    "title": "Elite Six Talks · Foreign-Funded Cross-Industry: Eight Chapters of Digital Transformation",
+    "type": "elite",
+    "typeLabel": "Elite Six Talks",
+    "businessLine": "Elite Six Talks",
+    "eyebrow": "Elite Six Talks",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Archived",
+    "registrationOpen": false,
+    "date": "2025-05-16",
+    "dateText": "5.16",
+    "time": "15:00–18:00+Dinner",
+    "city": "Shanghai",
+    "venue": "Shanghai",
+    "scale": {
+      "expected": {
+        "value": 15,
+        "status": "estimated",
+        "note": "10-person private board",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-elite-v2.png",
+    "summary": "Elite Six Talks · digital transformation track review. A 10-person private board for enterprise CIO/IT and procurement & supply chain leaders; closed-door exchange.",
+    "agenda": [
+      "Self-introduction (clockwise)",
+      "Kick-off Sharing",
+      "Interactive Discussion",
+      "Closed-Door Dinner"
+    ],
+    "tags": [
+      "Elite Six Talks",
+      "Digital Transformation",
+      "Shanghai"
+    ],
+    "speakerIds": [],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "Elite Six Talks · Foreign-Funded Cross-Industry: Eight Chapters of Digital Transformation | DSG",
+      "description": "Elite Six Talks · digital transformation track review. A 10-person private board",
+      "keywords": [
+        "elite talks"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2025-ELITE-15",
+    "urlName": "evt-2025-elite-15",
+    "title": "Elite Six Talks · Retail & FMCG: AI Leading — Enterprise Technology Application and Strategic Breakthrough",
+    "type": "elite",
+    "typeLabel": "Elite Six Talks",
+    "businessLine": "Elite Six Talks",
+    "eyebrow": "Elite Six Talks",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Archived",
+    "registrationOpen": false,
+    "date": "2025-05-23",
+    "dateText": "5.23",
+    "time": "15:00–18:00+Dinner",
+    "city": "Shanghai",
+    "venue": "Shanghai",
+    "scale": {
+      "expected": {
+        "value": 15,
+        "status": "estimated",
+        "note": "10-person private board",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-elite-v2.png",
+    "summary": "Elite Six Talks · retail & FMCG track review. A 10-person private board for enterprise CIO/IT and procurement & supply chain leaders; closed-door exchange.",
+    "agenda": [
+      "Self-introduction (clockwise)",
+      "Kick-off Sharing",
+      "Interactive Discussion",
+      "Closed-Door Dinner"
+    ],
+    "tags": [
+      "Elite Six Talks",
+      "Retail & FMCG",
+      "Shanghai"
+    ],
+    "speakerIds": [],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "Elite Six Talks · Retail & FMCG: AI Leading — Enterprise Technology Application and Strategic Breakthrough | DSG",
+      "description": "Elite Six Talks · retail & FMCG track review. A 10-person private board for ente",
+      "keywords": [
+        "elite talks"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2025-ELITE-16",
+    "urlName": "evt-2025-elite-16",
+    "title": "Elite Six Talks · AI+ Security: Data Security and Compliance Seminar",
+    "type": "elite",
+    "typeLabel": "Elite Six Talks",
+    "businessLine": "Elite Six Talks",
+    "eyebrow": "Elite Six Talks",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Archived",
+    "registrationOpen": false,
+    "date": "2025-06-25",
+    "dateText": "6.25",
+    "time": "15:00–18:00+Dinner",
+    "city": "Shanghai",
+    "venue": "Shanghai",
+    "scale": {
+      "expected": {
+        "value": 15,
+        "status": "estimated",
+        "note": "10-person private board",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-elite-v2.png",
+    "summary": "Elite Six Talks · security track review. A 10-person private board for enterprise CIO/IT and procurement & supply chain leaders; closed-door exchange.",
+    "agenda": [
+      "Self-introduction (clockwise)",
+      "Kick-off Sharing",
+      "Interactive Discussion",
+      "Closed-Door Dinner"
+    ],
+    "tags": [
+      "Elite Six Talks",
+      "Security",
+      "Shanghai"
+    ],
+    "speakerIds": [
+      "SPK-0005",
+      "SPK-0059",
+      "SPK-0060",
+      "SPK-0061"
+    ],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "Elite Six Talks · AI+ Security: Data Security and Compliance Seminar | DSG",
+      "description": "Elite Six Talks · security track review. A 10-person private board for enterpris",
+      "keywords": [
+        "elite talks"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2025-ELITE-17",
+    "urlName": "evt-2025-elite-17",
+    "title": "Elite Six Talks · F&B Retail: New F&B and Tea Chain Models and Digital Operation",
+    "type": "elite",
+    "typeLabel": "Elite Six Talks",
+    "businessLine": "Elite Six Talks",
+    "eyebrow": "Elite Six Talks",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Archived",
+    "registrationOpen": false,
+    "date": "2025-07-03",
+    "dateText": "7.3",
+    "time": "15:00–18:00+Dinner",
+    "city": "Shanghai",
+    "venue": "Shanghai",
+    "scale": {
+      "expected": {
+        "value": 15,
+        "status": "estimated",
+        "note": "10-person private board",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-elite-v2.png",
+    "summary": "Elite Six Talks · F&B track review. A 10-person private board for enterprise CIO/IT and procurement & supply chain leaders; closed-door exchange.",
+    "agenda": [
+      "Self-introduction (clockwise)",
+      "Kick-off Sharing",
+      "Interactive Discussion",
+      "Closed-Door Dinner"
+    ],
+    "tags": [
+      "Elite Six Talks",
+      "F&B",
+      "Shanghai"
+    ],
+    "speakerIds": [],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "Elite Six Talks · F&B Retail: New F&B and Tea Chain Models and Digital Operation | DSG",
+      "description": "Elite Six Talks · F&B track review. A 10-person private board for enterprise CIO",
+      "keywords": [
+        "elite talks"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2025-ELITE-18",
+    "urlName": "evt-2025-elite-18",
+    "title": "Elite Six Talks · Manufacturing: Smart Vision of the Future — AI+ Strategic Decision and Organizational Agility",
+    "type": "elite",
+    "typeLabel": "Elite Six Talks",
+    "businessLine": "Elite Six Talks",
+    "eyebrow": "Elite Six Talks",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Archived",
+    "registrationOpen": false,
+    "date": "2025-07-11",
+    "dateText": "7.11",
+    "time": "15:00–18:00+Dinner",
+    "city": "Shanghai",
+    "venue": "Shanghai",
+    "scale": {
+      "expected": {
+        "value": 15,
+        "status": "estimated",
+        "note": "10-person private board",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-elite-v2.png",
+    "summary": "Elite Six Talks · manufacturing track review. A 10-person private board for enterprise CIO/IT and procurement & supply chain leaders; closed-door exchange.",
+    "agenda": [
+      "Self-introduction (clockwise)",
+      "Kick-off Sharing",
+      "Interactive Discussion",
+      "Closed-Door Dinner"
+    ],
+    "tags": [
+      "Elite Six Talks",
+      "Manufacturing",
+      "Shanghai"
+    ],
+    "speakerIds": [],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "Elite Six Talks · Manufacturing: Smart Vision of the Future — AI+ Strategic Decision and Organizational Agility | DSG",
+      "description": "Elite Six Talks · manufacturing track review. A 10-person private board for ente",
+      "keywords": [
+        "elite talks"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2025-ELITE-19",
+    "urlName": "evt-2025-elite-19",
+    "title": "Elite Six Talks · Semiconductor: AI+ Semiconductor Application Landing — Red & Black List",
+    "type": "elite",
+    "typeLabel": "Elite Six Talks",
+    "businessLine": "Elite Six Talks",
+    "eyebrow": "Elite Six Talks",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Archived",
+    "registrationOpen": false,
+    "date": "2025-07-18",
+    "dateText": "7.18",
+    "time": "15:00–18:00+Dinner",
+    "city": "Shanghai",
+    "venue": "Shanghai",
+    "scale": {
+      "expected": {
+        "value": 15,
+        "status": "estimated",
+        "note": "10-person private board",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-elite-v2.png",
+    "summary": "Elite Six Talks · semiconductor track review. A 10-person private board for enterprise CIO/IT and procurement & supply chain leaders; closed-door exchange.",
+    "agenda": [
+      "Self-introduction (clockwise)",
+      "Kick-off Sharing",
+      "Interactive Discussion",
+      "Closed-Door Dinner"
+    ],
+    "tags": [
+      "Elite Six Talks",
+      "Semiconductor",
+      "Shanghai"
+    ],
+    "speakerIds": [],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "Elite Six Talks · Semiconductor: AI+ Semiconductor Application Landing — Red & Black List | DSG",
+      "description": "Elite Six Talks · semiconductor track review. A 10-person private board for ente",
+      "keywords": [
+        "elite talks"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2025-ELITE-20",
+    "urlName": "evt-2025-elite-20",
+    "title": "Elite Six Talks · AI+ Security: B-Side LLM Landing, Big Data and Security Architecture Challenges",
+    "type": "elite",
+    "typeLabel": "Elite Six Talks",
+    "businessLine": "Elite Six Talks",
+    "eyebrow": "Elite Six Talks",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Archived",
+    "registrationOpen": false,
+    "date": "2025-07-23",
+    "dateText": "7.23",
+    "time": "15:00–18:00+Dinner",
+    "city": "Shanghai",
+    "venue": "Shanghai",
+    "scale": {
+      "expected": {
+        "value": 15,
+        "status": "estimated",
+        "note": "10-person private board",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-elite-v2.png",
+    "summary": "Elite Six Talks · security track review. A 10-person private board for enterprise CIO/IT and procurement & supply chain leaders; closed-door exchange.",
+    "agenda": [
+      "Self-introduction (clockwise)",
+      "Kick-off Sharing",
+      "Interactive Discussion",
+      "Closed-Door Dinner"
+    ],
+    "tags": [
+      "Elite Six Talks",
+      "Security",
+      "Shanghai"
+    ],
+    "speakerIds": [
+      "SPK-0005",
+      "SPK-0059",
+      "SPK-0060",
+      "SPK-0061"
+    ],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "Elite Six Talks · AI+ Security: B-Side LLM Landing, Big Data and Security Architecture Challenges | DSG",
+      "description": "Elite Six Talks · security track review. A 10-person private board for enterpris",
+      "keywords": [
+        "elite talks"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2025-ELITE-21",
+    "urlName": "evt-2025-elite-21",
+    "title": "Elite Six Talks · Chain Stores: AI Landing Success and Failure Cases in Chain Retail",
+    "type": "elite",
+    "typeLabel": "Elite Six Talks",
+    "businessLine": "Elite Six Talks",
+    "eyebrow": "Elite Six Talks",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Archived",
+    "registrationOpen": false,
+    "date": "2025-08-01",
+    "dateText": "8.1",
+    "time": "15:00–18:00+Dinner",
+    "city": "Shanghai",
+    "venue": "Shanghai",
+    "scale": {
+      "expected": {
+        "value": 15,
+        "status": "estimated",
+        "note": "10-person private board",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-elite-v2.png",
+    "summary": "Elite Six Talks · chain retail track review. A 10-person private board for enterprise CIO/IT and procurement & supply chain leaders; closed-door exchange.",
+    "agenda": [
+      "Self-introduction (clockwise)",
+      "Kick-off Sharing",
+      "Interactive Discussion",
+      "Closed-Door Dinner"
+    ],
+    "tags": [
+      "Elite Six Talks",
+      "Chain Retail",
+      "Shanghai"
+    ],
+    "speakerIds": [],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "Elite Six Talks · Chain Stores: AI Landing Success and Failure Cases in Chain Retail | DSG",
+      "description": "Elite Six Talks · chain retail track review. A 10-person private board for enter",
+      "keywords": [
+        "elite talks"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2025-ELITE-22",
+    "urlName": "evt-2025-elite-22",
+    "title": "Elite Six Talks · Automotive Chain: AI+ Automotive New Energy",
+    "type": "elite",
+    "typeLabel": "Elite Six Talks",
+    "businessLine": "Elite Six Talks",
+    "eyebrow": "Elite Six Talks",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Archived",
+    "registrationOpen": false,
+    "date": "2025-08-06",
+    "dateText": "8.6",
+    "time": "15:00–18:00+Dinner",
+    "city": "Shanghai",
+    "venue": "Shanghai",
+    "scale": {
+      "expected": {
+        "value": 15,
+        "status": "estimated",
+        "note": "10-person private board",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-elite-v2.png",
+    "summary": "Elite Six Talks · automotive track review. A 10-person private board for enterprise CIO/IT and procurement & supply chain leaders; closed-door exchange.",
+    "agenda": [
+      "Self-introduction (clockwise)",
+      "Kick-off Sharing",
+      "Interactive Discussion",
+      "Closed-Door Dinner"
+    ],
+    "tags": [
+      "Elite Six Talks",
+      "Automotive",
+      "Shanghai"
+    ],
+    "speakerIds": [
+      "SPK-0046",
+      "SPK-0047",
+      "SPK-0048",
+      "SPK-0050"
+    ],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "Elite Six Talks · Automotive Chain: AI+ Automotive New Energy | DSG",
+      "description": "Elite Six Talks · automotive track review. A 10-person private board for enterpr",
+      "keywords": [
+        "elite talks"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2025-ELITE-23",
+    "urlName": "evt-2025-elite-23",
+    "title": "Elite Six Talks · Retail & FMCG: New Consumption, New Trends — AI Landing Practice",
+    "type": "elite",
+    "typeLabel": "Elite Six Talks",
+    "businessLine": "Elite Six Talks",
+    "eyebrow": "Elite Six Talks",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Archived",
+    "registrationOpen": false,
+    "date": "2025-08-13",
+    "dateText": "8.13",
+    "time": "15:00–18:00+Dinner",
+    "city": "Shenzhen",
+    "venue": "Shenzhen",
+    "scale": {
+      "expected": {
+        "value": 15,
+        "status": "estimated",
+        "note": "10-person private board",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-elite-v2.png",
+    "summary": "Elite Six Talks · retail & FMCG track review. A 10-person private board for enterprise CIO/IT and procurement & supply chain leaders; closed-door exchange.",
+    "agenda": [
+      "Self-introduction (clockwise)",
+      "Kick-off Sharing",
+      "Interactive Discussion",
+      "Closed-Door Dinner"
+    ],
+    "tags": [
+      "Elite Six Talks",
+      "Retail & FMCG",
+      "Shenzhen"
+    ],
+    "speakerIds": [],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "Elite Six Talks · Retail & FMCG: New Consumption, New Trends — AI Landing Practice | DSG",
+      "description": "Elite Six Talks · retail & FMCG track review. A 10-person private board for ente",
+      "keywords": [
+        "elite talks"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2025-ELITE-24",
+    "urlName": "evt-2025-elite-24",
+    "title": "Elite Six Talks · Retail & Consumer: AI LLM Practice in Retail",
+    "type": "elite",
+    "typeLabel": "Elite Six Talks",
+    "businessLine": "Elite Six Talks",
+    "eyebrow": "Elite Six Talks",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Archived",
+    "registrationOpen": false,
+    "date": "2025-08-22",
+    "dateText": "8.22",
+    "time": "15:00–18:00+Dinner",
+    "city": "Hangzhou",
+    "venue": "Hangzhou",
+    "scale": {
+      "expected": {
+        "value": 15,
+        "status": "estimated",
+        "note": "10-person private board",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-elite-v2.png",
+    "summary": "Elite Six Talks · retail track review. A 10-person private board for enterprise CIO/IT and procurement & supply chain leaders; closed-door exchange.",
+    "agenda": [
+      "Self-introduction (clockwise)",
+      "Kick-off Sharing",
+      "Interactive Discussion",
+      "Closed-Door Dinner"
+    ],
+    "tags": [
+      "Elite Six Talks",
+      "Retail",
+      "Hangzhou"
+    ],
+    "speakerIds": [],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "Elite Six Talks · Retail & Consumer: AI LLM Practice in Retail | DSG",
+      "description": "Elite Six Talks · retail track review. A 10-person private board for enterprise ",
+      "keywords": [
+        "elite talks"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2025-ELITE-25",
+    "urlName": "evt-2025-elite-25",
+    "title": "Elite Six Talks · Manufacturing: Industrial AI Transformation Leap and Scenario Breakthrough Points",
+    "type": "elite",
+    "typeLabel": "Elite Six Talks",
+    "businessLine": "Elite Six Talks",
+    "eyebrow": "Elite Six Talks",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Archived",
+    "registrationOpen": false,
+    "date": "2025-08-29",
+    "dateText": "8.29",
+    "time": "15:00–18:00+Dinner",
+    "city": "Suzhou",
+    "venue": "Suzhou",
+    "scale": {
+      "expected": {
+        "value": 15,
+        "status": "estimated",
+        "note": "10-person private board",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-elite-v2.png",
+    "summary": "Elite Six Talks · manufacturing track review. A 10-person private board for enterprise CIO/IT and procurement & supply chain leaders; closed-door exchange.",
+    "agenda": [
+      "Self-introduction (clockwise)",
+      "Kick-off Sharing",
+      "Interactive Discussion",
+      "Closed-Door Dinner"
+    ],
+    "tags": [
+      "Elite Six Talks",
+      "Manufacturing",
+      "Suzhou"
+    ],
+    "speakerIds": [],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "Elite Six Talks · Manufacturing: Industrial AI Transformation Leap and Scenario Breakthrough Points | DSG",
+      "description": "Elite Six Talks · manufacturing track review. A 10-person private board for ente",
+      "keywords": [
+        "elite talks"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2025-ELITE-26",
+    "urlName": "evt-2025-elite-26",
+    "title": "Elite Six Talks · Retail & FMCG: AI Practice in Data and Marketing Scenarios",
+    "type": "elite",
+    "typeLabel": "Elite Six Talks",
+    "businessLine": "Elite Six Talks",
+    "eyebrow": "Elite Six Talks",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Archived",
+    "registrationOpen": false,
+    "date": "2025-09-12",
+    "dateText": "9.12",
+    "time": "15:00–18:00+Dinner",
+    "city": "Shanghai",
+    "venue": "Shanghai",
+    "scale": {
+      "expected": {
+        "value": 15,
+        "status": "estimated",
+        "note": "10-person private board",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-elite-v2.png",
+    "summary": "Elite Six Talks · retail & FMCG track review. A 10-person private board for enterprise CIO/IT and procurement & supply chain leaders; closed-door exchange.",
+    "agenda": [
+      "Self-introduction (clockwise)",
+      "Kick-off Sharing",
+      "Interactive Discussion",
+      "Closed-Door Dinner"
+    ],
+    "tags": [
+      "Elite Six Talks",
+      "Retail & FMCG",
+      "Shanghai"
+    ],
+    "speakerIds": [],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "Elite Six Talks · Retail & FMCG: AI Practice in Data and Marketing Scenarios | DSG",
+      "description": "Elite Six Talks · retail & FMCG track review. A 10-person private board for ente",
+      "keywords": [
+        "elite talks"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2025-ELITE-27",
+    "urlName": "evt-2025-elite-27",
+    "title": "Elite Six Talks · Pharma: AI LLM Practice in Pharma & Healthcare",
+    "type": "elite",
+    "typeLabel": "Elite Six Talks",
+    "businessLine": "Elite Six Talks",
+    "eyebrow": "Elite Six Talks",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Archived",
+    "registrationOpen": false,
+    "date": "2025-10-17",
+    "dateText": "10.17",
+    "time": "15:00–18:00+Dinner",
+    "city": "Hangzhou",
+    "venue": "Hangzhou",
+    "scale": {
+      "expected": {
+        "value": 15,
+        "status": "estimated",
+        "note": "10-person private board",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-elite-v2.png",
+    "summary": "Elite Six Talks · pharma track review. A 10-person private board for enterprise CIO/IT and procurement & supply chain leaders; closed-door exchange.",
+    "agenda": [
+      "Self-introduction (clockwise)",
+      "Kick-off Sharing",
+      "Interactive Discussion",
+      "Closed-Door Dinner"
+    ],
+    "tags": [
+      "Elite Six Talks",
+      "Pharma",
+      "Hangzhou"
+    ],
+    "speakerIds": [],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "Elite Six Talks · Pharma: AI LLM Practice in Pharma & Healthcare | DSG",
+      "description": "Elite Six Talks · pharma track review. A 10-person private board for enterprise ",
+      "keywords": [
+        "elite talks"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2025-ELITE-28",
+    "urlName": "evt-2025-elite-28",
+    "title": "Elite Six Talks · Manufacturing: AI LLM Practice in the Manufacturing Industry",
+    "type": "elite",
+    "typeLabel": "Elite Six Talks",
+    "businessLine": "Elite Six Talks",
+    "eyebrow": "Elite Six Talks",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Archived",
+    "registrationOpen": false,
+    "date": "2025-10-30",
+    "dateText": "10.30",
+    "time": "15:00–18:00+Dinner",
+    "city": "Hangzhou",
+    "venue": "Hangzhou",
+    "scale": {
+      "expected": {
+        "value": 15,
+        "status": "estimated",
+        "note": "10-person private board",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-elite-v2.png",
+    "summary": "Elite Six Talks · manufacturing track review. A 10-person private board for enterprise CIO/IT and procurement & supply chain leaders; closed-door exchange.",
+    "agenda": [
+      "Self-introduction (clockwise)",
+      "Kick-off Sharing",
+      "Interactive Discussion",
+      "Closed-Door Dinner"
+    ],
+    "tags": [
+      "Elite Six Talks",
+      "Manufacturing",
+      "Hangzhou"
+    ],
+    "speakerIds": [],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "Elite Six Talks · Manufacturing: AI LLM Practice in the Manufacturing Industry | DSG",
+      "description": "Elite Six Talks · manufacturing track review. A 10-person private board for ente",
+      "keywords": [
+        "elite talks"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2025-ELITE-29",
+    "urlName": "evt-2025-elite-29",
+    "title": "Elite Six Talks · Automotive: AI LLM Practice in the Automotive Industry",
+    "type": "elite",
+    "typeLabel": "Elite Six Talks",
+    "businessLine": "Elite Six Talks",
+    "eyebrow": "Elite Six Talks",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Archived",
+    "registrationOpen": false,
+    "date": "2025-10-31",
+    "dateText": "10.31",
+    "time": "15:00–18:00+Dinner",
+    "city": "Shanghai",
+    "venue": "Shanghai",
+    "scale": {
+      "expected": {
+        "value": 15,
+        "status": "estimated",
+        "note": "10-person private board",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-elite-v2.png",
+    "summary": "Elite Six Talks · automotive track review. A 10-person private board for enterprise CIO/IT and procurement & supply chain leaders; closed-door exchange.",
+    "agenda": [
+      "Self-introduction (clockwise)",
+      "Kick-off Sharing",
+      "Interactive Discussion",
+      "Closed-Door Dinner"
+    ],
+    "tags": [
+      "Elite Six Talks",
+      "Automotive",
+      "Shanghai"
+    ],
+    "speakerIds": [],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "Elite Six Talks · Automotive: AI LLM Practice in the Automotive Industry | DSG",
+      "description": "Elite Six Talks · automotive track review. A 10-person private board for enterpr",
+      "keywords": [
+        "elite talks"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2025-ELITE-30",
+    "urlName": "evt-2025-elite-30",
+    "title": "Elite Six Talks · Pharma: How AI Reshapes the \"New Double Ten-Year Law\" of Pharma R&D",
+    "type": "elite",
+    "typeLabel": "Elite Six Talks",
+    "businessLine": "Elite Six Talks",
+    "eyebrow": "Elite Six Talks",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Archived",
+    "registrationOpen": false,
+    "date": "2025-11-07",
+    "dateText": "11.7",
+    "time": "15:00–18:00+Dinner",
+    "city": "Shanghai",
+    "venue": "Shanghai",
+    "scale": {
+      "expected": {
+        "value": 15,
+        "status": "estimated",
+        "note": "10-person private board",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-elite-v2.png",
+    "summary": "Elite Six Talks · pharma track review. A 10-person private board for enterprise CIO/IT and procurement & supply chain leaders; closed-door exchange.",
+    "agenda": [
+      "Self-introduction (clockwise)",
+      "Kick-off Sharing",
+      "Interactive Discussion",
+      "Closed-Door Dinner"
+    ],
+    "tags": [
+      "Elite Six Talks",
+      "Pharma",
+      "Shanghai"
+    ],
+    "speakerIds": [],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "Elite Six Talks · Pharma: How AI Reshapes the \"New Double Ten-Year Law\" of Pharma R&D | DSG",
+      "description": "Elite Six Talks · pharma track review. A 10-person private board for enterprise ",
+      "keywords": [
+        "elite talks"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2025-ELITE-31",
+    "urlName": "evt-2025-elite-31",
+    "title": "Elite Six Talks · Manufacturing: Industrial AI Transformation Leap and Scenario Breakthrough Points",
+    "type": "elite",
+    "typeLabel": "Elite Six Talks",
+    "businessLine": "Elite Six Talks",
+    "eyebrow": "Elite Six Talks",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Archived",
+    "registrationOpen": false,
+    "date": "2025-11-13",
+    "dateText": "11.13",
+    "time": "15:00–18:00+Dinner",
+    "city": "Suzhou",
+    "venue": "Suzhou",
+    "scale": {
+      "expected": {
+        "value": 15,
+        "status": "estimated",
+        "note": "10-person private board",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-elite-v2.png",
+    "summary": "Elite Six Talks · manufacturing track review. A 10-person private board for enterprise CIO/IT and procurement & supply chain leaders; closed-door exchange.",
+    "agenda": [
+      "Self-introduction (clockwise)",
+      "Kick-off Sharing",
+      "Interactive Discussion",
+      "Closed-Door Dinner"
+    ],
+    "tags": [
+      "Elite Six Talks",
+      "Manufacturing",
+      "Suzhou"
+    ],
+    "speakerIds": [],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "Elite Six Talks · Manufacturing: Industrial AI Transformation Leap and Scenario Breakthrough Points | DSG",
+      "description": "Elite Six Talks · manufacturing track review. A 10-person private board for ente",
+      "keywords": [
+        "elite talks"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2025-ELITE-32",
+    "urlName": "evt-2025-elite-32",
+    "title": "Elite Six Talks · Automotive Chain: AI-Empowered Digital Transformation and New Security Paradigm",
+    "type": "elite",
+    "typeLabel": "Elite Six Talks",
+    "businessLine": "Elite Six Talks",
+    "eyebrow": "Elite Six Talks",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Archived",
+    "registrationOpen": false,
+    "date": "2025-11-20",
+    "dateText": "11.20",
+    "time": "15:00–18:00+Dinner",
+    "city": "Shanghai",
+    "venue": "Shanghai",
+    "scale": {
+      "expected": {
+        "value": 15,
+        "status": "estimated",
+        "note": "10-person private board",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-elite-v2.png",
+    "summary": "Elite Six Talks · automotive safety track review. A 10-person private board for enterprise CIO/IT and procurement & supply chain leaders; closed-door exchange.",
+    "agenda": [
+      "Self-introduction (clockwise)",
+      "Kick-off Sharing",
+      "Interactive Discussion",
+      "Closed-Door Dinner"
+    ],
+    "tags": [
+      "Elite Six Talks",
+      "Automotive Safety",
+      "Shanghai"
+    ],
+    "speakerIds": [],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "Elite Six Talks · Automotive Chain: AI-Empowered Digital Transformation and New Security Paradigm | DSG",
+      "description": "Elite Six Talks · automotive safety track review. A 10-person private board for ",
+      "keywords": [
+        "elite talks"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2025-ELITE-33",
+    "urlName": "evt-2025-elite-33",
+    "title": "Elite Six Talks · Automotive Chain: AI+ Scenario Applications (Year-End Appreciation)",
+    "type": "elite",
+    "typeLabel": "Elite Six Talks",
+    "businessLine": "Elite Six Talks",
+    "eyebrow": "Elite Six Talks",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Archived",
+    "registrationOpen": false,
+    "date": "2025-12-12",
+    "dateText": "12.12",
+    "time": "15:00–18:00+Dinner",
+    "city": "Shanghai",
+    "venue": "Shanghai",
+    "scale": {
+      "expected": {
+        "value": 15,
+        "status": "estimated",
+        "note": "10-person private board",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-elite-v2.png",
+    "summary": "Elite Six Talks · automotive track review. A 10-person private board for enterprise CIO/IT and procurement & supply chain leaders; closed-door exchange.",
+    "agenda": [
+      "Self-introduction (clockwise)",
+      "Kick-off Sharing",
+      "Interactive Discussion",
+      "Closed-Door Dinner"
+    ],
+    "tags": [
+      "Elite Six Talks",
+      "Automotive",
+      "Shanghai"
+    ],
+    "speakerIds": [],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "Elite Six Talks · Automotive Chain: AI+ Scenario Applications (Year-End Appreciation) | DSG",
+      "description": "Elite Six Talks · automotive track review. A 10-person private board for enterpr",
+      "keywords": [
+        "elite talks"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2025-VISIT-01",
+    "urlName": "visit-netease-2025",
+    "title": "Inside NetEase Hangzhou — New Energy Digitalization & AI Application (Closed Door)",
+    "type": "city",
+    "typeLabel": "Enterprise Visit",
+    "businessLine": "Enterprise Visit Series",
+    "eyebrow": "Enterprise Visit",
+    "edition": {
+      "label": "No.1",
+      "number": 1
+    },
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Ended",
+    "registrationOpen": false,
+    "date": "2025-12-19",
+    "dateText": "12.19",
+    "time": "14:00–18:00+Dinner",
+    "city": "Hangzhou",
+    "venue": "NetEase Campus Phase II, Hangzhou",
+    "scale": {
+      "expected": {
+        "value": 30,
+        "status": "estimated",
+        "note": "By invitation: new energy CIOs",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-city-v2.png",
+    "summary": "Theme: new energy digitalization and AI application. Tour NetEase; roundtable on AI scenario enablement, new energy project lifecycle management (L2C) and industry digital transformation.",
+    "agenda": [
+      "Site Visit: NetEase",
+      "Roundtable: AI Enablement in New Energy",
+      "Roundtable: New Energy L2C Collaboration",
+      "Roundtable: Industry Digitalization Systems"
+    ],
+    "tags": [
+      "Enterprise Visit",
+      "New Energy",
+      "Hangzhou"
+    ],
+    "speakerIds": [
+      "SPK-0011"
+    ],
+    "organizationIds": [
+      "ORG-NETEASE",
+      "ORG-HUADI",
+      "ORG-GCL",
+      "ORG-CHINT",
+      "ORG-RISESUN"
+    ],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "Inside NetEase Hangzhou — New Energy Digitalization & AI Application (Closed Door) | DSG",
+      "description": "Theme: new energy digitalization and AI application. Tour NetEase; roundtable on",
+      "keywords": [
+        "enterprise visit"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2025-ELITE-34",
+    "urlName": "evt-2025-elite-34",
+    "title": "Elite Six Talks · New Energy: AI LLM Practice in the New Energy Industry",
+    "type": "elite",
+    "typeLabel": "Elite Six Talks",
+    "businessLine": "Elite Six Talks",
+    "eyebrow": "Elite Six Talks",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Archived",
+    "registrationOpen": false,
+    "date": "2025-12-19",
+    "dateText": "12.19",
+    "time": "15:00–18:00+Dinner",
+    "city": "Hangzhou",
+    "venue": "Hangzhou",
+    "scale": {
+      "expected": {
+        "value": 15,
+        "status": "estimated",
+        "note": "10-person private board",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-elite-v2.png",
+    "summary": "Elite Six Talks · new energy track review. A 10-person private board for enterprise CIO/IT and procurement & supply chain leaders; closed-door exchange.",
+    "agenda": [
+      "Self-introduction (clockwise)",
+      "Kick-off Sharing",
+      "Interactive Discussion",
+      "Closed-Door Dinner"
+    ],
+    "tags": [
+      "Elite Six Talks",
+      "New Energy",
+      "Hangzhou"
+    ],
+    "speakerIds": [],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "Elite Six Talks · New Energy: AI LLM Practice in the New Energy Industry | DSG",
+      "description": "Elite Six Talks · new energy track review. A 10-person private board for enterpr",
+      "keywords": [
+        "elite talks"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2026-ELITE-35",
+    "urlName": "evt-2026-elite-35",
+    "title": "AI+ Security: Smart Defense Without Borders — AI Reshaping the New Cyber Defense Line",
+    "type": "elite",
+    "typeLabel": "Elite Six Talks",
+    "businessLine": "Elite Six Talks",
+    "eyebrow": "Elite Six Talks",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Ended",
+    "registrationOpen": false,
+    "date": "2026-01-17",
+    "dateText": "1.17",
+    "time": "15:00–18:00+Dinner",
+    "city": "Shanghai",
+    "venue": "Shanghai",
+    "scale": {
+      "expected": {
+        "value": 15,
+        "status": "estimated",
+        "note": "1010-person private board · 15–20 attendees",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-elite-v2.png",
+    "summary": "Elite Six Talks · security track. A 10-person private board for enterprise CIO/IT and procurement & supply chain leaders; closed-door exchange + dinner.",
+    "agenda": [
+      "Self-introduction (clockwise)",
+      "Kick-off Sharing",
+      "Interactive Discussion",
+      "Closed-Door Dinner"
+    ],
+    "tags": [
+      "Elite Six Talks",
+      "Security",
+      "Shanghai"
+    ],
+    "speakerIds": [
+      "SPK-0005",
+      "SPK-0059",
+      "SPK-0060",
+      "SPK-0061"
+    ],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "AI+ Security: Smart Defense Without Borders — AI Reshaping the New Cyber Defense Line | DSG",
+      "description": "Elite Six Talks · security track. A 10-person private board for enterprise CIO/I",
+      "keywords": [
+        "elite talks"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2026-ELITE-36",
+    "urlName": "evt-2026-elite-36",
+    "title": "Procurement & Supply Chain: Hidden Game Theory and Decision Trade-offs in Supply Chain Finance",
+    "type": "elite",
+    "typeLabel": "Elite Six Talks",
+    "businessLine": "Elite Six Talks",
+    "eyebrow": "Elite Six Talks",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Ended",
+    "registrationOpen": false,
+    "date": "2026-01-29",
+    "dateText": "1.29",
+    "time": "15:00–18:00+Dinner",
+    "city": "Shanghai",
+    "venue": "Shanghai",
+    "scale": {
+      "expected": {
+        "value": 15,
+        "status": "estimated",
+        "note": "1010-person private board · 15–20 attendees",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-elite-v2.png",
+    "summary": "Elite Six Talks · supply chain finance track. A 10-person private board for enterprise CIO/IT and procurement & supply chain leaders; closed-door exchange + dinner.",
+    "agenda": [
+      "Self-introduction (clockwise)",
+      "Kick-off Sharing",
+      "Interactive Discussion",
+      "Closed-Door Dinner"
+    ],
+    "tags": [
+      "Elite Six Talks",
+      "Supply ChainFinance",
+      "Shanghai"
+    ],
+    "speakerIds": [
+      "SPK-0001",
+      "SPK-0022",
+      "SPK-0035",
+      "SPK-0038",
+      "SPK-0039",
+      "SPK-0041",
+      "SPK-0063"
+    ],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "Procurement & Supply Chain: Hidden Game Theory and Decision Trade-offs in Supply Chain Finance | DSG",
+      "description": "Elite Six Talks · supply chain finance track. A 10-person private board for ente",
+      "keywords": [
+        "elite talks"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2026-VISIT-02",
+    "urlName": "visit-jiogepengyou-2026",
+    "title": "Inside Friends — AI Rebuilding the E-commerce Chain Closed-Door Seminar",
+    "type": "city",
+    "typeLabel": "Enterprise Visit",
+    "businessLine": "Enterprise Visit Series",
+    "eyebrow": "Enterprise Visit",
+    "edition": {
+      "label": "No.2",
+      "number": 2
+    },
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Ended",
+    "registrationOpen": false,
+    "date": "2026-02-06",
+    "dateText": "2.6",
+    "time": "14:00–18:00+Dinner",
+    "city": "Hangzhou",
+    "venue": "Hangzhou·Friends (e-commerce)",
+    "scale": {
+      "expected": {
+        "value": 30,
+        "status": "estimated",
+        "note": "By invitation: e-commerce CIO/IT leaders",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-city-v2.png",
+    "summary": "Theme: Hard Landing · Ecosystem. E-commerce CIO/IT leaders visit Friends to discuss AI e-commerce ROI measurement, data security compliance boundaries and legacy IT architecture.",
+    "agenda": [
+      "Discussion: ROI of AI E-commerce Systems",
+      "Case Sharing (2 Speakers)",
+      "Site Visit: Friends (e-commerce)",
+      "Dinner Exchange"
+    ],
+    "tags": [
+      "Enterprise Visit",
+      "E-commerce",
+      "Hangzhou"
+    ],
+    "speakerIds": [
+      "SPK-0051"
+    ],
+    "organizationIds": [
+      "ORG-JOY",
+      "ORG-3F"
+    ],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "Inside Friends — AI Rebuilding the E-commerce Chain Closed-Door Seminar | DSG",
+      "description": "Theme: Hard Landing · Ecosystem. E-commerce CIO/IT leaders visit Friends to disc",
+      "keywords": [
+        "enterprise visit",
+        "AI"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2026-VISIT-03",
+    "urlName": "visit-joyson-2026",
+    "title": "Inside Joyson Safety Systems — AI-Agent-Driven Automotive Manufacturing Digital Transformation Closed-Door Seminar",
+    "type": "city",
+    "typeLabel": "Enterprise Visit",
+    "businessLine": "Enterprise Visit Series",
+    "eyebrow": "Enterprise Visit",
+    "edition": {
+      "label": "No.3",
+      "number": 3
+    },
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Ended",
+    "registrationOpen": false,
+    "date": "2026-03-06",
+    "dateText": "3.6",
+    "time": "14:00–18:00",
+    "city": "Shanghai",
+    "venue": "Shanghai·Joyson Safety Systems",
+    "scale": {
+      "expected": {
+        "value": 30,
+        "status": "estimated",
+        "note": "By invitation: automotive manufacturing CIO/IT and supply chain leaders",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-city-v2.png",
+    "summary": "Theme: Smart Chain Reborn. Automotive CIO/IT and supply chain leaders visit Joyson Safety Systems to discuss manufacturing agent evolution, agent-cluster collaboration and resilient supply chain brain.",
+    "agenda": [
+      "Discussion: Evolution of Manufacturing Agents",
+      "Case Sharing (2 Speakers)",
+      "Site Visit: Joyson Safety Systems",
+      "Dinner Exchange"
+    ],
+    "tags": [
+      "Enterprise Visit",
+      "Automotive Chain",
+      "Shanghai"
+    ],
+    "speakerIds": [
+      "SPK-0046"
+    ],
+    "organizationIds": [
+      "ORG-JOINSON",
+      "ORG-ZEEKR",
+      "ORG-VOLVO",
+      "ORG-BOSCH"
+    ],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "Inside Joyson Safety Systems — AI-Agent-Driven Automotive Manufacturing Digital Transformation Closed-Door Seminar | DSG",
+      "description": "Theme: Smart Chain Reborn. Automotive CIO/IT and supply chain leaders visit Joys",
+      "keywords": [
+        "enterprise visit",
+        "AI"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2026-SUP",
+    "urlName": "dsg-supply-chain-summit-2026",
+    "title": "3rd DSG Global Supply Chain Innovation & Sustainability Summit",
+    "type": "summit",
+    "typeLabel": "Annual Summit",
+    "businessLine": "Supply Chain Summit",
+    "eyebrow": "Annual Summit",
+    "edition": {
+      "label": "2026 ",
+      "number": 2026
+    },
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Ended",
+    "registrationOpen": false,
+    "date": "2026-03-27",
+    "dateText": "3.27",
+    "time": "Mar27",
+    "city": "Shanghai",
+    "venue": "Shanghai·Putuo Baisha Pagoda Juntin Hotel",
+    "scale": {
+      "expected": {
+        "value": 200,
+        "status": "estimated",
+        "note": "Approx. 200 attendees",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": 200,
+        "status": "estimated",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-summit-v2.png",
+    "summary": "Theme: Building Resilient Chains with Smart Sustainability. Attendees: global CPOs, procurement directors/managers, supply chain managers, manufacturing leaders and CIOs.",
+    "agenda": [
+      "Global Vision & Strategic Reshaping",
+      "Procurement Innovation in Practice",
+      "Supply Chain Leadership Roundtable"
+    ],
+    "tags": [
+      "Supply Chain Summit",
+      "Flagship Summit",
+      "Shanghai"
+    ],
+    "speakerIds": [
+      "SPK-0001",
+      "SPK-0003",
+      "SPK-0004",
+      "SPK-0014",
+      "SPK-0031",
+      "SPK-0048",
+      "SPK-0050",
+      "SPK-0062",
+      "SPK-0063"
+    ],
+    "organizationIds": [
+      "ORG-MCKINSEY",
+      "ORG-QIXIN",
+      "ORG-HICHANGE"
+    ],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "3rd DSG Global Supply Chain Innovation & Sustainability Summit | DSG",
+      "description": "Theme: Building Resilient Chains with Smart Sustainability. Attendees: global CP",
+      "keywords": [
+        "supply chain",
+        "DSG"
+      ]
+    },
+    "category": "summit",
+    "categoryLabel": "Annual Summit"
+  },
+  {
+    "id": "EVT-2026-ELITE-37",
+    "urlName": "evt-2026-elite-37",
+    "title": "AI+ Retail & FMCG: Rebuilding Growth — How AI and Innovation Rewrite Industry Rules",
+    "type": "elite",
+    "typeLabel": "Elite Six Talks",
+    "businessLine": "Elite Six Talks",
+    "eyebrow": "Elite Six Talks",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Ended",
+    "registrationOpen": false,
+    "date": "2026-04-10",
+    "dateText": "4.10",
+    "time": "15:00–18:00+Dinner",
+    "city": "Shanghai",
+    "venue": "Shanghai",
+    "scale": {
+      "expected": {
+        "value": 15,
+        "status": "estimated",
+        "note": "1010-person private board · 15–20 attendees",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-elite-v2.png",
+    "summary": "Elite Six Talks · retail & FMCG track. A 10-person private board for enterprise CIO/IT and procurement & supply chain leaders; closed-door exchange + dinner.",
+    "agenda": [
+      "Self-introduction (clockwise)",
+      "Kick-off Sharing",
+      "Interactive Discussion",
+      "Closed-Door Dinner"
+    ],
+    "tags": [
+      "Elite Six Talks",
+      "Retail & FMCG",
+      "Shanghai"
+    ],
+    "speakerIds": [
+      "SPK-0023",
+      "SPK-0024",
+      "SPK-0025",
+      "SPK-0026",
+      "SPK-0027",
+      "SPK-0053"
+    ],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "AI+ Retail & FMCG: Rebuilding Growth — How AI and Innovation Rewrite Industry Rules | DSG",
+      "description": "Elite Six Talks · retail & FMCG track. A 10-person private board for enterprise ",
+      "keywords": [
+        "elite talks"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2026-ELITE-38",
+    "urlName": "evt-2026-elite-38",
+    "title": "AI+ Manufacturing: AI-Empowered Scheduling — From Technology to Results",
+    "type": "elite",
+    "typeLabel": "Elite Six Talks",
+    "businessLine": "Elite Six Talks",
+    "eyebrow": "Elite Six Talks",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Ended",
+    "registrationOpen": false,
+    "date": "2026-04-22",
+    "dateText": "4.22",
+    "time": "15:00–18:00+Dinner",
+    "city": "Shanghai",
+    "venue": "Shanghai",
+    "scale": {
+      "expected": {
+        "value": 15,
+        "status": "estimated",
+        "note": "1010-person private board · 15–20 attendees",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-elite-v2.png",
+    "summary": "Elite Six Talks · manufacturing track. A 10-person private board for enterprise CIO/IT and procurement & supply chain leaders; closed-door exchange + dinner.",
+    "agenda": [
+      "Self-introduction (clockwise)",
+      "Kick-off Sharing",
+      "Interactive Discussion",
+      "Closed-Door Dinner"
+    ],
+    "tags": [
+      "Elite Six Talks",
+      "Manufacturing",
+      "Shanghai"
+    ],
+    "speakerIds": [
+      "SPK-0036",
+      "SPK-0044",
+      "SPK-0046",
+      "SPK-0049",
+      "SPK-0050"
+    ],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "AI+ Manufacturing: AI-Empowered Scheduling — From Technology to Results | DSG",
+      "description": "Elite Six Talks · manufacturing track. A 10-person private board for enterprise ",
+      "keywords": [
+        "elite talks"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2026-CITY-GZ-0424",
+    "urlName": "gz-qixin-2026",
+    "title": "Qixin Huiyan · Resilient Supply Chain Salon (Guangzhou)",
+    "type": "city",
+    "typeLabel": "City Meeting",
+    "businessLine": "Global Supply Chain City Stop",
+    "eyebrow": "City Meeting",
+    "edition": null,
+    "organizerRole": "Co-Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [
+      "ORG-QIXIN"
+    ],
+    "status": "Ended",
+    "registrationOpen": false,
+    "date": "2026-04-24",
+    "dateText": "4.24",
+    "time": "13:30–17:00",
+    "city": "Guangzhou",
+    "venue": "Guangzhou",
+    "scale": {
+      "expected": {
+        "value": 50,
+        "status": "estimated",
+        "note": "Event Scale: 50",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-city-v2.png",
+    "summary": "AI-driven risk decisions: from full-chain efficiency to full-dimension insight. Keynote + supply chain risk upgrade case of a leading pharma enterprise + sourcing and due-diligence workshop.",
+    "agenda": [
+      "Keynote",
+      "Case: Supply Chain Risk Upgrade of a Top-10 Pharma Leader",
+      "Workshop: Sourcing",
+      "Workshop: Onboarding Due Diligence"
+    ],
+    "tags": [
+      "City Salon",
+      "Supply ChainRisk Control",
+      "Guangzhou"
+    ],
+    "speakerIds": [
+      "SPK-0003",
+      "SPK-0014",
+      "SPK-0063"
+    ],
+    "organizationIds": [
+      "ORG-QIXIN"
+    ],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "Qixin Huiyan · Resilient Supply Chain Salon (Guangzhou) | DSG",
+      "description": "AI-driven risk decisions: from full-chain efficiency to full-dimension insight. ",
+      "keywords": [
+        "supply chain"
+      ]
+    },
+    "category": "city",
+    "categoryLabel": "City Salon"
+  },
+  {
+    "id": "EVT-2026-ELITE-39",
+    "urlName": "evt-2026-elite-39",
+    "title": "AI+ Pharma & Healthcare: MNC Pharma AI R&D and Compliance Breakthrough",
+    "type": "elite",
+    "typeLabel": "Elite Six Talks",
+    "businessLine": "Elite Six Talks",
+    "eyebrow": "Elite Six Talks",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Ended",
+    "registrationOpen": false,
+    "date": "2026-04-24",
+    "dateText": "4.24",
+    "time": "15:00–18:00+Dinner",
+    "city": "Shanghai",
+    "venue": "Shanghai",
+    "scale": {
+      "expected": {
+        "value": 15,
+        "status": "estimated",
+        "note": "1010-person private board · 15–20 attendees",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-elite-v2.png",
+    "summary": "Elite Six Talks · pharma track. A 10-person private board for enterprise CIO/IT and procurement & supply chain leaders; closed-door exchange + dinner.",
+    "agenda": [
+      "Self-introduction (clockwise)",
+      "Kick-off Sharing",
+      "Interactive Discussion",
+      "Closed-Door Dinner"
+    ],
+    "tags": [
+      "Elite Six Talks",
+      "Pharma",
+      "Shanghai"
+    ],
+    "speakerIds": [
+      "SPK-0020",
+      "SPK-0028",
+      "SPK-0029",
+      "SPK-0030",
+      "SPK-0034",
+      "SPK-0043",
+      "SPK-0061"
+    ],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "AI+ Pharma & Healthcare: MNC Pharma AI R&D and Compliance Breakthrough | DSG",
+      "description": "Elite Six Talks · pharma track. A 10-person private board for enterprise CIO/IT ",
+      "keywords": [
+        "elite talks"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2026-ELITE-40",
+    "urlName": "evt-2026-elite-40",
+    "title": "AI+ Manufacturing: From QC Pilots to Production-Line Decisions (Inside Cisco)",
+    "type": "elite",
+    "typeLabel": "Elite Six Talks",
+    "businessLine": "Elite Six Talks",
+    "eyebrow": "Elite Six Talks",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Ended",
+    "registrationOpen": false,
+    "date": "2026-05-15",
+    "dateText": "5.15",
+    "time": "15:00–18:00+Dinner",
+    "city": "Shanghai",
+    "venue": "Shanghai",
+    "scale": {
+      "expected": {
+        "value": 15,
+        "status": "estimated",
+        "note": "1010-person private board · 15–20 attendees",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-elite-v2.png",
+    "summary": "Elite Six Talks · manufacturing track. A 10-person private board for enterprise CIO/IT and procurement & supply chain leaders; closed-door exchange + dinner.",
+    "agenda": [
+      "Self-introduction (clockwise)",
+      "Kick-off Sharing",
+      "Interactive Discussion",
+      "Closed-Door Dinner"
+    ],
+    "tags": [
+      "Elite Six Talks",
+      "Manufacturing",
+      "Shanghai"
+    ],
+    "speakerIds": [
+      "SPK-0036",
+      "SPK-0044",
+      "SPK-0046",
+      "SPK-0049",
+      "SPK-0050"
+    ],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "AI+ Manufacturing: From QC Pilots to Production-Line Decisions (Inside Cisco) | DSG",
+      "description": "Elite Six Talks · manufacturing track. A 10-person private board for enterprise ",
+      "keywords": [
+        "elite talks"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2026-CITY-SZ-0521",
+    "urlName": "sz-data-smart-2026",
+    "title": "Data-Driven · Smart Procurement — 2026 DSG Global Supply Chain Innovation Forum (Shenzhen)",
+    "type": "city",
+    "typeLabel": "City Meeting",
+    "businessLine": "Global Supply Chain City Stop",
+    "eyebrow": "City Meeting",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Ended",
+    "registrationOpen": false,
+    "date": "2026-05-21",
+    "dateText": "5.21",
+    "time": "13:00–16:30",
+    "city": "Shenzhen",
+    "venue": "Shenzhen",
+    "scale": {
+      "expected": {
+        "value": 50,
+        "status": "estimated",
+        "note": "Event Scale: 50",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-city-v2.png",
+    "summary": "Customer growth through data and global risk management. Executives from Hithium, ZTE and Dun & Bradstreet share data-driven procurement and going-global risk practices.",
+    "agenda": [
+      "Icebreaker",
+      "Keynote: 3 Executive Speakers",
+      "Roundtable Discussion"
+    ],
+    "tags": [
+      "City Salon",
+      "Supply Chain",
+      "Shenzhen"
+    ],
+    "speakerIds": [
+      "SPK-0004",
+      "SPK-0031",
+      "SPK-0062",
+      "SPK-0063"
+    ],
+    "organizationIds": [
+      "ORG-HICHANGE",
+      "ORG-ZTE",
+      "ORG-DNB"
+    ],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "Data-Driven · Smart Procurement — 2026 DSG Global Supply Chain Innovation Forum (Shenzhen) | DSG",
+      "description": "Customer growth through data and global risk management. Executives from Hithium",
+      "keywords": []
+    },
+    "category": "city",
+    "categoryLabel": "City Salon"
+  },
+  {
+    "id": "EVT-2026-CITY-SH-0526",
+    "urlName": "sh-qixin-2026",
+    "title": "Qixin Huiyan · Resilient Supply Chain Salon (Shanghai)",
+    "type": "city",
+    "typeLabel": "City Meeting",
+    "businessLine": "Global Supply Chain City Stop",
+    "eyebrow": "City Meeting",
+    "edition": null,
+    "organizerRole": "Co-Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [
+      "ORG-QIXIN"
+    ],
+    "status": "Ended",
+    "registrationOpen": false,
+    "date": "2026-05-26",
+    "dateText": "5.26",
+    "time": "13:30–17:00",
+    "city": "Shanghai",
+    "venue": "Shanghai",
+    "scale": {
+      "expected": {
+        "value": 50,
+        "status": "estimated",
+        "note": "Event Scale: 50",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-city-v2.png",
+    "summary": "AI-driven risk decisions: from full-chain efficiency to full-dimension insight. Keynote + supply chain risk upgrade case of a leading pharma enterprise + sourcing and due-diligence workshop.",
+    "agenda": [
+      "Keynote",
+      "Case: Supply Chain Risk Upgrade of a Top-10 Pharma Leader",
+      "Workshop: Sourcing",
+      "Workshop: Onboarding Due Diligence"
+    ],
+    "tags": [
+      "City Salon",
+      "Supply ChainRisk Control",
+      "Shanghai"
+    ],
+    "speakerIds": [
+      "SPK-0003",
+      "SPK-0014",
+      "SPK-0063"
+    ],
+    "organizationIds": [
+      "ORG-QIXIN"
+    ],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "Qixin Huiyan · Resilient Supply Chain Salon (Shanghai) | DSG",
+      "description": "AI-driven risk decisions: from full-chain efficiency to full-dimension insight. ",
+      "keywords": [
+        "supply chain"
+      ]
+    },
+    "category": "city",
+    "categoryLabel": "City Salon"
+  },
+  {
+    "id": "EVT-2026-CITY-HZ-0626",
+    "urlName": "hz-data-smart-2026",
+    "title": "Data-Driven · Smart Procurement — 2026 DSG Global Supply Chain Innovation Forum (Hangzhou)",
+    "type": "city",
+    "typeLabel": "City Meeting",
+    "businessLine": "Global Supply Chain City Stop",
+    "eyebrow": "City Meeting",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Ended",
+    "registrationOpen": false,
+    "date": "2026-06-26",
+    "dateText": "6.26",
+    "time": "13:30–17:00",
+    "city": "Hangzhou",
+    "venue": "Hangzhou",
+    "scale": {
+      "expected": {
+        "value": 50,
+        "status": "estimated",
+        "note": "Event Scale: 50",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-city-v2.png",
+    "summary": "Digital-intelligence technology rebuilding procurement and going-global ecosystem; executives from McKinsey, Hithium, Dun & Bradstreet and Geely share data-driven procurement practices.",
+    "agenda": [
+      "Icebreaker",
+      "Keynote: 3 Executive Speakers",
+      "Roundtable Discussion"
+    ],
+    "tags": [
+      "City Salon",
+      "Supply Chain",
+      "Hangzhou"
+    ],
+    "speakerIds": [
+      "SPK-0001",
+      "SPK-0004",
+      "SPK-0031",
+      "SPK-0063"
+    ],
+    "organizationIds": [
+      "ORG-MCKINSEY",
+      "ORG-HICHANGE",
+      "ORG-DNB",
+      "ORG-GEELY"
+    ],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "Data-Driven · Smart Procurement — 2026 DSG Global Supply Chain Innovation Forum (Hangzhou) | DSG",
+      "description": "Digital-intelligence technology rebuilding procurement and going-global ecosyste",
+      "keywords": []
+    },
+    "category": "city",
+    "categoryLabel": "City Salon"
+  },
+  {
+    "id": "EVT-2026-ELITE-41",
+    "urlName": "evt-2026-elite-41",
+    "title": "AI+ Security: Boundary and Resilience — Security Architecture for Chinese Enterprises Globalization 2.0",
+    "type": "elite",
+    "typeLabel": "Elite Six Talks",
+    "businessLine": "Elite Six Talks",
+    "eyebrow": "Elite Six Talks",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Ended",
+    "registrationOpen": false,
+    "date": "2026-06-27",
+    "dateText": "6.27",
+    "time": "15:00–18:00+Dinner",
+    "city": "Shanghai",
+    "venue": "Shanghai",
+    "scale": {
+      "expected": {
+        "value": 15,
+        "status": "estimated",
+        "note": "1010-person private board · 15–20 attendees",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-elite-v2.png",
+    "summary": "Elite Six Talks · security track. A 10-person private board for enterprise CIO/IT and procurement & supply chain leaders; closed-door exchange + dinner.",
+    "agenda": [
+      "Self-introduction (clockwise)",
+      "Kick-off Sharing",
+      "Interactive Discussion",
+      "Closed-Door Dinner"
+    ],
+    "tags": [
+      "Elite Six Talks",
+      "Security",
+      "Shanghai"
+    ],
+    "speakerIds": [
+      "SPK-0005",
+      "SPK-0059",
+      "SPK-0060",
+      "SPK-0061"
+    ],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "AI+ Security: Boundary and Resilience — Security Architecture for Chinese Enterprises Globalization 2.0 | DSG",
+      "description": "Elite Six Talks · security track. A 10-person private board for enterprise CIO/I",
+      "keywords": [
+        "elite talks"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2026-ELITE-42B",
+    "urlName": "evt-2026-elite-42b",
+    "title": "AI+ Retail Scheduling: Turning Supply Chain from Cost Center into Profit Engine",
+    "type": "elite",
+    "typeLabel": "Elite Six Talks",
+    "businessLine": "Elite Six Talks",
+    "eyebrow": "Elite Six Talks",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Ended",
+    "registrationOpen": false,
+    "date": "2026-07-10",
+    "dateText": "7.10",
+    "time": "15:00–18:00+Dinner",
+    "city": "Shanghai",
+    "venue": "Shanghai",
+    "scale": {
+      "expected": {
+        "value": 15,
+        "status": "estimated",
+        "note": "1010-person private board · 15–20 attendees",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-elite-v2.png",
+    "summary": "Elite Six Talks · retail & FMCG track. A 10-person private board for enterprise CIO/IT and procurement & supply chain leaders; closed-door exchange + dinner.",
+    "agenda": [
+      "Self-introduction (clockwise)",
+      "Kick-off Sharing",
+      "Interactive Discussion",
+      "Closed-Door Dinner"
+    ],
+    "tags": [
+      "Elite Six Talks",
+      "Retail & FMCG",
+      "Shanghai"
+    ],
+    "speakerIds": [
+      "SPK-0023",
+      "SPK-0024",
+      "SPK-0025",
+      "SPK-0026",
+      "SPK-0027",
+      "SPK-0053"
+    ],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "AI+ Retail Scheduling: Turning Supply Chain from Cost Center into Profit Engine | DSG",
+      "description": "Elite Six Talks · retail & FMCG track. A 10-person private board for enterprise ",
+      "keywords": [
+        "elite talks"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2026-ELITE-42A",
+    "urlName": "evt-2026-elite-42a",
+    "title": "AI+ Pharma: Digital Resilience · Compliance Without Borders (Inside Cisco)",
+    "type": "elite",
+    "typeLabel": "Elite Six Talks",
+    "businessLine": "Elite Six Talks",
+    "eyebrow": "Elite Six Talks",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Ended",
+    "registrationOpen": false,
+    "date": "2026-07-16",
+    "dateText": "7.16",
+    "time": "15:00–18:00+Dinner",
+    "city": "Shanghai",
+    "venue": "Shanghai",
+    "scale": {
+      "expected": {
+        "value": 15,
+        "status": "estimated",
+        "note": "1010-person private board · 15–20 attendees",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-elite-v2.png",
+    "summary": "Elite Six Talks · pharma track. A 10-person private board for enterprise CIO/IT and procurement & supply chain leaders; closed-door exchange + dinner.",
+    "agenda": [
+      "Self-introduction (clockwise)",
+      "Kick-off Sharing",
+      "Interactive Discussion",
+      "Closed-Door Dinner"
+    ],
+    "tags": [
+      "Elite Six Talks",
+      "Pharma",
+      "Shanghai"
+    ],
+    "speakerIds": [
+      "SPK-0020",
+      "SPK-0028",
+      "SPK-0029",
+      "SPK-0030",
+      "SPK-0034",
+      "SPK-0043",
+      "SPK-0061"
+    ],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "AI+ Pharma: Digital Resilience · Compliance Without Borders (Inside Cisco) | DSG",
+      "description": "Elite Six Talks · pharma track. A 10-person private board for enterprise CIO/IT ",
+      "keywords": [
+        "elite talks"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2026-ELITE-43",
+    "urlName": "evt-2026-elite-43",
+    "title": "AI+ Discrete Manufacturing: Rush Orders, Inserted Orders, Changeover — Scheduling \"Three Kingdoms\"",
+    "type": "elite",
+    "typeLabel": "Elite Six Talks",
+    "businessLine": "Elite Six Talks",
+    "eyebrow": "Elite Six Talks",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Ended",
+    "registrationOpen": false,
+    "date": "2026-07-23",
+    "dateText": "7.23",
+    "time": "15:00–18:00+Dinner",
+    "city": "Shanghai",
+    "venue": "Shanghai",
+    "scale": {
+      "expected": {
+        "value": 15,
+        "status": "estimated",
+        "note": "1010-person private board · 15–20 attendees",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-elite-v2.png",
+    "summary": "Elite Six Talks · discrete manufacturing track. A 10-person private board for enterprise CIO/IT and procurement & supply chain leaders; closed-door exchange + dinner.",
+    "agenda": [
+      "Self-introduction (clockwise)",
+      "Kick-off Sharing",
+      "Interactive Discussion",
+      "Closed-Door Dinner"
+    ],
+    "tags": [
+      "Elite Six Talks",
+      "Discrete Manufacturing",
+      "Shanghai"
+    ],
+    "speakerIds": [
+      "SPK-0021",
+      "SPK-0036",
+      "SPK-0044",
+      "SPK-0050"
+    ],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "AI+ Discrete Manufacturing: Rush Orders, Inserted Orders, Changeover — Scheduling \"Three Kingdoms\" | DSG",
+      "description": "Elite Six Talks · discrete manufacturing track. A 10-person private board for en",
+      "keywords": [
+        "elite talks"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2026-ELITE-44",
+    "urlName": "evt-2026-elite-44",
+    "title": "AI+ Automotive Safety: Shield & Smart Drive — Digital Resilience and Compliance Strategy",
+    "type": "elite",
+    "typeLabel": "Elite Six Talks",
+    "businessLine": "Elite Six Talks",
+    "eyebrow": "Elite Six Talks",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Ended",
+    "registrationOpen": false,
+    "date": "2026-08-13",
+    "dateText": "8.13",
+    "time": "15:00–18:00+Dinner",
+    "city": "Shanghai",
+    "venue": "Shanghai",
+    "scale": {
+      "expected": {
+        "value": 15,
+        "status": "estimated",
+        "note": "1010-person private board · 15–20 attendees",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-elite-v2.png",
+    "summary": "Elite Six Talks · automotive safety track. A 10-person private board for enterprise CIO/IT and procurement & supply chain leaders; closed-door exchange + dinner.",
+    "agenda": [
+      "Self-introduction (clockwise)",
+      "Kick-off Sharing",
+      "Interactive Discussion",
+      "Closed-Door Dinner"
+    ],
+    "tags": [
+      "Elite Six Talks",
+      "Automotive Safety",
+      "Shanghai"
+    ],
+    "speakerIds": [
+      "SPK-0046",
+      "SPK-0047",
+      "SPK-0048",
+      "SPK-0050"
+    ],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "AI+ Automotive Safety: Shield & Smart Drive — Digital Resilience and Compliance Strategy | DSG",
+      "description": "Elite Six Talks · automotive safety track. A 10-person private board for enterpr",
+      "keywords": [
+        "elite talks"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2026-FIN",
+    "urlName": "dsg-finance-summit-2026",
+    "title": "4th DSG FinTech Leaders Summit & Suzhou Rural Commercial Bank Community Finance Study Tour",
+    "type": "summit",
+    "typeLabel": "Annual Summit",
+    "businessLine": "FinTech Summit",
+    "eyebrow": "FinTech Summit",
+    "edition": {
+      "label": "2026 ",
+      "number": 2026
+    },
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [
+      "ORG-SRCB"
+    ],
+    "status": "Ended",
+    "registrationOpen": false,
+    "date": "2026-08-20",
+    "dateText": "8.20-21",
+    "time": "Aug20–21",
+    "city": "Shanghai",
+    "venue": "Shanghai·Suzhou(Day 2 Study Tour)",
+    "scale": {
+      "expected": {
+        "value": 300,
+        "status": "estimated",
+        "note": "Bank HQ management and fintech leaders",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": 300,
+        "status": "estimated",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "Pending check-in export",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-summit-v2.png",
+    "summary": "Business-first · AI-enabled · Risk-control-grounded. Attendees cover bank head-office management and heads of retail, inclusive finance, credit, risk control, fintech and digitalization.",
+    "agenda": [
+      "All-Day Summit",
+      "Closed-Door Thought Session",
+      "SRCB Community Finance Site Visit"
+    ],
+    "tags": [
+      "FinTech Summit",
+      "Flagship Summit",
+      "Shanghai"
+    ],
+    "speakerIds": [
+      "SPK-0005",
+      "SPK-0006",
+      "SPK-0007",
+      "SPK-0008",
+      "SPK-0009",
+      "SPK-0010",
+      "SPK-0011",
+      "SPK-0012",
+      "SPK-0013",
+      "SPK-0059"
+    ],
+    "organizationIds": [
+      "ORG-SRCB"
+    ],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "4th DSG FinTech Leaders Summit & Suzhou Rural Commercial Bank Community Finance Study Tour | DSG",
+      "description": "Business-first · AI-enabled · Risk-control-grounded. Attendees cover bank head-o",
+      "keywords": [
+        "fintech summit",
+        "DSG"
+      ]
+    },
+    "category": "summit",
+    "categoryLabel": "Annual Summit"
+  },
+  {
+    "id": "EVT-2026-CITY-CQ-0828",
+    "urlName": "cq-ai-agent-2026",
+    "title": "AI Agent Supply Chain Salon · Manufacturing Track (Chongqing)",
+    "type": "city",
+    "typeLabel": "City Meeting",
+    "businessLine": "Global Supply Chain City Stop",
+    "eyebrow": "City Meeting",
+    "edition": null,
+    "organizerRole": "Co-Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [
+      "ORG-QIXIN"
+    ],
+    "status": "Ended",
+    "registrationOpen": false,
+    "date": "2026-08-28",
+    "dateText": "8.28",
+    "time": "13:30–16:30",
+    "city": "Chongqing",
+    "venue": "Chongqing",
+    "scale": {
+      "expected": {
+        "value": 50,
+        "status": "estimated",
+        "note": "Event Scale: 50",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-city-v2.png",
+    "summary": "Co-hosted by DSG and Hehe Information: AI Agent supply chain salon for procurement/supply chain leaders on agent applications in supply chain scenarios.",
+    "agenda": [
+      "Icebreaker",
+      "Keynote",
+      "Scenario Practice",
+      "Focus Group"
+    ],
+    "tags": [
+      "City Salon",
+      "AI Agent",
+      "Manufacturing",
+      "Chongqing"
+    ],
+    "speakerIds": [],
+    "organizationIds": [
+      "ORG-QIXIN"
+    ],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "AI Agent Supply Chain Salon · Manufacturing Track (Chongqing) | DSG",
+      "description": "Co-hosted by DSG and Hehe Information: AI Agent supply chain salon for procureme",
+      "keywords": [
+        "AI Agent",
+        "supply chain"
+      ]
+    },
+    "category": "city",
+    "categoryLabel": "City Salon"
+  },
+  {
+    "id": "EVT-2026-ELITE-45",
+    "urlName": "evt-2026-elite-45",
+    "title": "Chemical Industry AI+ Scheduling: No Rush Scheduling Even Under Tight Deadlines",
+    "type": "elite",
+    "typeLabel": "Elite Six Talks",
+    "businessLine": "Elite Six Talks",
+    "eyebrow": "Elite Six Talks",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Open for Registration",
+    "registrationOpen": true,
+    "date": "2026-09-16",
+    "dateText": "9.16",
+    "time": "15:00–18:00+Dinner",
+    "city": "Shanghai",
+    "venue": "Shanghai",
+    "scale": {
+      "expected": {
+        "value": 15,
+        "status": "estimated",
+        "note": "1010-person private board · 15–20 attendees",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-elite-v2.png",
+    "summary": "Elite Six Talks · chemical scheduling track. A 10-person private board for enterprise CIO/IT and procurement & supply chain leaders; closed-door exchange + dinner.",
+    "agenda": [
+      "Self-introduction (clockwise)",
+      "Kick-off Sharing",
+      "Interactive Discussion",
+      "Closed-Door Dinner"
+    ],
+    "tags": [
+      "Elite Six Talks",
+      "Chemical Scheduling",
+      "Shanghai"
+    ],
+    "speakerIds": [
+      "SPK-0021",
+      "SPK-0032",
+      "SPK-0033",
+      "SPK-0035",
+      "SPK-0036",
+      "SPK-0037",
+      "SPK-0044",
+      "SPK-0050"
+    ],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "Chemical Industry AI+ Scheduling: No Rush Scheduling Even Under Tight Deadlines | DSG",
+      "description": "Elite Six Talks · chemical scheduling track. A 10-person private board for enter",
+      "keywords": [
+        "elite talks"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2026-ELITE-47",
+    "urlName": "evt-2026-elite-47",
+    "title": "Data Reshaping · Compliance in Step — 2026 InsurTech Leaders Closed-Door Summit · Beijing",
+    "type": "elite",
+    "typeLabel": "Elite Six Talks",
+    "businessLine": "Elite Six Talks",
+    "eyebrow": "Elite Six Talks",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Open for Registration",
+    "registrationOpen": true,
+    "date": "2026-09-18",
+    "dateText": "9.18",
+    "time": "15:00–18:00+Dinner",
+    "city": "Beijing",
+    "venue": "Beijing",
+    "scale": {
+      "expected": {
+        "value": 15,
+        "status": "estimated",
+        "note": "1010-person private board · 15–20 attendees",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-elite-v2.png",
+    "summary": "Elite Six Talks · InsurTech track. A 10-person private board for enterprise CIO/IT and procurement & supply chain leaders; closed-door exchange + dinner.",
+    "agenda": [
+      "Self-introduction (clockwise)",
+      "Kick-off Sharing",
+      "Interactive Discussion",
+      "Closed-Door Dinner"
+    ],
+    "tags": [
+      "Elite Six Talks",
+      "InsurTech",
+      "Beijing"
+    ],
+    "speakerIds": [
+      "SPK-0005",
+      "SPK-0013",
+      "SPK-0059"
+    ],
+    "organizationIds": [
+      "ORG-SRCB"
+    ],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "Data Reshaping · Compliance in Step — 2026 InsurTech Leaders Closed-Door Summit · Beijing | DSG",
+      "description": "Elite Six Talks · InsurTech track. A 10-person private board for enterprise CIO/",
+      "keywords": [
+        "elite talks"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2026-ELITE-46",
+    "urlName": "evt-2026-elite-46",
+    "title": "AI+ Production Scheduling: Facing the Cross-Chain Collaboration Challenge of Scheduling Cascades",
+    "type": "elite",
+    "typeLabel": "Elite Six Talks",
+    "businessLine": "Elite Six Talks",
+    "eyebrow": "Elite Six Talks",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Open for Registration",
+    "registrationOpen": true,
+    "date": "2026-09-22",
+    "dateText": "9.22",
+    "time": "15:00–18:00+Dinner",
+    "city": "Shanghai",
+    "venue": "Shanghai",
+    "scale": {
+      "expected": {
+        "value": 15,
+        "status": "estimated",
+        "note": "1010-person private board · 15–20 attendees",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-elite-v2.png",
+    "summary": "Elite Six Talks · scheduling collaboration track. A 10-person private board for enterprise CIO/IT and procurement & supply chain leaders; closed-door exchange + dinner.",
+    "agenda": [
+      "Self-introduction (clockwise)",
+      "Kick-off Sharing",
+      "Interactive Discussion",
+      "Closed-Door Dinner"
+    ],
+    "tags": [
+      "Elite Six Talks",
+      "Scheduling Collaboration",
+      "Shanghai"
+    ],
+    "speakerIds": [
+      "SPK-0021",
+      "SPK-0032",
+      "SPK-0036",
+      "SPK-0044",
+      "SPK-0050"
+    ],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "AI+ Production Scheduling: Facing the Cross-Chain Collaboration Challenge of Scheduling Cascades | DSG",
+      "description": "Elite Six Talks · scheduling collaboration track. A 10-person private board for ",
+      "keywords": [
+        "elite talks"
+      ]
+    },
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks"
+  },
+  {
+    "id": "EVT-2026-ELITE-47N",
+    "urlName": "dsg-elite-47",
+    "title": "Elite Six Talks · All Industries: AI + Production Scheduling — every row on the plan is money, people and a promise",
+    "type": "elite",
+    "typeLabel": "Elite Six Talks",
+    "businessLine": "Elite Six Talks",
+    "eyebrow": "Elite Six Talks",
+    "edition": {
+      "label": "No.47",
+      "number": 47
+    },
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Archived",
+    "registrationOpen": false,
+    "date": "2026-10-16",
+    "dateText": "10.16",
+    "time": "Oct 16 (Fri) 14:00–17:00",
+    "city": "Shanghai",
+    "venue": "Shanghai",
+    "scale": {
+      "expected": {
+        "value": 10,
+        "status": "estimated",
+        "note": "",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "",
+    "summary": "[Breakthrough · Precision Scheduling] — every row on the plan is money, people and a promise",
+    "agenda": [
+      "Introductions: round the table",
+      "Opening provocation",
+      "Open exchange"
+    ],
+    "tags": [
+      "Elite Six Talks",
+      "Private Board",
+      "Shanghai"
+    ],
+    "speakerIds": [],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "translated",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "Elite Six Talks · AI + Production Scheduling | DSG",
+      "description": "Closed-door Elite Six Talks on AI-driven production scheduling: money, people and commitments on every row of the plan.",
+      "keywords": [
+        "Elite Six Talks",
+        "Private Board",
+        "Shanghai"
+      ]
+    },
+    "agendaDetail": [
+      {
+        "time": "",
+        "text": "Introductions: round the table"
+      },
+      {
+        "time": "",
+        "text": "Opening provocation"
+      },
+      {
+        "time": "",
+        "text": "Open exchange"
+      }
+    ],
+    "topics": [
+      {
+        "title": "Stock sits in the warehouse but nobody owns it on the schedule — whose plan is that inventory, really?",
+        "supplement": ""
+      },
+      {
+        "title": "Which books fail to reconcile at month-end? How many times a month do you hear “the system says we have it, the customer says we don’t”?",
+        "supplement": ""
+      },
+      {
+        "title": "Who set that rule? Every change to the scheduling rules costs you a little trust",
+        "supplement": ""
+      },
+      {
+        "title": "How many unwritten scheduling rules live on your shop floor? How many are actually written down? How long before a new planner dares to schedule alone?",
+        "supplement": ""
+      },
+      {
+        "title": "A planner’s day — are people scheduling machines, or machines scheduling people?",
+        "supplement": ""
+      }
+    ],
+    "attendees": [
+      {
+        "name": "",
+        "org": "Envalior Engineering Materials (Shanghai) Co., Ltd.",
+        "role": "Supply Chain Director"
+      },
+      {
+        "name": "",
+        "org": "Shanghai Baolong Automotive Corporation",
+        "role": "Operations Center · Senior Planner"
+      },
+      {
+        "name": "",
+        "org": "AESC (Envision AESC)",
+        "role": "R&D Center · Senior AI Manager"
+      },
+      {
+        "name": "",
+        "org": "Shanghai Kaixin New Materials Group Co., Ltd.",
+        "role": "CFO"
+      },
+      {
+        "name": "",
+        "org": "SAIC Volkswagen Automotive Co., Ltd.",
+        "role": "Project Manager"
+      }
+    ],
+    "theme": "[Breakthrough · Precision Scheduling] — every row on the plan is money, people and a promise",
+    "audience": "All industries · supply chain heads, production directors, PMC directors, planning managers",
+    "sessionNo": 47,
+    "poster": null,
+    "gallery": [],
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks",
+    "kvStyle": "indigo",
+    "heroIsPhoto": false,
+    "photoCount": 0,
+    "hasRealPhoto": false,
+    "heroIsPoster": false
+  },
+  {
+    "id": "EVT-2026-CITY-CQ-1023",
+    "urlName": "cq-ai-procurement-2026",
+    "title": "Cost Down · Intelligence Up — AI-Driven Procurement Value Rebuild (Chongqing)",
+    "type": "city",
+    "typeLabel": "City Meeting",
+    "businessLine": "Global Supply Chain City Stop",
+    "eyebrow": "City Meeting",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Open for Registration",
+    "registrationOpen": true,
+    "date": "2026-10-23",
+    "dateText": "10.23",
+    "time": "13:00–17:00",
+    "city": "Chongqing",
+    "venue": "Chongqing",
+    "scale": {
+      "expected": {
+        "value": 100,
+        "status": "estimated",
+        "note": "Event Scale: 100",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-city-v2.png",
+    "summary": "Global Supply Chain Innovation Forum Chongqing stop, inviting procurement/supply chain leaders to discuss AI cost reduction, intelligent sourcing and supplier collaboration.",
+    "agenda": [
+      "Icebreaker",
+      "Keynote: Executive Sharing",
+      "Roundtable Discussion"
+    ],
+    "tags": [
+      "City Salon",
+      "Procurement",
+      "AI",
+      "Chongqing"
+    ],
+    "speakerIds": [
+      "SPK-0001",
+      "SPK-0022",
+      "SPK-0035",
+      "SPK-0038",
+      "SPK-0039",
+      "SPK-0041",
+      "SPK-0063"
+    ],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "Cost Down · Intelligence Up — AI-Driven Procurement Value Rebuild (Chongqing) | DSG",
+      "description": "Global Supply Chain Innovation Forum Chongqing stop, inviting procurement/supply",
+      "keywords": [
+        "AI"
+      ]
+    },
+    "category": "city",
+    "categoryLabel": "City Salon"
+  },
+  {
+    "id": "EVT-2026-ELITE-48",
+    "urlName": "dsg-elite-48",
+    "title": "Elite Six Talks · All Industries: AI + Production Scheduling — where exactly is the hard part?",
+    "type": "elite",
+    "typeLabel": "Elite Six Talks",
+    "businessLine": "Elite Six Talks",
+    "eyebrow": "Elite Six Talks",
+    "edition": {
+      "label": "No.48",
+      "number": 48
+    },
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Archived",
+    "registrationOpen": false,
+    "date": "2026-10-30",
+    "dateText": "10.30",
+    "time": "Oct 30 (Fri) 14:00–17:00",
+    "city": "Shanghai",
+    "venue": "Shanghai",
+    "scale": {
+      "expected": {
+        "value": 10,
+        "status": "estimated",
+        "note": "",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "",
+    "summary": "[Where exactly is the hard part?]",
+    "agenda": [
+      "Introductions: round the table",
+      "Opening provocation",
+      "Open exchange"
+    ],
+    "tags": [
+      "Elite Six Talks",
+      "Private Board",
+      "Shanghai"
+    ],
+    "speakerIds": [],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "translated",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "Elite Six Talks · AI + Production Scheduling | DSG",
+      "description": "Closed-door Elite Six Talks on the real difficulty of production scheduling in chemicals and manufacturing.",
+      "keywords": [
+        "Elite Six Talks",
+        "Private Board",
+        "Shanghai"
+      ]
+    },
+    "agendaDetail": [
+      {
+        "time": "",
+        "text": "Introductions: round the table"
+      },
+      {
+        "time": "",
+        "text": "Opening provocation"
+      },
+      {
+        "time": "",
+        "text": "Open exchange"
+      }
+    ],
+    "topics": [
+      {
+        "title": "One rush order reshuffles everything — how much flex can scheduling actually take?",
+        "supplement": "When an urgent order cuts in, how much of the plant schedule has to be torn down and rebuilt? How much capacity disappears each month into changeovers, line cleaning and material swaps?"
+      },
+      {
+        "title": "Fragmented, opaque data — can the impact of a rush order even be measured?",
+        "supplement": "When a customer urgently asks about lead time, stock and capacity, how many systems do you have to cross-check before you dare answer? Of the delivery risk, capacity load and cost swing an expedite triggers, what can you quantify and what is guesswork?"
+      },
+      {
+        "title": "A plan that looks good but never lands — how do you prove scheduling’s value?",
+        "supplement": "How many percentage points separate plan attainment on paper from what the shop floor actually completes? Of the cost savings, efficiency gains and on-time delivery, how much can honestly be credited to scheduling?"
+      }
+    ],
+    "attendees": [],
+    "theme": "[Where exactly is the hard part?]",
+    "audience": "Chemicals · supply chain heads, production directors, PMC directors, planning managers",
+    "sessionNo": 48,
+    "poster": null,
+    "gallery": [],
+    "category": "elite",
+    "categoryLabel": "Elite Six Talks",
+    "kvStyle": "indigo",
+    "heroIsPhoto": false,
+    "photoCount": 0,
+    "hasRealPhoto": false,
+    "heroIsPoster": false
+  },
+  {
+    "id": "EVT-2026-CITY-SH-1113",
+    "urlName": "sh-ai-manufacturing-2026",
+    "title": "Smart Manufacturing · Resilient Growth — 2026 DSG AI Adoption & Digital Breakthrough Salon for Foreign Manufacturers",
+    "type": "city",
+    "typeLabel": "City Meeting",
+    "businessLine": "Global Supply Chain City Stop",
+    "eyebrow": "City Meeting",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Open for Registration",
+    "registrationOpen": true,
+    "date": "2026-11-13",
+    "dateText": "11.13",
+    "time": "13:30–17:00",
+    "city": "Shanghai",
+    "venue": "Shanghai",
+    "scale": {
+      "expected": {
+        "value": 50,
+        "status": "estimated",
+        "note": "Event Scale: 50",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "assets/module-city-v2.png",
+    "summary": "Focusing on AI adoption and digital breakthrough for foreign manufacturers, covering real AI scheduling results, demand forecasting practice, data infrastructure and IT team capability rebuild.",
+    "agenda": [
+      "Real Results & Cost of AI Scheduling in Automotive/Discrete Factories",
+      "Cutting Inventory with AI: Demand Forecasting Practice",
+      "Three Gates of AI Data Foundation",
+      "Roundtable: Algorithms, Systems, People — Real Bottlenecks"
+    ],
+    "tags": [
+      "City Salon",
+      "Manufacturing",
+      "AI Adoption",
+      "Shanghai"
+    ],
+    "speakerIds": [],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "Smart Manufacturing · Resilient Growth — 2026 DSG AI Adoption & Digital Breakthrough Salon for Foreign Manufacturers | DSG",
+      "description": "Focusing on AI adoption and digital breakthrough for foreign manufacturers, cove",
+      "keywords": [
+        "AI"
+      ]
+    },
+    "category": "city",
+    "categoryLabel": "City Salon"
+  },
+  {
+    "id": "EVT-2026-CITY-BJ-1124",
+    "urlName": "bj-ai-data-security-2026",
+    "title": "AI Data Security — 2026 DSG Global Supply Chain City Series (Beijing)",
+    "type": "city",
+    "typeLabel": "City Meeting",
+    "businessLine": "Global Supply Chain City Series",
+    "eyebrow": "City Meeting",
+    "edition": null,
+    "organizerRole": "Host",
+    "organizerOrgId": "ORG-DSG",
+    "coOrganizers": [],
+    "status": "Open for Registration",
+    "registrationOpen": true,
+    "date": "2026-11-24",
+    "dateText": "11.24",
+    "time": "Nov 24 (Tue) 13:30–17:00",
+    "city": "Beijing",
+    "venue": "Beijing",
+    "scale": {
+      "expected": {
+        "value": 50,
+        "status": "estimated",
+        "note": "",
+        "provenance": {
+          "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "registered": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "checkedIn": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "onlineViews": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      },
+      "reach": {
+        "value": null,
+        "status": "pending",
+        "note": "",
+        "provenance": {
+          "sourceFile": null,
+          "verifiedBy": null,
+          "verifiedOn": null
+        }
+      }
+    },
+    "heroImage": "",
+    "summary": "For enterprise data and supply chain leaders: a keynote and on-site exchange on AI data security.",
+    "agenda": [
+      "Keynote"
+    ],
+    "tags": [
+      "City Salon",
+      "Beijing",
+      "AI Data Security"
+    ],
+    "speakerIds": [],
+    "organizationIds": [],
+    "language": "en",
+    "translationStatus": "translated",
+    "publishStatus": "published",
+    "contentQuality": "edited",
+    "approvedBy": null,
+    "seo": {
+      "title": "AI Data Security · Beijing | DSG",
+      "description": "2026 DSG Global Supply Chain City Series in Beijing, focused on AI data security.",
+      "keywords": [
+        "City Salon",
+        "Beijing",
+        "AI Data Security"
+      ]
+    },
+    "poster": null,
+    "gallery": [],
+    "agendaDetail": [
+      {
+        "time": "",
+        "text": "Keynote"
+      }
+    ],
+    "topics": [],
+    "theme": "2026 DSG Global Supply Chain City Series · Beijing",
+    "audience": "50 people",
+    "category": "city",
+    "categoryLabel": "City Salon",
+    "kvStyle": "teal",
+    "attendees": [],
+    "heroIsPoster": true,
+    "heroIsPhoto": false,
+    "photoCount": 0,
+    "hasRealPhoto": false,
+    "sessionNo": null
+  }
+]
