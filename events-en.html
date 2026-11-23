@@ -46,6 +46,28 @@
     <section class="section compact surface-white ev-stats">
       <div class="container">
         <div class="st-band on-light">
+          <!-- 首屏兜底数字（2026-11-23）：同中文页，先把当前口径写进 HTML，进来立刻可见；
+               数据一到由下面的模板接管。改数字仍以 content-en/site.json 为准。 -->
+          <div class="st-item" x-show="!homeMetrics.length">
+            <span class="st-num"><span>120</span><em class="u">events</em></span>
+            <span class="st-lab">Industry Events</span>
+          </div>
+          <div class="st-item" x-show="!homeMetrics.length">
+            <span class="st-num"><span>10,000</span><em class="u">attendees</em></span>
+            <span class="st-lab">Executive Attendees</span>
+          </div>
+          <div class="st-item" x-show="!homeMetrics.length">
+            <span class="st-num"><span>5,000</span><em class="u">companies</em></span>
+            <span class="st-lab">Companies Participated</span>
+          </div>
+          <div class="st-item" x-show="!homeMetrics.length">
+            <span class="st-num"><span>113</span><em class="u">sessions</em></span>
+            <span class="st-lab">Elite Six Talks</span>
+          </div>
+          <div class="st-item" x-show="!homeMetrics.length">
+            <span class="st-num"><span>720</span><em class="u">speakers</em></span>
+            <span class="st-lab">Speakers</span>
+          </div>
           <template x-for="item in homeMetrics" :key="item.label">
             <div class="st-item">
               <span class="st-num"><span x-text="metricText(item.metric)"></span><em class="u" x-text="item.unit"></em></span>

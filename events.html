@@ -49,6 +49,30 @@
              五项数据仍读 site.json 的 homeMetrics，页面不写死数值。
              左边界与上方文字同一条竖线，右侧对称内收，五格等分不换行。 -->
         <div class="st-band ev-hero-band">
+          <!-- 首屏兜底数字（2026-11-23）：原来这五格完全由脚本生成，数据文件没到之前这块是空的，
+               首屏要空 0.5~4 秒。现在按当前对外口径先写进 HTML，进来立刻可见；
+               数据一到由下面的模板接管，两边口径一致。改数字仍以 content/site.json 为准，
+               这里同步一份同值兜底即可。 -->
+          <div class="st-item" x-show="!homeMetrics.length">
+            <span class="st-num"><span>120</span><em class="u">场</em></span>
+            <span class="st-lab">产业活动</span>
+          </div>
+          <div class="st-item" x-show="!homeMetrics.length">
+            <span class="st-num"><span>10000+</span><em class="u">人次</em></span>
+            <span class="st-lab">企业高管</span>
+          </div>
+          <div class="st-item" x-show="!homeMetrics.length">
+            <span class="st-num"><span>5000</span><em class="u">家</em></span>
+            <span class="st-lab">参会企业</span>
+          </div>
+          <div class="st-item" x-show="!homeMetrics.length">
+            <span class="st-num"><span>113</span><em class="u">场</em></span>
+            <span class="st-lab">精英六人谈</span>
+          </div>
+          <div class="st-item" x-show="!homeMetrics.length">
+            <span class="st-num"><span>720</span><em class="u">位</em></span>
+            <span class="st-lab">分享嘉宾</span>
+          </div>
           <template x-for="item in homeMetrics" :key="item.label">
             <div class="st-item">
               <span class="st-num"><span x-text="metricText(item.metric)"></span><em class="u" x-text="item.unit"></em></span>
