@@ -1115,6 +1115,9 @@ html[lang="en"] .hero h1 {
 .ev-row-city { font-size: 12.5px; color: var(--muted); white-space: nowrap; }
 .ev-row-title { min-width: 0; line-height: 1.5; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .ev-row-go { color: var(--muted); font-size: 16px; text-align: right; }
+/* 列表行主栏：标题 + 副行（行业 · 人群），2026-11-23 按 11-17 评审补上行业与人群信息 */
+.ev-row-main { min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.ev-row-meta { font-size: 12px; line-height: 1.3; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .ev-empty { margin: 26px 0 6px; text-align: center; font-size: 13px; color: var(--muted); }
 
 /* 分页条：页码 + 每页条数 + 跳转（对齐邮箱那套控件） */

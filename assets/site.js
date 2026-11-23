@@ -762,6 +762,44 @@
         if (/^(约?\s*\d+\s*(-\s*\d+)?\s*人|规模\s*\d+\s*人|约?\s*\d+\s*[\-—–~～]\s*\d*|\d+)$/.test(a)) return "";
         return a;
       },
+      /**
+       * 列表行的「行业」标签（2026-11-17 评审：列表要展示城市、行业、人群，不写期数）。
+       * tags 里混了三类东西：类型名、城市、行业词，这里跳过前两类取第一个行业词。
+       */
+      industryOf(event) {
+        var skip = ["精英六人谈", "城市沙龙", "年度峰会", "峰会", "私董会", "沙龙", "闭门会", "城市站"];
+        var city = String((event && event.city) || "").trim();
+        var tags = (event && event.tags) || [];
+        for (var i = 0; i < tags.length; i += 1) {
+          var t = String(tags[i] || "").trim();
+          if (!t || t === city) continue;
+          if (skip.indexOf(t) !== -1) continue;
+          return t;
+        }
+        return "";
+      },
+      /** 列表行副行：行业 · 人群（没有人群就落到规模），内部口径词不上页面 */
+      rowMeta(event) {
+        var bits = [];
+        var ind = this.industryOf(event);
+        if (ind) bits.push(ind);
+        var who = this.audienceText(event)
+          .replace(/^(DSG\s*)?案例集锦[：:]\s*/, "")
+          .replace(/\d+\s*人私董会/g, "")
+          .replace(/\d+\s*[-–—~～]\s*\d+\s*人(规模)?/g, "")
+          .replace(/\d+\s*人(规模|左右|上下|余)?/g, "")
+          .replace(/[·、，,]{2,}/g, "·")
+          .replace(/^[·、，,\s]+|[·、，,\s]+$/g, "")
+          .trim();
+        if (ind && who.indexOf(ind) === 0) who = who.slice(ind.length).replace(/^[·、,，\/\s]+/, "").trim();
+        if (who.length > 16) {
+          var head = who.split(/[\/、，,]/)[0].trim();
+          who = (head.length > 12 ? head.slice(0, 12) + "…" : head) + (who.indexOf("/") !== -1 ? " 等" : "");
+        }
+        if (who) bits.push(who);
+        else if (event && event.capacity) bits.push(event.capacity + "人");
+        return bits.join(" · ");
+      },
       cardPeopleNote(event) {
         var isEn = (document.documentElement.lang || "").toLowerCase() === "en";
         var orgs = {};
