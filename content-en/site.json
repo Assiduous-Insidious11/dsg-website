@@ -1,0 +1,113 @@
+{
+  "brand": "DSG (Digital Service Group)",
+  "legalName": "DSG (Digital Service Group)",
+  "contact": {
+    "address": "3F, Building 70, 1066 Qinzhou North Road, Xuhui District, Shanghai",
+    "email": "jason.huang@dsgcorp.cn",
+    "phone": "+86 189 1635 8954"
+  },
+  "navigation": [
+    {
+      "label": "Home",
+      "zhUrl": "index.html",
+      "enUrl": "index-en.html"
+    },
+    {
+      "label": "Events",
+      "zhUrl": "events.html",
+      "enUrl": "events-en.html"
+    },
+    {
+      "label": "Supply Chain AI Zone",
+      "zhUrl": "supply-chain-ai.html",
+      "enUrl": "supply-chain-ai-en.html"
+    },
+    {
+      "label": "Insights",
+      "zhUrl": "insights.html",
+      "enUrl": "insights-en.html"
+    },
+    {
+      "label": "About DSG",
+      "zhUrl": "about.html",
+      "enUrl": "about-en.html"
+    },
+    {
+      "label": "Contact Us",
+      "zhUrl": "contact.html",
+      "enUrl": "contact-en.html"
+    }
+  ],
+  "homeMetrics": [
+    {
+      "label": "Industry Events",
+      "unit": "events",
+      "metric": {
+        "value": 120,
+        "status": "verified",
+        "note": "Aligned with the CN site figure confirmed in the 2026-11-17 review.",
+        "provenance": {
+          "sourceFile": "DSG review meeting on the home and events pages, 2026-11-17 (CN site figure)",
+          "verifiedBy": "DSG (review decision)",
+          "verifiedOn": "2026-11-17"
+        }
+      }
+    },
+    {
+      "label": "Executive Attendees",
+      "unit": "attendees",
+      "metric": {
+        "value": 10000,
+        "status": "verified",
+        "note": "Aligned with the CN site figure confirmed in the 2026-11-17 review.",
+        "provenance": {
+          "sourceFile": "DSG review meeting on the home and events pages, 2026-11-17 (CN site figure)",
+          "verifiedBy": "DSG (review decision)",
+          "verifiedOn": "2026-11-17"
+        }
+      }
+    },
+    {
+      "label": "Companies Participated",
+      "unit": "companies",
+      "metric": {
+        "value": 5000,
+        "status": "verified",
+        "note": "Aligned with the CN site figure confirmed in the 2026-11-17 review.",
+        "provenance": {
+          "sourceFile": "DSG review meeting on the home and events pages, 2026-11-17 (CN site figure)",
+          "verifiedBy": "DSG (review decision)",
+          "verifiedOn": "2026-11-17"
+        }
+      }
+    },
+    {
+      "label": "Elite Six Talks",
+      "unit": "sessions",
+      "metric": {
+        "value": 113,
+        "status": "verified",
+        "note": "Aligned with the CN site figure confirmed in the 2026-11-17 review.",
+        "provenance": {
+          "sourceFile": "DSG review meeting on the home and events pages, 2026-11-17 (CN site figure)",
+          "verifiedBy": "DSG (review decision)",
+          "verifiedOn": "2026-11-17"
+        }
+      }
+    },
+    {
+      "label": "Speakers",
+      "unit": "speakers",
+      "metric": {
+        "value": 720,
+        "status": "verified",
+        "note": "Aligned with the CN site figure confirmed in the 2026-11-17 review.",
+        "provenance": {
+          "sourceFile": "DSG review meeting on the home and events pages, 2026-11-17 (CN site figure)",
+          "verifiedBy": "DSG (review decision)",
+          "verifiedOn": "2026-11-17"
+        }
+      }
+    }
+  ]
+}

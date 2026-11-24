@@ -1,0 +1,59 @@
+[
+  {
+    "title": "New Energy Supply Risk Alert",
+    "industry": "New Energy",
+    "pain": "Tiered supplier information is fragmented and risk signals lag, making it hard for procurement and production planning to respond in time.",
+    "product": "AI Supplier Insight Platform",
+    "value": "Building supplier profiles and a risk-signal radar to help management identify supply disruption, price volatility and compliance risks earlier.",
+    "video": "2-minute scenario demo",
+    "image": "assets/module-supply-ai-v2.png",
+    "id": "AIC-0001",
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "approvedBy": null,
+    "provenance": {
+      "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+      "verifiedBy": null,
+      "verifiedOn": null
+    }
+  },
+  {
+    "title": "Multi-Channel Demand Forecasting for FMCG",
+    "industry": "FMCG Retail",
+    "pain": "Channel promotions, seasonality and new product launches amplify forecast error, leaving inventory and stockouts side by side.",
+    "product": "AI Demand Forecasting Assistant",
+    "value": "Integrating sales, campaigns, channels and external factors to give regional teams explainable forecasts and replenishment recommendations.",
+    "video": "Case walkthrough video",
+    "image": "assets/module-supply-ai-v2.png",
+    "id": "AIC-0002",
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "approvedBy": null,
+    "provenance": {
+      "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+      "verifiedBy": null,
+      "verifiedOn": null
+    }
+  },
+  {
+    "title": "Procurement Cost-Saving Opportunity Identification for Manufacturers",
+    "industry": "Advanced Manufacturing",
+    "pain": "Historical procurement data is hard to accumulate; category opportunities, price anomalies and supplier concentration risks cannot be identified quickly.",
+    "product": "AI Procurement Analytics Assistant",
+    "value": "Automatically generating category analysis, price trends, supplier comparisons and cost-saving opportunity lists to support procurement decisions.",
+    "video": "Product operation demo",
+    "image": "assets/module-supply-ai-v2.png",
+    "id": "AIC-0003",
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "approvedBy": null,
+    "provenance": {
+      "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+      "verifiedBy": null,
+      "verifiedOn": null
+    }
+  }
+]

@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="assets/optimized/logo_favicon.png">
+  <title>DSG 管理后台</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="DSG 官网内容管理后台，仅限授权人员使用。">
+  <link rel="stylesheet" href="assets/admin.css?v=20261119b">
+  <script defer src="assets/alpine.min.js"></script>
+  <script src="assets/forms.js?v=20260917-eventsync"></script>
+  <script src="assets/embedded-data.js?v=20261120d"></script>
+  <script src="assets/theme.js?v=20261119a"></script>
+  <script src="assets/admin.js?v=20261119b"></script>
+</head>
+<body x-data="dsgAdmin()" x-init="init()">
+  <template x-if="!session.active">
+    <main class="login-shell">
+      <section class="login-panel">
+        <div>
+          <img src="assets/optimized/logo_full.webp" alt="DSG" class="login-logo">
+          <span class="eyebrow">Admin Console</span>
+          <h1>DSG 网站内容管理后台</h1>
+          <p>当前为 JSON 版本的管理界面原型，先用于配置模块权限、维护会议、供应链AI创新专区和行业洞察内容。</p>
+        </div>
+        <form class="login-form" @submit.prevent="login()">
+          <label>登录角色</label>
+          <select x-model="loginRole">
+            <template x-for="role in roles" :key="role.id">
+              <option :value="role.id" x-text="role.name + '（' + (role.scope || '') + '）'"></option>
+            </template>
+          </select>
+          <label>登录密码</label>
+          <input type="password" x-model="password" placeholder="请输入密码" required>
+          <button class="primary">进入后台</button>
+          <p class="login-error" x-show="loginError" x-text="loginError" style="color:#c0392b;font-size:13px;margin-top:8px;"></p>
+          <p class="hint">演示账号：admin / DSG2026（密码错误无法进入）</p>
+        </form>
+      </section>
+    </main>
+  </template>
+
+  <template x-if="session.active">
+    <div class="admin-shell">
+      <aside class="sidebar">
+        <div class="admin-brand">
+          <img src="assets/optimized/logo_full.webp" alt="DSG">
+          <div><strong>管理后台</strong><span x-text="currentRole.name"></span></div>
+        </div>
+        <nav>
+          <button :class="{active: activeModule==='dashboard'}" @click="activeModule='dashboard'">总览</button>
+          <template x-for="m in navModules" :key="m.id">
+            <button v-if="m.accessible" :class="{active: activeModule===m.id}" @click="activeModule=m.id">
+              <span x-text="m.label"></span>
+            </button>
+            <button v-else class="locked" disabled title="当前角色无此模块权限">
+              <span x-text="m.label"></span><em class="lock-tag">无权限</em>
+            </button>
+          </template>
+        </nav>
+        <div class="sidebar-foot">
+          <button class="ghost" @click="resetDrafts()">重置草稿</button>
+          <button class="ghost" @click="logout()">退出</button>
+        </div>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div>
+            <span class="eyebrow">DSG Content Operations</span>
+            <h1 x-text="moduleTitle"></h1>
+          </div>
+          <div class="top-actions">
+            <span class="save-state" x-text="saveState"></span>
+            <button class="primary" @click="publishToFrontend()">发布到前台（Demo）</button>
+            <button class="secondary" @click="exportCurrent()">导出当前模块 JSON</button>
+            <a class="secondary link" href="index.html" target="_blank">查看前台</a>
+          </div>
+        </header>
+
+        <section class="notice" x-show="dataError">
+          数据文件读取失败，当前显示本地草稿或空数据。请检查 JSON 文件路径。
+        </section>
+
+        <section x-show="activeModule==='dashboard'" class="dashboard-grid">
+          <article class="metric-card"><span>会议活动</span><strong x-text="draft.events.length"></strong><p>年度峰会、城市会议、精英六人谈</p></article>
+          <article class="metric-card"><span>AI 案例</span><strong x-text="draft.aiCases.length"></strong><p>供应链AI创新专区案例卡片</p></article>
+          <article class="metric-card"><span>行业洞察</span><strong x-text="draft.insights.length"></strong><p>文章、视频回放、闭门纪要</p></article>
+          <article class="metric-card"><span>角色</span><strong x-text="roles.length"></strong><p>当前可配置的后台权限角色</p></article>
+          <div class="wide-panel">
+            <h2>当前权限</h2>
+            <div class="permission-pills">
+              <template x-for="module in modules" :key="module.id">
+                <span :class="{off: !can(module.id)}"><b x-text="module.name"></b><em x-text="can(module.id) ? '已授权' : '无权限'"></em></span>
+              </template>
+            </div>
+          </div>
+        </section>
+
+        <section x-show="activeModule==='content'" class="manager-layout">
+          <div class="tool-panel">
+            <div class="panel-head"><h2>页面列表</h2></div>
+            <div class="lang-switch">
+              <button type="button" :class="{on: blocks.lang==='zh'}" @click="switchBlocksLang('zh')">中文版</button>
+              <button type="button" :class="{on: blocks.lang==='en'}" @click="switchBlocksLang('en')">English</button>
+            </div>
+            <div class="filters">
+              <input x-model="blocks.filter" placeholder="搜索字段名或当前文字">
+            </div>
+            <div class="table-list">
+              <template x-for="pg in blockPages" :key="pg.key">
+                <button class="row-item" :class="{active: blocks.page===pg.key}"
+                        @click="blocks.page=pg.key; blocks.filter=''">
+                  <span><strong x-text="pg.label"></strong><small x-text="pg.key + '.html'"></small></span>
+                </button>
+              </template>
+            </div>
+          </div>
+          <div class="editor-panel">
+            <div class="panel-head">
+              <h2 x-text="'编辑：' + (BLOCK_PAGE_LABELS[blocks.page] || blocks.page) + (blocks.lang === 'en' ? '（English）' : '')"></h2>
+              <div>
+                <button class="secondary" type="button" @click="resetBlocksDraft()">恢复线上</button>
+                <button class="primary" type="button" @click="exportBlocks()">导出 page-blocks.json</button>
+              </div>
+            </div>
+            <p class="hint">
+              共 <b x-text="filteredBlockFields.length"></b> 个字段，改完自动存本机草稿；导出后覆盖 <code>content/page-blocks.json</code> 即生效。
+              换行直接回车；<code>[[文字]]</code> 显示为金色强调；<code>{{文字}}</code> 保证该词组不断行。
+            </p>
+            <div class="form-grid">
+              <template x-for="f in filteredBlockFields" :key="f.path">
+                <label>
+                  <span><b x-text="fieldLabel(f.path)"></b><em x-text="f.path" class="field-path"></em></span>
+                  <textarea :rows="Math.min(8, Math.max(2, Math.ceil(f.value.length / 34)))" :value="f.value" @input="setBlockValue(f.path, $event.target.value)"></textarea>
+                </label>
+              </template>
+            </div>
+          </div>
+        </section>
+
+        <section x-show="activeModule==='appearance'" class="manager-layout">
+          <div class="tool-panel">
+            <div class="panel-head"><h2>版式令牌</h2></div>
+            <div class="form-grid" x-show="theme.draft">
+              <label>
+                首屏标题字号
+                <input type="range" min="0.8" max="1.25" step="0.01" x-model.number="theme.draft.scale.hero" @input="applyTheme()">
+                <b x-text="Number(theme.draft.scale.hero).toFixed(2) + ' ×'"></b>
+              </label>
+              <label>
+                区块标题字号
+                <input type="range" min="0.8" max="1.25" step="0.01" x-model.number="theme.draft.scale.h2" @input="applyTheme()">
+                <b x-text="Number(theme.draft.scale.h2).toFixed(2) + ' ×'"></b>
+              </label>
+              <label>
+                小标题字号
+                <input type="range" min="0.8" max="1.25" step="0.01" x-model.number="theme.draft.scale.h3" @input="applyTheme()">
+                <b x-text="Number(theme.draft.scale.h3).toFixed(2) + ' ×'"></b>
+              </label>
+              <label>
+                区块上下留白
+                <input type="range" min="0.7" max="1.3" step="0.01" x-model.number="theme.draft.scale.sectionY" @input="applyTheme()">
+                <b x-text="Number(theme.draft.scale.sectionY).toFixed(2) + ' ×'"></b>
+              </label>
+              <label>
+                内容最大宽度
+                <input type="number" min="1080" max="1600" step="10" x-model.number="theme.draft.layout.pageMax" @input="applyTheme()">
+                <b x-text="theme.draft.layout.pageMax + ' px'"></b>
+              </label>
+              <label>
+                左右最小留白
+                <input type="number" min="12" max="120" step="2" x-model.number="theme.draft.layout.gutterMax" @input="applyTheme()">
+                <b x-text="theme.draft.layout.gutterMax + ' px'"></b>
+              </label>
+              <label>
+                圆角
+                <input type="number" min="0" max="24" step="1" x-model.number="theme.draft.shape.radius" @input="applyTheme()">
+                <b x-text="theme.draft.shape.radius + ' px'"></b>
+              </label>
+              <label class="full">
+                首屏背景图
+                <input type="text" x-model="theme.draft.image.heroBg" @input="applyTheme()"
+                       placeholder="如 assets/photos/hero-aurora/hero-aurora-1920.webp，留空则用默认旋涡图">
+                <b x-text="theme.draft.image.heroBg ? '已自定义' : '默认图（旋涡）'"></b>
+              </label>
+              <label>
+                主色（金）
+                <input type="color" x-model="theme.draft.color.gold" @input="applyTheme()">
+                <b x-text="theme.draft.color.gold"></b>
+              </label>
+              <label>
+                正文色
+                <input type="color" x-model="theme.draft.color.ink" @input="applyTheme()">
+                <b x-text="theme.draft.color.ink"></b>
+              </label>
+              <label>
+                首屏底色
+                <input type="color" x-model="theme.draft.color.heroBase" @input="applyTheme()">
+                <b x-text="theme.draft.color.heroBase"></b>
+              </label>
+              <label>
+                深色区底色
+                <input type="color" x-model="theme.draft.color.darkBase" @input="applyTheme()">
+                <b x-text="theme.draft.color.darkBase"></b>
+              </label>
+              <label>
+                深色区文字
+                <input type="color" x-model="theme.draft.color.onDark" @input="applyTheme()">
+                <b x-text="theme.draft.color.onDark"></b>
+              </label>
+              <label>
+                辅助灰（说明文字）
+                <input type="color" x-model="theme.draft.color.muted" @input="applyTheme()">
+                <b x-text="theme.draft.color.muted"></b>
+              </label>
+              <label>
+                分割线
+                <input type="color" x-model="theme.draft.color.line" @input="applyTheme()">
+                <b x-text="theme.draft.color.line"></b>
+              </label>
+              <label>
+                页面底色
+                <input type="color" x-model="theme.draft.color.paper" @input="applyTheme()">
+                <b x-text="theme.draft.color.paper"></b>
+              </label>
+              <label>
+                强调色（青）
+                <input type="color" x-model="theme.draft.color.teal" @input="applyTheme()">
+                <b x-text="theme.draft.color.teal"></b>
+              </label>
+              <label>
+                强调色（蓝）
+                <input type="color" x-model="theme.draft.color.blue" @input="applyTheme()">
+                <b x-text="theme.draft.color.blue"></b>
+              </label>
+            </div>
+          </div>
+          <div class="editor-panel">
+            <div class="panel-head">
+              <h2>预览与导出</h2>
+              <div>
+                <button class="secondary" type="button" @click="resetTheme()">恢复线上</button>
+                <button class="primary" type="button" @click="exportTheme()">导出 theme.json</button>
+              </div>
+            </div>
+            <p class="hint">改动会立刻套用到下面的示意图；导出后覆盖 <code>content/theme.json</code>，全站按新比例排版。</p>
+            <div class="theme-preview" x-show="theme.draft">
+              <span class="eyebrow">外观预览</span>
+              <div class="bg-preview" :style="'background-image:url(&quot;' + heroPreviewSrc + '&quot;)'">
+                <span x-text="theme.draft.image.heroBg ? '首屏背景：已自定义' : '首屏背景：默认旋涡图'"></span>
+              </div>
+              <div :style="themePreviewStyle">以活动连接产业</div>
+              <div :style="'font-size:' + (38 * (theme.draft.scale.h2 || 1) * 0.58).toFixed(1) + 'px;margin:6px 0 4px;color:' + (theme.draft.color.ink || '#111315')">近期活动</div>
+              <p :style="'font-size:13px;line-height:1.75;color:' + (theme.draft.color.muted || '#6a7178') + ';margin:0'">
+                DSG 数创时代围绕年度峰会和城市会议分享全球化与创新，帮助企业把技术转化为可落地的增长能力。
+              </p>
+              <div class="theme-swatch" :style="'background:' + (theme.draft.color.gold || '#b8924a') + ';border-radius:' + (theme.draft.shape.radius || 8) + 'px'"></div>
+              <div class="theme-note" x-text="'内容宽 ' + theme.draft.layout.pageMax + 'px · 留白 ' + theme.draft.layout.gutterMax + 'px · 圆角 ' + theme.draft.shape.radius + 'px'"></div>
+            </div>
+            <a class="btn-open-front" href="index.html" target="_blank">打开前台核对实际效果</a>
+          </div>
+        </section>
+
+        <section x-show="activeModule==='events'" class="manager-layout">
+          <div class="tool-panel">
+            <div class="panel-head"><h2>会议列表</h2><button class="primary" @click="newEvent()">新增会议</button></div>
+            <div class="filters">
+              <input x-model="filters.events" placeholder="搜索标题、城市、标签">
+              <select x-model="eventTypeFilter"><option value="all">全部类型</option><option value="summit">年度峰会</option><option value="city">城市会议</option><option value="elite">精英六人谈</option></select>
+            </div>
+            <div class="table-list">
+              <template x-for="event in filteredEvents" :key="event.id">
+                <button class="row-item" :class="{active: selected.events && selected.events.id===event.id}" @click="editEvent(event)">
+                  <span><strong x-text="event.title"></strong><small x-text="event.date + ' · ' + event.city + ' · ' + event.status"></small></span>
+                  <em x-text="event.eyebrow"></em>
+                </button>
+              </template>
+            </div>
+          </div>
+          <form class="editor-panel" @submit.prevent="saveEvent()" x-show="selected.events">
+            <div class="panel-head"><h2>编辑会议</h2><button class="danger" type="button" @click="deleteEvent()">删除</button></div>
+            <div class="form-grid">
+              <label>标题<input x-model="selected.events.title" required></label>
+              <label>类型<select x-model="selected.events.type"><option value="summit">年度峰会</option><option value="city">城市会议</option><option value="elite">精英六人谈</option></select></label>
+              <label>日期<input type="date" x-model="selected.events.date"></label>
+              <label>显示日期<input x-model="selected.events.dateText" placeholder="如 3.21-22"></label>
+              <label>时间<input x-model="selected.events.time"></label>
+              <label>城市<input x-model="selected.events.city"></label>
+              <label>地点<input x-model="selected.events.venue"></label>
+              <label>状态<input x-model="selected.events.status"></label>
+              <label>发布状态<select x-model="selected.events.publishStatus"><option value="published">已发布（前台可见）</option><option value="review">待审核</option><option value="draft">草稿</option><option value="unlisted">已下架</option></select></label>
+              <label>预计人数<input type="number" x-model.number="selected.events.scale.expected.value"></label>
+              <label>报名人数<input type="number" x-model.number="selected.events.scale.registered.value"></label>
+              <label>签到人数<input type="number" x-model.number="selected.events.scale.checkedIn.value"></label>
+              <label>线上观看<input type="number" x-model.number="selected.events.scale.onlineViews.value"></label>
+              <label>宣传触达<input type="number" x-model.number="selected.events.scale.reach.value"></label>
+              <label class="full">数字口径说明<input x-model="selected.events.scale.expected.note" placeholder="如：来自签到系统导出，核对人 XXX"></label>
+              <label>来源文件<input x-model="selected.events.scale.expected.provenance.sourceFile"></label>
+              <label>核对人<input x-model="selected.events.scale.expected.provenance.verifiedBy"></label>
+              <label>核对日期<input type="date" x-model="selected.events.scale.expected.provenance.verifiedOn"></label>
+              <label>批准人<input x-model="selected.events.approvedBy"></label>
+              <label class="full">图片路径<input x-model="selected.events.image"></label>
+              <label class="full">摘要<textarea x-model="selected.events.summary"></textarea></label>
+              <label class="full">标签，逗号分隔<input :value="joinList(selected.events.tags)" @input="selected.events.tags = splitList($event.target.value)"></label>
+              <label class="full">议程，逗号分隔<input :value="joinList(selected.events.agenda)" @input="selected.events.agenda = splitList($event.target.value)"></label>
+            </div>
+            <button class="primary">保存会议草稿</button>
+          </form>
+        </section>
+
+        <section x-show="activeModule==='ai'" class="manager-layout">
+          <div class="tool-panel">
+            <div class="panel-head"><h2>AI 案例</h2><button class="primary" @click="newAiCase()">新增案例</button></div>
+            <div class="filters"><input x-model="filters.ai" placeholder="搜索标题、行业、产品"></div>
+            <div class="table-list">
+              <template x-for="item in filteredAiCases" :key="item.title">
+                <button class="row-item" :class="{active: selected.ai && selected.ai.title===item.title}" @click="editAiCase(item)">
+                  <span><strong x-text="item.title"></strong><small x-text="item.industry + ' · ' + item.product"></small></span>
+                </button>
+              </template>
+            </div>
+          </div>
+          <form class="editor-panel" @submit.prevent="saveAiCase()" x-show="selected.ai">
+            <div class="panel-head"><h2>编辑 AI 案例</h2><button class="danger" type="button" @click="deleteAiCase()">删除</button></div>
+            <div class="form-grid">
+              <label>案例标题<input x-model="selected.ai.title" required></label>
+              <label>行业<input x-model="selected.ai.industry"></label>
+              <label class="full">业务痛点<textarea x-model="selected.ai.pain"></textarea></label>
+              <label>解决方案/产品<input x-model="selected.ai.product"></label>
+              <label>视频说明<input x-model="selected.ai.video"></label>
+              <label class="full">业务价值<textarea x-model="selected.ai.value"></textarea></label>
+              <label class="full">图片路径<input x-model="selected.ai.image"></label>
+            </div>
+            <button class="primary">保存 AI 案例草稿</button>
+          </form>
+        </section>
+
+        <section x-show="activeModule==='insights'" class="manager-layout">
+          <div class="tool-panel">
+            <div class="panel-head"><h2>行业洞察</h2><button class="primary" @click="newInsight()">新增洞察</button></div>
+            <div class="filters"><input x-model="filters.insights" placeholder="搜索标题、类型、摘要"></div>
+            <div class="table-list">
+              <template x-for="item in filteredInsights" :key="item.title">
+                <button class="row-item" :class="{active: selected.insights && selected.insights.title===item.title}" @click="editInsight(item)">
+                  <span><strong x-text="item.title"></strong><small x-text="item.type + ' · ' + item.date"></small></span>
+                </button>
+              </template>
+            </div>
+          </div>
+          <form class="editor-panel" @submit.prevent="saveInsight()" x-show="selected.insights">
+            <div class="panel-head"><h2>编辑行业洞察</h2><button class="danger" type="button" @click="deleteInsight()">删除</button></div>
+            <div class="form-grid">
+              <label>标题<input x-model="selected.insights.title" required></label>
+              <label>类型<input x-model="selected.insights.type"></label>
+              <label>发布日期<input type="date" x-model="selected.insights.date"></label>
+              <label class="full">摘要<textarea x-model="selected.insights.summary"></textarea></label>
+            </div>
+            <button class="primary">保存洞察草稿</button>
+          </form>
+        </section>
+
+        <section x-show="activeModule==='permissions'" class="permissions-layout">
+          <div class="perm-matrix panel">
+            <div class="panel-head"><h2>角色 × 模块 权限矩阵（谁负责什么板块）</h2></div>
+            <table class="perm-table">
+              <thead><tr><th>角色</th><template x-for="m in modules" :key="m.id"><th x-text="m.name"></th></template><th>职责范围</th></tr></thead>
+              <tbody>
+                <template x-for="role in roles" :key="role.id">
+                  <tr :class="{locked: role.locked}">
+                    <td x-text="role.name"></td>
+                    <template x-for="m in modules" :key="m.id">
+                      <td :class="roleHas(role, m.id) ? 'yes' : 'no'"><span x-text="roleHas(role, m.id) ? '✓' : '—'"></span></td>
+                    </template>
+                    <td class="scope" x-text="role.scope || '自定义角色，可自由勾选模块'"></td>
+                  </tr>
+                </template>
+              </tbody>
+            </table>
+          </div>
+          <div class="tool-panel">
+            <div class="panel-head"><h2>角色</h2><button class="primary" @click="newRole()">新增角色</button></div>
+            <div class="table-list">
+              <template x-for="role in roles" :key="role.id">
+                <button class="row-item" :class="{active: selected.role && selected.role.id===role.id}" @click="editRole(role)">
+                  <span><strong x-text="role.name"></strong><small x-text="role.id"></small></span>
+                </button>
+              </template>
+            </div>
+          </div>
+          <form class="editor-panel" @submit.prevent="saveRole()" x-show="selected.role">
+            <div class="panel-head"><h2>模块授权</h2><button class="danger" type="button" @click="deleteRole()" :disabled="selected.role.id==='super-admin'">删除</button></div>
+            <div class="form-grid">
+              <label>角色名称<input x-model="selected.role.name" required></label>
+              <label>角色 ID<input x-model="selected.role.id" :disabled="selected.role.locked"></label>
+            </div>
+            <p class="muted" x-show="selected.role.locked">内置角色权限以矩阵为准，此处仅作展示，不可修改。</p>
+            <div class="permission-list" :class="{readonly: selected.role.locked}">
+              <template x-for="module in modules" :key="module.id">
+                <label><input type="checkbox" :value="module.id" x-model="selected.role.permissions" :disabled="selected.role.locked"> <span x-text="module.name"></span><small x-text="module.description"></small></label>
+              </template>
+            </div>
+            <label>职责范围<input x-model="selected.role.scope" placeholder="如：供应链AI创新专区 + 线索管理" :disabled="selected.role.locked"></label>
+            <button class="primary" :disabled="selected.role.locked">保存权限配置</button>
+          </form>
+        </section>
+
+        <!-- 线索管理：受限数据，仅授权角色可见，导出需留痕 -->
+        <section x-show="activeModule==='leads'" class="manager-layout">
+          <div class="tool-panel">
+            <div class="panel-head"><h2>线索队列</h2><button class="primary" @click="refreshLeads()">刷新</button></div>
+            <p class="muted">线索属于受限数据，导出后请按公司数据安全规范处理，不得转发到个人设备或公开渠道。</p>
+            <div class="filters"><input x-model="filters.leads" placeholder="搜索姓名、公司、邮箱"></div>
+            <div class="table-list">
+              <template x-for="lead in filteredLeads" :key="lead.id">
+                <div class="row-item static">
+                  <span><strong x-text="lead.name + ' · ' + lead.company"></strong><small x-text="lead.createdAt + ' · ' + lead.type + ' · ' + lead.phone"></small></span>
+                  <em x-text="lead.status"></em>
+                </div>
+              </template>
+              <p class="muted" x-show="!filteredLeads.length">暂无线索。前台表单提交后会进入此队列。</p>
+            </div>
+            <div class="actions">
+              <button class="primary" @click="exportLeads()" :disabled="!leads.length">导出 CSV</button>
+              <button class="danger" type="button" @click="clearLeads()" :disabled="!leads.length">清空队列</button>
+            </div>
+          </div>
+          <div class="editor-panel">
+            <div class="panel-head"><h2>投递通道</h2></div>
+            <p>当前通道：<strong x-text="DSGForms ? DSGForms.policyVersion : ''"></strong> 条款版本</p>
+            <p class="muted">可选通道：<span x-text="DSGForms ? DSGForms.channels.join(' / ') : ''"></span></p>
+            <p class="muted">修改通道请编辑 assets/form-config.js（该文件不入库），webhook 失败时线索会自动降级保存到本地队列。</p>
+          </div>
+        </section>
+      </main>
+    </div>
+  </template>
+</body>
+</html>

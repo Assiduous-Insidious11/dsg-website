@@ -1,0 +1,211 @@
+[
+  {
+    "id": "PAGE-INDEX",
+    "zhUrl": "index.html",
+    "enUrl": "index-en.html",
+    "title": "Home",
+    "language": "en-US",
+    "translationStatus": "translated",
+    "seo": {
+      "title": "Home | DSG Digital Service Group",
+      "description": "DSG Digital Service Group connects industry decision-makers through annual summits, city salons and CEO roundtables, and helps enterprises turn technology into growth capability through its Supply Chain AI Innovation Zone.",
+      "keywords": [
+        "DSG",
+        "Digital Service Group",
+        "Home"
+      ]
+    },
+    "editableRegions": [],
+    "layoutOwner": "engineering"
+  },
+  {
+    "id": "PAGE-EVENTS",
+    "zhUrl": "events.html",
+    "enUrl": "events-en.html",
+    "title": "Events",
+    "language": "en-US",
+    "translationStatus": "translated",
+    "seo": {
+      "title": "Events | DSG Digital Service Group",
+      "description": "The DSG Events Center aggregates annual summits, city salons and Elite Six Talks, filterable by event tier, city and date, with direct registration and seat application.",
+      "keywords": [
+        "DSG",
+        "Digital Service Group",
+        "Events"
+      ]
+    },
+    "editableRegions": [],
+    "layoutOwner": "engineering"
+  },
+  {
+    "id": "PAGE-EVENTS-SUMMITS",
+    "zhUrl": "events-summits.html",
+    "enUrl": "events-summits-en.html",
+    "title": "Annual Summits",
+    "language": "en-US",
+    "translationStatus": "translated",
+    "seo": {
+      "title": "Annual Summits | DSG Digital Service Group",
+      "description": "DSG annual summits target business decision-makers, focusing on globalization and innovation topics, bringing together industry experts, benchmark cases and actionable transformation methods.",
+      "keywords": [
+        "DSG",
+        "Digital Service Group",
+        "Annual Summits"
+      ]
+    },
+    "editableRegions": [],
+    "layoutOwner": "engineering"
+  },
+  {
+    "id": "PAGE-EVENTS-CITY",
+    "zhUrl": "events-city.html",
+    "enUrl": "events-city-en.html",
+    "title": "City Salons",
+    "language": "en-US",
+    "translationStatus": "translated",
+    "seo": {
+      "title": "City Salons | DSG Digital Service Group",
+      "description": "DSG city salons go to industrial frontline cities, connecting regional business leaders through small-scale, in-depth exchanges focused on real business problems and solutions.",
+      "keywords": [
+        "DSG",
+        "Digital Service Group",
+        "City Salons"
+      ]
+    },
+    "editableRegions": [],
+    "layoutOwner": "engineering"
+  },
+  {
+    "id": "PAGE-EVENTS-ELITE-TALKS",
+    "zhUrl": "events-elite-talks.html",
+    "enUrl": "events-elite-talks-en.html",
+    "title": "Elite Six Talks",
+    "language": "en-US",
+    "translationStatus": "translated",
+    "seo": {
+      "title": "Elite Six Talks | DSG Digital Service Group",
+      "description": "DSG Elite Six Talks are closed-door CEO roundtables for 6-15 people, conducting private practical reviews on supply chain resilience and digital transformation.",
+      "keywords": [
+        "DSG",
+        "Digital Service Group",
+        "Elite Six Talks"
+      ]
+    },
+    "editableRegions": [],
+    "layoutOwner": "engineering"
+  },
+  {
+    "id": "PAGE-EVENTS-CALENDAR",
+    "zhUrl": "events-calendar.html",
+    "enUrl": "events-calendar-en.html",
+    "title": "Events Calendar",
+    "language": "en-US",
+    "translationStatus": "translated",
+    "seo": {
+      "title": "Events Calendar | DSG Digital Service Group",
+      "description": "Browse the full DSG event schedule by month with a calendar view for quick discovery, and complete your registration on the detail page.",
+      "keywords": [
+        "DSG",
+        "Digital Service Group",
+        "Events Calendar"
+      ]
+    },
+    "editableRegions": [],
+    "layoutOwner": "engineering"
+  },
+  {
+    "id": "PAGE-EVENT-DETAIL",
+    "zhUrl": "event-detail.html",
+    "enUrl": "event-detail-en.html",
+    "title": "Event Detail",
+    "language": "en-US",
+    "translationStatus": "translated",
+    "seo": {
+      "title": "Event Detail | DSG Digital Service Group",
+      "description": "View a single DSG event's agenda, speakers, venue, scale and registration method.",
+      "keywords": [
+        "DSG",
+        "Digital Service Group",
+        "Event Detail"
+      ]
+    },
+    "editableRegions": [],
+    "layoutOwner": "engineering"
+  },
+  {
+    "id": "PAGE-SUPPLY-CHAIN-AI",
+    "zhUrl": "supply-chain-ai.html",
+    "enUrl": "supply-chain-ai-en.html",
+    "title": "Supply Chain AI Innovation Zone",
+    "language": "en-US",
+    "translationStatus": "translated",
+    "seo": {
+      "title": "Supply Chain AI Innovation Zone | DSG Digital Service Group",
+      "description": "Real cases present DSG supply chain AI solutions: industry pain points, product capabilities, business value, video demos and Demo booking.",
+      "keywords": [
+        "DSG",
+        "Digital Service Group",
+        "Supply Chain AI Innovation Zone"
+      ]
+    },
+    "editableRegions": [],
+    "layoutOwner": "engineering"
+  },
+  {
+    "id": "PAGE-INSIGHTS",
+    "zhUrl": "insights.html",
+    "enUrl": "insights-en.html",
+    "title": "Insights",
+    "language": "en-US",
+    "translationStatus": "translated",
+    "seo": {
+      "title": "Insights | DSG Digital Service Group",
+      "description": "DSG Insights consolidates summit replays, expert interviews, closed-door minutes and industry articles for business leaders and digital transformation officers.",
+      "keywords": [
+        "DSG",
+        "Digital Service Group",
+        "Insights"
+      ]
+    },
+    "editableRegions": [],
+    "layoutOwner": "engineering"
+  },
+  {
+    "id": "PAGE-ABOUT",
+    "zhUrl": "about.html",
+    "enUrl": "about-en.html",
+    "title": "About DSG",
+    "language": "en-US",
+    "translationStatus": "translated",
+    "seo": {
+      "title": "About DSG | DSG Digital Service Group",
+      "description": "DSG Digital Service Group connects industries through events and rebuilds supply chains with AI, acting as the bridge builder across the technology gap.",
+      "keywords": [
+        "DSG",
+        "Digital Service Group",
+        "About DSG"
+      ]
+    },
+    "editableRegions": [],
+    "layoutOwner": "engineering"
+  },
+  {
+    "id": "PAGE-CONTACT",
+    "zhUrl": "contact.html",
+    "enUrl": "contact-en.html",
+    "title": "Contact Us",
+    "language": "en-US",
+    "translationStatus": "translated",
+    "seo": {
+      "title": "Contact Us | DSG Digital Service Group",
+      "description": "Register for events, book a supply chain AI demo, initiate business or media partnerships, and contact DSG Digital Service Group.",
+      "keywords": [
+        "DSG",
+        "Digital Service Group",
+        "Contact Us"
+      ]
+    },
+    "editableRegions": [],
+    "layoutOwner": "engineering"
+  }
+]

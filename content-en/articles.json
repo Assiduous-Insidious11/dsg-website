@@ -1,0 +1,68 @@
+[
+  {
+    "id": "ART-2026-0001",
+    "urlName": "art-2026-0001",
+    "title": "Three Key Conditions for Scaling Supply Chain AI from Pilot to Production",
+    "type": "Industry Article",
+    "author": null,
+    "date": "2026-05-20",
+    "summary": "Breaking down how enterprises can avoid AI projects staying at the demo stage, from data foundation, business scenarios and organizational alignment.",
+    "body": null,
+    "tags": [],
+    "coverImage": null,
+    "relatedEventIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "approvedBy": null,
+    "seo": {
+      "title": "Three Key Conditions for Scaling Supply Chain AI from Pilot to Production | DSG",
+      "description": "Breaking down how enterprises can avoid AI projects staying at the demo stage, f",
+      "keywords": []
+    }
+  },
+  {
+    "id": "ART-2026-0002",
+    "urlName": "art-2026-0002",
+    "title": "Summit Replay: How AI Reshapes Procurement and Supplier Management",
+    "type": "Video Replay",
+    "author": null,
+    "date": "2026-04-12",
+    "summary": "Practice sharing from manufacturing, FMCG and new energy companies, covering risk alerts, procurement cost reduction and supplier performance management.",
+    "body": null,
+    "tags": [],
+    "coverImage": null,
+    "relatedEventIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "approvedBy": null,
+    "seo": {
+      "title": "Summit Replay: How AI Reshapes Procurement and Supplier Management | DSG",
+      "description": "Practice sharing from manufacturing, FMCG and new energy companies, covering ris",
+      "keywords": []
+    }
+  },
+  {
+    "id": "ART-2026-0003",
+    "urlName": "art-2026-0003",
+    "title": "DSG Elite Six Talks Notes: Supply Chain Resilience from a CEO Perspective",
+    "type": "Closed-Door Minutes",
+    "author": null,
+    "date": "2026-03-28",
+    "summary": "Anonymized insights from small closed-door discussions, ideal for CXOs and supply chain leaders.",
+    "body": null,
+    "tags": [],
+    "coverImage": null,
+    "relatedEventIds": [],
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "approvedBy": null,
+    "seo": {
+      "title": "DSG Elite Six Talks Notes: Supply Chain Resilience from a CEO Perspective | DSG",
+      "description": "Anonymized insights from small closed-door discussions, ideal for CXOs and suppl",
+      "keywords": []
+    }
+  }
+]

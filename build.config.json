@@ -1,0 +1,15 @@
+{
+  "siteUrl": "https://www.dsgcorp.cn",
+  "defaultOgImage": "assets/optimized/module-home-v2.webp",
+  "twitterSite": "@DSG",
+  "organization": {
+    "name": "数创时代 DSG",
+    "nameEn": "DSG (Digital Service Group)",
+    "alternateName": "Digital Service Group",
+    "url": "https://www.dsgcorp.cn",
+    "logo": "https://www.dsgcorp.cn/assets/logo_full.png",
+    "address": "上海市徐汇区钦州北路1066号70号楼3楼",
+    "email": "jason.huang@dsgcorp.cn",
+    "telephone": "+86 189 1635 8954"
+  }
+}

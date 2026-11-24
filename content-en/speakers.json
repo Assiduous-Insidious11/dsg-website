@@ -1,0 +1,1384 @@
+[
+  {
+    "id": "SPK-0001",
+    "name": "Shi Yunfei",
+    "company": "McKinsey & Company",
+    "jobTitle": "Associate Partner, China Supply Chain Lead",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2024-ELITE-01",
+      "EVT-2026-ELITE-36",
+      "EVT-2026-CITY-CQ-1023",
+      "EVT-2026-SUP",
+      "EVT-2026-CITY-HZ-0626"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0002",
+    "name": "Edward Allan Gabor",
+    "company": "AmCham Shanghai",
+    "jobTitle": "Honorary Chairman, Former President of Merck China",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0003",
+    "name": "Shen Donghui",
+    "company": "Hehe Information",
+    "jobTitle": "Deputy GM, Data Business Unit",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-CITY-GZ-0424",
+      "EVT-2026-SUP",
+      "EVT-2026-CITY-SH-0526"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0004",
+    "name": "Xu Xiaozhuo",
+    "company": "Hithium Energy Storage",
+    "jobTitle": "Dean, AI Research Institute",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-CITY-SZ-0521",
+      "EVT-2026-SUP",
+      "EVT-2026-CITY-HZ-0626"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0005",
+    "name": "Zha Xiaojun",
+    "company": "Shanghai Rural Commercial Bank",
+    "jobTitle": "Deputy GM, FinTech Dept & R&D Test Center",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-41",
+      "EVT-2025-ELITE-16",
+      "EVT-2026-ELITE-47",
+      "EVT-2026-ELITE-35",
+      "EVT-2025-ELITE-20",
+      "EVT-2026-FIN"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0006",
+    "name": "Lin Bingxian",
+    "company": "Xiamen International Bank",
+    "jobTitle": "Deputy GM, Technology Development Dept",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-FIN"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0007",
+    "name": "Ren Rong",
+    "company": "Guotai Haitong",
+    "jobTitle": "Assistant GM, Data Management & Application Dept",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-FIN"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0008",
+    "name": "Zhao Yan",
+    "company": "Guohua Life",
+    "jobTitle": "Deputy General Manager",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-FIN"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0009",
+    "name": "Zhu Caicai",
+    "company": "Everbright Securities",
+    "jobTitle": "Data Team Lead",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-FIN"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0010",
+    "name": "Han Zeyuan",
+    "company": "eSign Bao",
+    "jobTitle": "GM, Brand & Marketing Center",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-FIN"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0011",
+    "name": "Cao Gang",
+    "company": "NetEase Zhiqi",
+    "jobTitle": "Director, Industry Solutions",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-FIN",
+      "EVT-2025-VISIT-01"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0012",
+    "name": "He Bingwei",
+    "company": "CPIC Tech",
+    "jobTitle": "Data Architect",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-FIN"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0013",
+    "name": "Li Yanfeng",
+    "company": "Sunshine P&C Insurance",
+    "jobTitle": "GM, IT Dept",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-FIN",
+      "EVT-2026-ELITE-47"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0014",
+    "name": "Chen Min",
+    "company": "Hehe Information",
+    "jobTitle": "Lead, Banking Solutions, Intelligent Solutions BU",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-CITY-GZ-0424",
+      "EVT-2026-SUP",
+      "EVT-2026-CITY-SH-0526"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0015",
+    "name": "Gu Weidong",
+    "company": "A leading MCN company",
+    "jobTitle": "Procurement Lead, among China's first CPM certified",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0016",
+    "name": "Zhu Yi",
+    "company": "Digital Procurement",
+    "jobTitle": "US-based supply chain expert & digital procurement mentor",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0017",
+    "name": "Samuel Lee",
+    "company": "A leading automotive enterprise",
+    "jobTitle": "Procurement & Supply Chain Lead",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0018",
+    "name": "Jason",
+    "company": "A globally known listed MNC consumer company",
+    "jobTitle": "Digital Transformation Expert",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0019",
+    "name": "Chen Ying",
+    "company": "Qiaoying New Luxury Brand Management",
+    "jobTitle": "VP, Supply Chain",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0020",
+    "name": "AI Lead, Hisun Pharma",
+    "company": "Hisun Pharma",
+    "jobTitle": "AI Lead",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-39",
+      "EVT-2026-ELITE-42A"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0021",
+    "name": "Chief Information Officer, Cabot",
+    "company": "Cabot",
+    "jobTitle": "Chief Information Officer",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-46",
+      "EVT-2026-ELITE-43",
+      "EVT-2026-ELITE-45"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0022",
+    "name": "Supply Chain Operations Lead, Golden Arches",
+    "company": "Golden Arches",
+    "jobTitle": "Supply Chain Operations Lead",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2024-ELITE-01",
+      "EVT-2026-CITY-CQ-1023",
+      "EVT-2026-ELITE-36"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0023",
+    "name": "Senior IT Director, Yum China",
+    "company": "Yum China",
+    "jobTitle": "Senior IT Director",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-37",
+      "EVT-2026-ELITE-42B"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0024",
+    "name": "Technical Director, lululemon",
+    "company": "lululemon",
+    "jobTitle": "Technical Director",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-37",
+      "EVT-2026-ELITE-42B"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0025",
+    "name": "Head of IT, Dyson",
+    "company": "Dyson",
+    "jobTitle": "Head of IT",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-37",
+      "EVT-2026-ELITE-42B"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0026",
+    "name": "Chief Information Officer, Domino's",
+    "company": "Domino's",
+    "jobTitle": "Chief Information Officer",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-37",
+      "EVT-2026-ELITE-42B"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0027",
+    "name": "Chief Information Officer, Metro",
+    "company": "Metro",
+    "jobTitle": "Chief Information Officer",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-37",
+      "EVT-2026-ELITE-42B"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0028",
+    "name": "Head of Digitalization, WuXi AppTec",
+    "company": "WuXi AppTec",
+    "jobTitle": "Head of Digitalization",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-39",
+      "EVT-2026-ELITE-42A"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0029",
+    "name": "IT Assistant Director, Zai Lab",
+    "company": "Zai Lab",
+    "jobTitle": "IT Assistant Director",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-39",
+      "EVT-2026-ELITE-42A"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0030",
+    "name": "ICT Leader, Chiesi Pharma",
+    "company": "Chiesi Pharma",
+    "jobTitle": "ICT Leader",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-39",
+      "EVT-2026-ELITE-42A"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0031",
+    "name": "Dean, AI Research Institute, Hithium Energy Storage",
+    "company": "Hithium Energy Storage",
+    "jobTitle": "Dean, AI Research Institute",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-CITY-SZ-0521",
+      "EVT-2026-SUP",
+      "EVT-2026-CITY-HZ-0626"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0032",
+    "name": "IT Director, AkzoNobel",
+    "company": "AkzoNobel",
+    "jobTitle": "IT Director",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-46",
+      "EVT-2026-ELITE-45"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0033",
+    "name": "SCM Demand Planning Manager, Klüber Lubrication",
+    "company": "Klüber Lubrication",
+    "jobTitle": "SCM Demand Planning Manager",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-45"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0034",
+    "name": "IT BSA, Medtronic",
+    "company": "Medtronic",
+    "jobTitle": "IT BSA",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-39",
+      "EVT-2026-ELITE-42A"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0035",
+    "name": "Procurement Director, TotalEnergies",
+    "company": "TotalEnergies",
+    "jobTitle": "Procurement Director",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2024-ELITE-01",
+      "EVT-2026-CITY-CQ-1023",
+      "EVT-2026-ELITE-36",
+      "EVT-2026-ELITE-45"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0036",
+    "name": "Head of Digitalization, ZF",
+    "company": "ZF",
+    "jobTitle": "Head of Digitalization",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-40",
+      "EVT-2026-ELITE-46",
+      "EVT-2026-ELITE-38",
+      "EVT-2026-ELITE-43",
+      "EVT-2026-ELITE-45"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0037",
+    "name": "Chief Information Officer, China, ADAMA",
+    "company": "ADAMA",
+    "jobTitle": "Chief Information Officer, China",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-45"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0038",
+    "name": "Industrial Procurement Skills Management, Decathlon",
+    "company": "Decathlon",
+    "jobTitle": "Industrial Procurement Skills Management",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2024-ELITE-01",
+      "EVT-2026-CITY-CQ-1023",
+      "EVT-2026-ELITE-36"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0039",
+    "name": "Senior Procurement Manager, Signify",
+    "company": "Signify",
+    "jobTitle": "Senior Procurement Manager",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2024-ELITE-01",
+      "EVT-2026-CITY-CQ-1023",
+      "EVT-2026-ELITE-36"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0040",
+    "name": "Procurement & Supply Chain Director, SAIC Motor",
+    "company": "SAIC Motor",
+    "jobTitle": "Procurement & Supply Chain Director",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0041",
+    "name": "Procurement Director, Philips",
+    "company": "Philips",
+    "jobTitle": "Procurement Director",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2024-ELITE-01",
+      "EVT-2026-CITY-CQ-1023",
+      "EVT-2026-ELITE-36"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0042",
+    "name": "VP, Procurement, Nokia Bell",
+    "company": "Nokia Bell",
+    "jobTitle": "VP, Procurement",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0043",
+    "name": "Procurement Manager, Innovent Biologics",
+    "company": "Innovent Biologics",
+    "jobTitle": "Procurement Manager",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-39",
+      "EVT-2026-ELITE-42A"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0044",
+    "name": "Chief Information Officer, Infineon",
+    "company": "Infineon",
+    "jobTitle": "Chief Information Officer",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-40",
+      "EVT-2026-ELITE-46",
+      "EVT-2026-ELITE-38",
+      "EVT-2026-ELITE-43",
+      "EVT-2026-ELITE-45"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0045",
+    "name": "Chief Technology Officer, Zhuoyi Information",
+    "company": "Zhuoyi Information",
+    "jobTitle": "Chief Technology Officer",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0046",
+    "name": "IT CIO, Joyson Safety Systems",
+    "company": "Joyson Safety Systems",
+    "jobTitle": "IT CIO",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-40",
+      "EVT-2026-ELITE-38",
+      "EVT-2025-ELITE-22",
+      "EVT-2026-VISIT-03",
+      "EVT-2026-ELITE-44"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0047",
+    "name": "R&D Lead, Zeekr Technology",
+    "company": "Zeekr Technology",
+    "jobTitle": "R&D Lead",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-44",
+      "EVT-2025-ELITE-22"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0048",
+    "name": "Supply Chain Director, Volvo",
+    "company": "Volvo",
+    "jobTitle": "Supply Chain Director",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-44",
+      "EVT-2026-SUP",
+      "EVT-2025-ELITE-22"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0049",
+    "name": "Head of Digital Transformation, Faurecia",
+    "company": "Faurecia",
+    "jobTitle": "Head of Digital Transformation",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-40",
+      "EVT-2026-ELITE-38"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0050",
+    "name": "IT Director, Bosch",
+    "company": "Bosch",
+    "jobTitle": "IT Director",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-40",
+      "EVT-2026-ELITE-46",
+      "EVT-2026-ELITE-38",
+      "EVT-2025-ELITE-22",
+      "EVT-2026-ELITE-44",
+      "EVT-2026-ELITE-43",
+      "EVT-2026-SUP",
+      "EVT-2026-ELITE-45"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0051",
+    "name": "Vice President, Friends (e-commerce)",
+    "company": "Friends (e-commerce)",
+    "jobTitle": "Vice President",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-VISIT-02"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0052",
+    "name": "Chief Information Officer, Zuming Soy Products",
+    "company": "Zuming Soy Products",
+    "jobTitle": "Chief Information Officer",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0053",
+    "name": "IT Director, Inoherb",
+    "company": "Inoherb",
+    "jobTitle": "IT Director",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-37",
+      "EVT-2026-ELITE-42B"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0054",
+    "name": "Digital Director, JALA Group",
+    "company": "JALA Group",
+    "jobTitle": "Digital Director",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0055",
+    "name": "Marketing Director, China Huadian Group",
+    "company": "China Huadian Group",
+    "jobTitle": "Marketing Director",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0056",
+    "name": "IT Director, GCL System Integration",
+    "company": "GCL System Integration",
+    "jobTitle": "IT Director",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0057",
+    "name": "Information Management Director, Chint New Energy",
+    "company": "Chint New Energy",
+    "jobTitle": "Information Management Director",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0058",
+    "name": "Chief Information Officer, Risen Energy",
+    "company": "Risen Energy",
+    "jobTitle": "Chief Information Officer",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0059",
+    "name": "Senior Engineer, FinTech Dept, Shanghai Rural Commercial Bank",
+    "company": "Shanghai Rural Commercial Bank",
+    "jobTitle": "Senior Engineer, FinTech Dept",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-41",
+      "EVT-2025-ELITE-16",
+      "EVT-2026-ELITE-47",
+      "EVT-2026-ELITE-35",
+      "EVT-2025-ELITE-20",
+      "EVT-2026-FIN"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0060",
+    "name": "Senior Product Safety Analyst, Honeywell",
+    "company": "Honeywell",
+    "jobTitle": "Senior Product Safety Analyst",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-35",
+      "EVT-2025-ELITE-20",
+      "EVT-2026-ELITE-41",
+      "EVT-2025-ELITE-16"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0061",
+    "name": "Information Security Director, Abbott",
+    "company": "Abbott",
+    "jobTitle": "Information Security Director",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-ELITE-41",
+      "EVT-2026-ELITE-42A",
+      "EVT-2025-ELITE-16",
+      "EVT-2026-ELITE-39",
+      "EVT-2026-ELITE-35",
+      "EVT-2025-ELITE-20"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0062",
+    "name": "Supply Chain Director, ZTE",
+    "company": "ZTE",
+    "jobTitle": "Supply Chain Director",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2026-SUP",
+      "EVT-2026-CITY-SZ-0521"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  },
+  {
+    "id": "SPK-0063",
+    "name": "Industry Expert, Dun & Bradstreet",
+    "company": "Dun & Bradstreet",
+    "jobTitle": "Industry Expert",
+    "portrait": null,
+    "bio": null,
+    "eventIds": [
+      "EVT-2024-ELITE-01",
+      "EVT-2026-CITY-SZ-0521",
+      "EVT-2026-ELITE-36",
+      "EVT-2026-CITY-CQ-1023",
+      "EVT-2026-CITY-SH-0526",
+      "EVT-2026-CITY-GZ-0424",
+      "EVT-2026-SUP",
+      "EVT-2026-CITY-HZ-0626"
+    ],
+    "license": {
+      "status": "licensed",
+      "grantedBy": "DSG (Digital Service Group)",
+      "sourceFile": null,
+      "expiry": null
+    },
+    "language": "en-US",
+    "translationStatus": "missing",
+    "publishStatus": "published",
+    "displayLevel": "executive"
+  }
+]

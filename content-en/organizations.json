@@ -1,0 +1,578 @@
+[
+  {
+    "id": "ORG-DSG",
+    "name": "DSG (Digital Service Group)",
+    "logo": "assets/logo_full.png",
+    "category": "Host",
+    "participationRole": "Host",
+    "website": "https://www.dsgcorp.cn",
+    "logoLicense": {
+      "status": "owned",
+      "sourceFile": "DSG Case Compendium (company-owned activity archives)",
+      "grantedBy": "DSG Marketing",
+      "expiry": null
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-QIXIN",
+    "name": "Hehe Information · Qixin Huiyan",
+    "logo": null,
+    "category": "Partner",
+    "participationRole": "Co-Host",
+    "website": "https://www.qixin.com",
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG Event Partner",
+      "expiry": null,
+      "sourceFile": "DSG Case Compendium (company-owned activity archives)"
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-DNB",
+    "name": "Dun & Bradstreet",
+    "logo": null,
+    "category": "Partner",
+    "participationRole": "Speaker Support",
+    "website": "https://www.dnb.com",
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG Event Partner",
+      "expiry": null,
+      "sourceFile": "DSG Case Compendium (company-owned activity archives)"
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-ZTE",
+    "name": "ZTE",
+    "logo": null,
+    "category": "Participating Enterprise",
+    "participationRole": "Guest Enterprise",
+    "website": "https://www.zte.com.cn",
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG Event Partner",
+      "expiry": null,
+      "sourceFile": "DSG Case Compendium (company-owned activity archives)"
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-MCKINSEY",
+    "name": "McKinsey & Company",
+    "logo": null,
+    "category": "Expert Institution",
+    "participationRole": "Speaker Enterprise",
+    "website": "https://www.mckinsey.com.cn",
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG Event Partner",
+      "expiry": null,
+      "sourceFile": "DSG Case Compendium (company-owned activity archives)"
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-HICHANGE",
+    "name": "Hithium Energy Storage",
+    "logo": null,
+    "category": "Participating Enterprise",
+    "participationRole": "Guest Enterprise",
+    "website": "https://www.hithium.com",
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG Event Partner",
+      "expiry": null,
+      "sourceFile": "DSG Case Compendium (company-owned activity archives)"
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-JOY",
+    "name": "Friends (e-commerce)",
+    "logo": null,
+    "category": "Visited Enterprise",
+    "participationRole": "Enterprise Visit",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG Event Partner",
+      "expiry": null,
+      "sourceFile": "DSG Case Compendium (company-owned activity archives)"
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-JOINSON",
+    "name": "Joyson Safety Systems",
+    "logo": null,
+    "category": "Visited Enterprise",
+    "participationRole": "Enterprise Visit",
+    "website": "https://www.joyson safety.com",
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG Event Partner",
+      "expiry": null,
+      "sourceFile": "DSG Case Compendium (company-owned activity archives)"
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-NETEASE",
+    "name": "NetEase",
+    "logo": null,
+    "category": "Visited Enterprise",
+    "participationRole": "Enterprise Visit",
+    "website": "https://www.163.com",
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG Event Partner",
+      "expiry": null,
+      "sourceFile": "DSG Case Compendium (company-owned activity archives)"
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-CISCO",
+    "name": "Cisco",
+    "logo": null,
+    "category": "Partner",
+    "participationRole": "Venue & Technical Support",
+    "website": "https://www.cisco.com",
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG Event Partner",
+      "expiry": null,
+      "sourceFile": "DSG Case Compendium (company-owned activity archives)"
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-SRCB",
+    "name": "Shanghai Rural Commercial Bank",
+    "logo": null,
+    "category": "Partner",
+    "participationRole": "FinTech Summit Co-Host",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG Event Partner",
+      "expiry": null,
+      "sourceFile": "DSG Case Compendium (company-owned activity archives)"
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-EIPM",
+    "name": "EIPM Procurement & Supply Chain Institute",
+    "logo": null,
+    "category": "Partner",
+    "participationRole": "Academic Support",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG Event Partner",
+      "expiry": null,
+      "sourceFile": "DSG Case Compendium (company-owned activity archives)"
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-VOLVO",
+    "name": "Volvo",
+    "logo": null,
+    "category": "Participating Enterprise",
+    "participationRole": "Guest Enterprise",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG Event Partner",
+      "expiry": null,
+      "sourceFile": "DSG Case Compendium (company-owned activity archives)"
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-ZEEKR",
+    "name": "Zeekr Technology",
+    "logo": null,
+    "category": "Participating Enterprise",
+    "participationRole": "Guest Enterprise",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG Event Partner",
+      "expiry": null,
+      "sourceFile": "DSG Case Compendium (company-owned activity archives)"
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-BOSCH",
+    "name": "Bosch",
+    "logo": null,
+    "category": "Participating Enterprise",
+    "participationRole": "Guest Enterprise",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG Event Partner",
+      "expiry": null,
+      "sourceFile": "DSG Case Compendium (company-owned activity archives)"
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-INFINEON",
+    "name": "Infineon",
+    "logo": null,
+    "category": "Participating Enterprise",
+    "participationRole": "Guest Enterprise",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG Event Partner",
+      "expiry": null,
+      "sourceFile": "DSG Case Compendium (company-owned activity archives)"
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-WUXI",
+    "name": "WuXi AppTec",
+    "logo": null,
+    "category": "Participating Enterprise",
+    "participationRole": "Guest Enterprise",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG Event Partner",
+      "expiry": null,
+      "sourceFile": "DSG Case Compendium (company-owned activity archives)"
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-ZAIDING",
+    "name": "Zai Lab",
+    "logo": null,
+    "category": "Participating Enterprise",
+    "participationRole": "Guest Enterprise",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG Event Partner",
+      "expiry": null,
+      "sourceFile": "DSG Case Compendium (company-owned activity archives)"
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-AMGEN",
+    "name": "Amgen",
+    "logo": null,
+    "category": "Participating Enterprise",
+    "participationRole": "Guest Enterprise",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG Event Partner",
+      "expiry": null,
+      "sourceFile": "DSG Case Compendium (company-owned activity archives)"
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-YUM",
+    "name": "Yum China",
+    "logo": null,
+    "category": "Participating Enterprise",
+    "participationRole": "Guest Enterprise",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG Event Partner",
+      "expiry": null,
+      "sourceFile": "DSG Case Compendium (company-owned activity archives)"
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-LULU",
+    "name": "lululemon",
+    "logo": null,
+    "category": "Participating Enterprise",
+    "participationRole": "Guest Enterprise",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG Event Partner",
+      "expiry": null,
+      "sourceFile": "DSG Case Compendium (company-owned activity archives)"
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-DYSON",
+    "name": "Dyson",
+    "logo": null,
+    "category": "Participating Enterprise",
+    "participationRole": "Guest Enterprise",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG Event Partner",
+      "expiry": null,
+      "sourceFile": "DSG Case Compendium (company-owned activity archives)"
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-DOMINOS",
+    "name": "Domino's",
+    "logo": null,
+    "category": "Participating Enterprise",
+    "participationRole": "Guest Enterprise",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG Event Partner",
+      "expiry": null,
+      "sourceFile": "DSG Case Compendium (company-owned activity archives)"
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-3F",
+    "name": "Inoherb",
+    "logo": null,
+    "category": "Participating Enterprise",
+    "participationRole": "Guest Enterprise",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG Event Partner",
+      "expiry": null,
+      "sourceFile": "DSG Case Compendium (company-owned activity archives)"
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-CHINT",
+    "name": "Chint New Energy",
+    "logo": null,
+    "category": "Participating Enterprise",
+    "participationRole": "Guest Enterprise",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG Event Partner",
+      "expiry": null,
+      "sourceFile": "DSG Case Compendium (company-owned activity archives)"
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-HUADI",
+    "name": "China Huadian Group",
+    "logo": null,
+    "category": "Participating Enterprise",
+    "participationRole": "Guest Enterprise",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG Event Partner",
+      "expiry": null,
+      "sourceFile": "DSG Case Compendium (company-owned activity archives)"
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-GCL",
+    "name": "GCL System Integration",
+    "logo": null,
+    "category": "Participating Enterprise",
+    "participationRole": "Guest Enterprise",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG Event Partner",
+      "expiry": null,
+      "sourceFile": "DSG Case Compendium (company-owned activity archives)"
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-RISESUN",
+    "name": "Risen Energy",
+    "logo": null,
+    "category": "Participating Enterprise",
+    "participationRole": "Guest Enterprise",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG Event Partner",
+      "expiry": null,
+      "sourceFile": "DSG Case Compendium (company-owned activity archives)"
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-METRO",
+    "name": "Metro",
+    "logo": null,
+    "category": "Participating Enterprise",
+    "participationRole": "Guest Enterprise",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG Event Partner",
+      "expiry": null,
+      "sourceFile": "DSG Case Compendium (company-owned activity archives)"
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-UNILEVER",
+    "name": "Unilever",
+    "logo": null,
+    "category": "Participating Enterprise",
+    "participationRole": "Guest Enterprise",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG Event Partner",
+      "expiry": null,
+      "sourceFile": "DSG Case Compendium (company-owned activity archives)"
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-LOREAL",
+    "name": "L'Oréal",
+    "logo": null,
+    "category": "Participating Enterprise",
+    "participationRole": "Guest Enterprise",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG Event Partner",
+      "expiry": null,
+      "sourceFile": "DSG Case Compendium (company-owned activity archives)"
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-NESTLE",
+    "name": "Nestlé",
+    "logo": null,
+    "category": "Participating Enterprise",
+    "participationRole": "Guest Enterprise",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG Event Partner",
+      "expiry": null,
+      "sourceFile": "DSG Case Compendium (company-owned activity archives)"
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-PG",
+    "name": "P&G",
+    "logo": null,
+    "category": "Participating Enterprise",
+    "participationRole": "Guest Enterprise",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG Event Partner",
+      "expiry": null,
+      "sourceFile": "DSG Case Compendium (company-owned activity archives)"
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-NIO",
+    "name": "NIO",
+    "logo": null,
+    "category": "Participating Enterprise",
+    "participationRole": "Guest Enterprise",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG Event Partner",
+      "expiry": null,
+      "sourceFile": "DSG Case Compendium (company-owned activity archives)"
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-GEELY",
+    "name": "Geely Auto",
+    "logo": null,
+    "category": "Participating Enterprise",
+    "participationRole": "Guest Enterprise",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG Event Partner",
+      "expiry": null,
+      "sourceFile": "DSG Case Compendium (company-owned activity archives)"
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  },
+  {
+    "id": "ORG-ABBOTT",
+    "name": "Abbott",
+    "logo": null,
+    "category": "Participating Enterprise",
+    "participationRole": "Guest Enterprise",
+    "website": null,
+    "logoLicense": {
+      "status": "licensed",
+      "grantedBy": "DSG Event Partner",
+      "expiry": null,
+      "sourceFile": "DSG Case Compendium (company-owned activity archives)"
+    },
+    "eventIds": [],
+    "publishStatus": "published"
+  }
+]
