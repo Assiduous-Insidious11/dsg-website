@@ -250,6 +250,10 @@ function dsgAdmin() {
     //   github   线上后台 + GitHub 令牌：直接调 Contents API 改仓库，适合不在本机时用
     //   readonly 线上只读（既没有本机服务、也没有令牌）：只能改草稿，不会上线
     async detectChannel() {
+      // 先按地址给个初值：线上公开地址默认"只读"，本机地址等探测结果，
+      // 免得状态标在探测完成前一直显示"检测中"。
+      const isLocalHost = /^(127\.0\.0\.1|localhost|\[::1\])$/.test(location.hostname);
+      if (!isLocalHost) this.publish.mode = this.ghToken ? "github" : "readonly";
       try {
         const res = await fetch("/api/status", { cache: "no-store" });
         if (res.ok) {
@@ -261,7 +265,7 @@ function dsgAdmin() {
           }
         }
       } catch (err) { /* 线上没有这个接口，正常 */ }
-      this.publish.mode = this.ghToken ? "github" : "readonly";
+      if (this.publish.mode === "unknown") this.publish.mode = this.ghToken ? "github" : "readonly";
     },
     get publishModeLabel() {
       return { local: "本机直连（可发布）", github: "GitHub 令牌（可发布）", readonly: "线上只读", unknown: "检测中…" }[this.publish.mode] || "检测中…";
@@ -514,6 +518,7 @@ function dsgAdmin() {
       elite: { typeLabel: "精英六人谈", categoryLabel: "精英六人谈", eyebrow: "精英六人谈" }
     },
     syncEventType(event) {
+      if (!event) return;
       const meta = this.EVENT_TYPE_META[event.type] || this.EVENT_TYPE_META.city;
       event.category = event.type;
       event.typeLabel = meta.typeLabel;
@@ -522,15 +527,18 @@ function dsgAdmin() {
       this.persist();
     },
     syncCategoryLabel(event) {
+      if (!event) return;
       const meta = this.EVENT_TYPE_META[event.category] || this.EVENT_TYPE_META.city;
       event.categoryLabel = meta.categoryLabel;
       if (!event.typeLabel) event.typeLabel = meta.typeLabel;
       this.persist();
     },
     attendeeText(event) {
+      if (!event) return "";
       return (event.attendees || []).map((a) => [a.org || "", a.role || ""].join(" | ")).join("\n");
     },
     setAttendees(event, text) {
+      if (!event) return;
       event.attendees = String(text || "").split("\n").map((line) => line.trim()).filter(Boolean).map((line) => {
         const parts = line.split("|").map((s) => s.trim());
         return { name: "", org: parts[0] || "", role: parts[1] || "" };

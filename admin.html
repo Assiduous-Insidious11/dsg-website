@@ -295,7 +295,8 @@
               </template>
             </div>
           </div>
-          <form class="editor-panel" @submit.prevent="saveEvent()" x-show="selected.events">
+          <template x-if="selected.events">
+          <form class="editor-panel" @submit.prevent="saveEvent()">
             <div class="panel-head"><h2>编辑会议</h2><button class="danger" type="button" @click="deleteEvent()">删除</button></div>
             <div class="form-grid">
               <label>标题<input x-model="selected.events.title" required></label>
@@ -329,6 +330,7 @@
             </div>
             <button class="primary">保存会议草稿</button>
           </form>
+          </template>
         </section>
 
         <section x-show="activeModule==='ai'" class="manager-layout">
