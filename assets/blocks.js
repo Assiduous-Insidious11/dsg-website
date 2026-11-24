@@ -110,9 +110,12 @@
       var self = this;
 
       /** data-bind 允许写全路径（events-city.s1.span）也允许写相对路径（s1.span）；
-          全路径先在本页子树里找不到，就剥掉页名前缀再取一次。 */
+          全路径先在本页子树里找不到，就剥掉页名前缀再取一次。
+          英文页的历史绑定写的是 index.xxx，而数据键是 home（PAGE_ALIAS），这里统一折算，
+          否则英文站永远是"后台改了不生效、只显示 HTML 原文"。 */
       function valueOf(path) {
         if (!path) return undefined;
+        if (path.indexOf("index.") === 0) path = path.slice(6);
         var v = pick(scope, path);
         if (v == null && self.page && path.indexOf(self.page + ".") === 0) {
           v = pick(scope, path.slice(self.page.length + 1));
