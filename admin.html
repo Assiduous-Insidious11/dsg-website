@@ -72,8 +72,9 @@
             <h1 x-text="moduleTitle"></h1>
           </div>
           <div class="top-actions">
+            <span class="publish-mode" :class="publish.mode" x-text="publishModeLabel"></span>
             <span class="save-state" x-text="saveState"></span>
-            <button class="primary" @click="publishToFrontend()">发布到前台（Demo）</button>
+            <button class="primary" @click="publishToFrontend()" :disabled="publish.busy" x-text="publish.busy ? '发布中…' : '发布上线'"></button>
             <button class="secondary" @click="exportCurrent()">导出当前模块 JSON</button>
             <a class="secondary link" href="index.html" target="_blank">查看前台</a>
           </div>
@@ -95,6 +96,21 @@
                 <span :class="{off: !can(module.id)}"><b x-text="module.name"></b><em x-text="can(module.id) ? '已授权' : '无权限'"></em></span>
               </template>
             </div>
+          </div>
+          <div class="wide-panel">
+            <h2>发布通道</h2>
+            <p class="hint" x-show="publish.mode==='local'">本机直连：点「发布上线」会真正改写内容文件、提交并推送到 GitHub Pages，约 1 分钟后线上生效。</p>
+            <p class="hint" x-show="publish.mode==='github'">已配置 GitHub 令牌：在任何设备上都能直接发布到线上仓库。</p>
+            <p class="hint" x-show="publish.mode==='readonly'">线上只读：这个地址是公开的，改草稿不会上线。要发布请在本机双击「启动后台.bat」用 http://127.0.0.1:8899/admin.html 打开，或在下面填入 GitHub 令牌。</p>
+            <div class="form-grid">
+              <label class="full">GitHub 令牌（可选，只存在本机浏览器）
+                <input type="password" :value="ghToken" @change="saveGhToken($event.target.value)" placeholder="ghp_… 需要该仓库 Contents 写权限">
+              </label>
+              <label class="full">发布说明（写进提交记录）
+                <input x-model="publishMessage" placeholder="如：更新 12 月城市沙龙">
+              </label>
+            </div>
+            <p class="hint" x-show="publish.commit">最近一次发布：<b x-text="publish.commit"></b><span x-text="publish.at ? ' · ' + publish.at : ''"></span></p>
           </div>
         </section>
 
@@ -283,7 +299,10 @@
             <div class="panel-head"><h2>编辑会议</h2><button class="danger" type="button" @click="deleteEvent()">删除</button></div>
             <div class="form-grid">
               <label>标题<input x-model="selected.events.title" required></label>
-              <label>类型<select x-model="selected.events.type"><option value="summit">年度峰会</option><option value="city">城市会议</option><option value="elite">精英六人谈</option></select></label>
+              <label>类型<select x-model="selected.events.type" @change="syncEventType(selected.events)"><option value="summit">年度峰会</option><option value="city">城市会议</option><option value="elite">精英六人谈</option></select></label>
+              <label>前台归栏<select x-model="selected.events.category" @change="syncCategoryLabel(selected.events)"><option value="summit">年度峰会</option><option value="city">城市沙龙</option><option value="elite">精英六人谈</option></select></label>
+              <label>分类标签<input x-model="selected.events.categoryLabel" placeholder="显示在活动卡片上的小标签"></label>
+              <label>报名开关<select x-model="selected.events.registrationOpen"><option :value="true">开放报名</option><option :value="false">关闭报名</option></select></label>
               <label>日期<input type="date" x-model="selected.events.date"></label>
               <label>显示日期<input x-model="selected.events.dateText" placeholder="如 3.21-22"></label>
               <label>时间<input x-model="selected.events.time"></label>
@@ -301,7 +320,9 @@
               <label>核对人<input x-model="selected.events.scale.expected.provenance.verifiedBy"></label>
               <label>核对日期<input type="date" x-model="selected.events.scale.expected.provenance.verifiedOn"></label>
               <label>批准人<input x-model="selected.events.approvedBy"></label>
-              <label class="full">图片路径<input x-model="selected.events.image"></label>
+              <label class="full">主图（16:9 横图）<input x-model="selected.events.image" placeholder="assets/photos/…"><button type="button" class="secondary upload-btn" @click="pickImage('hero')">上传主图</button></label>
+              <label class="full">现场照片（每行一个路径）<textarea rows="3" :value="joinList(selected.events.gallery)" @input="selected.events.gallery = splitList($event.target.value)" placeholder="assets/photos/EVT-xxx/01.webp"></textarea><button type="button" class="secondary upload-btn" @click="pickImage('gallery')">上传现场照</button></label>
+              <label class="full">参会企业 / 职级（每行：公司 | 职级）<textarea rows="4" :value="attendeeText(selected.events)" @input="setAttendees(selected.events, $event.target.value)" placeholder="中国华电集团 | 营销总监"></textarea></label>
               <label class="full">摘要<textarea x-model="selected.events.summary"></textarea></label>
               <label class="full">标签，逗号分隔<input :value="joinList(selected.events.tags)" @input="selected.events.tags = splitList($event.target.value)"></label>
               <label class="full">议程，逗号分隔<input :value="joinList(selected.events.agenda)" @input="selected.events.agenda = splitList($event.target.value)"></label>

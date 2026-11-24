@@ -43,6 +43,10 @@ function dsgAdmin() {
     selected: { events: null, ai: null, insights: null, role: null },
     filters: { events: "", ai: "", insights: "", leads: "" },
     eventTypeFilter: "all",
+    // —— 发布通道（local / github / readonly）——
+    publish: { mode: "unknown", busy: false, commit: "", at: "", repo: "Assiduous-Insidious11/dsg-website", branch: "main", server: null },
+    ghToken: "",
+    publishMessage: "",
 
     get currentRole() {
       return this.roles.find((role) => role.id === this.session.roleId) || this.roles[0] || defaultRoles[0];
@@ -108,6 +112,8 @@ function dsgAdmin() {
       await this.loadContent();
       await this.loadBlocks();
       await this.loadTheme();
+      try { this.ghToken = localStorage.getItem("dsg-gh-token") || ""; } catch (err) { /* 隐私模式忽略 */ }
+      this.detectChannel();
       const savedSession = this.readJson("dsg-admin-session-v1", null);
       if (savedSession?.active) {
         // 旧会话角色可能已被新矩阵替换/移除，强制校正到当前矩阵中的角色
@@ -238,42 +244,157 @@ function dsgAdmin() {
       this.session = { active: false, roleId: "super-admin" };
       localStorage.removeItem("dsg-admin-session-v1");
     },
-    // 发布到前台（Demo 模式）：把草稿写入本机 localStorage 发布队列，
-    // 前台 site.js 优先读取该队列，实现"后台发布 → 刷新前台即见"的演示闭环。
-    // 正式上线时由后端数据库驱动，此方法仅用于演示与本地预览。
-    publishToFrontend() {
-      // 合并发布：以源数据（完整素材库）为基础，把草稿中"已发布"的记录按 id 合并进去。
-      // 同 id 用草稿覆盖（如用户编辑过的活动），新 id 追加（如用户新建的活动），
-      // 其余源数据全部保留——前台绝不会丢素材，只会在原有基础上多出/更新内容。
-      const merge = (draftList, sourceList) => {
-        const source = (sourceList || []).filter((e) => e.publishStatus === "published");
-        const published = (draftList || []).filter((e) => e && e.publishStatus === "published");
-        const result = source.slice();
-        published.forEach((item) => {
-          const idx = result.findIndex((r) => r.id === item.id);
-          if (idx !== -1) result[idx] = item;   // 覆盖同 id
-          else result.push(item);               // 追加新 id
-        });
-        return result;
+    // ==================================================== 发布（真链路）
+    // 三种通道：
+    //   local    本机发布服务（tools/admin_server.py）：写文件 + git 提交 + 推 GitHub，最可靠
+    //   github   线上后台 + GitHub 令牌：直接调 Contents API 改仓库，适合不在本机时用
+    //   readonly 线上只读（既没有本机服务、也没有令牌）：只能改草稿，不会上线
+    async detectChannel() {
+      try {
+        const res = await fetch("/api/status", { cache: "no-store" });
+        if (res.ok) {
+          const d = await res.json();
+          if (d && d.mode === "local") {
+            this.publish.mode = "local";
+            this.publish.server = d;
+            return;
+          }
+        }
+      } catch (err) { /* 线上没有这个接口，正常 */ }
+      this.publish.mode = this.ghToken ? "github" : "readonly";
+    },
+    get publishModeLabel() {
+      return { local: "本机直连（可发布）", github: "GitHub 令牌（可发布）", readonly: "线上只读", unknown: "检测中…" }[this.publish.mode] || "检测中…";
+    },
+    saveGhToken(value) {
+      this.ghToken = (value || "").trim();
+      try {
+        if (this.ghToken) localStorage.setItem("dsg-gh-token", this.ghToken);
+        else localStorage.removeItem("dsg-gh-token");
+      } catch (err) { /* 隐私模式忽略 */ }
+      this.detectChannel();
+      this.saveState = this.ghToken ? "已保存 GitHub 令牌，可在线发布" : "已清除令牌";
+    },
+    // 把后台草稿整理成"要写进内容层"的四份文件
+    buildPayload() {
+      const events = (this.draft.events || []).map((event) => {
+        const copy = JSON.parse(JSON.stringify(event));
+        if (copy.image) copy.heroImage = copy.image;
+        delete copy.image;
+        return copy;
+      });
+      return {
+        events,
+        aiCases: this.draft.aiCases || [],
+        insights: this.draft.insights || [],
+        pageBlocks: this.blocks.data || null,
+        pageBlocksEn: this.blocks.dataEn || null,
+        message: this.publishMessage || ""
       };
-      const payload = {
-        events: merge(this.draft.events, this.source.events),
-        aiCases: merge(this.draft.aiCases, this.source.aiCases),
-        insights: merge(this.draft.insights, this.source.insights)
-      };
-      const total = payload.events.length + payload.aiCases.length + payload.insights.length;
-      if (total === 0) {
-        this.saveState = "没有可发布的内容（草稿与源数据均为空）";
+    },
+    async publishToFrontend() {
+      if (this.publish.busy) return;
+      const payload = this.buildPayload();
+      if (!payload.events.length) {
+        this.saveState = "没有可发布的活动数据，请先新增或恢复内容";
         return;
       }
-      localStorage.setItem("dsg-demo-published-v1", JSON.stringify({
-        updatedAt: new Date().toISOString(),
-        source: "admin-publish",
-        // 构建戳：前台只认与原数据同批的快照，换一批数据后旧快照自动失效
-        stamp: window.DSG_DATA_STAMP || "",
-        data: payload
-      }));
-      this.saveState = `已发布到前台（本机演示）：${payload.events.length} 活动 / ${payload.aiCases.length} AI案例 / ${payload.insights.length} 洞察 ${new Date().toLocaleTimeString("zh-CN", { hour12: false })}`;
+      this.publish.busy = true;
+      this.saveState = "正在发布…";
+      try {
+        if (this.publish.mode === "unknown") await this.detectChannel();
+        if (this.publish.mode === "local") return await this.publishLocal(payload);
+        if (this.publish.mode === "github") return await this.publishGithub(payload);
+        this.saveState = "当前是线上只读版：请在本机双击「启动后台.bat」打开后台后再发布";
+      } catch (err) {
+        this.saveState = "发布失败：" + (err && err.message ? err.message : err);
+      } finally {
+        this.publish.busy = false;
+      }
+    },
+    async publishLocal(payload) {
+      const res = await fetch("/api/publish", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      const d = await res.json().catch(() => ({}));
+      if (!d.ok) {
+        this.saveState = "发布失败：" + (d.error || "服务返回异常") + (d.tail ? " / " + d.tail.join(" ") : "");
+        return;
+      }
+      // 真数据已经落到文件里，本机演示快照要清掉，避免前台读到旧快照
+      try { localStorage.removeItem("dsg-demo-published-v1"); } catch (e) { /* ignore */ }
+      try { localStorage.removeItem(storageKey); } catch (e) { /* ignore */ }
+      this.publish.commit = d.commit || "";
+      this.publish.at = new Date().toLocaleString("zh-CN", { hour12: false });
+      if (d.changed === false) {
+        this.saveState = "内容与线上一致，没有需要发布的变化";
+        return;
+      }
+      this.saveState = `已推送上线（提交 ${d.commit}）：${d.files.length} 个数据文件，约 1 分钟后全网可见`;
+    },
+    b64(text) {
+      const bytes = new TextEncoder().encode(text);
+      let bin = "";
+      bytes.forEach((b) => { bin += String.fromCharCode(b); });
+      return btoa(bin);
+    },
+    async ghApi(path, options) {
+      const res = await fetch("https://api.github.com/repos/" + this.publish.repo + path, Object.assign({
+        headers: {
+          "Accept": "application/vnd.github+json",
+          "Authorization": "Bearer " + this.ghToken,
+          "X-GitHub-Api-Version": "2022-11-28"
+        }
+      }, options || {}));
+      return res;
+    },
+    async publishGithub(payload) {
+      const branch = this.publish.branch;
+      const files = [
+        ["content/events.json", payload.events],
+        ["content/ai-cases.json", payload.aiCases],
+        ["content/articles.json", payload.insights],
+        ["content/page-blocks.json", payload.pageBlocks],
+        ["content-en/page-blocks.json", payload.pageBlocksEn]
+      ].filter((f) => f[1]);
+      let last = "";
+      for (const [path, data] of files) {
+        const head = await this.ghApi("/contents/" + path + "?ref=" + branch);
+        let sha = null;
+        if (head.status === 200) {
+          const meta = await head.json();
+          sha = meta.sha;
+        } else if (head.status !== 404) {
+          throw new Error("读取 " + path + " 失败（" + head.status + "），请检查令牌权限");
+        }
+        const body = {
+          message: (payload.message || "后台发布内容更新") + " · " + path,
+          content: this.b64(JSON.stringify(data, null, 2) + "\n"),
+          branch: branch
+        };
+        if (sha) body.sha = sha;
+        const put = await this.ghApi("/contents/" + path, {
+          method: "PUT",
+          headers: {
+            "Accept": "application/vnd.github+json",
+            "Authorization": "Bearer " + this.ghToken,
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": "2022-11-28"
+          },
+          body: JSON.stringify(body)
+        });
+        if (!put.ok) {
+          const err = await put.json().catch(() => ({}));
+          throw new Error("写入 " + path + " 失败（" + put.status + " " + (err.message || "") + "）");
+        }
+        const out = await put.json();
+        last = out.commit && out.commit.sha ? out.commit.sha.slice(0, 7) : last;
+      }
+      this.publish.commit = last;
+      this.publish.at = new Date().toLocaleString("zh-CN", { hour12: false });
+      this.saveState = `已通过 GitHub 发布（提交 ${last}）：约 1 分钟后全网可见`;
     },
     can(moduleId) {
       if (moduleId === "dashboard") return true;
@@ -326,6 +447,8 @@ function dsgAdmin() {
         urlName: `evt-${year}-${String(Date.now()).slice(-4)}`,
         type: "city",
         typeLabel: "城市沙龙",
+        category: "city",
+        categoryLabel: "城市沙龙",
         eyebrow: "城市会议",
         title: "新会议活动",
         date: iso,
@@ -349,8 +472,10 @@ function dsgAdmin() {
         agenda: ["主题分享", "案例拆解", "圆桌交流"],
         language: "zh-CN",
         translationStatus: "missing",
-        // 新建活动默认不发布，必须由负责人审核后改为"已发布"
-        publishStatus: "draft",
+        registrationOpen: true,
+        gallery: [],
+        // 新建即发布：会议团队"填完就在日历上看到"，不用再找发布状态那一栏
+        publishStatus: "published",
         contentQuality: "edited",
         approvedBy: null,
         seo: { title: "新会议活动 | DSG 数创时代", description: "", keywords: [] }
@@ -378,6 +503,80 @@ function dsgAdmin() {
       this.draft.events = this.draft.events.filter((event) => event !== this.selected.events);
       this.selected.events = null;
       this.persist();
+    },
+
+    // 类型 → 前台字段一次改全：type / category / typeLabel / categoryLabel / eyebrow
+    // 老数据里就存在"城市会议"与"城市沙龙"两种写法：前者是类型名，后者是卡片标签，
+    // 这里按老数据约定写死，避免新活动缺 category 而在前台任何一栏都不出现。
+    EVENT_TYPE_META: {
+      summit: { typeLabel: "年度峰会", categoryLabel: "年度峰会", eyebrow: "年度峰会" },
+      city: { typeLabel: "城市会议", categoryLabel: "城市沙龙", eyebrow: "城市会议" },
+      elite: { typeLabel: "精英六人谈", categoryLabel: "精英六人谈", eyebrow: "精英六人谈" }
+    },
+    syncEventType(event) {
+      const meta = this.EVENT_TYPE_META[event.type] || this.EVENT_TYPE_META.city;
+      event.category = event.type;
+      event.typeLabel = meta.typeLabel;
+      event.categoryLabel = meta.categoryLabel;
+      event.eyebrow = meta.eyebrow;
+      this.persist();
+    },
+    syncCategoryLabel(event) {
+      const meta = this.EVENT_TYPE_META[event.category] || this.EVENT_TYPE_META.city;
+      event.categoryLabel = meta.categoryLabel;
+      if (!event.typeLabel) event.typeLabel = meta.typeLabel;
+      this.persist();
+    },
+    attendeeText(event) {
+      return (event.attendees || []).map((a) => [a.org || "", a.role || ""].join(" | ")).join("\n");
+    },
+    setAttendees(event, text) {
+      event.attendees = String(text || "").split("\n").map((line) => line.trim()).filter(Boolean).map((line) => {
+        const parts = line.split("|").map((s) => s.trim());
+        return { name: "", org: parts[0] || "", role: parts[1] || "" };
+      });
+      this.persist();
+    },
+    // 图片上传：本机发布服务负责落盘到 assets/photos/<活动编号>/，返回站内相对路径
+    pickImage(kind) {
+      const event = this.selected.events;
+      if (!event) return;
+      if (this.publish.mode !== "local") {
+        this.saveState = "上传图片需要本机后台：请双击「启动后台.bat」后再上传";
+        return;
+      }
+      const input = document.createElement("input");
+      input.type = "file";
+      input.accept = "image/*";
+      input.onchange = () => {
+        const file = input.files && input.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = async () => {
+          this.saveState = "正在上传图片…";
+          try {
+            const res = await fetch("/api/upload", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ name: file.name, dataUrl: reader.result, bucket: event.id || "misc" })
+            });
+            const d = await res.json();
+            if (!d.ok) { this.saveState = "上传失败：" + (d.error || ""); return; }
+            if (kind === "gallery") {
+              event.gallery = (event.gallery || []).concat([d.path]);
+            } else {
+              event.image = d.path;
+              event.heroImage = d.path;
+            }
+            this.persist();
+            this.saveState = "图片已上传：" + d.path;
+          } catch (err) {
+            this.saveState = "上传失败：本机发布服务未运行";
+          }
+        };
+        reader.readAsDataURL(file);
+      };
+      input.click();
     },
 
     newAiCase() {
@@ -658,9 +857,11 @@ function dsgAdmin() {
         return copy;
       });
       const map = {
-        events: { name: "content-events.json", data: events },
-        ai: { name: "content-ai-cases.json", data: this.draft.aiCases },
-        insights: { name: "content-articles.json", data: this.draft.insights },
+        events: { name: "events.json", data: events },
+        ai: { name: "ai-cases.json", data: this.draft.aiCases },
+        insights: { name: "articles.json", data: this.draft.insights },
+        content: { name: this.blocks.lang === "en" ? "page-blocks-en.json" : "page-blocks.json", data: this.blockData },
+        appearance: { name: "theme.json", data: this.theme.draft },
         permissions: { name: "admin-roles.json", data: this.roles },
         leads: { name: "dsg-leads.csv", data: null, csv: window.DSGForms ? window.DSGForms.exportQueue() : "" },
         dashboard: { name: "dsg-admin-export.json", data: this.draft }

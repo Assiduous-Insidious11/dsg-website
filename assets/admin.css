@@ -511,3 +511,38 @@ textarea { min-height: 112px; resize: vertical; }
   border-color: var(--ink, #111315);
   color: #fff;
 }
+
+/* —— 发布通道状态标 + 图片上传按钮 —— */
+.publish-mode {
+  display: inline-flex;
+  align-items: center;
+  height: 26px;
+  padding: 0 9px;
+  border-radius: 999px;
+  font-size: 12px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.publish-mode.local {
+  border-color: #b9d7c8;
+  background: #eef7f1;
+  color: #1d6b42;
+}
+.publish-mode.github {
+  border-color: #cfd9e8;
+  background: #eef2f9;
+  color: #2b4a7c;
+}
+.publish-mode.readonly {
+  border-color: #e2d2bd;
+  background: #fbf3e6;
+  color: #8a611f;
+}
+.form-grid label .upload-btn {
+  margin-top: 6px;
+  align-self: flex-start;
+  min-height: 30px;
+  font-size: 12px;
+}
