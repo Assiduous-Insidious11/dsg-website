@@ -3144,24 +3144,3 @@ html[lang="en"] .program-hero p {
   }
 }
 
-/* ---------- 合作伙伴墙（11-17 评审：合作方 logo 集中一面墙，不按场次分散） ---------- */
-.pw-wall { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
-.pw-card {
-  display: flex; align-items: center; gap: 16px; padding: 22px 20px;
-  background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
-  min-height: 104px;
-}
-.pw-logo { max-width: 108px; max-height: 52px; object-fit: contain; flex: 0 0 auto; }
-.pw-mono {
-  flex: 0 0 52px; width: 52px; height: 52px; border-radius: 8px;
-  display: grid; place-items: center; text-align: center;
-  background: var(--paper); color: var(--gold); font-size: 12px; line-height: 1.25; font-weight: 700;
-}
-.pw-body { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
-.pw-body strong { font-family: var(--ff-song); font-size: 16px; color: var(--ink); }
-.pw-body span { font-size: 12.5px; color: var(--muted); }
-.pw-note { display: grid; gap: 10px; max-width: 760px; }
-.pw-note p { margin: 0; color: var(--ink-2); line-height: 1.8; }
-.pw-note .actions { margin-top: 10px; display: flex; gap: 12px; flex-wrap: wrap; }
-@media (max-width: 960px) { .pw-wall { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 600px) { .pw-wall { grid-template-columns: 1fr; } }
