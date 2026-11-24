@@ -89,7 +89,7 @@
           <article class="metric-card"><span>AI 案例</span><strong x-text="draft.aiCases.length"></strong><p>供应链AI创新专区案例卡片</p></article>
           <article class="metric-card"><span>行业洞察</span><strong x-text="draft.insights.length"></strong><p>文章、视频回放、闭门纪要</p></article>
           <article class="metric-card"><span>角色</span><strong x-text="roles.length"></strong><p>当前可配置的后台权限角色</p></article>
-          <div class="wide-panel req-panel">
+          <div class="wide-panel req-panel" x-show="requirementGroups.length">
             <div class="panel-head">
               <h2>改版要求 · 以 11-17 评审为准</h2>
               <span class="muted" x-text="requirements && requirements.source ? '核对于 ' + requirements.source.updatedAt : ''"></span>
