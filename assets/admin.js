@@ -11,7 +11,7 @@ function dsgAdmin() {
     // locked 角色的权限以本矩阵为准，任何本地旧数据都不得覆盖
     { id: "super-admin", name: "超级管理员", locked: true, permissions: ["dashboard", "content", "appearance", "events", "ai", "insights", "leads", "permissions"], scope: "全部模块，含页面内容、外观设置、权限授权与线索管理" },
     { id: "business-admin", name: "业务管理员", locked: true, permissions: ["dashboard", "ai", "leads"], scope: "供应链AI创新专区 + 线索管理" },
-    { id: "events-admin", name: "会议管理员", locked: true, permissions: ["dashboard", "events"], scope: "会议管理（峰会/城市会议/精英六人谈）" },
+    { id: "events-admin", name: "会议管理员", locked: true, permissions: ["dashboard", "events"], scope: "会议管理（峰会/城市沙龙/精英六人谈）" },
     { id: "insights-admin", name: "行业洞察管理员", locked: true, permissions: ["dashboard", "insights"], scope: "行业洞察（文章/视频/纪要）" },
     { id: "ai-admin", name: "供应链AI管理员", locked: true, permissions: ["dashboard", "ai"], scope: "供应链AI创新专区" }
   ];
@@ -25,7 +25,7 @@ function dsgAdmin() {
     dataError: false,
     saveState: "草稿自动保存在本机浏览器",
     modules: [
-      { id: "content", name: "页面内容", description: "13 个页面的文案、图片、按钮文字与链接，改完即影响前台" },
+      { id: "content", name: "页面内容", description: "前台每个页面的文案、图片、按钮文字与链接；左侧列表按站点真实页面生成" },
       { id: "appearance", name: "外观设置", description: "字号倍率、区块留白、内容宽度、圆角与主色，控制全站排版" },
       { id: "events", name: "会议管理", description: "年度峰会、城市沙龙、精英六人谈的增删改查与发布状态" },
       { id: "ai", name: "供应链AI创新专区", description: "AI 解决方案案例、应用场景、视频与 Demo 入口" },
@@ -39,6 +39,8 @@ function dsgAdmin() {
     draft: { events: [], aiCases: [], insights: [] },
     // —— 页面内容 / 外观设置 ——
     blocks: { data: null, dataEn: null, lang: "zh", page: "home", filter: "", dirty: false },
+    manifest: null,
+    requirements: null,
     theme: { data: null, draft: null, dirty: false },
     selected: { events: null, ai: null, insights: null, role: null },
     filters: { events: "", ai: "", insights: "", leads: "" },
@@ -111,6 +113,7 @@ function dsgAdmin() {
       this.roles = this.loadRoles();
       await this.loadContent();
       await this.loadBlocks();
+      await this.loadManifest();
       await this.loadTheme();
       try { this.ghToken = localStorage.getItem("dsg-gh-token") || ""; } catch (err) { /* 隐私模式忽略 */ }
       this.detectChannel();
@@ -453,7 +456,7 @@ function dsgAdmin() {
         typeLabel: "城市沙龙",
         category: "city",
         categoryLabel: "城市沙龙",
-        eyebrow: "城市会议",
+        eyebrow: "城市沙龙",
         title: "新会议活动",
         date: iso,
         dateText: "",
@@ -472,7 +475,7 @@ function dsgAdmin() {
         heroImage: "assets/module-city-v2.png",
         image: "assets/module-city-v2.png",
         summary: "请填写活动摘要。",
-        tags: ["城市会议"],
+        tags: ["城市沙龙"],
         agenda: ["主题分享", "案例拆解", "圆桌交流"],
         language: "zh-CN",
         translationStatus: "missing",
@@ -510,20 +513,21 @@ function dsgAdmin() {
     },
 
     // 类型 → 前台字段一次改全：type / category / typeLabel / categoryLabel / eyebrow
-    // 老数据里就存在"城市会议"与"城市沙龙"两种写法：前者是类型名，后者是卡片标签，
+    // 老数据里就存在"城市沙龙"与"城市沙龙"两种写法：前者是类型名，后者是卡片标签，
     // 这里按老数据约定写死，避免新活动缺 category 而在前台任何一栏都不出现。
     EVENT_TYPE_META: {
       summit: { typeLabel: "年度峰会", categoryLabel: "年度峰会", eyebrow: "年度峰会" },
-      city: { typeLabel: "城市会议", categoryLabel: "城市沙龙", eyebrow: "城市会议" },
+      city: { typeLabel: "城市沙龙", categoryLabel: "城市沙龙", eyebrow: "城市沙龙" },
       elite: { typeLabel: "精英六人谈", categoryLabel: "精英六人谈", eyebrow: "精英六人谈" }
     },
     syncEventType(event) {
       if (!event) return;
       const meta = this.EVENT_TYPE_META[event.type] || this.EVENT_TYPE_META.city;
+      // type 与前台归栏（category）在数据层永远保持一致，避免"类型写城市沙龙、归栏却写精英六人谈"这类打架
       event.category = event.type;
       event.typeLabel = meta.typeLabel;
-      event.categoryLabel = meta.categoryLabel;
-      event.eyebrow = meta.eyebrow;
+      event.categoryLabel = event.categoryLabel || meta.categoryLabel;
+      if (!event.eyebrow) event.eyebrow = meta.eyebrow;
       this.persist();
     },
     syncCategoryLabel(event) {
@@ -692,6 +696,33 @@ function dsgAdmin() {
       this.blocks.data = this.readJson("dsg-admin-blocks-zh-v1", null) || zh;
       this.blocks.dataEn = this.readJson("dsg-admin-blocks-en-v1", null) || en;
     },
+    async loadManifest() {
+      // 站点清单由 tools/check_site.py 扫描真实 HTML 生成：真实文件名、站内入链、能否从首页走到。
+      // 后台只读它，不再自己拍脑子列页面——这样"后台列的"和"前台真有的"永远一致。
+      try {
+        if (location.protocol === "http:" || location.protocol === "https:") {
+          const res = await fetch("content/site-manifest.json?ts=" + Date.now(), { cache: "no-store" });
+          if (res.ok) this.manifest = await res.json();
+          const req = await fetch("content/requirements.json?ts=" + Date.now(), { cache: "no-store" });
+          if (req.ok) this.requirements = await req.json();
+        }
+      } catch (err) { /* 离线打开时没有清单，退回按 key 推导 */ }
+    },
+    get requirementGroups() {
+      return (this.requirements && this.requirements.groups) || [];
+    },
+    get requirementStats() {
+      const all = this.requirementGroups.flatMap((g) => g.items || []);
+      const count = (s) => all.filter((i) => i.status === s).length;
+      return { total: all.length, done: count("done"), partial: count("partial"), todo: count("todo") };
+    },
+    reqStatusLabel(s) {
+      return { done: "已落实", partial: "部分", todo: "未落实" }[s] || s;
+    },
+    manifestOf(key) {
+      const pages = (this.manifest && this.manifest.pages) || [];
+      return pages.find((p) => p.key === key) || null;
+    },
     get blockData() {
       return this.blocks.lang === "en" ? this.blocks.dataEn : this.blocks.data;
     },
@@ -703,9 +734,37 @@ function dsgAdmin() {
     get blockPages() {
       const src = this.blockData;
       if (!src) return [];
-      return Object.keys(src)
+      const isEn = this.blocks.lang === "en";
+      const rows = Object.keys(src)
         .filter((k) => k.charAt(0) !== "_")
-        .map((k) => ({ key: k, label: this.BLOCK_PAGE_LABELS[k] || k, count: 0 }));
+        .map((k) => {
+          const m = this.manifestOf(k);
+          return {
+            key: k,
+            label: this.BLOCK_PAGE_LABELS[k] || k,
+            file: isEn ? (m && m.enFile) || k + "-en.html" : (m && m.file) || k + ".html",
+            status: isEn ? "en" : (m ? m.status : "unknown"),
+            inbound: m ? m.inbound : 0,
+            count: 0
+          };
+        })
+        // 评审已决定取消的页面（如轻咨询）不再出现在可编辑列表里，避免继续往里填内容
+        .filter((r) => r.status !== "retired");
+      // 有问题的排前面：站内无入口 > 清单里查不到 > 正常
+      const rank = { orphan: 0, unknown: 1, dynamic: 2, nav: 3, en: 3 };
+      return rows.sort((a, b) => (rank[a.status] ?? 4) - (rank[b.status] ?? 4));
+    },
+    get retiredPages() {
+      return (this.manifest && this.manifest.retired) || [];
+    },
+    pageStatusLabel(p) {
+      return {
+        nav: "前台可达",
+        dynamic: "由脚本进入",
+        orphan: "站内无入口",
+        unknown: "未在清单中",
+        en: "英文版"
+      }[p.status] || "";
     },
     get blockFields() {
       const root = this.blockData && this.blockData[this.blocks.page];

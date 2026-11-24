@@ -1,256 +1,346 @@
 {
   "about": {
-    "s1.eye": "About DSG",
-    "s1.h1": "The bridge between manufacturing and advanced technology",
-    "s1.p": "DSG stands at the frontier where future technology meets deep industry practice. Through an open innovation ecosystem and precise strategic services, we connect technological frontiers with real market needs and accelerate practical transformation.",
-    "s1.strong": "Advanced technology is not the rival of industries",
-    "s1.span": "It is the next-generation weapon in the hands of entrepreneurs",
-    "s2.span": "Vision",
-    "s2.h2": "Company Vision",
-    "s2.strong": "bridge",
-    "s2.strong2": "cross the technology gap",
-    "s2.span2": "Mission",
-    "s2.h22": "Company Mission",
-    "s2.strong3": "technology equity",
-    "s2.strong4": "fraction of the traditional cost",
-    "s3.eye": "Business Overview",
-    "s3.h2": "Connecting AI Technology And Industry",
-    "s3.p": "From high-level exchange to consulting insight, scenario-based AI application development and innovation resource integration, DSG helps enterprises move from awareness to execution.",
-    "s3.h3": "Platform Building And Executive Exchange",
-    "s3.p2": "Build high-level exchange platforms across finance, manufacturing and supply chain domains.",
-    "s3.h32": "Personalized Consulting Insight",
-    "s3.p3": "Deliver industry-specific consulting and precise solution strategies through expert collaboration.",
-    "s3.h33": "Scenario-Based AI Application Development",
-    "s3.p4": "Deepen the integration between AI technology and industry applications through real business scenarios.",
-    "s3.h34": "Innovation Resource Integration",
-    "s3.p5": "Build an open collaborative ecosystem to accelerate commercialization of innovation outcomes.",
-    "s4.eye": "Innovation Leadership",
-    "s4.h2": "An Open Innovation Ecosystem For Applied Technology",
-    "s4.p": "DSG organizes events, consulting, case studies, technology partners and AI capabilities into a sustainable innovation network.",
-    "s4.strong": "Open Innovation Ecosystem",
-    "s4.span": "AI Technology x Industry Application"
+    "s1": {
+      "eye": "About DSG",
+      "h1": "The bridge between manufacturing and advanced technology",
+      "p": "DSG stands at the frontier where future technology meets deep industry practice. Through an open innovation ecosystem and precise strategic services, we connect technological frontiers with real market needs and accelerate practical transformation.",
+      "strong": "Advanced technology is not the rival of industries",
+      "span": "It is the next-generation weapon in the hands of entrepreneurs"
+    },
+    "s2": {
+      "span": "Vision",
+      "h2": "Company Vision",
+      "strong": "bridge",
+      "strong2": "cross the technology gap",
+      "span2": "Mission",
+      "h22": "Company Mission",
+      "strong3": "technology equity",
+      "strong4": "fraction of the traditional cost"
+    },
+    "s3": {
+      "eye": "Business Overview",
+      "h2": "Connecting AI Technology And Industry",
+      "p": "From high-level exchange to consulting insight, scenario-based AI application development and innovation resource integration, DSG helps enterprises move from awareness to execution.",
+      "h3": "Platform Building And Executive Exchange",
+      "p2": "Build high-level exchange platforms across finance, manufacturing and supply chain domains.",
+      "h32": "Personalized Consulting Insight",
+      "p3": "Deliver industry-specific consulting and precise solution strategies through expert collaboration.",
+      "h33": "Scenario-Based AI Application Development",
+      "p4": "Deepen the integration between AI technology and industry applications through real business scenarios.",
+      "h34": "Innovation Resource Integration",
+      "p5": "Build an open collaborative ecosystem to accelerate commercialization of innovation outcomes."
+    },
+    "s4": {
+      "eye": "Innovation Leadership",
+      "h2": "An Open Innovation Ecosystem For Applied Technology",
+      "p": "DSG organizes events, consulting, case studies, technology partners and AI capabilities into a sustainable innovation network.",
+      "strong": "Open Innovation Ecosystem",
+      "span": "AI Technology x Industry Application"
+    }
   },
   "consult": {
-    "s1.eye": "Advisory",
-    "s1.h1": "Advisory: two tracks, delivered as projects",
-    "s1.p": "DSG advisory does not place a resident team. Every engagement is scoped as a project and accepted against agreed deliverables. Two service lines are open today — the MIT Path and Power Platform implementation — one for method and one for system delivery. They are independent engagements and can also be combined.",
-    "s1.strong": "No long-term on-site staffing",
-    "s1.span": "Scope and deliverables agreed before work starts",
-    "s2.eye": "Service Lines",
-    "s2.h2": "Two service lines",
-    "s2.p": "The two lines differ widely in scope, duration and deliverables. They are quoted separately.",
-    "s2.h3": "MIT Path",
-    "s2.p2": "A methodology track for building digital capability, from diagnosis to path design. Scope and deliverables are set per project.",
-    "s2.h32": "Power Platform Implementation",
-    "s2.p3": "Low-code delivery on Microsoft Power Platform. Scope, timeline and deliverables are set per project.",
-    "s3.eye": "Next Step",
-    "s3.h2": "Start with the problem, not the quote",
-    "s3.p": "Tell us where you are, what you have already tried and where it stalled. We will tell you whether advisory is the right vehicle for it.",
-    "s3.a": "Book a consultation",
-    "s3.a2": "See AI cases"
+    "s1": {
+      "eye": "Advisory",
+      "h1": "Advisory: two tracks, delivered as projects",
+      "p": "DSG advisory does not place a resident team. Every engagement is scoped as a project and accepted against agreed deliverables. Two service lines are open today — the MIT Path and Power Platform implementation — one for method and one for system delivery. They are independent engagements and can also be combined.",
+      "strong": "No long-term on-site staffing",
+      "span": "Scope and deliverables agreed before work starts"
+    },
+    "s2": {
+      "eye": "Service Lines",
+      "h2": "Two service lines",
+      "p": "The two lines differ widely in scope, duration and deliverables. They are quoted separately.",
+      "h3": "MIT Path",
+      "p2": "A methodology track for building digital capability, from diagnosis to path design. Scope and deliverables are set per project.",
+      "h32": "Power Platform Implementation",
+      "p3": "Low-code delivery on Microsoft Power Platform. Scope, timeline and deliverables are set per project."
+    },
+    "s3": {
+      "eye": "Next Step",
+      "h2": "Start with the problem, not the quote",
+      "p": "Tell us where you are, what you have already tried and where it stalled. We will tell you whether advisory is the right vehicle for it.",
+      "a": "Book a consultation",
+      "a2": "See AI cases"
+    }
   },
   "contact": {
-    "s1.eye": "Contact",
-    "s1.h1": "Register for events, book a Demo, or start business cooperation.",
-    "s1.p": "In the production version, this form routes to different admin queues by type: event registration, AI Demo, business cooperation, and media cooperation.",
-    "s2.h2": "DSG / Digital Service Group",
-    "s2.p": "Address: 3F, Building 70, 1066 Qinzhou North Road, Xuhui District, Shanghai",
-    "s2.p2": "Email: jason.huang@dsgcorp.cn",
-    "s2.p3": "Tel: +86 189 1635 8954",
-    "s2.a": "View Event Calendar",
-    "s2.a2": "Enter the AI Zone"
+    "s1": {
+      "eye": "Contact",
+      "h1": "Register for events, book a Demo, or start business cooperation.",
+      "p": "In the production version, this form routes to different admin queues by type: event registration, AI Demo, business cooperation, and media cooperation."
+    },
+    "s2": {
+      "h2": "DSG / Digital Service Group",
+      "p": "Address: 3F, Building 70, 1066 Qinzhou North Road, Xuhui District, Shanghai",
+      "p2": "Email: jason.huang@dsgcorp.cn",
+      "p3": "Tel: +86 189 1635 8954",
+      "a": "View Event Calendar",
+      "a2": "Enter the AI Zone"
+    }
   },
   "insights": {
-    "s1.eye": "Insights",
-    "s1.h1": "Let ideas keep creating value after the event.",
-    "s1.p": "Industry Insights hosts video replays, expert interviews, event minutes, whitepapers and case articles—a long-term content asset hub.",
-    "s3.eye": "Video Library",
-    "s3.h2": "Video and insights are merged into one content channel.",
-    "s3.p": "Video replays, case walkthroughs and expert interviews all work as insight content types; the admin only needs to maintain one content library.",
-    "s3.strong": "Annual Summit Replay Sample"
+    "s1": {
+      "eye": "Insights",
+      "h1": "Let ideas keep creating value after the event.",
+      "p": "Industry Insights hosts video replays, expert interviews, event minutes, whitepapers and case articles—a long-term content asset hub."
+    },
+    "s3": {
+      "eye": "Video Library",
+      "h2": "Video and insights are merged into one content channel.",
+      "p": "Video replays, case walkthroughs and expert interviews all work as insight content types; the admin only needs to maintain one content library.",
+      "strong": "Annual Summit Replay Sample"
+    }
   },
   "privacy": {
-    "s1.eye": "Privacy",
-    "s1.h1": "Privacy Policy",
-    "s1.p": "Policy version 2026-09-01 &middot; Last updated 2026-09-06",
-    "s2.h2": "1. What we collect",
-    "s2.p": "When you submit a registration, seat request, demo booking or partnership form on this site, we collect your name, company, job title, phone number, email address, the type of enquiry you selected, and any message you choose to write.",
-    "s2.h22": "2. How we use it",
-    "s2.p2": "Solely to contact you, confirm your participation, send the event information you requested, and follow up after an event. We do not use this information for unrelated purposes.",
-    "s2.h23": "3. Retention and access",
-    "s2.p3": "Lead data is restricted: only event and marketing roles can access it, access requires an account and is logged. Records are kept for 24 months from your last interaction, then deleted or anonymised.",
-    "s2.h24": "4. Your rights",
-    "s2.p4": "You may request access, correction, export or deletion of your personal data, and withdraw consent at any time. Contact us below; we respond within 15 working days.",
-    "s2.h25": "5. Automated protection",
-    "s2.p5": "Forms use automated anti-spam controls (hidden field, submission-speed check, rate limiting). Submissions classified as bots are not recorded as valid leads.",
-    "s2.h26": "6. Contact"
+    "s1": {
+      "eye": "Privacy",
+      "h1": "Privacy Policy",
+      "p": "Policy version 2026-09-01 &middot; Last updated 2026-09-06"
+    },
+    "s2": {
+      "h2": "1. What we collect",
+      "p": "When you submit a registration, seat request, demo booking or partnership form on this site, we collect your name, company, job title, phone number, email address, the type of enquiry you selected, and any message you choose to write.",
+      "h22": "2. How we use it",
+      "p2": "Solely to contact you, confirm your participation, send the event information you requested, and follow up after an event. We do not use this information for unrelated purposes.",
+      "h23": "3. Retention and access",
+      "p3": "Lead data is restricted: only event and marketing roles can access it, access requires an account and is logged. Records are kept for 24 months from your last interaction, then deleted or anonymised.",
+      "h24": "4. Your rights",
+      "p4": "You may request access, correction, export or deletion of your personal data, and withdraw consent at any time. Contact us below; we respond within 15 working days.",
+      "h25": "5. Automated protection",
+      "p5": "Forms use automated anti-spam controls (hidden field, submission-speed check, rate limiting). Submissions classified as bots are not recorded as valid leads.",
+      "h26": "6. Contact"
+    }
   },
   "supply-chain-ai": {
-    "s1.eye": "AI in Supply Chain Lab",
-    "s1.h1": "Show products through cases; convince customers through scenarios.",
-    "s1.p": "The zone uses a \"case card + application scenario + video demo + Demo booking\" structure—products are not isolated but placed back into real supply chain problems.",
-    "s1.a": "Book a Demo",
-    "s1.a2": "View Cases",
-    "s2.eye": "Case Based Product Cards",
-    "s2.h2": "Every card is a business scenario.",
-    "s2.p": "Each card shows industry, pain point, product, value, video and booking entry, making it easy for sales and staff to maintain.",
-    "s2.strong": "Pain point:",
-    "s2.strong2": "Value:",
-    "s2.a": "Book a Demo",
-    "s3.eye": "Scenarios",
-    "s3.h2": "Organizing product capabilities around the supply chain journey.",
-    "s3.p": "The future admin can maintain application scenarios, bind cases, videos and booking forms.",
-    "s3.h3": "Demand Forecasting",
-    "s3.p2": "Integrating sales, channel, promotion, seasonality and external factors to output explainable forecasts and replenishment recommendations.",
-    "s3.h32": "Procurement Decisions",
-    "s3.p3": "Identifying category opportunities, price anomalies, supplier concentration and contract risks.",
-    "s3.h33": "Risk Alerts",
-    "s3.p4": "Tracking supply disruption, compliance and price volatility risks based on supplier profiles and external signals.",
-    "s4.eye": "Book a Demo",
-    "s4.h2": "Book a Supply Chain AI scenario diagnostic.",
-    "s4.p": "This form will write to the Demo booking database and assign a follow-up owner in the admin."
+    "s1": {
+      "eye": "AI in Supply Chain Lab",
+      "h1": "Show products through cases; convince customers through scenarios.",
+      "p": "The zone uses a \"case card + application scenario + video demo + Demo booking\" structure—products are not isolated but placed back into real supply chain problems.",
+      "a": "Book a Demo",
+      "a2": "View Cases"
+    },
+    "s2": {
+      "eye": "Case Based Product Cards",
+      "h2": "Every card is a business scenario.",
+      "p": "Each card shows industry, pain point, product, value, video and booking entry, making it easy for sales and staff to maintain.",
+      "strong": "Pain point:",
+      "strong2": "Value:",
+      "a": "Book a Demo"
+    },
+    "s3": {
+      "eye": "Scenarios",
+      "h2": "Organizing product capabilities around the supply chain journey.",
+      "p": "The future admin can maintain application scenarios, bind cases, videos and booking forms.",
+      "h3": "Demand Forecasting",
+      "p2": "Integrating sales, channel, promotion, seasonality and external factors to output explainable forecasts and replenishment recommendations.",
+      "h32": "Procurement Decisions",
+      "p3": "Identifying category opportunities, price anomalies, supplier concentration and contract risks.",
+      "h33": "Risk Alerts",
+      "p4": "Tracking supply disruption, compliance and price volatility risks based on supplier profiles and external signals."
+    },
+    "s4": {
+      "eye": "Book a Demo",
+      "h2": "Book a Supply Chain AI scenario diagnostic.",
+      "p": "This form will write to the Demo booking database and assign a follow-up owner in the admin."
+    }
   },
   "events": {
-    "s1.eye": "Events",
-    "s1.h1": "From a Summit Stage to a Roundtable",
-    "s3.eye": "Calendar",
-    "s3.h2": "Event Calendar",
-    "s3.span": "Speakers:",
-    "s3.a": "View Details"
+    "s1": {
+      "eye": "Events",
+      "h1": "From a Summit Stage to a Roundtable"
+    },
+    "s3": {
+      "eye": "Calendar",
+      "h2": "Event Calendar",
+      "span": "Speakers:",
+      "a": "View Details"
+    }
   },
   "events-summits": {
-    "s1.eye": "Annual Summits",
-    "s1.h1": "Annual summits that set the industry agenda and build brand momentum.",
-    "s1.p": "Annual summits bring supply chain, fintech, industrial digitalisation and AI topics together — main forums, roundtables and case releases concentrate a full year of industry debate into one conference.",
-    "s1.span": "Flagship summit tracks",
-    "s1.span2": "Target attendance per summit",
-    "s1.strong": "3 yrs",
-    "s1.span3": "Summit history to date",
-    "s2.eye": "Positioning",
-    "s2.h2": "Make the industry consensus visible, and the company cases memorable.",
-    "s2.p": "The summit page keeps the year's themes, agenda, speakers and registration in one place, so companies can judge whether this edition is worth sending a team, and partners can see which scenarios they can plug into.",
-    "s2.strong": "Main forum and executive roundtables",
-    "s2.p2": "High-density viewpoints on globalisation, supply chain resilience, AI adoption and industrial finance.",
-    "s2.strong2": "Case releases and partner showcases",
-    "s2.p3": "Enterprise practice, technology partner solutions and deployable scenarios in one content chain.",
-    "s2.strong3": "Registration and seat applications",
-    "s2.p4": "Main forum, breakout sessions and roundtables are applied for separately; the event team confirms and seats guests by industry and seniority.",
-    "s3.eye": "Upcoming",
-    "s3.h2": "Summits Now Open",
-    "s3.p": "Date, city and registration entry for the next edition.",
-    "s3.a": "Summit Details",
-    "s4.eye": "Archive",
-    "s4.h2": "Past Summits",
-    "s4.p": "Themes, agenda and on-site speakers from the last three editions.",
-    "s4.span": "Theme",
-    "s4.span2": "Photos",
-    "s4.span3": "Speaker insights",
-    "s5.eye": "Gallery",
-    "s5.h2": "Summit Highlights",
-    "s5.p": "Main forum, roundtables and the exhibition floor."
+    "s1": {
+      "eye": "Annual Summits",
+      "h1": "Annual summits that set the industry agenda and build brand momentum.",
+      "p": "Annual summits bring supply chain, fintech, industrial digitalisation and AI topics together — main forums, roundtables and case releases concentrate a full year of industry debate into one conference.",
+      "span": "Flagship summit tracks",
+      "span2": "Target attendance per summit",
+      "strong": "3 yrs",
+      "span3": "Summit history to date"
+    },
+    "s2": {
+      "eye": "Positioning",
+      "h2": "Make the industry consensus visible, and the company cases memorable.",
+      "p": "The summit page keeps the year's themes, agenda, speakers and registration in one place, so companies can judge whether this edition is worth sending a team, and partners can see which scenarios they can plug into.",
+      "strong": "Main forum and executive roundtables",
+      "p2": "High-density viewpoints on globalisation, supply chain resilience, AI adoption and industrial finance.",
+      "strong2": "Case releases and partner showcases",
+      "p3": "Enterprise practice, technology partner solutions and deployable scenarios in one content chain.",
+      "strong3": "Registration and seat applications",
+      "p4": "Main forum, breakout sessions and roundtables are applied for separately; the event team confirms and seats guests by industry and seniority."
+    },
+    "s3": {
+      "eye": "Upcoming",
+      "h2": "Summits Now Open",
+      "p": "Date, city and registration entry for the next edition.",
+      "a": "Summit Details"
+    },
+    "s4": {
+      "eye": "Archive",
+      "h2": "Past Summits",
+      "p": "Themes, agenda and on-site speakers from the last three editions.",
+      "span": "Theme",
+      "span2": "Photos",
+      "span3": "Speaker insights"
+    },
+    "s5": {
+      "eye": "Gallery",
+      "h2": "Summit Highlights",
+      "p": "Main forum, roundtables and the exhibition floor."
+    }
   },
   "events-city": {
-    "s1.eye": "City Meetings",
-    "s1.h1": "City meetings that carry the annual agenda into key industrial cities.",
-    "s1.p": "City meetings take the annual summit agenda on the road, using 50 to 100 seat themed salons to bring supply chain, procurement, AI adoption and risk control cases directly to enterprises.",
-    "s1.span": "City meeting target",
-    "s1.span2": "Typical salon size",
-    "s1.span3": "City cases documented",
-    "s2.h3": "Regional agenda",
-    "s2.p": "Landing the annual summit's industry topics in Shanghai, Hangzhou, Shenzhen, Chongqing and Guangzhou.",
-    "s2.h32": "Relationship conversion",
-    "s2.p2": "Smaller themed meetings that carry registration, sponsorship, partner invitations and client visits.",
-    "s2.h33": "Cases in the room",
-    "s2.p3": "Speaker sessions, roundtable discussion and case reviews built around real industry pain points.",
-    "s2.h34": "City relay",
-    "s2.p4": "The same agenda moves city by city along the industrial belt, so enterprises in each city can join the discussion where they are.",
-    "s3.eye": "Upcoming",
-    "s3.h2": "City Meetings Now Open",
-    "s3.p": "Cities and themes opening for registration next.",
-    "s3.a": "View Details",
-    "s4.eye": "Cases",
-    "s4.h2": "City Salon Case Library",
-    "s4.p": "Themes, cities and discussion focus of past city salons.",
-    "s5.eye": "Scene",
-    "s5.h2": "City Meeting Atmosphere",
-    "s5.p": "City meetings lean on table-level conversation, case dismantling and connections between enterprises in the same city."
+    "s1": {
+      "eye": "City Meetings",
+      "h1": "City meetings that carry the annual agenda into key industrial cities.",
+      "p": "City meetings take the annual summit agenda on the road, using 50 to 100 seat themed salons to bring supply chain, procurement, AI adoption and risk control cases directly to enterprises.",
+      "span": "City meeting target",
+      "span2": "Typical salon size",
+      "span3": "City cases documented"
+    },
+    "s2": {
+      "h3": "Regional agenda",
+      "p": "Landing the annual summit's industry topics in Shanghai, Hangzhou, Shenzhen, Chongqing and Guangzhou.",
+      "h32": "Relationship conversion",
+      "p2": "Smaller themed meetings that carry registration, sponsorship, partner invitations and client visits.",
+      "h33": "Cases in the room",
+      "p3": "Speaker sessions, roundtable discussion and case reviews built around real industry pain points.",
+      "h34": "City relay",
+      "p4": "The same agenda moves city by city along the industrial belt, so enterprises in each city can join the discussion where they are."
+    },
+    "s3": {
+      "eye": "Upcoming",
+      "h2": "City Meetings Now Open",
+      "p": "Cities and themes opening for registration next.",
+      "a": "View Details"
+    },
+    "s4": {
+      "eye": "Cases",
+      "h2": "City Salon Case Library",
+      "p": "Themes, cities and discussion focus of past city salons."
+    },
+    "s5": {
+      "eye": "Scene",
+      "h2": "City Meeting Atmosphere",
+      "p": "City meetings lean on table-level conversation, case dismantling and connections between enterprises in the same city."
+    }
   },
   "events-elite-talks": {
-    "s1.eye": "Elite Six Talks",
-    "s1.h1": "Elite Six Talks: go deeper on the problem, make the connection real.",
-    "s1.p": "Elite Six Talks are closed-door sessions of 6 to 15 people, built for CIOs, IT heads, procurement and supply chain leaders and business decision-makers working through the same set of real problems.",
-    "s1.span": "Closed-door seats",
-    "s1.strong": "Thursdays",
-    "s1.span2": "Regular cadence",
-    "s1.span3": "Closed-door cases documented",
-    "s2.eye": "Format",
-    "s2.h2": "Less scale, more problem density and better company at the table.",
-    "s2.p": "Each session is built around one industry or business topic: it opens with a case and a question, then works through peer questioning, experience exchange and an action list that turns into follow-up opportunities.",
-    "s2.strong": "Curated invitations",
-    "s2.p2": "Participants are screened by industry, function and topic so the table can hold a real conversation.",
-    "s2.strong2": "Closed-door depth",
-    "s2.p3": "No broad keynote: the focus is the real friction in organisation, systems, data, AI adoption and supply chain practice.",
-    "s2.strong3": "Follow-up connection",
-    "s2.p4": "Participants on the same topic continue the conversation in later sessions; cross-company introductions are arranged by the event team.",
-    "s3.eye": "Upcoming",
-    "s3.h2": "Elite Six Talks Now Open",
-    "s3.p": "Thursday afternoons, scheduled monthly; seats require advance application.",
-    "s3.a": "View Details",
-    "s4.eye": "Closed-door Cases",
-    "s4.h2": "Closed-Door Case Library",
-    "s4.p": "Each session records the topic, the participants and the questions discussed.",
-    "s5.eye": "Enterprise Visit",
-    "s5.h2": "Enterprise Visit Series",
-    "s5.p": "Visit salons follow the same logic as Elite Six Talks, taking industry CIOs into real enterprise environments.",
-    "s6.eye": "Scene",
-    "s6.h2": "Closed-Door Exchange Scene",
-    "s6.p": "Small tables, dinner, case dismantling and peer questioning — the core experience that sets this programme apart from a conference."
+    "s1": {
+      "eye": "Elite Six Talks",
+      "h1": "Elite Six Talks: go deeper on the problem, make the connection real.",
+      "p": "Elite Six Talks are closed-door sessions of 6 to 15 people, built for CIOs, IT heads, procurement and supply chain leaders and business decision-makers working through the same set of real problems.",
+      "span": "Closed-door seats",
+      "strong": "Thursdays",
+      "span2": "Regular cadence",
+      "span3": "Closed-door cases documented"
+    },
+    "s2": {
+      "eye": "Format",
+      "h2": "Less scale, more problem density and better company at the table.",
+      "p": "Each session is built around one industry or business topic: it opens with a case and a question, then works through peer questioning, experience exchange and an action list that turns into follow-up opportunities.",
+      "strong": "Curated invitations",
+      "p2": "Participants are screened by industry, function and topic so the table can hold a real conversation.",
+      "strong2": "Closed-door depth",
+      "p3": "No broad keynote: the focus is the real friction in organisation, systems, data, AI adoption and supply chain practice.",
+      "strong3": "Follow-up connection",
+      "p4": "Participants on the same topic continue the conversation in later sessions; cross-company introductions are arranged by the event team."
+    },
+    "s3": {
+      "eye": "Upcoming",
+      "h2": "Elite Six Talks Now Open",
+      "p": "Thursday afternoons, scheduled monthly; seats require advance application.",
+      "a": "View Details"
+    },
+    "s4": {
+      "eye": "Closed-door Cases",
+      "h2": "Closed-Door Case Library",
+      "p": "Each session records the topic, the participants and the questions discussed."
+    },
+    "s5": {
+      "eye": "Enterprise Visit",
+      "h2": "Enterprise Visit Series",
+      "p": "Visit salons follow the same logic as Elite Six Talks, taking industry CIOs into real enterprise environments."
+    },
+    "s6": {
+      "eye": "Scene",
+      "h2": "Closed-Door Exchange Scene",
+      "p": "Small tables, dinner, case dismantling and peer questioning — the core experience that sets this programme apart from a conference."
+    }
   },
   "events-calendar": {
-    "s1.eye": "Calendar",
-    "s1.h1": "Twelve boxes for the year, the whole DSG schedule in view.",
-    "s1.p": "Switch by year, one box per month. Each box holds that month's sessions and categories; open it to see dates, themes, industries and cities, then go through to the individual event.",
-    "s2.p": "Open a month to see every session in it",
-    "s2.a": "Details",
-    "s2.h4": "Highlights"
+    "s1": {
+      "eye": "Calendar",
+      "h1": "Twelve boxes for the year, the whole DSG schedule in view.",
+      "p": "Switch by year, one box per month. Each box holds that month's sessions and categories; open it to see dates, themes, industries and cities, then go through to the individual event."
+    },
+    "s2": {
+      "p": "Open a month to see every session in it",
+      "a": "Details",
+      "h4": "Highlights"
+    }
   },
   "event-detail": {
-    "s1.span": "Theme",
-    "s2.h2": "Agenda",
-    "s2.span": "Who it is for",
-    "s2.h22": "Hosts and partners",
-    "s2.h3": "Event details",
-    "s3.eye": "Scene",
-    "s3.h2": "On-site Photos",
-    "s3.p": "On-site records from this session.",
-    "s4.h2": "Want to join events like this?",
-    "s4.p": "Submit a registration or seat application and the event team will review it; once confirmed we send the agenda and arrival guide."
+    "s1": {
+      "span": "Theme"
+    },
+    "s2": {
+      "h2": "Agenda",
+      "span": "Who it is for",
+      "h22": "Hosts and partners",
+      "h3": "Event details"
+    },
+    "s3": {
+      "eye": "Scene",
+      "h2": "On-site Photos",
+      "p": "On-site records from this session."
+    },
+    "s4": {
+      "h2": "Want to join events like this?",
+      "p": "Submit a registration or seat application and the event team will review it; once confirmed we send the agenda and arrival guide."
+    }
   },
   "home": {
-    "s1.eye": "DSG · Digital Service Group",
-    "s1.span": "Events That Connect Industries",
-    "s1.span2": "AI That Rebuilds Supply Chains",
-    "s1.p": "Annual summits, city salons and closed-door roundtables for decision-makers in automotive, manufacturing, retail and finance — the challenges we keep hearing in those rooms become deployable supply chain AI solutions.",
-    "s1.a": "View Event Calendar",
-    "s1.a2": "Explore the AI Innovation Zone",
-    "s2.eye": "Business Architecture",
-    "s2.span": "Bridge-Builder for Industry",
-    "s2.span2": "Crossing the Technology Gap",
-    "s2.p": "Advanced technology is not a rival to any industry—it is a powerful weapon in the hands of every entrepreneur!",
-    "s2.h3": "Event Ecosystem",
-    "s2.p2": "Building industry connection through annual summits, city meetings and Elite Six Talks, bringing together enterprise decision-makers, industry experts and innovation partners.",
-    "s2.h32": "Insights",
-    "s2.p3": "Curating event insights, expert interviews, whitepapers and closed-door minutes into professional content assets for executives and digital leaders.",
-    "s2.div": "AI",
-    "s2.h33": "AI in Supply Chain",
-    "s2.p4": "Showcasing AI solutions, use cases, video demos and Demo booking around real business cases to help enterprises identify actionable supply chain intelligence opportunities.",
-    "s3.eye": "Recent Events",
-    "s3.h2": "Upcoming Events",
-    "s3.p": "Join DSG events for a global industry perspective and cutting-edge technology trends, and discover new growth opportunities through peer exchange and shared thinking.",
-    "s4.eye": "AI in Supply Chain",
-    "s4.h2": "Case-Driven, Not Empty Concepts",
-    "s4.p": "The Supply Chain AI Innovation Zone is case-led, presenting industry pain points, solutions, business value and video demos, with Demo booking supported.",
-    "s4.a": "View AI Cases",
-    "s4.a2": "Book a Demo"
+    "s1": {
+      "eye": "DSG · Digital Service Group",
+      "span": "Events That Connect Industries",
+      "span2": "AI That Rebuilds Supply Chains",
+      "p": "Annual summits, city salons and closed-door roundtables for decision-makers in automotive, manufacturing, retail and finance — the challenges we keep hearing in those rooms become deployable supply chain AI solutions.",
+      "a": "View Event Calendar",
+      "a2": "Explore the AI Innovation Zone"
+    },
+    "s2": {
+      "eye": "Business Architecture",
+      "span": "Bridge-Builder for Industry",
+      "span2": "Crossing the Technology Gap",
+      "p": "Advanced technology is not a rival to any industry—it is a powerful weapon in the hands of every entrepreneur!",
+      "h3": "Event Ecosystem",
+      "p2": "Building industry connection through annual summits, city meetings and Elite Six Talks, bringing together enterprise decision-makers, industry experts and innovation partners.",
+      "h32": "Insights",
+      "p3": "Curating event insights, expert interviews, whitepapers and closed-door minutes into professional content assets for executives and digital leaders.",
+      "div": "AI",
+      "h33": "AI in Supply Chain",
+      "p4": "Showcasing AI solutions, use cases, video demos and Demo booking around real business cases to help enterprises identify actionable supply chain intelligence opportunities."
+    },
+    "s3": {
+      "eye": "Recent Events",
+      "h2": "Upcoming Events",
+      "p": "Join DSG events for a global industry perspective and cutting-edge technology trends, and discover new growth opportunities through peer exchange and shared thinking."
+    },
+    "s4": {
+      "eye": "AI in Supply Chain",
+      "h2": "Case-Driven, Not Empty Concepts",
+      "p": "The Supply Chain AI Innovation Zone is case-led, presenting industry pain points, solutions, business value and video demos, with Demo booking supported.",
+      "a": "View AI Cases",
+      "a2": "Book a Demo"
+    }
   }
 }

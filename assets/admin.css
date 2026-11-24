@@ -546,3 +546,56 @@ textarea { min-height: 112px; resize: vertical; }
   min-height: 30px;
   font-size: 12px;
 }
+
+/* —— 页面列表：真实文件名 + 前台可达状态 —— */
+.table-list .row-item .pg-status {
+  margin-left: auto;
+  flex: 0 0 auto;
+  font-size: 11px;
+  font-style: normal;
+  padding: 2px 7px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  background: #fff;
+  white-space: nowrap;
+}
+.table-list .row-item .pg-status.nav { color: #1d6b42; border-color: #b9d7c8; background: #eef7f1; }
+.table-list .row-item .pg-status.dynamic { color: #2b4a7c; border-color: #cfd9e8; background: #eef2f9; }
+.table-list .row-item .pg-status.orphan { color: #8a4b1f; border-color: #e8c9a8; background: #fdf1e4; }
+.table-list .row-item .pg-status.unknown { color: #8a611f; border-color: #e2d2bd; background: #fbf3e6; }
+.table-list .row-item.orphan strong { color: #8a4b1f; }
+
+/* —— 总览：改版要求清单 —— */
+.req-panel .panel-head { align-items: baseline; gap: 10px; }
+.req-stats { display: flex; gap: 8px; flex-wrap: wrap; margin: 4px 0 10px; }
+.req-chip {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 3px 10px; border-radius: 999px;
+  border: 1px solid var(--line); background: #fff; color: var(--muted);
+  font-size: 12px;
+}
+.req-chip b { font-size: 14px; color: var(--ink); }
+.req-chip.done { border-color: #b9d7c8; background: #eef7f1; color: #1d6b42; }
+.req-chip.partial { border-color: #e8c9a8; background: #fdf1e4; color: #8a4b1f; }
+.req-chip.todo { border-color: #e6bcbc; background: #fdeeee; color: #8a2f2f; }
+.req-group { margin-top: 12px; }
+.req-group h3 {
+  font-size: 13px; font-weight: 600; color: var(--muted);
+  letter-spacing: .04em; margin: 0 0 6px;
+}
+.req-row {
+  display: flex; gap: 10px; align-items: flex-start;
+  padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px;
+  background: #fff; margin-bottom: 6px;
+}
+.req-row em {
+  flex: 0 0 auto; font-style: normal; font-size: 11px;
+  padding: 2px 7px; border-radius: 999px; border: 1px solid var(--line);
+  color: var(--muted); white-space: nowrap; margin-top: 1px;
+}
+.req-row.done em { color: #1d6b42; border-color: #b9d7c8; background: #eef7f1; }
+.req-row.partial em { color: #8a4b1f; border-color: #e8c9a8; background: #fdf1e4; }
+.req-row.todo em { color: #8a2f2f; border-color: #e6bcbc; background: #fdeeee; }
+.req-text { margin: 0; font-size: 13px; line-height: 1.55; color: var(--ink); }
+.req-note { margin: 4px 0 0; font-size: 12px; line-height: 1.5; color: var(--muted); }

@@ -1,0 +1,161 @@
+{
+  "_comment": "由 tools/check_site.py 自动生成：记录每个前台页面的真实文件名、站内入链数与能否从首页走到。后台据此显示状态，不再手写页面清单。",
+  "generatedAt": "2026-11-24 23:04",
+  "counts": {
+    "zh": 13,
+    "en": 13
+  },
+  "pages": [
+    {
+      "key": "about",
+      "label": null,
+      "file": "about.html",
+      "lang": "zh",
+      "inbound": 13,
+      "reachable": true,
+      "status": "nav",
+      "retiredReason": null,
+      "enFile": "about-en.html"
+    },
+    {
+      "key": "consult",
+      "label": null,
+      "file": "consult.html",
+      "lang": "zh",
+      "inbound": 1,
+      "reachable": false,
+      "status": "retired",
+      "retiredReason": "2026-11-17 评审决议：取消「轻咨询」栏目，恢复首页/活动/供应链AI创新专区/行业洞察/关于DSG/联系我们六项导航；原「轻咨询」下的产品改放「供应链AI创新专区」，首个产品为 DSG AI 排产小助手。",
+      "enFile": "consult-en.html"
+    },
+    {
+      "key": "contact",
+      "label": null,
+      "file": "contact.html",
+      "lang": "zh",
+      "inbound": 13,
+      "reachable": true,
+      "status": "nav",
+      "retiredReason": null,
+      "enFile": "contact-en.html"
+    },
+    {
+      "key": "event-detail",
+      "label": null,
+      "file": "event-detail.html",
+      "lang": "zh",
+      "inbound": 1,
+      "reachable": true,
+      "status": "dynamic",
+      "retiredReason": null,
+      "enFile": "event-detail-en.html"
+    },
+    {
+      "key": "events-calendar",
+      "label": null,
+      "file": "events-calendar.html",
+      "lang": "zh",
+      "inbound": 13,
+      "reachable": true,
+      "status": "nav",
+      "retiredReason": null,
+      "enFile": "events-calendar-en.html"
+    },
+    {
+      "key": "events-city",
+      "label": null,
+      "file": "events-city.html",
+      "lang": "zh",
+      "inbound": 13,
+      "reachable": true,
+      "status": "nav",
+      "retiredReason": null,
+      "enFile": "events-city-en.html"
+    },
+    {
+      "key": "events-elite-talks",
+      "label": null,
+      "file": "events-elite-talks.html",
+      "lang": "zh",
+      "inbound": 13,
+      "reachable": true,
+      "status": "nav",
+      "retiredReason": null,
+      "enFile": "events-elite-talks-en.html"
+    },
+    {
+      "key": "events-summits",
+      "label": null,
+      "file": "events-summits.html",
+      "lang": "zh",
+      "inbound": 13,
+      "reachable": true,
+      "status": "nav",
+      "retiredReason": null,
+      "enFile": "events-summits-en.html"
+    },
+    {
+      "key": "events",
+      "label": null,
+      "file": "events.html",
+      "lang": "zh",
+      "inbound": 13,
+      "reachable": true,
+      "status": "nav",
+      "retiredReason": null,
+      "enFile": "events-en.html"
+    },
+    {
+      "key": "home",
+      "label": null,
+      "file": "index.html",
+      "lang": "zh",
+      "inbound": 14,
+      "reachable": true,
+      "status": "nav",
+      "retiredReason": null,
+      "enFile": "index-en.html"
+    },
+    {
+      "key": "insights",
+      "label": null,
+      "file": "insights.html",
+      "lang": "zh",
+      "inbound": 13,
+      "reachable": true,
+      "status": "nav",
+      "retiredReason": null,
+      "enFile": "insights-en.html"
+    },
+    {
+      "key": "privacy",
+      "label": null,
+      "file": "privacy.html",
+      "lang": "zh",
+      "inbound": 21,
+      "reachable": true,
+      "status": "nav",
+      "retiredReason": null,
+      "enFile": "privacy-en.html"
+    },
+    {
+      "key": "supply-chain-ai",
+      "label": null,
+      "file": "supply-chain-ai.html",
+      "lang": "zh",
+      "inbound": 13,
+      "reachable": true,
+      "status": "nav",
+      "retiredReason": null,
+      "enFile": "supply-chain-ai-en.html"
+    }
+  ],
+  "orphans": [],
+  "retired": [
+    {
+      "file": "consult.html",
+      "reason": "2026-11-17 评审决议：取消「轻咨询」栏目，恢复首页/活动/供应链AI创新专区/行业洞察/关于DSG/联系我们六项导航；原「轻咨询」下的产品改放「供应链AI创新专区」，首个产品为 DSG AI 排产小助手。"
+    }
+  ],
+  "deadlinks": []
+}

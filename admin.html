@@ -85,10 +85,36 @@
         </section>
 
         <section x-show="activeModule==='dashboard'" class="dashboard-grid">
-          <article class="metric-card"><span>会议活动</span><strong x-text="draft.events.length"></strong><p>年度峰会、城市会议、精英六人谈</p></article>
+          <article class="metric-card"><span>会议活动</span><strong x-text="draft.events.length"></strong><p>年度峰会、城市沙龙、精英六人谈</p></article>
           <article class="metric-card"><span>AI 案例</span><strong x-text="draft.aiCases.length"></strong><p>供应链AI创新专区案例卡片</p></article>
           <article class="metric-card"><span>行业洞察</span><strong x-text="draft.insights.length"></strong><p>文章、视频回放、闭门纪要</p></article>
           <article class="metric-card"><span>角色</span><strong x-text="roles.length"></strong><p>当前可配置的后台权限角色</p></article>
+          <div class="wide-panel req-panel">
+            <div class="panel-head">
+              <h2>改版要求 · 以 11-17 评审为准</h2>
+              <span class="muted" x-text="requirements && requirements.source ? '核对于 ' + requirements.source.updatedAt : ''"></span>
+            </div>
+            <div class="req-stats">
+              <span class="req-chip done"><b x-text="requirementStats.done"></b>已落实</span>
+              <span class="req-chip partial"><b x-text="requirementStats.partial"></b>部分</span>
+              <span class="req-chip todo"><b x-text="requirementStats.todo"></b>未落实</span>
+              <span class="req-chip"><b x-text="requirementStats.total"></b>合计</span>
+            </div>
+            <template x-for="g in requirementGroups" :key="g.id">
+              <div class="req-group">
+                <h3 x-text="g.name"></h3>
+                <template x-for="i in g.items" :key="i.id">
+                  <div class="req-row" :class="i.status">
+                    <em x-text="reqStatusLabel(i.status)"></em>
+                    <div>
+                      <p class="req-text" x-text="i.text"></p>
+                      <p class="req-note" x-text="i.note" x-show="i.note"></p>
+                    </div>
+                  </div>
+                </template>
+              </div>
+            </template>
+          </div>
           <div class="wide-panel">
             <h2>当前权限</h2>
             <div class="permission-pills">
@@ -126,12 +152,27 @@
             </div>
             <div class="table-list">
               <template x-for="pg in blockPages" :key="pg.key">
-                <button class="row-item" :class="{active: blocks.page===pg.key}"
+                <button class="row-item" :class="{active: blocks.page===pg.key, orphan: pg.status==='orphan'}"
                         @click="blocks.page=pg.key; blocks.filter=''">
-                  <span><strong x-text="pg.label"></strong><small x-text="pg.key + '.html'"></small></span>
+                  <span>
+                    <strong x-text="pg.label"></strong>
+                    <small x-text="pg.file"></small>
+                  </span>
+                  <em class="pg-status" :class="pg.status" x-text="pageStatusLabel(pg)"></em>
                 </button>
               </template>
             </div>
+            <p class="hint" x-show="manifest && manifest.orphans && manifest.orphans.length">
+              有 <b x-text="manifest && manifest.orphans ? manifest.orphans.length : 0"></b> 个页面在前台已经没有入口（
+              <span x-text="manifest && manifest.orphans ? manifest.orphans.join('、') : ''"></span>）：
+              文案还能改，但访客点不到。要么给回导航入口，要么按评审结论下线。
+            </p>
+            <p class="hint" x-show="retiredPages.length">
+              已按评审决议下线、不在上面列表里：
+              <template x-for="r in retiredPages" :key="r.file">
+                <span><b x-text="r.file"></b>（<span x-text="r.reason"></span>）</span>
+              </template>
+            </p>
           </div>
           <div class="editor-panel">
             <div class="panel-head">
@@ -270,7 +311,7 @@
               <div :style="themePreviewStyle">以活动连接产业</div>
               <div :style="'font-size:' + (38 * (theme.draft.scale.h2 || 1) * 0.58).toFixed(1) + 'px;margin:6px 0 4px;color:' + (theme.draft.color.ink || '#111315')">近期活动</div>
               <p :style="'font-size:13px;line-height:1.75;color:' + (theme.draft.color.muted || '#6a7178') + ';margin:0'">
-                DSG 数创时代围绕年度峰会和城市会议分享全球化与创新，帮助企业把技术转化为可落地的增长能力。
+                DSG 数创时代围绕年度峰会和城市沙龙分享全球化与创新，帮助企业把技术转化为可落地的增长能力。
               </p>
               <div class="theme-swatch" :style="'background:' + (theme.draft.color.gold || '#b8924a') + ';border-radius:' + (theme.draft.shape.radius || 8) + 'px'"></div>
               <div class="theme-note" x-text="'内容宽 ' + theme.draft.layout.pageMax + 'px · 留白 ' + theme.draft.layout.gutterMax + 'px · 圆角 ' + theme.draft.shape.radius + 'px'"></div>
@@ -284,7 +325,7 @@
             <div class="panel-head"><h2>会议列表</h2><button class="primary" @click="newEvent()">新增会议</button></div>
             <div class="filters">
               <input x-model="filters.events" placeholder="搜索标题、城市、标签">
-              <select x-model="eventTypeFilter"><option value="all">全部类型</option><option value="summit">年度峰会</option><option value="city">城市会议</option><option value="elite">精英六人谈</option></select>
+              <select x-model="eventTypeFilter"><option value="all">全部类型</option><option value="summit">年度峰会</option><option value="city">城市沙龙</option><option value="elite">精英六人谈</option></select>
             </div>
             <div class="table-list">
               <template x-for="event in filteredEvents" :key="event.id">
@@ -300,9 +341,8 @@
             <div class="panel-head"><h2>编辑会议</h2><button class="danger" type="button" @click="deleteEvent()">删除</button></div>
             <div class="form-grid">
               <label>标题<input x-model="selected.events.title" required></label>
-              <label>类型<select x-model="selected.events.type" @change="syncEventType(selected.events)"><option value="summit">年度峰会</option><option value="city">城市会议</option><option value="elite">精英六人谈</option></select></label>
-              <label>前台归栏<select x-model="selected.events.category" @change="syncCategoryLabel(selected.events)"><option value="summit">年度峰会</option><option value="city">城市沙龙</option><option value="elite">精英六人谈</option></select></label>
-              <label>分类标签<input x-model="selected.events.categoryLabel" placeholder="显示在活动卡片上的小标签"></label>
+              <label>类型<select x-model="selected.events.type" @change="syncEventType(selected.events)"><option value="summit">年度峰会</option><option value="city">城市沙龙</option><option value="elite">精英六人谈</option></select></label>
+              <label>分类标签<input x-model="selected.events.categoryLabel" placeholder="显示在活动卡片上的小标签，默认同类型"></label>
               <label>报名开关<select x-model="selected.events.registrationOpen"><option :value="true">开放报名</option><option :value="false">关闭报名</option></select></label>
               <label>日期<input type="date" x-model="selected.events.date"></label>
               <label>显示日期<input x-model="selected.events.dateText" placeholder="如 3.21-22"></label>
@@ -345,7 +385,8 @@
               </template>
             </div>
           </div>
-          <form class="editor-panel" @submit.prevent="saveAiCase()" x-show="selected.ai">
+          <template x-if="selected.ai">
+          <form class="editor-panel" @submit.prevent="saveAiCase()">
             <div class="panel-head"><h2>编辑 AI 案例</h2><button class="danger" type="button" @click="deleteAiCase()">删除</button></div>
             <div class="form-grid">
               <label>案例标题<input x-model="selected.ai.title" required></label>
@@ -358,6 +399,7 @@
             </div>
             <button class="primary">保存 AI 案例草稿</button>
           </form>
+          </template>
         </section>
 
         <section x-show="activeModule==='insights'" class="manager-layout">
@@ -372,7 +414,8 @@
               </template>
             </div>
           </div>
-          <form class="editor-panel" @submit.prevent="saveInsight()" x-show="selected.insights">
+          <template x-if="selected.insights">
+          <form class="editor-panel" @submit.prevent="saveInsight()">
             <div class="panel-head"><h2>编辑行业洞察</h2><button class="danger" type="button" @click="deleteInsight()">删除</button></div>
             <div class="form-grid">
               <label>标题<input x-model="selected.insights.title" required></label>
@@ -382,6 +425,7 @@
             </div>
             <button class="primary">保存洞察草稿</button>
           </form>
+          </template>
         </section>
 
         <section x-show="activeModule==='permissions'" class="permissions-layout">
@@ -412,7 +456,8 @@
               </template>
             </div>
           </div>
-          <form class="editor-panel" @submit.prevent="saveRole()" x-show="selected.role">
+          <template x-if="selected.role">
+          <form class="editor-panel" @submit.prevent="saveRole()">
             <div class="panel-head"><h2>模块授权</h2><button class="danger" type="button" @click="deleteRole()" :disabled="selected.role.id==='super-admin'">删除</button></div>
             <div class="form-grid">
               <label>角色名称<input x-model="selected.role.name" required></label>
@@ -427,6 +472,7 @@
             <label>职责范围<input x-model="selected.role.scope" placeholder="如：供应链AI创新专区 + 线索管理" :disabled="selected.role.locked"></label>
             <button class="primary" :disabled="selected.role.locked">保存权限配置</button>
           </form>
+          </template>
         </section>
 
         <!-- 线索管理：受限数据，仅授权角色可见，导出需留痕 -->
