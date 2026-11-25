@@ -106,7 +106,7 @@
       "sections": [
         {
           "id": "home-hero",
-          "name": "首屏 Banner（链路自检）",
+          "name": "首屏 Banner",
           "type": "hero",
           "selector": "[data-block='home-hero']",
           "visible": true,
