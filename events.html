@@ -5,11 +5,11 @@
   <link rel="icon" type="image/png" href="assets/optimized/logo_favicon.png">
   <title>活动中心 | DSG 数创时代</title>
   <link rel="stylesheet" href="assets/styles.css?v=20261119u">
-  <link rel="stylesheet" href="assets/dsg-2026.css?v=20261125h">
+  <link rel="stylesheet" href="assets/dsg-2026.css?v=20261125m">
   <script defer src="assets/alpine.min.js"></script>
-  <script src="assets/embedded-data.js?v=20261125h"></script>
+  <script src="assets/embedded-data.js?v=20261125m"></script>
   <script src="assets/theme.js?v=20261119a"></script>
-  <script src="assets/site.js?v=20261125h"></script>
+  <script src="assets/site.js?v=20261125m"></script>
   <script src="assets/blocks.js?v=20261123c"></script>
   <script src="assets/forms.js?v=20260917-eventsync"></script>
 <!-- seo:begin 由 tools/build.py 生成，勿手动修改 -->
@@ -85,10 +85,13 @@
 
     <section class="section compact" id="calendar" data-block="events-calendar">
       <div class="container">
-        <div class="section-head" x-show="typeFilter === 'all'">
+        <!-- 2026-11-25：这一块（CALENDAR / 活动日历 / 四个筛选按钮）任何视图下都必须常显。
+             上一版把它在分类视图里隐藏了，结果从城市沙龙点进详情再返回，上方整块消失，
+             看起来像"被切到了另一个页面"。现在常显，只让标题随筛选改名。 -->
+        <div class="section-head">
           <div>
-            <span class="eyebrow" data-bind="events.s3.eye">Calendar</span>
-            <h2 data-bind="events.s3.h2">活动日历</h2>
+            <span class="eyebrow" x-text="typeFilter === 'summit' ? 'Summit' : (typeFilter === 'city' ? 'City Salon' : (typeFilter === 'elite' ? 'Roundtable' : 'Calendar'))">Calendar</span>
+            <h2 x-text="typeFilter === 'summit' ? '年度峰会' : (typeFilter === 'city' ? '城市沙龙' : (typeFilter === 'elite' ? '精英六人谈' : '活动日历'))">活动日历</h2>
           </div>
         </div>
 

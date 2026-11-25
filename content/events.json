@@ -870,7 +870,8 @@
    "领益智造 智造与物流IT负责人"
   ],
   "docGuestTitle": "参会嘉宾",
-  "poster": "assets/photos/EVT-2024-ELITE-10/poster.webp"
+  "poster": "assets/photos/EVT-2024-ELITE-10/poster.webp",
+  "kvImage": "assets/photos/EVT-2024-ELITE-10/kv.webp"
  },
  {
   "id": "EVT-2024-ELITE-06",
@@ -1017,7 +1018,8 @@
    "诺和诺德 Head of BI"
   ],
   "docGuestTitle": "参会嘉宾",
-  "poster": "assets/photos/EVT-2024-ELITE-06/poster.webp"
+  "poster": "assets/photos/EVT-2024-ELITE-06/poster.webp",
+  "kvImage": "assets/photos/EVT-2024-ELITE-06/kv.webp"
  },
  {
   "id": "EVT-2024-ELITE-07",
@@ -1163,7 +1165,8 @@
    "迪哲医药 CIO"
   ],
   "docGuestTitle": "参会嘉宾",
-  "poster": "assets/photos/EVT-2024-ELITE-07/poster.webp"
+  "poster": "assets/photos/EVT-2024-ELITE-07/poster.webp",
+  "kvImage": "assets/photos/EVT-2024-ELITE-07/kv.webp"
  },
  {
   "id": "EVT-2024-ELITE-08",
@@ -5033,7 +5036,8 @@
     "head": false,
     "note": ""
    }
-  ]
+  ],
+  "kvImage": "assets/photos/EVT-2025-ELITE-31/kv.webp"
  },
  {
   "id": "EVT-2025-ELITE-32",
@@ -5219,7 +5223,8 @@
     "head": false,
     "note": ""
    }
-  ]
+  ],
+  "kvImage": "assets/photos/EVT-2025-ELITE-32/kv.webp"
  },
  {
   "id": "EVT-2025-ELITE-33",
@@ -6680,7 +6685,8 @@
     "text": "晚宴",
     "note": ""
    }
-  ]
+  ],
+  "kvImage": "assets/photos/EVT-2026-VISIT-02/kv.webp"
  },
  {
   "id": "EVT-2026-VISIT-03",
@@ -6945,7 +6951,8 @@
     "text": "晚餐",
     "note": ""
    }
-  ]
+  ],
+  "kvImage": "assets/photos/EVT-2026-VISIT-03/kv.webp"
  },
  {
   "id": "EVT-2026-SUP",
@@ -7126,7 +7133,8 @@
     "head": false,
     "note": ""
    }
-  ]
+  ],
+  "kvImage": "assets/photos/EVT-2026-SUP/kv.webp"
  },
  {
   "id": "EVT-2026-ELITE-37",
@@ -7865,7 +7873,8 @@
     "head": false,
     "note": ""
    }
-  ]
+  ],
+  "kvImage": "assets/photos/EVT-2026-CITY-GZ-0424/kv.webp"
  },
  {
   "id": "EVT-2026-ELITE-39",
@@ -8549,7 +8558,8 @@
     "head": false,
     "note": ""
    }
-  ]
+  ],
+  "kvImage": "assets/photos/EVT-2026-CITY-SZ-0521/kv.webp"
  },
  {
   "id": "EVT-2026-CITY-SH-0526",
@@ -8730,7 +8740,8 @@
     "head": false,
     "note": ""
    }
-  ]
+  ],
+  "kvImage": "assets/photos/EVT-2026-CITY-SH-0526/kv.webp"
  },
  {
   "id": "EVT-2026-CITY-HZ-0626",
@@ -8888,7 +8899,8 @@
     "head": false,
     "note": ""
    }
-  ]
+  ],
+  "kvImage": "assets/photos/EVT-2026-CITY-HZ-0626/kv.webp"
  },
  {
   "id": "EVT-2026-ELITE-41",
@@ -9930,7 +9942,8 @@
     "head": false,
     "note": ""
    }
-  ]
+  ],
+  "kvImage": "assets/photos/EVT-2026-ELITE-43/kv.webp"
  },
  {
   "id": "EVT-2026-ELITE-44",
@@ -10396,7 +10409,8 @@
     "head": false,
     "note": ""
    }
-  ]
+  ],
+  "kvImage": "assets/photos/EVT-2026-FIN/kv.webp"
  },
  {
   "id": "EVT-2026-CITY-CQ-0828",
@@ -10561,7 +10575,8 @@
     "head": false,
     "note": ""
    }
-  ]
+  ],
+  "kvImage": "assets/photos/EVT-2026-CITY-CQ-0828/kv.webp"
  },
  {
   "id": "EVT-2026-ELITE-45",
@@ -10964,7 +10979,8 @@
    "泰康养老 CTO"
   ],
   "docGuestTitle": "演讲嘉宾",
-  "poster": "assets/photos/EVT-2026-ELITE-47/poster.webp"
+  "poster": "assets/photos/EVT-2026-ELITE-47/poster.webp",
+  "kvImage": "assets/photos/EVT-2026-ELITE-47/kv.webp"
  },
  {
   "id": "EVT-2026-ELITE-46",
@@ -11496,7 +11512,8 @@
     "head": false,
     "note": ""
    }
-  ]
+  ],
+  "kvImage": "assets/photos/EVT-2026-ELITE-47N/kv.webp"
  },
  {
   "id": "EVT-2026-CITY-CQ-1023",
@@ -11774,7 +11791,8 @@
     "head": false,
     "note": ""
    }
-  ]
+  ],
+  "kvImage": "assets/photos/EVT-2026-CITY-CQ-1023/kv.webp"
  },
  {
   "id": "EVT-2026-ELITE-48",
@@ -11980,7 +11998,8 @@
     "head": false,
     "note": ""
    }
-  ]
+  ],
+  "kvImage": "assets/photos/EVT-2026-ELITE-48/kv.webp"
  },
  {
   "id": "EVT-2026-CITY-SH-1113",
@@ -12150,13 +12169,13 @@
     "time": "",
     "text": "《AI排产还在测试:复杂业务下我们踩过的坑和算过的账》",
     "head": false,
-    "note": "戴鹏佐敦涂料东北亚区域IT总监"
+    "note": "戴鹏　佐敦涂料东北亚区域IT总监"
    },
    {
     "time": "",
     "text": "《AI时代制造业企业数字化转型实践》",
     "head": false,
-    "note": "王建国 博世数字化 中国区CTO"
+    "note": "王建国　博世数字化 中国区CTO"
    },
    {
     "time": "",
@@ -12176,7 +12195,8 @@
     "head": false,
     "note": ""
    }
-  ]
+  ],
+  "kvImage": "assets/photos/EVT-2026-CITY-SH-1113/kv.webp"
  },
  {
   "id": "EVT-2026-CITY-BJ-1124",
@@ -12302,6 +12322,7 @@
     "head": true,
     "note": ""
    }
-  ]
+  ],
+  "kvImage": "assets/photos/EVT-2026-CITY-BJ-1124/kv.webp"
  }
 ]

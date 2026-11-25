@@ -1,9 +1,9 @@
 {
   "_comment": "由 tools/check_site.py 自动生成：记录每个前台页面的真实文件名、站内入链数与能否从首页走到。后台据此显示状态，不再手写页面清单。",
-  "generatedAt": "2026-11-24 23:04",
+  "generatedAt": "2026-11-25 15:09",
   "counts": {
-    "zh": 13,
-    "en": 13
+    "zh": 14,
+    "en": 14
   },
   "pages": [
     {
@@ -16,6 +16,17 @@
       "status": "nav",
       "retiredReason": null,
       "enFile": "about-en.html"
+    },
+    {
+      "key": "activity",
+      "label": null,
+      "file": "activity.html",
+      "lang": "zh",
+      "inbound": 2,
+      "reachable": false,
+      "status": "orphan",
+      "retiredReason": null,
+      "enFile": "activity-en.html"
     },
     {
       "key": "consult",
@@ -44,7 +55,7 @@
       "label": null,
       "file": "event-detail.html",
       "lang": "zh",
-      "inbound": 1,
+      "inbound": 0,
       "reachable": true,
       "status": "dynamic",
       "retiredReason": null,
@@ -150,7 +161,9 @@
       "enFile": "supply-chain-ai-en.html"
     }
   ],
-  "orphans": [],
+  "orphans": [
+    "activity.html"
+  ],
   "retired": [
     {
       "file": "consult.html",

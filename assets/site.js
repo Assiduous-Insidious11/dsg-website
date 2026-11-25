@@ -869,6 +869,8 @@
       photoWall(event) { return (event && event.gallery) || []; },
       /** 2026-11-25 详情页三栏：整张活动海报（案例集锦原图，不裁切，点开看大图） */
       posterOf(event) { return (event && event.poster) || ""; },
+      /** 首屏主视觉：从海报顶部裁出的横版/方版 KV，专供 banner 用 */
+      kvOf(event) { return (event && event.kvImage) || ""; },
       /** 2026-11-25 详情页三栏：嘉宾名单，文本原样来自案例集锦 */
       guestsOf(event) { return (event && event.docGuests) || []; },
       /** 2026-11-25 活动流程：优先用案例集锦里那份真实流程，没有再退回 agendaDetail */
@@ -1073,7 +1075,7 @@
       eventDateLabel(event) { return event.dateText || this.formatDate(event.date); },
       eventDetailUrl(event) {
         var isEn = document.documentElement.lang === "en";
-        var page = isEn ? "event-detail-en.html" : "event-detail.html";
+        var page = isEn ? "activity-en.html" : "activity.html";
         /* 2026-11-25：带上"从哪来"，详情页的返回箭头才能原路回去。
            原来箭头写死 href="events.html"，从年度峰会/城市沙龙/精英六人谈点进去再返回，
            一律掉回"全部活动"的日历视图，日期和月份也丢了。 */
@@ -1086,6 +1088,22 @@
         if (!isEn && from === "events" && (!this.typeFilter || this.typeFilter === "all") && this.calendarCursor) {
           q += "&m=" + encodeURIComponent(String(this.calendarCursor).slice(0, 7));
         }
+        /* 2026-11-25：再补一个 back=整页地址。详情页优先用它原路返回，
+           比 from+cat+m 三个参数拼出来的更准（含滚动之外的任何查询串）。 */
+        var here = (global.location.pathname.split("/").pop() || "index.html") + (global.location.search || "");
+        if (from === "events") {
+          /* 活动页的 cat / m 都是脚本里的状态，不在地址栏上，必须按当前状态拼回去。
+             否则 back 会退化成裸 events.html，返回时分类和月份都丢。 */
+          var evPage = isEn ? "events-en.html" : "events.html";
+          if (this.typeFilter && this.typeFilter !== "all") {
+            here = evPage + "?cat=" + encodeURIComponent(this.typeFilter);
+          } else if (this.calendarCursor) {
+            here = evPage + "?m=" + encodeURIComponent(String(this.calendarCursor).slice(0, 7));
+          } else {
+            here = evPage;
+          }
+        }
+        q += "&back=" + encodeURIComponent(here);
         return page + q;
       },
       /**
@@ -1389,7 +1407,7 @@
   var doc = global.document;
   var BACK = "dsg:eventBack";
   var Y = "dsg:restoreY";
-  var isDetail = /event-detail(-en)?\.html$/.test(global.location.pathname);
+  var isDetail = /(event-detail|activity)(-en)?\.html$/.test(global.location.pathname);
   var isEn = (doc.documentElement.lang || "").toLowerCase().indexOf("en") === 0;
 
   function file(base) { return isEn ? base + "-en.html" : base + ".html"; }
@@ -1397,7 +1415,7 @@
   /* 1) 在活动页/首页点「活动详情」时，记住当前地址与滚动位置 */
   doc.addEventListener("click", function (e) {
     if (isDetail) return;
-    var a = e.target && e.target.closest ? e.target.closest('a[href*="event-detail"]') : null;
+    var a = e.target && e.target.closest ? e.target.closest('a[href*="activity"], a[href*="event-detail"]') : null;
     if (!a) return;
     try {
       global.sessionStorage.setItem(BACK, JSON.stringify({
@@ -1429,14 +1447,14 @@
   /* 3) 详情页：把箭头指回来路 */
   function fixBack() {
     var back = doc.querySelector(".dt-back");
-    if (!back) return;
+    if (!back || back.dataset.dtBackFixed === "1") return;
     var target = "";
     var backY = 0;
     var savedUrl = "";
 
     try {
       var saved = JSON.parse(global.sessionStorage.getItem(BACK) || "null");
-      if (saved && saved.url && !/event-detail/.test(saved.url) && Date.now() - (saved.t || 0) < 7200000) {
+      if (saved && saved.url && !/(event-detail|activity)/.test(saved.url) && Date.now() - (saved.t || 0) < 7200000) {
         savedUrl = saved.url;
         backY = saved.y || 0;
       }
@@ -1445,6 +1463,17 @@
     /* 先把 URL 参数翻成目标地址：参数比“上次点进来时的地址”更具体——
        日历翻到 5 月点进去时，列表页地址本身不带 ?m=，只有这条链接带。 */
     {
+      var bp = new URLSearchParams(global.location.search);
+      var direct = bp.get("back") || "";
+      if (direct) {
+        try {
+          var dec = decodeURIComponent(direct);
+          if (dec && !/(event-detail|activity)/.test(dec) && !/^https?:/i.test(dec)) target = dec;
+        } catch (err) { /* 坏参数忽略 */ }
+      }
+    }
+
+    if (!target) {
       var p = new URLSearchParams(global.location.search);
       var from = p.get("from") || "";
       var cat = p.get("cat") || "";
@@ -1468,7 +1497,7 @@
 
     if (!target) {
       var ref = doc.referrer || "";
-      if (ref && ref.indexOf(global.location.origin) === 0 && !/event-detail/.test(ref)) {
+      if (ref && ref.indexOf(global.location.origin) === 0 && !/(event-detail|activity)/.test(ref)) {
         target = ref.replace(global.location.origin, "");
       }
     }

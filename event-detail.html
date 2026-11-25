@@ -1,203 +1,31 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0">
+  <meta charset="utf-8">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/png" href="assets/optimized/logo_favicon.png">
   <title>活动详情 | DSG 数创时代</title>
-  <link rel="stylesheet" href="assets/styles.css?v=20261119u">
-  <link rel="stylesheet" href="assets/dsg-2026.css?v=20261125h">
-  <script defer src="assets/alpine.min.js"></script>
-  <script src="assets/embedded-data.js?v=20261125h"></script>
-  <script src="assets/theme.js?v=20261119a"></script>
-  <script src="assets/site.js?v=20261125h"></script>
-  <script src="assets/blocks.js?v=20261123c"></script>
-  <script src="assets/forms.js?v=20260917-eventsync"></script>
-<!-- seo:begin 由 tools/build.py 生成，勿手动修改 -->
-  <meta name="description" content="查看单场 DSG 活动的议程、嘉宾、地点、规模与报名方式。">
-  <link rel="canonical" href="https://www.dsgcorp.cn/event-detail.html">
-  <link rel="alternate" hreflang="zh-CN" href="https://www.dsgcorp.cn/event-detail.html">
-  <link rel="alternate" hreflang="en" href="https://www.dsgcorp.cn/event-detail-en.html">
-  <link rel="alternate" hreflang="x-default" href="https://www.dsgcorp.cn/event-detail.html">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="数创时代 DSG">
-  <meta property="og:title" content="活动详情 | DSG 数创时代">
-  <meta property="og:description" content="查看单场 DSG 活动的议程、嘉宾、地点、规模与报名方式。">
-  <meta property="og:url" content="https://www.dsgcorp.cn/event-detail.html">
-  <meta property="og:image" content="https://www.dsgcorp.cn/assets/optimized/module-home-v2.webp">
-  <meta property="og:locale" content="zh_CN">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="活动详情 | DSG 数创时代">
-  <meta name="twitter:description" content="查看单场 DSG 活动的议程、嘉宾、地点、规模与报名方式。">
-  <meta name="twitter:image" content="https://www.dsgcorp.cn/assets/optimized/module-home-v2.webp">
-  <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "name": "数创时代 DSG", "alternateName": "Digital Service Group", "url": "https://www.dsgcorp.cn", "logo": "https://www.dsgcorp.cn/assets/logo_full.png", "email": "jason.huang@dsgcorp.cn", "telephone": "+86 189 1635 8954", "address": {"@type": "PostalAddress", "streetAddress": "上海市徐汇区钦州北路1066号70号楼3楼"}}, {"@type": "WebSite", "name": "数创时代 DSG", "url": "https://www.dsgcorp.cn", "inLanguage": "zh-CN"}, {"@type": "WebPage", "name": "活动详情 | DSG 数创时代", "url": "https://www.dsgcorp.cn/event-detail.html", "isPartOf": {"@type": "WebSite", "url": "https://www.dsgcorp.cn"}}]}</script>
-<!-- seo:end -->
+  <link rel="icon" type="image/png" href="assets/optimized/logo_favicon.png">
+  <link rel="canonical" href="https://www.dsgcorp.cn/activity.html">
+  <!-- 2026-11-25：详情页改用新地址 activity.html。
+       原因：旧地址被浏览器/CDN 缓存过，缓存里的旧 HTML 把左上角箭头的 href 写死成 events.html，
+       所以无论从哪个入口点进来，返回都掉回「全部活动」的日历。
+       旧地址保留只为把带 id 的链接完整转发过去，本身不再承载内容。 -->
+  <script>
+    (function () {
+      location.replace("activity.html" + (location.search || "") + (location.hash || ""));
+    })();
+  </script>
 </head>
-<body x-data="dsgApp('detail')" class="page-events">
-  <header class="site-header"><nav class="nav"><a class="brand" href="index.html"><img src="assets/optimized/logo_full.webp" alt="DSG"></a><div class="nav-links"><a href="index.html">首页</a><div class="nav-item"><a class="active" href="events.html?v=20261119s">活动</a><div class="dropdown"><a href="events-calendar.html">活动日历</a><a href="events-summits.html">年度峰会</a><a href="events-city.html">城市沙龙</a><a href="events-elite-talks.html">精英六人谈</a></div></div><a href="supply-chain-ai.html">供应链AI创新专区</a><a href="insights.html">行业洞察</a><a href="about.html">关于 DSG</a><a href="contact.html">联系我们</a></div><button class="nav-burger" type="button" aria-label="展开菜单" aria-expanded="false"><span></span><span></span><span></span></button><a class="nav-cta" href="contact.html">预约咨询</a><a class="lang-toggle" href="event-detail-en.html">EN</a></nav></header>
-
-  <main>
-    <section class="program-hero">
-      <div class="container">
-        <div>
-          <a class="dt-back" href="events.html">← 返回活动中心</a>
-          <span class="eyebrow"><span x-text="currentEvent.categoryLabel || currentEvent.eyebrow"></span><template x-if="currentEvent.sessionNo"><span x-text="' · 第 ' + currentEvent.sessionNo + ' 期'"></span></template></span>
-          <h1 x-html="titleHtml(currentEvent.title)"></h1>
-          <!-- 11-06 评审：主题口号、参会人员、活动形式分三类信息，必须分行并加冒号 -->
-          <div class="dt-rows" style="margin-top:20px">
-            <template x-for="r in infoRows(currentEvent)" :key="r.k">
-              <div class="row"><span class="k" x-text="r.k"></span><span class="v" x-text="r.v"></span></div>
-            </template>
-            <div class="row" x-show="!infoRows(currentEvent).length"><span class="k">主题</span><span class="v" x-text="summaryText(currentEvent)"></span></div>
-          </div>
-          <div class="dt-hero-facts">
-            <template x-for="n in keyNumbers(currentEvent)" :key="n.k">
-              <div class="f"><strong x-text="n.v"></strong><span x-text="n.k"></span></div>
-            </template>
-          </div>
-        </div>
-        <div class="program-visual dt-hero-visual">
-          <!-- 2026-11-25：首屏主视觉改用该场活动的正式海报（案例集锦里那张），
-               不再用现场照——现场照带场地灯光、摄像机和侧屏，裁不干净。 -->
-          <template x-if="posterOf(currentEvent)">
-            <img class="dt-hero-kv" :src="posterOf(currentEvent)" :alt="currentEvent.title + ' 主视觉'">
-          </template>
-          <template x-if="!posterOf(currentEvent)">
-            <div class="kvx" :class="currentEvent.kvStyle" style="min-height:340px">
-              <div class="kv-top"><span class="kv-type" x-text="currentEvent.categoryLabel"></span><span class="kv-no" x-text="currentEvent.sessionNo ? '第 ' + currentEvent.sessionNo + ' 期' : ''"></span></div>
-              <div>
-                <div class="kv-title" x-text="kvTitle(currentEvent)"></div>
-                <div class="kv-meta"><span x-text="eventDateLabel(currentEvent) + ' · ' + (currentEvent.city || '')"></span></div>
-                
-              </div>
-            </div>
-          </template>
-        </div>
-      </div>
-    </section>
-
-    <section class="section compact dt-body">
-      <div class="container">
-        <!-- 2026-11-25 按《数创时代-案例集锦》的三栏版式重排：
-             左栏 内容（主题·时间·地点 / 活动流程）+ 嘉宾（演讲嘉宾 / 在邀·拟邀嘉宾）
-             中栏 活动海报（整张，不裁）
-             右栏 活动照片（竖排）
-             原来右侧那条黑色「活动信息」卡已删掉。 -->
-        <div class="dt-cols">
-
-          <div class="dt-main">
-            <div class="dt-block">
-              <div class="dt-h"><span class="dt-n">01</span><h2>内容</h2></div>
-              <h3 class="dt-sub">主题 · 时间 · 地点</h3>
-              <div class="dt-facts">
-                <div class="row" x-show="currentEvent.theme || summaryText(currentEvent)">
-                  <span class="k">活动主题</span><span class="v" x-text="themeOf(currentEvent)"></span>
-                </div>
-                <div class="row">
-                  <span class="k">活动时间</span>
-                  <span class="v" x-text="whenOf(currentEvent)"></span>
-                </div>
-                <div class="row">
-                  <span class="k">活动地点</span>
-                  <span class="v" x-text="placeOf(currentEvent)"></span>
-                </div>
-                <div class="row" x-show="scaleText(currentEvent)">
-                  <span class="k">活动规模</span><span class="v" x-text="scaleText(currentEvent)"></span>
-                </div>
-                <div class="row" x-show="audienceText(currentEvent)">
-                  <span class="k">参会人员</span><span class="v" x-text="audienceText(currentEvent)"></span>
-                </div>
-              </div>
-
-              <h3 class="dt-sub">活动流程</h3>
-              <div class="dt-flow" :class="{ 'no-time': !flowRows(currentEvent).some(function (a) { return a.time; }) }">
-                <template x-for="(a, i) in flowRows(currentEvent)" :key="i">
-                  <div class="item" :class="{ 'is-head': a.head }">
-                    <span class="t" x-text="a.time || ''"></span>
-                    <span class="x">
-                      <span x-text="a.text"></span>
-                      <em class="dt-flow-note" x-show="a.note" x-text="a.note"></em>
-                    </span>
-                  </div>
-                </template>
-              </div>
-            </div>
-
-            <div class="dt-block" x-show="guestsOf(currentEvent).length">
-              <div class="dt-h"><span class="dt-n">02</span><h2 x-text="currentEvent.docGuestTitle || '演讲嘉宾'"></h2></div>
-              <ol class="dt-guests">
-                <template x-for="(g, i) in guestsOf(currentEvent)" :key="i">
-                  <li><span class="n" x-text="String(i + 1).padStart(2, '0')"></span><span class="x" x-text="g"></span></li>
-                </template>
-              </ol>
-              <p class="meta dt-note">名单与职务按活动海报与签到记录整理，仅用于活动信息展示。</p>
-            </div>
-          </div>
-
-          <aside class="dt-side dt-side-poster">
-            <div class="dt-h"><span class="dt-n">03</span><h2>活动海报</h2></div>
-            <template x-if="posterOf(currentEvent)">
-              <a class="dt-poster" :href="posterOf(currentEvent)" target="_blank" rel="noopener">
-                <img :src="posterOf(currentEvent)" :alt="currentEvent.title + ' 活动海报'">
-              </a>
-            </template>
-            <!-- 案例集锦里这些场次只放了现场照、没有海报：这一格用主视觉占位，不留白 -->
-            <template x-if="!posterOf(currentEvent)">
-              <div class="dt-poster dt-poster-kv">
-                <div class="kvx" :class="currentEvent.kvStyle">
-                  <div class="kv-top"><span class="kv-type" x-text="currentEvent.categoryLabel"></span><span class="kv-no" x-text="currentEvent.sessionNo ? '第 ' + currentEvent.sessionNo + ' 期' : ''"></span></div>
-                  <div>
-                    <div class="kv-title" x-text="kvTitle(currentEvent)"></div>
-                    <div class="kv-meta"><span x-text="eventDateLabel(currentEvent) + ' · ' + (currentEvent.city || '')"></span></div>
-                  </div>
-                </div>
-              </div>
-            </template>
-            <p class="meta dt-note" x-show="!posterOf(currentEvent)">本场未随案例集锦提供海报，先用主视觉占位。</p>
-            <div class="dt-cta">
-              <button class="btn gold full" @click="openRegistration(currentEvent)" x-text="eventPhaseLabel(currentEvent) === '已结束' ? '预约同类活动' : (currentEvent.type === 'elite' ? '申请席位' : '报名参会')"></button>
-              <p class="meta" x-text="eventPhaseLabel(currentEvent) === '已结束' ? '本场已结束；留下联系方式，同类场次开放报名时优先通知。' : '席位有限，提交后由活动团队确认。'"></p>
-            </div>
-          </aside>
-
-          <aside class="dt-side dt-side-photos">
-            <div class="dt-h"><span class="dt-n">04</span><h2>活动照片</h2></div>
-            <div class="dt-photo-stack" x-show="photoWall(currentEvent).length">
-              <template x-for="p in photoWall(currentEvent)" :key="p">
-                <a :href="p" target="_blank" rel="noopener"><img :src="p" :alt="currentEvent.title + ' 现场照片'" loading="lazy"></a>
-              </template>
-            </div>
-            <div class="dt-poster-empty" x-show="!photoWall(currentEvent).length">本场照片整理中</div>
-          </aside>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="footer"><div class="footer-inner"><div>DSG 活动详情</div><div><a href="events.html?v=20261119s">活动中心</a></div><div class="footer-legal">© 2026 数创时代 DSG 保留所有权利 · <a href="privacy.html">隐私条款</a>
-<!-- 备案号占位：取得 ICP 备案号后，把下面整行替换为
-     <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">沪ICP备XXXXXXXX号</a> -->
-</div>
-  </div></footer>
-  <div class="modal" x-cloak x-show="selectedEvent"><div class="modal-panel"><div class="modal-head"><h2 x-text="selectedEvent && selectedEvent.title"></h2><button class="close" @click="closeRegistration()">×</button></div><form class="form-grid lead-form" novalidate @submit.prevent="submitRegistration($event)" @focusin.once="$el.elements.formStartedAt.value = Date.now()">
-        <input type="hidden" name="formStartedAt" value="">
-        <div class="hp" aria-hidden="true"><label>website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
-        <div class="field"><input name="name" placeholder="姓名" autocomplete="name" required><template x-if="formState.errors.name"><p class="field-error" x-text="formState.errors.name"></p></template></div>
-        <div class="field"><input name="company" placeholder="公司" autocomplete="organization" required><template x-if="formState.errors.company"><p class="field-error" x-text="formState.errors.company"></p></template></div>
-        <div class="field"><input name="jobTitle" placeholder="职位" autocomplete="organization-title"></div>
-        <div class="field"><input name="phone" placeholder="手机" inputmode="tel" autocomplete="tel" required><template x-if="formState.errors.phone"><p class="field-error" x-text="formState.errors.phone"></p></template></div>
-        <div class="field full"><input name="email" type="email" placeholder="邮箱" autocomplete="email" required><template x-if="formState.errors.email"><p class="field-error" x-text="formState.errors.email"></p></template></div>
-        <div class="field full"><select name="interest"><option>我想报名参会</option><option>我想申请私董会席位</option><option>我想预约供应链 AI Demo</option><option>我想了解商务合作</option><option>我想了解后续场次</option></select></div>
-        <div class="field full"><textarea name="message" placeholder="希望交流的问题"></textarea></div>
-        <div class="field full form-consent">
-          <label><input type="checkbox" name="consent"> 我已阅读并同意 <a href="privacy.html" target="_blank" rel="noopener">DSG 隐私条款</a>，同意 DSG 按条款处理我的信息（条款版本 <span x-text="DSGForms ? DSGForms.policyVersion : ''"></span>）</label>
-          <template x-if="formState.errors.consent"><p class="field-error" x-text="formState.errors.consent"></p></template>
-        </div>
-        <button class="btn gold full" type="submit" :disabled="formState.submitting" x-text="formState.submitting ? '提交中…' : '提交'"></button>
-        <p class="form-message full" x-show="formState.message" x-text="formState.message"></p>
-      </form></div></div>
-<script src="assets/dsg-sync.js?v=20260917-eventsync"></script>
-  <script src="assets/nav-blocks.js?v=20261125b" defer></script>
+<body style="font-family:system-ui,-apple-system,'PingFang SC',sans-serif;padding:48px 24px;color:#1a1a1a">
+  <p style="margin:0 0 12px">正在打开活动详情…</p>
+  <p style="margin:0;font-size:14px;color:#666">
+    <a id="go" href="activity.html" style="color:#8a6b2f">如果页面没有自动跳转，请点这里</a>
+  </p>
+  <script>
+    document.getElementById("go").href = "activity.html" + (location.search || "");
+  </script>
 </body>
 </html>

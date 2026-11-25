@@ -3158,8 +3158,8 @@ html[lang="en"] .program-hero p {
    原来右侧那条黑色「活动信息」卡删掉，位置让给海报。
    ===================================================================== */
 .dt-body { padding-top: 6px; }
-.dt-cols { display: grid; grid-template-columns: minmax(0, 1.18fr) minmax(248px, .58fr) minmax(210px, .46fr); gap: 40px; align-items: start; }
-.dt-h { display: flex; align-items: baseline; gap: 10px; margin: 0 0 18px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.dt-cols { display: grid; grid-template-columns: minmax(0, 1.24fr) minmax(252px, .62fr) minmax(216px, .48fr); gap: 48px; align-items: start; }
+.dt-h { display: flex; align-items: baseline; gap: 10px; margin: 0 0 16px; padding-bottom: 11px; border-bottom: 1px solid var(--line); }
 .dt-h h2 { margin: 0; font-size: 20px; }
 .dt-n { font-size: 11px; letter-spacing: .14em; color: var(--gold); font-variant-numeric: tabular-nums; }
 .dt-block + .dt-block { margin-top: 46px; }
@@ -3169,7 +3169,7 @@ html[lang="en"] .program-hero p {
 .dt-facts .row:last-child { border-bottom: 0; }
 .dt-facts .k { font-size: 13px; color: var(--muted); }
 .dt-facts .v { font-size: 15px; line-height: 1.72; }
-.dt-flow .item { display: grid; grid-template-columns: 104px 1fr; gap: 14px; padding: 11px 0; border-bottom: 1px dashed var(--line); }
+.dt-flow .item { display: grid; grid-template-columns: 96px 1fr; gap: 14px; padding: 8px 0; border-bottom: 1px dashed var(--line); }
 .dt-flow .t { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
 .dt-flow .x { font-size: 15px; line-height: 1.7; }
 .dt-guests { list-style: none; margin: 0; padding: 0; }
@@ -3178,6 +3178,8 @@ html[lang="en"] .program-hero p {
 .dt-guests .x { font-size: 15px; line-height: 1.6; }
 .dt-note { margin-top: 14px; font-size: 12px; color: var(--muted); }
 .dt-side { position: sticky; top: 88px; }
+/* 海报是整张竖长图，跟着粘顶就看不完整，只让照片栏粘 */
+.dt-side-poster { position: static; }
 .dt-poster { display: block; border: 1px solid var(--line); background: #fff; border-radius: 4px; overflow: hidden; box-shadow: 0 12px 30px rgba(16, 20, 32, .10); }
 .dt-poster img { display: block; width: 100%; height: auto; }
 .dt-poster-empty { border: 1px dashed var(--line); border-radius: 4px; padding: 40px 12px; text-align: center; font-size: 13px; color: var(--muted); background: #fff; }
@@ -3202,18 +3204,21 @@ html[lang="en"] .program-hero p {
 }
 .dt-poster-kv { border: 0; background: transparent; box-shadow: none; }
 .dt-poster-kv .kvx { min-height: 460px; }
-.dt-flow .item.is-head { padding-top: 18px; }
+.dt-flow .item.is-head { padding-top: 16px; }
 .dt-flow .item.is-head .x { font-weight: 700; color: var(--ink); }
 .dt-flow-note { display: block; margin-top: 4px; font-style: normal; font-size: 13px; color: var(--muted); }
 .dt-flow.no-time .item { grid-template-columns: 1fr; }
 /* 首屏海报：换成浅色卡纸托底，海报在深色背景上才立得住 */
 .program-hero .program-visual.dt-hero-visual { background: transparent; }
+/* 首屏主视觉：用从海报顶部裁出的横版/方版 KV，尺寸按容器给足，不再是一条窄长图 */
 .program-hero .program-visual.dt-hero-visual > img.dt-hero-kv {
-  height: 500px; width: auto; max-width: 100%;
-  object-fit: contain; display: block;
-  background: #fff; padding: 9px; border-radius: 6px;
+  width: 100%; height: auto; max-width: 520px; max-height: 560px;
+  object-fit: contain; display: block; margin-left: auto;
+  background: #fff; padding: 8px; border-radius: 6px;
   box-shadow: 0 22px 48px rgba(0, 0, 0, .42);
 }
+/* 锚点定位时给固定导航留出空间，否则标题被压住 */
+.dt-body, .dt-cols, .dt-block { scroll-margin-top: 96px; }
 @media (max-width: 760px) {
   .program-hero .program-visual.dt-hero-visual > img.dt-hero-kv { height: 360px; padding: 6px; }
 }

@@ -14,6 +14,14 @@
   "use strict";
   var SYNC_KEY = "dsg-demo-published-v1";
 
+  /* 2026-11-25：详情页换到 activity.html，并把当前页地址作为 back 带过去，
+     保证从本区块点进去再返回时回到这一页，而不是掉回「全部活动」的日历。 */
+  var IS_EN = (document.documentElement.lang || "").toLowerCase() === "en";
+  var DETAIL = IS_EN ? "activity-en.html" : "activity.html";
+  var BACKQ = "&back=" + encodeURIComponent(
+    (location.pathname.split("/").pop() || "index.html") + (location.search || "")
+  );
+
   function normalize(event) {
     var hero = event.heroImage || event.image || "assets/module-events-v2.png";
     if (!event.image) event.image = hero;
@@ -129,7 +137,7 @@
         if (!cell.blank) {
           html += '<span class="day-number">' + cell.day + '</span><div class="day-events">';
           (cell.events || []).slice(0, 2).forEach(function (ev) {
-            html += '<a class="day-event" href="' + (isEn ? "event-detail-en.html" : "event-detail.html") + '?id=' + encodeURIComponent(ev.id) + '"><span>' + escapeHtml(ev.eyebrow) + ' · ' + escapeHtml(ev.title) + '</span></a>';
+            html += '<a class="day-event" href="' + DETAIL + '?id=' + encodeURIComponent(ev.id) + BACKQ + '"><span>' + escapeHtml(ev.eyebrow) + ' · ' + escapeHtml(ev.title) + '</span></a>';
           });
           html += '</div>';
         }
@@ -143,7 +151,7 @@
         html += '<div class="datebox"><span>' + (isEn ? (ev.phase === "archived" ? "Archived" : "Upcoming") : (ev.phase === "archived" ? "已结束" : "未开始")) + '</span><strong>' + escapeHtml(ev.dateText || ev.date) + '</strong></div>';
         html += '<div><div class="meta">' + escapeHtml(ev.eyebrow) + ' · ' + escapeHtml(ev.time || "") + ' · ' + escapeHtml(ev.city || "") + '</div>';
         html += '<h3>' + escapeHtml(ev.title) + '</h3><p>' + escapeHtml(ev.summary || "") + '</p></div>';
-        html += '<div class="actions"><a class="btn secondary" href="' + (isEn ? "event-detail-en.html" : "event-detail.html") + '?id=' + encodeURIComponent(ev.id) + '">' + (isEn ? "Details" : "活动详情") + '</a>';
+        html += '<div class="actions"><a class="btn secondary" href="' + DETAIL + '?id=' + encodeURIComponent(ev.id) + BACKQ + '">' + (isEn ? "Event Details" : "活动详情") + '</a>';
         html += '<a class="btn gold" href="' + (isEn ? "contact-en.html" : "contact.html") + '">' + (isEn ? "Register" : "报名参会") + '</a></div>';
         html += '</article>';
       });
