@@ -493,6 +493,23 @@ function dsgAdmin() {
     splitList(value) {
       return value.split(/[，,]/).map((item) => item.trim()).filter(Boolean);
     },
+    /* 2026-11-25 详情页三栏新增字段：海报 / 嘉宾名单 / 活动流程。
+       嘉宾与流程按“一行一条”编辑，不能用逗号分隔——公司名和职务里本来就有逗号。 */
+    guestText(ev) {
+      return Array.isArray(ev.docGuests) ? ev.docGuests.join("\n") : "";
+    },
+    setGuests(ev, text) {
+      ev.docGuests = String(text || "").split("\n").map((x) => x.trim()).filter(Boolean);
+    },
+    flowText(ev) {
+      return (ev.docAgenda || []).map((a) => [a.time || "", a.text || "", a.note || ""].join(" | ")).join("\n");
+    },
+    setFlow(ev, text) {
+      ev.docAgenda = String(text || "").split("\n").map((line) => {
+        const p = line.split("|").map((x) => x.trim());
+        return { time: p[0] || "", text: p[1] || p[0] || "", note: p[2] || "", head: false };
+      }).filter((a) => a.text);
+    },
 
     newEvent() {
       const today = new Date();
@@ -628,6 +645,8 @@ function dsgAdmin() {
             if (!d.ok) { this.saveState = "上传失败：" + (d.error || ""); return; }
             if (kind === "gallery") {
               event.gallery = (event.gallery || []).concat([d.path]);
+            } else if (kind === "poster") {
+              event.poster = d.path;
             } else {
               event.image = d.path;
               event.heroImage = d.path;

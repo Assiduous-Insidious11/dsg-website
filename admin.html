@@ -692,6 +692,10 @@
               <label>批准人<input x-model="selected.events.approvedBy"></label>
               <label class="full">主图（16:9 横图）<input x-model="selected.events.image" placeholder="assets/photos/…"><button type="button" class="secondary upload-btn" @click="pickImage('hero')">上传主图</button></label>
               <label class="full">现场照片（每行一个路径）<textarea rows="3" :value="joinList(selected.events.gallery)" @input="selected.events.gallery = splitList($event.target.value)" placeholder="assets/photos/EVT-xxx/01.webp"></textarea><button type="button" class="secondary upload-btn" @click="pickImage('gallery')">上传现场照</button></label>
+              <label class="full">活动海报（整张竖版，详情页中栏）<input x-model="selected.events.poster" placeholder="assets/photos/EVT-xxx/poster.webp"><button type="button" class="secondary upload-btn" @click="pickImage('poster')">上传海报</button></label>
+              <label>嘉宾栏标题<input x-model="selected.events.docGuestTitle" placeholder="演讲嘉宾 / 在邀·拟邀嘉宾 / 参会嘉宾"></label>
+              <label class="full">嘉宾名单（每行一条：公司 + 职务）<textarea rows="5" :value="guestText(selected.events)" @input="setGuests(selected.events, $event.target.value)" placeholder="麦肯锡　中国区供应链负责人"></textarea></label>
+              <label class="full">活动流程（每行：时段 | 内容 | 讲者，时段可空）<textarea rows="5" :value="flowText(selected.events)" @input="setFlow(selected.events, $event.target.value)" placeholder="13:30-14:00 | 签到入场&#10;14:00-15:00 | 主旨演讲 | 某某 某公司 CTO"></textarea></label>
               <label class="full">参会企业 / 职级（每行：公司 | 职级）<textarea rows="4" :value="attendeeText(selected.events)" @input="setAttendees(selected.events, $event.target.value)" placeholder="中国华电集团 | 营销总监"></textarea></label>
               <label class="full">摘要<textarea x-model="selected.events.summary"></textarea></label>
               <label class="full">标签，逗号分隔<input :value="joinList(selected.events.tags)" @input="selected.events.tags = splitList($event.target.value)"></label>
