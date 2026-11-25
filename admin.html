@@ -7,12 +7,12 @@
   <title>DSG 管理后台</title>
   <meta name="robots" content="noindex, nofollow">
   <meta name="description" content="DSG 官网内容管理后台，仅限授权人员使用。">
-  <link rel="stylesheet" href="assets/admin.css?v=20261119b">
+  <link rel="stylesheet" href="assets/admin.css?v=20261125a">
   <script defer src="assets/alpine.min.js"></script>
   <script src="assets/forms.js?v=20260917-eventsync"></script>
   <script src="assets/embedded-data.js?v=20261120d"></script>
   <script src="assets/theme.js?v=20261119a"></script>
-  <script src="assets/admin.js?v=20261119b"></script>
+  <script src="assets/admin.js?v=20261125a"></script>
 </head>
 <body x-data="dsgAdmin()" x-init="init()">
   <template x-if="!session.active">
@@ -72,6 +72,12 @@
             <h1 x-text="moduleTitle"></h1>
           </div>
           <div class="top-actions">
+            <div class="undo-group">
+              <button type="button" class="icon-btn" @click="undo()" :disabled="!canUndo"
+                      :title="canUndo ? '撤销：' + undoLabel : '没有可撤销的操作'">↶</button>
+              <button type="button" class="icon-btn" @click="redo()" :disabled="!canRedo"
+                      :title="canRedo ? '重做：' + redoLabel : '没有可重做的操作'">↷</button>
+            </div>
             <span class="publish-mode" :class="publish.mode" x-text="publishModeLabel"></span>
             <span class="save-state" x-text="saveState"></span>
             <button class="primary" @click="publishToFrontend()" :disabled="publish.busy" x-text="publish.busy ? '发布中…' : '发布上线'"></button>
@@ -137,6 +143,329 @@
               </label>
             </div>
             <p class="hint" x-show="publish.commit">最近一次发布：<b x-text="publish.commit"></b><span x-text="publish.at ? ' · ' + publish.at : ''"></span></p>
+          </div>
+        </section>
+
+        <!-- ================= 导航菜单（一级 / 二级） ================= -->
+        <section x-show="activeModule==='navigation'" class="manager-layout">
+          <div class="tool-panel">
+            <div class="panel-head">
+              <h2>顶部导航</h2>
+              <button class="primary" type="button" @click="navAdd()">新增一级菜单</button>
+            </div>
+            <p class="hint">改名、调顺序、显示或隐藏都在这里。改完点右上角「发布上线」才对访客生效；不发布，前台一个字都不会变。</p>
+            <template x-if="nav.data">
+              <div class="nav-editor">
+                <template x-for="(item, idx) in nav.data.items" :key="item.id">
+                  <div class="nav-row" :class="{off: !item.visible}">
+                    <div class="nav-row-main">
+                      <input class="nav-label" :value="item.label"
+                             @change="item.label = $event.target.value; persistNav('修改菜单文字：' + item.label)" placeholder="菜单文字">
+                      <input class="nav-href" :value="item.href"
+                             @change="item.href = $event.target.value; persistNav('修改菜单跳转：' + item.label)" placeholder="index.html">
+                      <div class="nav-row-actions">
+                        <button type="button" class="mini" @click="navMove(item)" :disabled="idx===0" title="上移">↑</button>
+                        <button type="button" class="mini" @click="navMoveDown(item)" :disabled="idx===nav.data.items.length-1" title="下移">↓</button>
+                        <button type="button" class="mini" @click="navToggle(item)" x-text="item.visible ? '显示中' : '已隐藏'"></button>
+                        <button type="button" class="mini danger" @click="navRemove(item, false, null)">删除</button>
+                      </div>
+                    </div>
+                    <div class="nav-children" x-show="item.children && item.children.length">
+                      <template x-for="child in (item.children || [])" :key="child.id">
+                        <div class="nav-child" :class="{off: !child.visible}">
+                          <input :value="child.label" @change="child.label = $event.target.value; persistNav('修改二级菜单文字')" placeholder="二级菜单文字">
+                          <input :value="child.href" @change="child.href = $event.target.value; persistNav('修改二级菜单跳转')" placeholder="events-city.html">
+                          <button type="button" class="mini" @click="child.visible = !child.visible; persistNav('切换二级菜单显示')" x-text="child.visible ? '显示中' : '已隐藏'"></button>
+                          <button type="button" class="mini danger" @click="navRemove(child, true, item)">删除</button>
+                        </div>
+                      </template>
+                    </div>
+                    <button type="button" class="mini add" @click="navAddChild(item)">+ 加二级菜单</button>
+                  </div>
+                </template>
+              </div>
+            </template>
+          </div>
+          <div class="editor-panel">
+            <div class="panel-head">
+              <h2>导航全局设置</h2>
+              <button class="secondary" type="button" @click="navReset()">恢复线上</button>
+            </div>
+            <template x-if="nav.data">
+              <div class="form-grid">
+                <label class="full">菜单样式
+                  <select :value="nav.data.navStyle" @change="navStyleSet($event.target.value)">
+                    <option value="text">文字菜单（当前线上）</option>
+                    <option value="button">按钮式菜单</option>
+                  </select>
+                  <span class="hint">两套样式都已写死在样式表里，只切换，不调参数。</span>
+                </label>
+                <label class="full">EN 切换按钮
+                  <select :value="String(nav.data.showLangSwitch)"
+                          @change="nav.data.showLangSwitch = ($event.target.value === 'true'); persistNav('切换 EN 按钮')">
+                    <option value="true">显示（当前线上）</option>
+                    <option value="false">隐藏，只保留中文</option>
+                  </select>
+                  <span class="hint">选「隐藏」并发布后，前台右上角只剩「预约咨询」。英文页面文件仍在、可直接访问，不会产生死链。</span>
+                </label>
+                <label>「预约咨询」文字
+                  <input :value="nav.data.cta.label" @change="nav.data.cta.label = $event.target.value; persistNav('修改预约咨询按钮文字')">
+                </label>
+                <label>「预约咨询」跳转
+                  <input :value="nav.data.cta.href" @change="nav.data.cta.href = $event.target.value; persistNav('修改预约咨询按钮链接')">
+                </label>
+                <label class="full">导航字体与字号
+                  <input value="固定：14px / 500 字重，随屏宽自适应" disabled>
+                  <span class="hint">按你的要求写死在样式表，后台不提供任何字号选项，避免各页面导航大小不一。</span>
+                </label>
+              </div>
+            </template>
+            <p class="hint">新增菜单如果指向还没建的页面，前台点击会 404。建议先建页再加菜单，或先指向已有页面。</p>
+          </div>
+        </section>
+
+        <!-- ================= 板块管理 ================= -->
+        <section x-show="activeModule==='blocks'" class="manager-layout">
+          <div class="tool-panel">
+            <div class="panel-head"><h2>页面板块</h2></div>
+            <div class="table-list">
+              <template x-for="pg in cfgPages" :key="pg.key">
+                <button class="row-item" :class="{active: cfg.page===pg.key}"
+                        @click="cfg.page = pg.key; cfg.selectedId = null">
+                  <span><strong x-text="pg.label"></strong><small x-text="pg.file"></small></span>
+                </button>
+              </template>
+            </div>
+            <p class="hint">目前只对首页和活动页开放板块管理；创新专区、行业洞察、关于 DSG、联系我们暂不动，等你说。</p>
+            <div class="metric-editor" x-show="cfg.page==='home'">
+              <div class="panel-head metric-head">
+                <h2>首页数字带（5 格）</h2>
+                <button class="secondary mini" type="button" @click="siteReset()">恢复线上</button>
+              </div>
+              <p class="hint">数字直接印在首页「我们是谁」那一块。来源行是给你核对用的，不会显示给访客。</p>
+              <template x-for="(m, i) in homeMetrics" :key="i">
+                <div class="metric-row">
+                  <input :value="m.label" @change="setMetric(i, 'label', $event.target.value)" placeholder="名称">
+                  <input type="number" :value="m.metric && m.metric.value" @change="setMetric(i, 'value', $event.target.value)" placeholder="数值">
+                  <input :value="m.unit" @change="setMetric(i, 'unit', $event.target.value)" placeholder="单位">
+                  <input :value="m.metric && m.metric.display" @change="setMetric(i, 'display', $event.target.value)" placeholder="可留空">
+                  <small x-text="metricSource(i)"></small>
+                </div>
+              </template>
+            </div>
+            <div class="hint" x-show="cfgDeleted.length">
+              已删除但还能恢复的板块：
+              <template x-for="b in cfgDeleted" :key="b.id">
+                <span><b x-text="b.name"></b><button type="button" class="mini" @click="cfgRestore(b)">恢复</button></span>
+              </template>
+            </div>
+          </div>
+          <div class="editor-panel">
+            <div class="panel-head">
+              <h2 x-text="'板块顺序：' + (cfgPage ? cfgPage.label : '')"></h2>
+              <div>
+                <button class="secondary" type="button" @click="cfgReset()">恢复线上</button>
+                <a class="secondary link" :href="cfgPage ? cfgPage.file : 'index.html'" target="_blank">看前台</a>
+              </div>
+            </div>
+            <template x-if="cfgPage">
+              <div>
+                <div class="blk-list">
+                  <template x-for="(b, i) in cfgSections" :key="b.id">
+                    <div class="blk-row" :class="{off: !b.visible, active: cfg.selectedId===b.id}">
+                      <span class="blk-idx" x-text="i + 1"></span>
+                      <div class="blk-name">
+                        <strong x-text="b.name"></strong>
+                        <small x-text="b.type + (b.custom ? ' · 新增板块' : ' · 原有板块')"></small>
+                      </div>
+                      <div class="blk-actions">
+                        <button type="button" class="mini" @click="cfgMove(b,-1)" :disabled="i===0" title="上移">↑</button>
+                        <button type="button" class="mini" @click="cfgMove(b,1)" :disabled="i===cfgSections.length-1" title="下移">↓</button>
+                        <button type="button" class="mini" @click="cfgToggle(b)" x-text="b.visible ? '显示中' : '已隐藏'"></button>
+                        <button type="button" class="mini" @click="cfgSelect(b.id)">设置</button>
+                        <button type="button" class="mini danger" @click="cfgRemove(b)">删除</button>
+                      </div>
+                    </div>
+                  </template>
+                </div>
+                <div class="actions">
+                  <span class="muted">新增板块：</span>
+                  <template x-for="t in blockTypeOptions" :key="t.value">
+                    <button type="button" class="mini add" @click="cfgAdd(t.value)" x-text="'+ ' + t.label"></button>
+                  </template>
+                </div>
+                <template x-if="cfgSelected">
+                  <div class="blk-editor">
+                    <h3 x-text="'正在设置：' + cfgSelected.name"></h3>
+                    <div class="form-grid">
+                      <label>板块名称（只在后台显示）
+                        <input :value="cfgSelected.name" @change="cfgRename(cfgSelected, $event.target.value)">
+                      </label>
+                      <label>字号
+                        <select :value="(cfgSelected.style || {}).fontScale"
+                                @change="cfgSetStyle(cfgSelected, 'fontScale', $event.target.value)">
+                          <template x-for="o in fontScaleOptions" :key="o.value">
+                            <option :value="o.value" x-text="o.label"></option>
+                          </template>
+                        </select>
+                      </label>
+                      <label>文字颜色
+                        <select :value="(cfgSelected.style || {}).themeColor"
+                                @change="cfgSetStyle(cfgSelected, 'themeColor', $event.target.value)">
+                          <template x-for="o in themeColorOptions" :key="o.value">
+                            <option :value="o.value" x-text="o.label"></option>
+                          </template>
+                        </select>
+                      </label>
+                      <label>对齐
+                        <select :value="(cfgSelected.style || {}).align"
+                                @change="cfgSetStyle(cfgSelected, 'align', $event.target.value)">
+                          <option value="left">左对齐</option>
+                          <option value="center">居中</option>
+                        </select>
+                      </label>
+                      <label class="full">背景图
+                        <input :value="(cfgSelected.style || {}).bgImage"
+                               @change="cfgSetStyle(cfgSelected, 'bgImage', $event.target.value)"
+                               placeholder="assets/photos/… 留空则沿用原背景">
+                        <button type="button" class="secondary upload-btn" @click="pickBlockImage()">上传背景图</button>
+                      </label>
+                    </div>
+                    <p class="hint">字号只给 4 档、颜色只给 6 色：全站字号随屏宽自动缩放，钉死像素会在手机上溢出。</p>
+                    <template x-if="cfgSelected.custom">
+                      <div class="form-grid">
+                        <label class="full">眉标
+                          <input :value="(cfgSelected.content || {}).eyebrow"
+                                 @change="cfgSetContent(cfgSelected, 'eyebrow', $event.target.value)" placeholder="可留空">
+                        </label>
+                        <label class="full">标题
+                          <input :value="(cfgSelected.content || {}).title"
+                                 @change="cfgSetContent(cfgSelected, 'title', $event.target.value)">
+                        </label>
+                        <label class="full">正文
+                          <textarea rows="4" :value="(cfgSelected.content || {}).body"
+                                    @change="cfgSetContent(cfgSelected, 'body', $event.target.value)"></textarea>
+                        </label>
+                        <label>按钮文字
+                          <input :value="(cfgSelected.content || {}).buttonLabel"
+                                 @change="cfgSetContent(cfgSelected, 'buttonLabel', $event.target.value)" placeholder="留空则不显示按钮">
+                        </label>
+                        <label>按钮跳转
+                          <input :value="(cfgSelected.content || {}).buttonHref"
+                                 @change="cfgSetContent(cfgSelected, 'buttonHref', $event.target.value)">
+                        </label>
+                        <label class="full">图片
+                          <input :value="(cfgSelected.content || {}).image"
+                                 @change="cfgSetContent(cfgSelected, 'image', $event.target.value)" placeholder="assets/photos/…">
+                        </label>
+                      </div>
+                    </template>
+                  </div>
+                </template>
+              </div>
+            </template>
+          </div>
+        </section>
+
+        <!-- ================= 版本历史与操作日志 ================= -->
+        <section x-show="activeModule==='history'" class="manager-layout">
+          <div class="tool-panel">
+            <div class="panel-head">
+              <h2>撤销与重做</h2>
+              <button class="secondary" type="button" @click="clearUndo()">清空记录</button>
+            </div>
+            <p class="hint">后台每 1.2 秒记一次变化，最多 40 步。关掉浏览器再回来还能继续撤销。</p>
+            <div class="undo-big">
+              <button class="secondary" type="button" @click="undo()" :disabled="!canUndo">
+                ↶ 撤销<span x-show="canUndo" x-text="'：' + undoLabel"></span>
+              </button>
+              <button class="secondary" type="button" @click="redo()" :disabled="!canRedo">
+                ↷ 重做<span x-show="canRedo" x-text="'：' + redoLabel"></span>
+              </button>
+            </div>
+            <p class="muted" x-text="'可撤销 ' + undoStack.length + ' 步 · 可重做 ' + redoStack.length + ' 步'"></p>
+            <p class="hint">撤销只在这台电脑的浏览器里生效；要让线上回到某一步，用右边的「已发布版本」。</p>
+          </div>
+          <div class="editor-panel">
+            <div class="panel-head">
+              <h2>历史与留痕</h2>
+              <button class="secondary" type="button" @click="loadHistory()">刷新</button>
+            </div>
+            <div class="lang-switch">
+              <button type="button" :class="{on: history.tab==='ops'}" @click="history.tab='ops'">操作日志</button>
+              <button type="button" :class="{on: history.tab==='rev'}" @click="history.tab='rev'">已发布版本</button>
+            </div>
+            <div x-show="history.tab==='ops'">
+              <p class="hint" x-show="!history.remote">当前是线上只读，只能看到这台浏览器里的操作。本机打开后台可看全部留痕。</p>
+              <div class="hist-list">
+                <template x-for="(o, i) in history.ops" :key="i">
+                  <div class="hist-row">
+                    <em x-text="o.action"></em>
+                    <div><strong x-text="o.target"></strong><p x-text="o.detail"></p></div>
+                    <small x-text="o.actor + ' · ' + o.ts"></small>
+                  </div>
+                </template>
+                <p class="muted" x-show="!history.ops.length">还没有操作记录。</p>
+              </div>
+            </div>
+            <div x-show="history.tab==='rev'">
+              <p class="hint">每发布一次自动记一步，含当时全部内容文件。点「回到这一步」会用那一步的内容覆盖当前内容并立即上线。</p>
+              <div class="hist-list">
+                <template x-for="r in history.revisions" :key="r.id">
+                  <div class="hist-row">
+                    <em x-text="r.id"></em>
+                    <div>
+                      <strong x-text="r.message || '发布内容更新'"></strong>
+                      <p x-text="(r.files || []).join('、')"></p>
+                    </div>
+                    <small x-text="r.actor + ' · ' + r.ts"></small>
+                    <button type="button" class="mini" @click="revertTo(r.id)">回到这一步</button>
+                  </div>
+                </template>
+                <p class="muted" x-show="!history.revisions.length">还没有已发布版本。发布一次后会自动记一步。</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= 可编辑范围（后台能力清单） ================= -->
+        <section x-show="activeModule==='policy'" class="wide-panel policy-wrap">
+          <div class="panel-head">
+            <h2>后台到底能改什么</h2>
+            <div class="req-stats">
+              <span class="req-chip done"><b x-text="policyStats.yes"></b>可改</span>
+              <span class="req-chip partial"><b x-text="policyStats.part"></b>受限</span>
+              <span class="req-chip todo"><b x-text="policyStats.no"></b>不可改</span>
+              <span class="req-chip"><b x-text="policyStats.total"></b>合计</span>
+            </div>
+          </div>
+          <p class="hint">这张表是后台能力的对外承诺。以后说「这个能不能改」，直接查这张表，不用再靠回忆。</p>
+          <template x-for="g in policyGroups" :key="g.id">
+            <div class="policy-group">
+              <h3 x-text="g.name"></h3>
+              <table class="policy-table">
+                <thead>
+                  <tr><th>项目</th><th>能否改</th><th>谁能改</th><th>在后台哪里</th><th>级别</th><th>说明</th></tr>
+                </thead>
+                <tbody>
+                  <template x-for="it in g.items" :key="it.label">
+                    <tr>
+                      <td x-text="it.label"></td>
+                      <td><span class="pb" :class="it.editable" x-text="policyBadge(it.editable)"></span></td>
+                      <td x-text="it.who"></td>
+                      <td x-text="it.where"></td>
+                      <td x-text="it.level"></td>
+                      <td class="note" x-text="it.note || ''"></td>
+                    </tr>
+                  </template>
+                </tbody>
+              </table>
+            </div>
+          </template>
+          <div class="hint">
+            <template x-for="l in policyLevels" :key="l.id">
+              <p><b x-text="l.id + ' 级'"></b>　<span x-text="l.name"></span>　<span x-text="'约 ' + l.eta"></span>　<span x-text="l.desc"></span></p>
+            </template>
           </div>
         </section>
 

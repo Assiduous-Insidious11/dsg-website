@@ -1,0 +1,61 @@
+{
+  "_comment": "前台顶部导航的唯一数据源。后台「导航菜单」模块读写这份文件；前台 assets/nav-blocks.js 在运行时按它改写导航，未发布改动不影响访客。navStyle=text 为当前线上的文字菜单，button 为按钮式菜单。导航字体与字号写死在 CSS，后台只给文字，不给字号。",
+  "updatedAt": "2026-11-25",
+  "navStyle": "text",
+  "navStyleOptions": [
+    { "value": "text", "label": "文字菜单（当前线上）" },
+    { "value": "button", "label": "按钮式菜单" }
+  ],
+  "showLangSwitch": true,
+  "langSwitch": { "label": "EN", "href": "index-en.html" },
+  "cta": { "label": "预约咨询", "href": "contact.html", "visible": true },
+  "items": [
+    {
+      "id": "home",
+      "label": "首页",
+      "href": "index.html",
+      "visible": true,
+      "children": []
+    },
+    {
+      "id": "events",
+      "label": "活动",
+      "href": "events.html",
+      "visible": true,
+      "children": [
+        { "id": "events-calendar", "label": "活动日历", "href": "events-calendar.html", "visible": true },
+        { "id": "events-summits", "label": "年度峰会", "href": "events-summits.html", "visible": true },
+        { "id": "events-city", "label": "城市沙龙", "href": "events-city.html", "visible": true },
+        { "id": "events-elite-talks", "label": "精英六人谈", "href": "events-elite-talks.html", "visible": true }
+      ]
+    },
+    {
+      "id": "supply-chain-ai",
+      "label": "供应链AI创新专区",
+      "href": "supply-chain-ai.html",
+      "visible": true,
+      "children": []
+    },
+    {
+      "id": "insights",
+      "label": "行业洞察",
+      "href": "insights.html",
+      "visible": true,
+      "children": []
+    },
+    {
+      "id": "about",
+      "label": "关于 DSG",
+      "href": "about.html",
+      "visible": true,
+      "children": []
+    },
+    {
+      "id": "contact",
+      "label": "联系我们",
+      "href": "contact.html",
+      "visible": true,
+      "children": []
+    }
+  ]
+}

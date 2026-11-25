@@ -38,7 +38,7 @@
     <!-- 活动页首屏（2026-11-18 评审）：
          只留一整幅现场横幅，标题用白色大字直接压在图上，不再单独排一行副文；
          banner 下面的三枚分类 pill 一并去掉，手机打开一屏就能看见日历。 -->
-    <section class="ev-banner">
+    <section class="ev-banner" data-block="events-banner">
       <div class="ev-banner-bg" role="img" aria-label="DSG 活动生态"></div>
       <div class="ev-banner-inner">
         <span class="eyebrow" data-bind="events.s1.eye">Events</span>
@@ -48,7 +48,7 @@
              按用户要求移入首屏、压在文字下方；原来的独立 section 已删，避免同一组数字出现两次。
              五项数据仍读 site.json 的 homeMetrics，页面不写死数值。
              左边界与上方文字同一条竖线，右侧对称内收，五格等分不换行。 -->
-        <div class="st-band ev-hero-band">
+        <div class="st-band ev-hero-band" data-block="events-band">
           <!-- 首屏兜底数字（2026-11-23）：原来这五格完全由脚本生成，数据文件没到之前这块是空的，
                首屏要空 0.5~4 秒。现在按当前对外口径先写进 HTML，进来立刻可见；
                数据一到由下面的模板接管，两边口径一致。改数字仍以 content/site.json 为准，
@@ -83,7 +83,7 @@
       </div>
     </section>
 
-    <section class="section compact" id="calendar">
+    <section class="section compact" id="calendar" data-block="events-calendar">
       <div class="container">
         <div class="section-head">
           <div>
@@ -273,5 +273,6 @@
         <p class="form-message full" x-show="formState.message" x-text="formState.message"></p>
       </form></div></div>
 <script src="assets/dsg-sync.js?v=20260917-eventsync"></script>
+  <script src="assets/nav-blocks.js?v=20261125a" defer></script>
 </body>
 </html>

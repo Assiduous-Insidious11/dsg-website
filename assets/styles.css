@@ -1347,3 +1347,21 @@ textarea { min-height: 112px; resize: vertical; }
 @media (max-width: 900px) {
   .sync-grid { grid-template-columns: 1fr; }
 }
+
+/* ===== 2026-11-25 后台可切换的按钮式导航（默认不启用，切到 button 才生效） ===== */
+.nav.nav-style-button .nav-links > a,
+.nav.nav-style-button .nav-links > .nav-item > a {
+  padding: 7px 14px;
+  border: 1px solid rgba(128, 128, 128, .35);
+  border-radius: 999px;
+  transition: border-color .2s ease, color .2s ease;
+}
+.nav.nav-style-button .nav-links > a:hover,
+.nav.nav-style-button .nav-links > .nav-item > a:hover,
+.nav.nav-style-button .nav-links > a.active {
+  border-color: var(--gold, #b8924a);
+  color: var(--gold, #b8924a);
+}
+/* 后台新增板块的配图容器 */
+.blk-media { margin-top: 22px; }
+.blk-media img { width: 100%; height: auto; border-radius: 12px; display: block; }
