@@ -890,6 +890,9 @@
         var d = this.eventDateLabel(event) || "";
         var t = String(event.time || "").trim();
         if (!t) return d;
+        /* time 自己就带日期区间（如「8.20-8.21」「8月20-21日」）时，不要再拼一遍日期。
+           否则会出现「8.20-8.21　8月20-21日」。 */
+        if (/\d+\s*[.\/月]\s*\d+/.test(t) && /[-–~至]/.test(t)) return t;
         var digits = function (x) { return String(x).replace(/\D/g, ""); };
         var bd = digits(d), bt = digits(t);
         if (bd && bt && (bt.indexOf(bd) === 0 || bt.slice(0, 4) === bd.slice(-4))) return t;
