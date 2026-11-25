@@ -85,13 +85,13 @@
 
     <section class="section compact" id="calendar" data-block="events-calendar">
       <div class="container">
-        <!-- 2026-11-25：这一块（CALENDAR / 活动日历 / 四个筛选按钮）任何视图下都必须常显。
-             上一版把它在分类视图里隐藏了，结果从城市沙龙点进详情再返回，上方整块消失，
-             看起来像"被切到了另一个页面"。现在常显，只让标题随筛选改名。 -->
+        <!-- 2026-11-25：这一块（CALENDAR / 活动日历 / 四个筛选按钮）任何视图下都常显，
+             且标题永久固定为「活动日历」。筛选只改下面的分类小标题，不改这里——
+             否则顶部会出现「年度峰会」紧接一行「年度峰会」，同一个词说两遍。 -->
         <div class="section-head">
           <div>
-            <span class="eyebrow" x-text="typeFilter === 'summit' ? 'Summit' : (typeFilter === 'city' ? 'City Salon' : (typeFilter === 'elite' ? 'Roundtable' : 'Calendar'))">Calendar</span>
-            <h2 x-text="typeFilter === 'summit' ? '年度峰会' : (typeFilter === 'city' ? '城市沙龙' : (typeFilter === 'elite' ? '精英六人谈' : '活动日历'))">活动日历</h2>
+            <span class="eyebrow">Calendar</span>
+            <h2>活动日历</h2>
           </div>
         </div>
 

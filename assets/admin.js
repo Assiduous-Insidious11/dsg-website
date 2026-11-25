@@ -25,17 +25,17 @@ function dsgAdmin() {
     dataError: false,
     saveState: "草稿自动保存在本机浏览器",
     modules: [
-      { id: "navigation", name: "导航菜单", description: "顶部六个一级菜单：改名、排序、显示/隐藏、新增与删除；EN 按钮与预约咨询按钮" },
-      { id: "blocks", name: "板块管理", description: "首页与活动页的板块：显示/隐藏、上下排序、新增、删除、背景图、字号档位与文字颜色" },
-      { id: "content", name: "页面内容", description: "前台每个页面的文案、图片、按钮文字与链接；左侧列表按站点真实页面生成" },
-      { id: "history", name: "版本历史", description: "撤销与重做、回退到任意一步历史、全部操作留痕" },
-      { id: "events", name: "会议管理", description: "年度峰会、城市沙龙、精英六人谈的增删改查与发布状态" },
-      { id: "ai", name: "供应链AI创新专区", description: "AI 解决方案案例、应用场景、视频与 Demo 入口" },
-      { id: "insights", name: "行业洞察", description: "文章、视频回放、白皮书、闭门纪要" },
-      { id: "policy", name: "可编辑范围", description: "后台到底能改什么、谁能改、改一次要动到什么级别" },
-      { id: "appearance", name: "外观设置", description: "字号倍率、区块留白、内容宽度、圆角与主色，控制全站排版" },
-      { id: "leads", name: "线索管理", description: "查看、导出与清理由前台表单提交的线索（受限数据）" },
-      { id: "permissions", name: "权限授权", description: "为不同角色分配可管理模块" }
+      { id: "navigation", name: "导航菜单", short: "导航", description: "顶部六个一级菜单：改名、排序、显示/隐藏、新增与删除；EN 按钮与预约咨询按钮" },
+      { id: "blocks", name: "板块管理", short: "板块", description: "首页与活动页的板块：显示/隐藏、上下排序、新增、删除、背景图、字号档位与文字颜色" },
+      { id: "content", name: "页面内容", short: "页面", description: "前台每个页面的文案、图片、按钮文字与链接；左侧列表按站点真实页面生成" },
+      { id: "history", name: "版本历史", short: "版本", description: "撤销与重做、回退到任意一步历史、全部操作留痕" },
+      { id: "events", name: "会议管理", short: "会议", description: "年度峰会、城市沙龙、精英六人谈的增删改查与发布状态" },
+      { id: "ai", name: "供应链AI创新专区", short: "供应链AI", description: "AI 解决方案案例、应用场景、视频与 Demo 入口" },
+      { id: "insights", name: "行业洞察", short: "洞察", description: "文章、视频回放、白皮书、闭门纪要" },
+      { id: "policy", name: "可编辑范围", short: "范围", description: "后台到底能改什么、谁能改、改一次要动到什么级别" },
+      { id: "appearance", name: "外观设置", short: "外观", description: "字号倍率、区块留白、内容宽度、圆角与主色，控制全站排版" },
+      { id: "leads", name: "线索管理", short: "线索", description: "查看、导出与清理由前台表单提交的线索（受限数据）" },
+      { id: "permissions", name: "权限管理", short: "权限", description: "超级管理员专用：角色、模块与授权力统计" }
     ],
     roles: [],
     leads: [],
@@ -47,6 +47,8 @@ function dsgAdmin() {
     requirements: null,
     fieldPolicy: null,
     theme: { data: null, draft: null, dirty: false },
+    // 可编辑范围表：「说明」这一栏默认显示，可一键收起（记在本机浏览器）
+    policyNote: true,
     selected: { events: null, ai: null, insights: null, role: null },
     filters: { events: "", ai: "", insights: "", leads: "" },
     eventTypeFilter: "all",
@@ -58,7 +60,10 @@ function dsgAdmin() {
     get currentRole() {
       return this.roles.find((role) => role.id === this.session.roleId) || this.roles[0] || defaultRoles[0];
     },
-    // 侧边栏菜单：标记每个模块对当前角色是否可访问
+    // 侧边栏菜单：只列当前角色有权进入的模块。
+    // 2026-11-25：以前是每个模块都渲染一个「无权限」灰按钮，不但暴露后台全部功能，
+    // 12 个模块还撑爆了侧栏高度，把最下面的「权限管理」挤出可视区。
+    // 现在没有权限的模块直接不出现——其他角色登录看不到「权限管理」。
     get navModules() {
       const labels = {
         navigation: "导航菜单",
@@ -71,19 +76,33 @@ function dsgAdmin() {
         policy: "可编辑范围",
         appearance: "外观设置",
         leads: "线索管理",
-        permissions: "权限授权"
+        permissions: "权限管理"
       };
-      return Object.keys(labels).map((id) => ({
-        id,
-        label: labels[id],
-        accessible: this.can(id)
-      }));
+      return Object.keys(labels)
+        .filter((id) => this.can(id))
+        .map((id) => ({ id, label: labels[id], accessible: true }));
     },
     // 权限矩阵用：角色是否拥有某模块（超级管理员恒有）
     roleHas(role, moduleId) {
       if (moduleId === "dashboard") return true;
       if (role && role.id === "super-admin") return true;
       return !!(role && Array.isArray(role.permissions) && role.permissions.includes(moduleId));
+    },
+    // 单个角色拿到了几个模块（用于矩阵右侧的「授权数」）
+    grantCount(role) {
+      return this.modules.filter((m) => this.roleHas(role, m.id)).length;
+    },
+    // 权限管理页顶部的统计：角色数、内置/自定义、已授权项、空白位
+    get permStats() {
+      const grants = this.roles.reduce((sum, role) => sum + this.grantCount(role), 0);
+      const total = this.roles.length * this.modules.length;
+      return {
+        roles: this.roles.length,
+        builtin: this.roles.filter((role) => role.locked).length,
+        custom: this.roles.filter((role) => !role.locked).length,
+        grants,
+        gaps: Math.max(0, total - grants)
+      };
     },
     get moduleTitle() {
       const titles = {
@@ -98,7 +117,7 @@ function dsgAdmin() {
         policy: "可编辑范围（后台能力清单）",
         appearance: "外观设置（版式与配色）",
         leads: "线索管理（受限数据）",
-        permissions: "管理员权限授权"
+        permissions: "权限管理（角色与授权统计）"
       };
       return titles[this.activeModule] || "管理后台";
     },
@@ -133,6 +152,10 @@ function dsgAdmin() {
       await this.loadSite();
       this.restoreUndoState();
       try { this.ghToken = localStorage.getItem("dsg-gh-token") || ""; } catch (err) { /* 隐私模式忽略 */ }
+      try {
+        const noteRaw = localStorage.getItem("dsg-admin-policy-note");
+        if (noteRaw === "0") this.policyNote = false;
+      } catch (err) { /* 忽略 */ }
       this.detectChannel();
       const savedSession = this.readJson("dsg-admin-session-v1", null);
       if (savedSession?.active) {
@@ -445,9 +468,12 @@ function dsgAdmin() {
     can(moduleId) {
       if (moduleId === "dashboard") return true;
       const role = this.currentRole;
-      if (!role || !Array.isArray(role.permissions)) return false;
-      // 超级管理员：全部模块可用，永不灰
+      if (!role) return false;
+      // 超级管理员：全部模块可用
       if (role.id === "super-admin") return true;
+      // 权限管理是超级管理员专属，其他角色一律不显示入口
+      if (moduleId === "permissions") return false;
+      if (!Array.isArray(role.permissions)) return false;
       return role.permissions.includes(moduleId);
     },
     matches(item, query, fields) {
@@ -823,6 +849,11 @@ function dsgAdmin() {
       this.blocks.lang = lang;
       this.blocks.page = "home";
       this.blocks.filter = "";
+    },
+    // 可编辑范围：收起/展开「说明」这一栏，选择记在本机浏览器
+    togglePolicyNote() {
+      this.policyNote = !this.policyNote;
+      try { localStorage.setItem("dsg-admin-policy-note", this.policyNote ? "1" : "0"); } catch (err) { /* 忽略 */ }
     },
     get blockPages() {
       const src = this.blockData;

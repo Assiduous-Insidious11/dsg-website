@@ -117,6 +117,7 @@ textarea { min-height: 112px; resize: vertical; }
   align-items: center;
   padding-bottom: 24px;
   border-bottom: 1px solid rgba(255,255,255,.12);
+  flex: 0 0 auto;
 }
 .admin-brand img {
   width: 78px;
@@ -131,6 +132,11 @@ textarea { min-height: 112px; resize: vertical; }
   display: grid;
   gap: 8px;
   margin-top: 24px;
+  /* 模块多的时候导航自己滚动，不要把最下面的菜单挤出屏幕 */
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 2px;
 }
 .sidebar nav button {
   min-height: 44px;
@@ -148,9 +154,10 @@ textarea { min-height: 112px; resize: vertical; }
   color: var(--white);
 }
 .sidebar-foot {
-  margin-top: auto;
+  margin-top: 16px;
   display: grid;
   gap: 8px;
+  flex: 0 0 auto;
 }
 .workspace {
   min-width: 0;
@@ -407,7 +414,44 @@ textarea { min-height: 112px; resize: vertical; }
 .perm-table td.yes { color: #0b7a5f; font-weight: 900; }
 .perm-table td.no { color: #c3c9cd; }
 .perm-table td.scope { text-align: left; color: var(--muted); font-size: 12px; }
+.perm-table td.perm-count { font-weight: 800; color: var(--ink); }
+.perm-table td.perm-count span { color: var(--muted); font-weight: 600; }
 .perm-table tr.locked td:first-child { font-weight: 900; }
+/* 权限管理：顶部四个统计格 */
+.perm-stats {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+.perm-stats article {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+}
+.perm-stats article > span {
+  display: block;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .06em;
+  color: var(--muted);
+}
+.perm-stats article > strong {
+  display: block;
+  font-size: 34px;
+  line-height: 1.1;
+  margin: 8px 0 2px;
+}
+.perm-stats article > em {
+  font-style: normal;
+  font-size: 12px;
+  color: var(--muted);
+}
+.perm-stats article > em b { color: var(--ink); }
+@media (max-width: 900px) {
+  .perm-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
 .permission-list.readonly { opacity: .6; }
 .permission-list.readonly label { cursor: not-allowed; }
 .permission-pills span {
@@ -668,7 +712,26 @@ textarea { min-height: 112px; resize: vertical; }
 .policy-table { width: 100%; border-collapse: collapse; font-size: 12px; background: #fff; }
 .policy-table th, .policy-table td { border: 1px solid var(--line); padding: 6px 8px; text-align: left; vertical-align: top; }
 .policy-table th { background: #f4f3ee; font-weight: 600; color: var(--ink); }
-.policy-table td.note { color: var(--muted); line-height: 1.5; }
+.policy-table td.note { color: var(--muted); line-height: 1.5; width: 30%; }
+/* 「说明」栏表头的一键收起 / 展开 */
+.policy-table th.note-th { white-space: nowrap; }
+.policy-table.no-note th.note-th { width: 1%; }
+.note-th-on { display: inline-flex; align-items: center; gap: 6px; }
+.note-toggle {
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  line-height: 16px;
+  font-size: 13px;
+  font-weight: 800;
+  border-radius: 4px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--muted);
+  cursor: pointer;
+}
+.note-toggle:hover { color: var(--ink); border-color: #b9b3a4; }
+.note-toggle.off { color: var(--ink); border-style: dashed; }
 .pb { display: inline-block; padding: 1px 7px; border-radius: 999px; font-size: 11px; border: 1px solid var(--line); }
 .pb.yes { color: #1d6b42; border-color: #b9d7c8; background: #eef7f1; }
 .pb.part { color: #8a4b1f; border-color: #e8c9a8; background: #fdf1e4; }

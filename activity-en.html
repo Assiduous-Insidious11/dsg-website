@@ -127,7 +127,6 @@
                   </article>
                 </template>
               </div>
-              <p class="meta" style="margin-top:14px" x-show="!currentEventSpeakers.length">Names come from sign-in and invitation records, listed by company and role. Personal names and photos are not published without consent.</p>
             </div>
           </div>
 
@@ -144,7 +143,6 @@
             <div><dt>Type</dt><dd x-text="currentEvent.categoryLabel || currentEvent.typeLabel || 'Event'"></dd></div>
           </dl>
           <div class="actions"><button class="btn gold" @click="openRegistration(currentEvent)" x-text="eventPhaseLabel(currentEvent) === 'Archived' ? 'Get notified of similar events' : (currentEvent.type === 'elite' ? 'Apply for a Seat' : 'Register Now')"></button></div>
-          <p class="meta" style="margin-top:12px" x-text="eventPhaseLabel(currentEvent) === 'Archived' ? 'This session has ended. Leave your contact details and we will notify you first when a similar session opens.' : 'Seats are limited; the event team confirms every submission.'"></p>
         </aside>
       </div>
     </section>

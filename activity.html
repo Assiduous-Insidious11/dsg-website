@@ -134,7 +134,6 @@
                   <li><span class="n" x-text="String(i + 1).padStart(2, '0')"></span><span class="x" x-text="g"></span></li>
                 </template>
               </ol>
-              <p class="meta dt-note">名单与职务按活动海报与签到记录整理，仅用于活动信息展示。</p>
             </div>
           </div>
 
@@ -157,10 +156,8 @@
                 </div>
               </div>
             </template>
-            <p class="meta dt-note" x-show="!posterOf(currentEvent)">本场未随案例集锦提供海报，先用主视觉占位。</p>
             <div class="dt-cta">
               <button class="btn gold full" @click="openRegistration(currentEvent)" x-text="eventPhaseLabel(currentEvent) === '已结束' ? '预约同类活动' : (currentEvent.type === 'elite' ? '申请席位' : '报名参会')"></button>
-              <p class="meta" x-text="eventPhaseLabel(currentEvent) === '已结束' ? '本场已结束；留下联系方式，同类场次开放报名时优先通知。' : '席位有限，提交后由活动团队确认。'"></p>
             </div>
           </aside>
 
