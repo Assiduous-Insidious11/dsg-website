@@ -53,7 +53,9 @@ function dsgAdmin() {
     filters: { events: "", ai: "", insights: "", leads: "" },
     eventTypeFilter: "all",
     // —— 发布通道（local / github / readonly）——
-    publish: { mode: "unknown", busy: false, commit: "", at: "", repo: "Assiduous-Insidious11/dsg-website", branch: "main", server: null },
+    publish: { mode: "unknown", busy: false, commit: "", at: "", repo: "Assiduous-Insidious11/dsg-website", branch: "main", server: null, error: "" },
+    // 令牌状态："" 未检测 / valid 有效 / invalid 401 无效 / denied 403 无权限 / offline 网络不通
+    tokenState: "",
     ghToken: "",
     publishMessage: "",
 
@@ -301,7 +303,16 @@ function dsgAdmin() {
       const isLocalHost = /^(127\.0\.0\.1|localhost|\[::1\])$/.test(location.hostname);
       if (!isLocalHost) {
         // 线上域名下不存在 /api/*（本机服务只监听 127.0.0.1），不去请求，避免一串 404
-        this.publish.mode = this.ghToken ? "github" : "readonly";
+        if (!this.ghToken) {
+          this.publish.mode = "readonly";
+          return;
+        }
+        // 2026-11-25：以前只要浏览器里存着令牌就亮「可发布」，令牌过期了也照样亮，
+        // 点发布才在第一个文件上炸掉。现在先问一句 GitHub「这串令牌是谁」，
+        // 401 就当没令牌处理，状态标与实际能力一致。
+        const ok = await this.checkGhToken(true);
+        this.publish.mode = ok ? "github" : "readonly";
+        if (!ok) this.saveState = "令牌已失效（" + (this.tokenState === "offline" ? "网络不通" : "401") + "）：当前只能存草稿，点「发布上线」看详情";
         return;
       }
       try {
@@ -315,10 +326,45 @@ function dsgAdmin() {
           }
         }
       } catch (err) { /* 线上没有这个接口，正常 */ }
-      if (this.publish.mode === "unknown") this.publish.mode = this.ghToken ? "github" : "readonly";
+      if (this.publish.mode === "unknown") {
+        // 本机地址但后台服务没起来：同样先验令牌，别亮一个假的「可发布」
+        if (this.ghToken) {
+          const ok = await this.checkGhToken(true);
+          this.publish.mode = ok ? "github" : "readonly";
+        } else {
+          this.publish.mode = "readonly";
+        }
+      }
     },
     get publishModeLabel() {
-      return { local: "本机直连（可发布）", github: "GitHub 令牌（可发布）", readonly: "线上只读", unknown: "检测中…" }[this.publish.mode] || "检测中…";
+      const base = { local: "本机直连（可发布）", github: "GitHub 令牌（可发布）", readonly: "线上只读", unknown: "检测中…" }[this.publish.mode] || "检测中…";
+      if (this.publish.mode === "github" && this.tokenState === "valid") return "GitHub 令牌（已验证）";
+      return base;
+    },
+    // 令牌自检：只问「这串令牌是谁」，不读写仓库，零副作用。
+    // 仓库目前是公开的，任何有效令牌（哪怕没有写权限）都能读到它；
+    // 所以「连读都失败」只可能是令牌本身不被认，不是权限不够。
+    async checkGhToken(silent) {
+      if (!this.ghToken) { this.tokenState = ""; return false; }
+      try {
+        const res = await fetch("https://api.github.com/user", {
+          headers: { "Authorization": "Bearer " + this.ghToken, "Accept": "application/vnd.github+json" },
+          cache: "no-store"
+        });
+        if (res.ok) { this.tokenState = "valid"; if (!silent) this.publish.error = ""; return true; }
+        if (res.status === 401 || res.status === 403) {
+          this.tokenState = "invalid";
+          if (!silent) this.publish.error = "GitHub 令牌无效或已过期（" + res.status + "）。后台已自动退回只读，改动不会推到线上。请重新生成令牌，或双击「启动后台.bat」用本机通道发布。";
+        } else {
+          this.tokenState = "denied";
+          if (!silent) this.publish.error = "GitHub 拒绝了这串令牌（" + res.status + "），请检查令牌是否被撤销、是否复制完整。";
+        }
+        return false;
+      } catch (err) {
+        this.tokenState = "offline";
+        if (!silent) this.publish.error = "连不上 api.github.com（网络或代理拦截），令牌无法验证。建议改用本机后台发布。";
+        return false;
+      }
     },
     saveGhToken(value) {
       this.ghToken = (value || "").trim();
@@ -326,8 +372,25 @@ function dsgAdmin() {
         if (this.ghToken) localStorage.setItem("dsg-gh-token", this.ghToken);
         else localStorage.removeItem("dsg-gh-token");
       } catch (err) { /* 隐私模式忽略 */ }
-      this.detectChannel();
-      this.saveState = this.ghToken ? "已保存 GitHub 令牌，可在线发布" : "已清除令牌";
+      if (!this.ghToken) {
+        this.tokenState = "";
+        this.publish.error = "";
+        this.detectChannel();
+        this.saveState = "已清除令牌";
+        return;
+      }
+      this.checkGhToken().then((ok) => {
+        this.publish.mode = ok ? "github" : "readonly";
+        this.saveState = ok ? "令牌验证通过，可在线发布" : "令牌验证未通过，见上方提示";
+      });
+    },
+    // GitHub 报错翻译成人话：状态码 → 该做什么
+    ghHint(status) {
+      if (status === 401) return "令牌无效或已过期。请重新生成令牌，或改用本机后台发布。";
+      if (status === 403) return "令牌没有这个仓库的写权限，或触发了接口限流。请给令牌 Contents: Read and write 权限。";
+      if (status === 404) return "找不到仓库或文件。请确认仓库名、分支，以及令牌是否已选中该仓库。";
+      if (status >= 500) return "GitHub 服务端异常，稍后重试。";
+      return "请检查令牌权限与网络后重试。";
     },
     // 把后台草稿整理成"要写进内容层"的四份文件
     buildPayload() {
@@ -360,14 +423,31 @@ function dsgAdmin() {
         return;
       }
       this.publish.busy = true;
+      this.publish.error = "";
       this.saveState = "正在发布…";
       try {
         if (this.publish.mode === "unknown") await this.detectChannel();
+        // 只要浏览器里存着令牌，就先确认它还能用：发布会写仓库，不能推到一半才报 401。
+        // 这里用非静默模式，失败时把 401 / 403 的具体原因摆出来。
+        if (this.ghToken && this.tokenState !== "valid") {
+          const alive = await this.checkGhToken();
+          if (!alive) {
+            this.publish.mode = "readonly";
+            this.saveState = "发布失败：令牌无效，未做任何改动";
+            return;
+          }
+          this.publish.mode = "github";
+        }
         if (this.publish.mode === "local") return await this.publishLocal(payload);
         if (this.publish.mode === "github") return await this.publishGithub(payload);
         this.saveState = "当前是线上只读版：请在本机双击「启动后台.bat」打开后台后再发布";
+        // 令牌坏了的话，保留上面那句具体原因，别用泛泛的「只读」盖掉
+        this.publish.error = this.publish.error || "这个地址没有发布能力：没有本机服务，也没有可用的 GitHub 令牌。改动只存在本机草稿，线上不会变。双击「启动后台.bat」用 http://127.0.0.1:8899/admin.html 打开即可真正发布。";
       } catch (err) {
-        this.saveState = "发布失败：" + (err && err.message ? err.message : err);
+        const msg = err && err.message ? err.message : String(err);
+        this.saveState = "发布失败：" + msg;
+        this.publish.error = msg;
+        if (window.console && console.error) console.error("[DSG 发布失败]", err);
       } finally {
         this.publish.busy = false;
       }
@@ -381,6 +461,7 @@ function dsgAdmin() {
       const d = await res.json().catch(() => ({}));
       if (!d.ok) {
         this.saveState = "发布失败：" + (d.error || "服务返回异常") + (d.tail ? " / " + d.tail.join(" ") : "");
+        this.publish.error = (d.error || "本机发布服务返回异常") + (d.tail ? "：" + d.tail.join(" ") : "");
         return;
       }
       // 真数据已经落到文件里，本机演示快照要清掉，避免前台读到旧快照
@@ -404,6 +485,15 @@ function dsgAdmin() {
       let bin = "";
       bytes.forEach((b) => { bin += String.fromCharCode(b); });
       return btoa(bin);
+    },
+    // 取 GitHub 返回里的原话（如 "Bad credentials"、"Resource not accessible by personal access token"）
+    async ghMessage(res) {
+      try {
+        const j = await res.clone().json();
+        return (j && (j.message || "")) || "";
+      } catch (err) {
+        return "";
+      }
     },
     async ghApi(path, options) {
       const res = await fetch("https://api.github.com/repos/" + this.publish.repo + path, Object.assign({
@@ -435,7 +525,8 @@ function dsgAdmin() {
           const meta = await head.json();
           sha = meta.sha;
         } else if (head.status !== 404) {
-          throw new Error("读取 " + path + " 失败（" + head.status + "），请检查令牌权限");
+          const detail = await this.ghMessage(head);
+          throw new Error("读取 " + path + " 失败（" + head.status + "）：" + (detail || this.ghHint(head.status)));
         }
         const body = {
           message: (payload.message || "后台发布内容更新") + " · " + path,
@@ -454,8 +545,8 @@ function dsgAdmin() {
           body: JSON.stringify(body)
         });
         if (!put.ok) {
-          const err = await put.json().catch(() => ({}));
-          throw new Error("写入 " + path + " 失败（" + put.status + " " + (err.message || "") + "）");
+          const detail = await this.ghMessage(put);
+          throw new Error("写入 " + path + " 失败（" + put.status + "）：" + (detail || this.ghHint(put.status)));
         }
         const out = await put.json();
         last = out.commit && out.commit.sha ? out.commit.sha.slice(0, 7) : last;

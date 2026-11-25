@@ -7,12 +7,12 @@
   <title>DSG 管理后台</title>
   <meta name="robots" content="noindex, nofollow">
   <meta name="description" content="DSG 官网内容管理后台，仅限授权人员使用。">
-  <link rel="stylesheet" href="assets/admin.css?v=20261125d">
+  <link rel="stylesheet" href="assets/admin.css?v=20261125e">
   <script defer src="assets/alpine.min.js"></script>
   <script src="assets/forms.js?v=20260917-eventsync"></script>
   <script src="assets/embedded-data.js?v=20261120d"></script>
   <script src="assets/theme.js?v=20261119a"></script>
-  <script src="assets/admin.js?v=20261125d"></script>
+  <script src="assets/admin.js?v=20261125e"></script>
 </head>
 <body x-data="dsgAdmin()" x-init="init()">
   <template x-if="!session.active">
@@ -76,12 +76,21 @@
                       :title="canRedo ? '重做：' + redoLabel : '没有可重做的操作'">↷</button>
             </div>
             <span class="publish-mode" :class="publish.mode" x-text="publishModeLabel"></span>
-            <span class="save-state" x-text="saveState"></span>
+            <span class="save-state" :title="saveState" x-text="saveState"></span>
             <button class="primary" @click="publishToFrontend()" :disabled="publish.busy" x-text="publish.busy ? '发布中…' : '发布上线'"></button>
             <button class="secondary" @click="exportCurrent()">导出当前模块 JSON</button>
             <a class="secondary link" href="index.html" target="_blank">查看前台</a>
           </div>
         </header>
+
+        <!-- 发布失败：顶栏那句会被截断，这里给完整原因 + 该怎么做 -->
+        <section class="notice publish-notice" x-show="publish.error">
+          <div>
+            <b>发布没走通，线上没有任何改动</b>
+            <p x-text="publish.error"></p>
+          </div>
+          <button class="secondary mini" type="button" @click="publish.error=''">知道了</button>
+        </section>
 
         <section class="notice" x-show="dataError">
           数据文件读取失败，当前显示本地草稿或空数据。请检查 JSON 文件路径。

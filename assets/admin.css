@@ -194,6 +194,20 @@ textarea { min-height: 112px; resize: vertical; }
   border-radius: var(--radius);
   font-weight: 800;
 }
+/* 发布失败提示：一句结论 + 具体原因 + 怎么处理，不截断 */
+.notice.publish-notice {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+}
+.publish-notice p {
+  margin: 6px 0 0;
+  font-weight: 600;
+  line-height: 1.65;
+  color: #8a3b2c;
+}
+.publish-notice button { flex: 0 0 auto; }
 .dashboard-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
