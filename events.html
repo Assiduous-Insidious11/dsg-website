@@ -5,11 +5,11 @@
   <link rel="icon" type="image/png" href="assets/optimized/logo_favicon.png">
   <title>活动中心 | DSG 数创时代</title>
   <link rel="stylesheet" href="assets/styles.css?v=20261119u">
-  <link rel="stylesheet" href="assets/dsg-2026.css?v=20261125c">
+  <link rel="stylesheet" href="assets/dsg-2026.css?v=20261125g">
   <script defer src="assets/alpine.min.js"></script>
-  <script src="assets/embedded-data.js?v=20261123c"></script>
+  <script src="assets/embedded-data.js?v=20261125g"></script>
   <script src="assets/theme.js?v=20261119a"></script>
-  <script src="assets/site.js?v=20261125c"></script>
+  <script src="assets/site.js?v=20261125g"></script>
   <script src="assets/blocks.js?v=20261123c"></script>
   <script src="assets/forms.js?v=20260917-eventsync"></script>
 <!-- seo:begin 由 tools/build.py 生成，勿手动修改 -->
@@ -85,7 +85,7 @@
 
     <section class="section compact" id="calendar" data-block="events-calendar">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head" x-show="typeFilter === 'all'">
           <div>
             <span class="eyebrow" data-bind="events.s3.eye">Calendar</span>
             <h2 data-bind="events.s3.h2">活动日历</h2>
@@ -182,7 +182,7 @@
                     <div class="evc-foot">
                       <span class="meta" x-text="audienceText(e)"></span>
                       <div class="evc-actions">
-                        <a class="btn secondary" :href="eventDetailUrl(e)" data-bind="events.s3.a">查看详情</a>
+                        <a class="btn secondary" :href="eventDetailUrl(e)" data-bind="events.s3.a">活动详情</a>
                         <button type="button" class="btn gold" x-show="eventPhaseLabel(e) !== '已结束'" @click="openRegistration(e)" x-text="e.type === 'elite' ? '申请席位' : '报名参会'"></button>
                       </div>
                     </div>

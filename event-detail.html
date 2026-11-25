@@ -6,11 +6,11 @@
   <link rel="icon" type="image/png" href="assets/optimized/logo_favicon.png">
   <title>活动详情 | DSG 数创时代</title>
   <link rel="stylesheet" href="assets/styles.css?v=20261119u">
-  <link rel="stylesheet" href="assets/dsg-2026.css?v=20261125c">
+  <link rel="stylesheet" href="assets/dsg-2026.css?v=20261125g">
   <script defer src="assets/alpine.min.js"></script>
-  <script src="assets/embedded-data.js?v=20261123c"></script>
+  <script src="assets/embedded-data.js?v=20261125g"></script>
   <script src="assets/theme.js?v=20261119a"></script>
-  <script src="assets/site.js?v=20261125c"></script>
+  <script src="assets/site.js?v=20261125g"></script>
   <script src="assets/blocks.js?v=20261123c"></script>
   <script src="assets/forms.js?v=20260917-eventsync"></script>
 <!-- seo:begin 由 tools/build.py 生成，勿手动修改 -->
@@ -56,9 +56,13 @@
             </template>
           </div>
         </div>
-        <div class="program-visual">
-          <template x-if="hasMedia(currentEvent)"><img :src="currentEvent.image" :alt="currentEvent.title"></template>
-          <template x-if="!hasMedia(currentEvent)">
+        <div class="program-visual dt-hero-visual">
+          <!-- 2026-11-25：首屏主视觉改用该场活动的正式海报（案例集锦里那张），
+               不再用现场照——现场照带场地灯光、摄像机和侧屏，裁不干净。 -->
+          <template x-if="posterOf(currentEvent)">
+            <img class="dt-hero-kv" :src="posterOf(currentEvent)" :alt="currentEvent.title + ' 主视觉'">
+          </template>
+          <template x-if="!posterOf(currentEvent)">
             <div class="kvx" :class="currentEvent.kvStyle" style="min-height:340px">
               <div class="kv-top"><span class="kv-type" x-text="currentEvent.categoryLabel"></span><span class="kv-no" x-text="currentEvent.sessionNo ? '第 ' + currentEvent.sessionNo + ' 期' : ''"></span></div>
               <div>
@@ -72,101 +76,99 @@
       </div>
     </section>
 
-    <section class="section compact">
-      <div class="container detail-overview">
-        <div class="detail-main">
-          <!-- 01 议程：真实流程，不用「围绕主题展开分享」这类占位句 -->
-          <div class="dt-band">
-            <div class="lab">Agenda</div>
-            <div>
-              <h2 data-bind="event-detail.s2.h2">活动议程</h2>
-              <div class="dt-agenda">
-                <template x-for="(a, i) in agendaRows(currentEvent)" :key="i">
-                  <div class="row">
-                    <span class="t" x-text="a.time || ''"></span>
-                    <span class="n" x-text="String(i + 1).padStart(2, '0')"></span>
-                    <span class="x" x-text="a.text"></span>
-                  </div>
-                </template>
-              </div>
-            </div>
-          </div>
-
-          <!-- 02 适用人群与交流价值：适用人群放大字号（评审点名字号过小），下面是真实交流话题 -->
-          <div class="dt-band">
-            <div class="lab">Audience</div>
-            <div>
-              <h2 x-text="audienceText(currentEvent) ? '适用人群与交流价值' : '交流话题'">适用人群与交流价值</h2>
-              <div class="dt-rows">
-                <div class="row" x-show="audienceText(currentEvent)"><span class="k" data-bind="event-detail.s2.span">适用人群</span><span class="v" style="font-size:18px;line-height:1.8" x-text="audienceText(currentEvent)"></span></div>
-              </div>
-              <div class="dt-topic" x-show="topicsOf(currentEvent).length" style="margin-top:22px">
-                <template x-for="(t, i) in topicsOf(currentEvent)" :key="i">
-                  <div class="t-item">
-                    <div class="t-title" x-text="t.title"></div>
-                    <div class="t-supp" x-show="t.supplement" x-text="t.supplement"></div>
-                  </div>
-                </template>
-              </div>
-              <div class="tag-row" style="margin-top:18px"><template x-for="tag in currentEvent.tags" :key="tag"><span class="tag" x-text="tag"></span></template></div>
-            </div>
-          </div>
-
-          <!-- 03 分享嘉宾 / 参会名单：姓名 + 公司 + 职位；无授权头像时用首字头像，不放假人像 -->
-          <div class="dt-band" x-show="currentEventSpeakers.length || attendeesOf(currentEvent).length">
-            <div class="lab">Speakers</div>
-            <div>
-              <h2 x-text="currentEventSpeakers.length ? '分享嘉宾' : '参会嘉宾名单'"></h2>
-              <div class="dt-speakers" x-show="currentEventSpeakers.length">
-                <template x-for="speaker in currentEventSpeakers" :key="speaker.id">
-                  <article class="dt-speaker">
-                    <template x-if="speakerPortrait(speaker)"><img :src="speakerPortrait(speaker)" :alt="speakerDisplayName(speaker)"></template>
-                    <span class="avx lg" x-show="!speakerPortrait(speaker)" :class="avatarTone(speakerDisplayName(speaker))" x-text="initialOf(speakerDisplayName(speaker))"></span>
-                    <div>
-                      <strong x-text="speakerDisplayName(speaker)"></strong>
-                      <span x-text="[speaker.jobTitle, speaker.company].filter(Boolean).join(' · ')"></span>
-                    </div>
-                  </article>
-                </template>
-              </div>
-              <div class="dt-speakers" x-show="!currentEventSpeakers.length && attendeesOf(currentEvent).length">
-                <template x-for="p in attendeesOf(currentEvent)" :key="p.org + p.role">
-                  <article class="dt-speaker">
-                    <span class="avx lg" :class="avatarTone(p.org)" x-text="initialOf(p.org)"></span>
-                    <div>
-                      <strong x-text="p.name || p.org"></strong>
-                      <span x-text="p.name ? [p.role, p.org].filter(Boolean).join(' · ') : p.role"></span>
-                    </div>
-                  </article>
-                </template>
-              </div>
-              <p class="meta" style="margin-top:14px" x-show="!currentEventSpeakers.length">名单来自活动签到与邀请记录，按公司与职务排列；未经本人授权不公开个人姓名与照片。</p>
-            </div>
-          </div>
-
-        </div>
-
-        <aside class="detail-side">
-          <h3 data-bind="event-detail.s2.h3">活动信息</h3>
-          <dl>
-            <div><dt>日期</dt><dd x-text="eventDateLabel(currentEvent)"></dd></div>
-            <div x-show="currentEvent.time"><dt>时间</dt><dd x-text="currentEvent.time"></dd></div>
-            <div x-show="currentEvent.city"><dt>城市</dt><dd x-text="currentEvent.city"></dd></div>
-            <div x-show="currentEvent.venue"><dt>地点</dt><dd x-text="currentEvent.venue"></dd></div>
-            <div x-show="scaleText(currentEvent)"><dt>规模</dt><dd x-text="scaleText(currentEvent)"></dd></div>
-            <div><dt>类型</dt><dd x-text="currentEvent.categoryLabel || currentEvent.typeLabel || '活动'"></dd></div>
-          </dl>
-          <div class="actions"><button class="btn gold" @click="openRegistration(currentEvent)" x-text="eventPhaseLabel(currentEvent) === '已结束' ? '预约同类活动' : (currentEvent.type === 'elite' ? '申请席位' : '报名参会')"></button></div>
-          <p class="meta" style="margin-top:12px" x-text="eventPhaseLabel(currentEvent) === '已结束' ? '本场已结束；留下联系方式，同类场次开放报名时优先通知。' : '席位有限，提交后由活动团队确认。'"></p>
-        </aside>
-      </div>
-    </section>
-
-    <section class="section surface-white compact" x-show="photoWall(currentEvent).length">
+    <section class="section compact dt-body">
       <div class="container">
-        <div class="section-head"><div><span class="eyebrow" data-bind="event-detail.s3.eye">Scene</span><h2 data-bind="event-detail.s3.h2">现场照片</h2></div><p data-bind="event-detail.s3.p">本场活动的现场记录。</p></div>
-        <div class="dt-photos">
-          <template x-for="p in photoWall(currentEvent)" :key="p"><img :src="p" :alt="currentEvent.title + ' 现场'"></template>
+        <!-- 2026-11-25 按《数创时代-案例集锦》的三栏版式重排：
+             左栏 内容（主题·时间·地点 / 活动流程）+ 嘉宾（演讲嘉宾 / 在邀·拟邀嘉宾）
+             中栏 活动海报（整张，不裁）
+             右栏 活动照片（竖排）
+             原来右侧那条黑色「活动信息」卡已删掉。 -->
+        <div class="dt-cols">
+
+          <div class="dt-main">
+            <div class="dt-block">
+              <div class="dt-h"><span class="dt-n">01</span><h2>内容</h2></div>
+              <h3 class="dt-sub">主题 · 时间 · 地点</h3>
+              <div class="dt-facts">
+                <div class="row" x-show="currentEvent.theme || summaryText(currentEvent)">
+                  <span class="k">活动主题</span><span class="v" x-text="themeOf(currentEvent)"></span>
+                </div>
+                <div class="row">
+                  <span class="k">活动时间</span>
+                  <span class="v" x-text="whenOf(currentEvent)"></span>
+                </div>
+                <div class="row">
+                  <span class="k">活动地点</span>
+                  <span class="v" x-text="placeOf(currentEvent)"></span>
+                </div>
+                <div class="row" x-show="scaleText(currentEvent)">
+                  <span class="k">活动规模</span><span class="v" x-text="scaleText(currentEvent)"></span>
+                </div>
+                <div class="row" x-show="audienceText(currentEvent)">
+                  <span class="k">参会人员</span><span class="v" x-text="audienceText(currentEvent)"></span>
+                </div>
+              </div>
+
+              <h3 class="dt-sub">活动流程</h3>
+              <div class="dt-flow" :class="{ 'no-time': !flowRows(currentEvent).some(function (a) { return a.time; }) }">
+                <template x-for="(a, i) in flowRows(currentEvent)" :key="i">
+                  <div class="item" :class="{ 'is-head': a.head }">
+                    <span class="t" x-text="a.time || ''"></span>
+                    <span class="x">
+                      <span x-text="a.text"></span>
+                      <em class="dt-flow-note" x-show="a.note" x-text="a.note"></em>
+                    </span>
+                  </div>
+                </template>
+              </div>
+            </div>
+
+            <div class="dt-block" x-show="guestsOf(currentEvent).length">
+              <div class="dt-h"><span class="dt-n">02</span><h2 x-text="currentEvent.docGuestTitle || '演讲嘉宾'"></h2></div>
+              <ol class="dt-guests">
+                <template x-for="(g, i) in guestsOf(currentEvent)" :key="i">
+                  <li><span class="n" x-text="String(i + 1).padStart(2, '0')"></span><span class="x" x-text="g"></span></li>
+                </template>
+              </ol>
+              <p class="meta dt-note">名单与职务按活动海报与签到记录整理，仅用于活动信息展示。</p>
+            </div>
+          </div>
+
+          <aside class="dt-side dt-side-poster">
+            <div class="dt-h"><span class="dt-n">03</span><h2>活动海报</h2></div>
+            <template x-if="posterOf(currentEvent)">
+              <a class="dt-poster" :href="posterOf(currentEvent)" target="_blank" rel="noopener">
+                <img :src="posterOf(currentEvent)" :alt="currentEvent.title + ' 活动海报'">
+              </a>
+            </template>
+            <!-- 案例集锦里这些场次只放了现场照、没有海报：这一格用主视觉占位，不留白 -->
+            <template x-if="!posterOf(currentEvent)">
+              <div class="dt-poster dt-poster-kv">
+                <div class="kvx" :class="currentEvent.kvStyle">
+                  <div class="kv-top"><span class="kv-type" x-text="currentEvent.categoryLabel"></span><span class="kv-no" x-text="currentEvent.sessionNo ? '第 ' + currentEvent.sessionNo + ' 期' : ''"></span></div>
+                  <div>
+                    <div class="kv-title" x-text="kvTitle(currentEvent)"></div>
+                    <div class="kv-meta"><span x-text="eventDateLabel(currentEvent) + ' · ' + (currentEvent.city || '')"></span></div>
+                  </div>
+                </div>
+              </div>
+            </template>
+            <p class="meta dt-note" x-show="!posterOf(currentEvent)">本场未随案例集锦提供海报，先用主视觉占位。</p>
+            <div class="dt-cta">
+              <button class="btn gold full" @click="openRegistration(currentEvent)" x-text="eventPhaseLabel(currentEvent) === '已结束' ? '预约同类活动' : (currentEvent.type === 'elite' ? '申请席位' : '报名参会')"></button>
+              <p class="meta" x-text="eventPhaseLabel(currentEvent) === '已结束' ? '本场已结束；留下联系方式，同类场次开放报名时优先通知。' : '席位有限，提交后由活动团队确认。'"></p>
+            </div>
+          </aside>
+
+          <aside class="dt-side dt-side-photos">
+            <div class="dt-h"><span class="dt-n">04</span><h2>活动照片</h2></div>
+            <div class="dt-photo-stack" x-show="photoWall(currentEvent).length">
+              <template x-for="p in photoWall(currentEvent)" :key="p">
+                <a :href="p" target="_blank" rel="noopener"><img :src="p" :alt="currentEvent.title + ' 现场照片'" loading="lazy"></a>
+              </template>
+            </div>
+            <div class="dt-poster-empty" x-show="!photoWall(currentEvent).length">本场照片整理中</div>
+          </aside>
         </div>
       </div>
     </section>
@@ -197,49 +199,5 @@
       </form></div></div>
 <script src="assets/dsg-sync.js?v=20260917-eventsync"></script>
   <script src="assets/nav-blocks.js?v=20261125b" defer></script>
-  <script>
-  /* 2026-11-25：左上角返回箭头改成"从哪来回哪去"。
-     原来 href 写死 events.html，从年度峰会/城市沙龙/精英六人谈点进来再返回，
-     一律掉回"全部活动"的日历，而且月份也回到当月。
-     现在按来路拼目标地址；同站来路优先用 history.back()，连滚动位置一起还原。 */
-  (function () {
-    var back = document.querySelector(".dt-back");
-    if (!back) return;
-    var isEn = (document.documentElement.lang || "").toLowerCase() === "en";
-    var p = new URLSearchParams(location.search);
-    var from = p.get("from") || "";
-    var cat = p.get("cat") || "";
-    var m = p.get("m") || "";
-    var map = {
-      home: "index", events: "events", calendar: "events-calendar",
-      summits: "events-summits", city: "events-city", elite: "events-elite-talks",
-      insights: "insights", ai: "supply-chain-ai", about: "about", contact: "contact"
-    };
-    function file(base) { return isEn ? base + "-en.html" : base + ".html"; }
-    var base = map[from] || "";
-    var target = file("events");
-    if (base === "index") {
-      target = file("index");
-    } else if (base === "events") {
-      var q = [];
-      if (cat) q.push("cat=" + encodeURIComponent(cat));
-      else if (m) q.push("m=" + encodeURIComponent(m));
-      target = file("events") + (q.length ? "?" + q.join("&") : "");
-    } else if (base) {
-      target = file(base);
-    }
-    back.setAttribute("href", target);
-    back.addEventListener("click", function (ev) {
-      try {
-        var ref = document.referrer || "";
-        if (ref.indexOf(location.origin) !== 0) return;
-        if (!/\/events[-a-z]*\.html/.test(ref) && !/\/index[-a-z]*\.html/.test(ref)) return;
-        if (history.length < 2) return;
-        ev.preventDefault();
-        history.back();
-      } catch (e) { /* 拿不到 referrer 就走上面的 href */ }
-    });
-  })();
-  </script>
 </body>
 </html>

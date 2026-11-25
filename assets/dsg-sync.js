@@ -6,7 +6,7 @@
  *      → localStorage 发布队列（后台"发布到前台"后立即覆盖，实现跨页面同步）
  *   2. 渲染统一：在页面 <div data-dsg-sync></div> 处渲染
  *      【活动日历（月历）+ 近期活动列表】；没有挂载点的页面自动在 footer 前插入。
- *   3. 事件统一：所有"查看详情/报名"链接指向同一个 events-calendar.html / event-detail.html，
+ *   3. 事件统一：所有"活动详情/报名"链接指向同一个 events-calendar.html / event-detail.html，
  *      与日历页完全一致。
  * 依赖：Alpine.js（x-data 由各页面 site.js 提供，本组件只做数据同步与渲染补强）。
  */
@@ -143,7 +143,7 @@
         html += '<div class="datebox"><span>' + (isEn ? (ev.phase === "archived" ? "Archived" : "Upcoming") : (ev.phase === "archived" ? "已结束" : "未开始")) + '</span><strong>' + escapeHtml(ev.dateText || ev.date) + '</strong></div>';
         html += '<div><div class="meta">' + escapeHtml(ev.eyebrow) + ' · ' + escapeHtml(ev.time || "") + ' · ' + escapeHtml(ev.city || "") + '</div>';
         html += '<h3>' + escapeHtml(ev.title) + '</h3><p>' + escapeHtml(ev.summary || "") + '</p></div>';
-        html += '<div class="actions"><a class="btn secondary" href="' + (isEn ? "event-detail-en.html" : "event-detail.html") + '?id=' + encodeURIComponent(ev.id) + '">' + (isEn ? "Details" : "查看详情") + '</a>';
+        html += '<div class="actions"><a class="btn secondary" href="' + (isEn ? "event-detail-en.html" : "event-detail.html") + '?id=' + encodeURIComponent(ev.id) + '">' + (isEn ? "Details" : "活动详情") + '</a>';
         html += '<a class="btn gold" href="' + (isEn ? "contact-en.html" : "contact.html") + '">' + (isEn ? "Register" : "报名参会") + '</a></div>';
         html += '</article>';
       });

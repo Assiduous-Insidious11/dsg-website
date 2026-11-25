@@ -6,11 +6,11 @@
   <link rel="icon" type="image/png" href="assets/optimized/logo_favicon.png">
   <title>精英六人谈 | DSG 数创时代</title>
   <link rel="stylesheet" href="assets/styles.css?v=20261119u">
-  <link rel="stylesheet" href="assets/dsg-2026.css?v=20261125c">
+  <link rel="stylesheet" href="assets/dsg-2026.css?v=20261125g">
   <script defer src="assets/alpine.min.js"></script>
-  <script src="assets/embedded-data.js?v=20261123c"></script>
+  <script src="assets/embedded-data.js?v=20261125g"></script>
   <script src="assets/theme.js?v=20261119a"></script>
-  <script src="assets/site.js?v=20261125c"></script>
+  <script src="assets/site.js?v=20261125g"></script>
   <script src="assets/blocks.js?v=20261123c"></script>
   <script src="assets/forms.js?v=20260917-eventsync"></script>
 <!-- seo:begin 由 tools/build.py 生成，勿手动修改 -->
@@ -82,7 +82,7 @@
                 <h3 x-html="titleHtml(event.title)"></h3>
                 <div class="event-facts"><template x-for="f in eventFacts(event)" :key="f.k"><div class="fact"><span class="k" x-text="f.k"></span><span class="v" x-text="f.v"></span></div></template></div>
                 <div class="tag-row"><template x-for="item in event.tags"><span class="tag" x-text="item"></span></template></div>
-                <div class="actions"><a class="btn secondary" :href="eventDetailUrl(event)" data-bind="events-elite-talks.s3.a">查看详情</a><button class="btn gold" @click="openRegistration(event)">申请席位</button></div>
+                <div class="actions"><a class="btn secondary" :href="eventDetailUrl(event)" data-bind="events-elite-talks.s3.a">活动详情</a><button class="btn gold" @click="openRegistration(event)">申请席位</button></div>
               </div>
             </article>
           </template>

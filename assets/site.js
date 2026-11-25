@@ -752,12 +752,8 @@
         if (mm && !key) {
           this.calendarCursor = mm[1] + "-" + String(mm[2]).padStart(2, "0") + "-01";
         }
-        if (key || mm) {
-          global.setTimeout(function () {
-            var el = global.document.getElementById("calendar");
-            if (el && el.scrollIntoView) el.scrollIntoView({ behavior: "auto", block: "start" });
-          }, 320);
-        }
+        /* 2026-11-25：不再强行滚到日历顶部。返回位置交给 site.js 按来路还原，
+           否则用户从列表第 6 条点进去，回来会被顶到区块最上面。 */
       },
       monthShortLabel(month) {
         var isEn = (document.documentElement.lang || "").toLowerCase() === "en";
@@ -871,6 +867,46 @@
         return isEn ? (sp + (sp === 1 ? " speaker" : " speakers")) : sp + " 位分享嘉宾";
       },
       photoWall(event) { return (event && event.gallery) || []; },
+      /** 2026-11-25 详情页三栏：整张活动海报（案例集锦原图，不裁切，点开看大图） */
+      posterOf(event) { return (event && event.poster) || ""; },
+      /** 2026-11-25 详情页三栏：嘉宾名单，文本原样来自案例集锦 */
+      guestsOf(event) { return (event && event.docGuests) || []; },
+      /** 2026-11-25 活动流程：优先用案例集锦里那份真实流程，没有再退回 agendaDetail */
+      /** 主题口号：只取第一句，避免把参会人员、活动形式一起并进来 */
+      themeOf(event) {
+        if (!event) return "";
+        var t = String(event.theme || "").trim();
+        if (!t) t = String(this.summaryText(event) || "").trim();
+        t = t.replace(/^(活动)?主题[：:]\s*/, "");
+        var cut = t.split("。")[0];
+        if (cut.length >= 8) t = cut;
+        return t.length > 70 ? t.slice(0, 70) + "…" : t;
+      },
+      /** 时间行：日期 + 时段，日期重复时只写一次 */
+      whenOf(event) {
+        if (!event) return "";
+        var d = this.eventDateLabel(event) || "";
+        var t = String(event.time || "").trim();
+        if (!t) return d;
+        var digits = function (x) { return String(x).replace(/\D/g, ""); };
+        var bd = digits(d), bt = digits(t);
+        if (bd && bt && (bt.indexOf(bd) === 0 || bt.slice(0, 4) === bd.slice(-4))) return t;
+        return d + "　" + t;
+      },
+      /** 地点：城市与场馆重复时只写一次 */
+      placeOf(event) {
+        if (!event) return "";
+        var city = (event.city || "").trim();
+        var venue = (event.venue || "").trim();
+        if (!venue) return city;
+        if (!city || venue === city || venue.indexOf(city) === 0) return venue;
+        return city + " · " + venue;
+      },
+      flowRows(event) {
+        var doc = (event && event.docAgenda) || [];
+        if (doc.length) return doc;
+        return this.agendaRows(event).map(function (a) { return { time: a.time || "", text: a.text, note: "", head: false }; });
+      },
       /** 图位是否有真实素材（现场照或运营给的活动海报），没有就退回排版 KV，绝不放模块插画假装现场 */
       hasMedia(event) { return !!(event && (event.photoCount > 0 || event.poster)); },
       /**
@@ -1339,4 +1375,118 @@
     if (!e.target.closest(".nav")) close(header, header.querySelector(".nav-burger"));
   });
 })(window);
+})(window);
+
+/* =====================================================================
+   活动详情页左上角「返回」：从哪来回哪去（2026-11-25）
+   这段逻辑原来写在 event-detail.html 末尾的内联 <script> 里。
+   问题：HTML 会被浏览器缓存，旧 HTML + 新 site.js 时内联脚本根本不执行，
+        箭头就退回写死的 events.html，表现为"永远回到全部活动的日历"。
+   所以挪进 site.js —— 同址文件每次都是最新的，旧 HTML 也能拿到正确行为。
+   优先级：本次会话记录的来路 > URL 参数 from/cat/m > referrer > 活动中心
+   ===================================================================== */
+(function (global) {
+  var doc = global.document;
+  var BACK = "dsg:eventBack";
+  var Y = "dsg:restoreY";
+  var isDetail = /event-detail(-en)?\.html$/.test(global.location.pathname);
+  var isEn = (doc.documentElement.lang || "").toLowerCase().indexOf("en") === 0;
+
+  function file(base) { return isEn ? base + "-en.html" : base + ".html"; }
+
+  /* 1) 在活动页/首页点「活动详情」时，记住当前地址与滚动位置 */
+  doc.addEventListener("click", function (e) {
+    if (isDetail) return;
+    var a = e.target && e.target.closest ? e.target.closest('a[href*="event-detail"]') : null;
+    if (!a) return;
+    try {
+      global.sessionStorage.setItem(BACK, JSON.stringify({
+        url: global.location.pathname + global.location.search,
+        y: global.pageYOffset || 0,
+        t: Date.now()
+      }));
+    } catch (err) { /* 隐私模式忽略 */ }
+  }, true);
+
+  /* 2) 回到列表页后还原滚动位置 */
+  function restoreScroll() {
+    var y = 0;
+    try {
+      y = parseInt(global.sessionStorage.getItem(Y) || "0", 10);
+      global.sessionStorage.removeItem(Y);
+    } catch (err) { return; }
+    if (!y || isDetail) return;
+    var tries = 0;
+    var timer = global.setInterval(function () {
+      var tall = doc.body && doc.body.scrollHeight >= y + global.innerHeight;
+      if (tall || ++tries > 40) {
+        global.scrollTo(0, tall ? y : y);
+        global.clearInterval(timer);
+      }
+    }, 60);
+  }
+
+  /* 3) 详情页：把箭头指回来路 */
+  function fixBack() {
+    var back = doc.querySelector(".dt-back");
+    if (!back) return;
+    var target = "";
+    var backY = 0;
+    var savedUrl = "";
+
+    try {
+      var saved = JSON.parse(global.sessionStorage.getItem(BACK) || "null");
+      if (saved && saved.url && !/event-detail/.test(saved.url) && Date.now() - (saved.t || 0) < 7200000) {
+        savedUrl = saved.url;
+        backY = saved.y || 0;
+      }
+    } catch (err) { /* ignore */ }
+
+    /* 先把 URL 参数翻成目标地址：参数比“上次点进来时的地址”更具体——
+       日历翻到 5 月点进去时，列表页地址本身不带 ?m=，只有这条链接带。 */
+    {
+      var p = new URLSearchParams(global.location.search);
+      var from = p.get("from") || "";
+      var cat = p.get("cat") || "";
+      var m = p.get("m") || "";
+      var map = {
+        home: "index", events: "events", calendar: "events-calendar",
+        summits: "events-summits", city: "events-city", elite: "events-elite-talks",
+        insights: "insights", ai: "supply-chain-ai", about: "about", contact: "contact"
+      };
+      var base = map[from] || "";
+      if (base === "index") target = file("index");
+      else if (base === "events") {
+        var q = [];
+        if (cat) q.push("cat=" + encodeURIComponent(cat));
+        else if (m) q.push("m=" + encodeURIComponent(m));
+        target = file("events") + (q.length ? "?" + q.join("&") : "");
+      } else if (base) target = file(base);
+    }
+
+    if (!target) target = savedUrl;
+
+    if (!target) {
+      var ref = doc.referrer || "";
+      if (ref && ref.indexOf(global.location.origin) === 0 && !/event-detail/.test(ref)) {
+        target = ref.replace(global.location.origin, "");
+      }
+    }
+
+    if (!target) target = file("events");
+    back.setAttribute("href", target);
+
+    back.addEventListener("click", function (ev) {
+      if (!target) return;
+      ev.preventDefault();
+      try { if (backY) global.sessionStorage.setItem(Y, String(backY)); } catch (err) {}
+      global.location.href = target;
+    });
+  }
+
+  if (doc.readyState === "loading") {
+    doc.addEventListener("DOMContentLoaded", function () { fixBack(); restoreScroll(); });
+  } else {
+    fixBack(); restoreScroll();
+  }
 })(window);
