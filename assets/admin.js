@@ -276,7 +276,11 @@ function dsgAdmin() {
       // 先按地址给个初值：线上公开地址默认"只读"，本机地址等探测结果，
       // 免得状态标在探测完成前一直显示"检测中"。
       const isLocalHost = /^(127\.0\.0\.1|localhost|\[::1\])$/.test(location.hostname);
-      if (!isLocalHost) this.publish.mode = this.ghToken ? "github" : "readonly";
+      if (!isLocalHost) {
+        // 线上域名下不存在 /api/*（本机服务只监听 127.0.0.1），不去请求，避免一串 404
+        this.publish.mode = this.ghToken ? "github" : "readonly";
+        return;
+      }
       try {
         const res = await fetch("/api/status", { cache: "no-store" });
         if (res.ok) {
@@ -751,8 +755,13 @@ function dsgAdmin() {
         if (location.protocol === "http:" || location.protocol === "https:") {
           const res = await fetch("content/site-manifest.json?ts=" + Date.now(), { cache: "no-store" });
           if (res.ok) this.manifest = await res.json();
-          const req = await fetch("content/requirements.json?ts=" + Date.now(), { cache: "no-store" });
-          if (req.ok) this.requirements = await req.json();
+          // requirements.json 是内部改版要求清单，只留本机、不上公网；
+          // field-policy.json 是后台能力承诺表，跟着发布，线上也要能看到。
+          const isLocalHost = /^(127\.0\.0\.1|localhost|\[::1\])$/.test(location.hostname);
+          if (isLocalHost) {
+            const req = await fetch("content/requirements.json?ts=" + Date.now(), { cache: "no-store" });
+            if (req.ok) this.requirements = await req.json();
+          }
           const fp = await fetch("content/field-policy.json?ts=" + Date.now(), { cache: "no-store" });
           if (fp.ok) this.fieldPolicy = await fp.json();
         }
@@ -1325,6 +1334,12 @@ function dsgAdmin() {
     async loadHistory() {
       this.history.loading = true;
       const local = this.pendingOps().slice().reverse();
+      // 快照与操作日志只存在本机服务里；线上没有这个接口，直接跳过，避免 404
+      if (!/^(127\.0\.0\.1|localhost|\[::1\])$/.test(location.hostname)) {
+        this.history.ops = local;
+        this.history.loading = false;
+        return;
+      }
       try {
         const r = await fetch("/api/revisions", { cache: "no-store" });
         const o = await fetch("/api/ops", { cache: "no-store" });

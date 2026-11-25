@@ -1,0 +1,82 @@
+{
+  "_comment": "可编辑范围清单（后台「可编辑范围」模块只读展示）。每一行回答四个问题：能不能改、谁能改、在后台哪里改、改一次要动到什么级别。级别定义见 levels。这份清单是后台能力的对外承诺，改后台能力时必须同步改这里，避免「说能改其实改不了」。",
+  "updatedAt": "2026-11-25",
+  "levels": [
+    { "id": "A", "name": "改文字 / 开关 / 排序", "eta": "立刻", "desc": "已有字段，后台点了就生效，不动结构。" },
+    { "id": "B", "name": "加字段 / 加板块", "eta": "半天", "desc": "数据结构加一项，前台加一处渲染，一次做完永久可用。" },
+    { "id": "C", "name": "加一类内容", "eta": "一到两天", "desc": "新建内容类型：存储、列表、表单、发布全链路。" },
+    { "id": "D", "name": "加页面 / 改导航层级", "eta": "两天", "desc": "建文件、改导航、改站点清单、英文站同步，必须提前说。" }
+  ],
+  "groups": [
+    {
+      "id": "nav",
+      "name": "全站 · 顶部导航",
+      "items": [
+        { "label": "六个一级菜单的文字", "editable": "yes", "who": "超级管理员", "where": "导航菜单", "level": "A" },
+        { "label": "菜单上下顺序", "editable": "yes", "who": "超级管理员", "where": "导航菜单", "level": "A" },
+        { "label": "某个菜单暂时不显示（如创新专区没做好）", "editable": "yes", "who": "超级管理员", "where": "导航菜单", "level": "A", "note": "隐藏的是入口，页面文件仍在，可直接访问，避免死链。" },
+        { "label": "新增一个一级菜单项", "editable": "yes", "who": "超级管理员", "where": "导航菜单", "level": "B", "note": "指到一个还没建的页面会提示，不会产出死链。" },
+        { "label": "彻底删除一个菜单（如轻咨询）", "editable": "yes", "who": "超级管理员", "where": "导航菜单", "level": "D", "note": "后台做成「下架」，删文件由开发执行并同步英文站与站点清单。" },
+        { "label": "EN 切换按钮显示 / 隐藏", "editable": "yes", "who": "超级管理员", "where": "导航菜单", "level": "A" },
+        { "label": "「预约咨询」按钮文字与跳转", "editable": "yes", "who": "超级管理员", "where": "导航菜单", "level": "A" },
+        { "label": "菜单是文字还是按钮样式", "editable": "yes", "who": "超级管理员", "where": "导航菜单", "level": "A", "note": "两套样式都已写死在 CSS，只切换不调参数。" },
+        { "label": "导航字体与字号", "editable": "no", "who": "—", "where": "写死在样式表", "level": "—", "note": "按你的要求写死，后台不提供任何字号选项。" }
+      ]
+    },
+    {
+      "id": "home",
+      "name": "首页",
+      "items": [
+        { "label": "板块显示 / 隐藏（如临时隐掉排产小助手）", "editable": "yes", "who": "超级管理员", "where": "板块管理", "level": "A" },
+        { "label": "板块上下顺序", "editable": "yes", "who": "超级管理员", "where": "板块管理", "level": "A" },
+        { "label": "新增一个板块（如合作伙伴墙）", "editable": "yes", "who": "超级管理员", "where": "板块管理", "level": "B", "note": "从 7 种已验证板块类型里选，保证手机端不崩。" },
+        { "label": "删除一个板块", "editable": "yes", "who": "超级管理员", "where": "板块管理", "level": "A" },
+        { "label": "板块内所有文字（标题、正文、按钮）", "editable": "yes", "who": "内容编辑", "where": "页面内容", "level": "A" },
+        { "label": "每个板块的背景图", "editable": "yes", "who": "内容编辑", "where": "板块管理", "level": "A" },
+        { "label": "字号（小 / 标准 / 大 / 特大）", "editable": "part", "who": "内容编辑", "where": "板块管理", "level": "A", "note": "只给 4 档，不开放像素值：全站字号随屏宽自适应，钉死像素会在手机上溢出。" },
+        { "label": "文字颜色（6 色主题板）", "editable": "part", "who": "内容编辑", "where": "板块管理", "level": "A", "note": "只给 6 个已验证对比度的颜色，不开放取色器。" },
+        { "label": "五格数字（120 场 / 1 万+ 等）", "editable": "yes", "who": "超级管理员", "where": "页面内容", "level": "A", "note": "原本写死在数据文件里，现纳入可编辑区并留核对人字段。" },
+        { "label": "近期活动列表", "editable": "no", "who": "—", "where": "由活动数据自动生成", "level": "—", "note": "不能单独改，改活动本身即可，避免两处数字打架。" }
+      ]
+    },
+    {
+      "id": "events",
+      "name": "活动页",
+      "items": [
+        { "label": "首屏 banner 标题与副文", "editable": "yes", "who": "内容编辑", "where": "页面内容", "level": "A" },
+        { "label": "banner 背景图", "editable": "yes", "who": "内容编辑", "where": "板块管理", "level": "A" },
+        { "label": "板块显示 / 隐藏 / 排序 / 新增 / 删除", "editable": "yes", "who": "超级管理员", "where": "板块管理", "level": "A" },
+        { "label": "数字带（已在办场次等）", "editable": "yes", "who": "超级管理员", "where": "页面内容", "level": "A" },
+        { "label": "三类活动的说明文字", "editable": "yes", "who": "内容编辑", "where": "页面内容", "level": "A" }
+      ]
+    },
+    {
+      "id": "detail",
+      "name": "活动详情（每场点开）",
+      "items": [
+        { "label": "主题、时间、地点、规模", "editable": "yes", "who": "会议管理员", "where": "会议管理", "level": "A" },
+        { "label": "期号（第 X 期）", "editable": "yes", "who": "会议管理员", "where": "会议管理", "level": "B" },
+        { "label": "议程与流程（时段 / 环节 / 演讲人）", "editable": "yes", "who": "会议管理员", "where": "会议管理", "level": "B" },
+        { "label": "演讲嘉宾（实名 + 公司 + 职位）", "editable": "yes", "who": "会议管理员", "where": "会议管理", "level": "B" },
+        { "label": "参会嘉宾（只写公司 + 职级）", "editable": "yes", "who": "会议管理员", "where": "会议管理", "level": "A", "note": "字段已按「姓名不可出现」设计，录入时也没有姓名框。" },
+        { "label": "现场照片（多张）", "editable": "yes", "who": "会议管理员", "where": "会议管理", "level": "A" },
+        { "label": "海报 / 主视觉", "editable": "yes", "who": "会议管理员", "where": "会议管理", "level": "A" },
+        { "label": "报名开关", "editable": "yes", "who": "会议管理员", "where": "会议管理", "level": "A" },
+        { "label": "主办单位与合作伙伴", "editable": "no", "who": "—", "where": "按 11-17 决议固定不放", "level": "—", "note": "不是没做，是会议上明确要求详情页不出现。" },
+        { "label": "详情页版式（哪几栏、什么顺序）", "editable": "no", "who": "—", "where": "按 11-17 决议固定", "level": "D", "note": "63 场必须一致，一旦允许每场自己排，维护成本翻十倍。" }
+      ]
+    },
+    {
+      "id": "system",
+      "name": "后台本身",
+      "items": [
+        { "label": "撤销 / 重做（像 Word 的左右箭头）", "editable": "yes", "who": "全部角色", "where": "顶部工具栏", "level": "A", "note": "跨关浏览器也保留最近 60 步。" },
+        { "label": "回退到任意一步历史", "editable": "yes", "who": "超级管理员", "where": "版本历史", "level": "A" },
+        { "label": "所有操作留痕", "editable": "yes", "who": "全部角色", "where": "操作日志", "level": "A", "note": "记到「谁（角色）+ 何时 + 改了什么 + 数值前后」，具体到人不做，需要先加账号体系。" },
+        { "label": "按下发布才会影响前台", "editable": "yes", "who": "超级管理员", "where": "顶部发布上线", "level": "A", "note": "编辑只存草稿，访客看不到；这是后台最重要的一道闸。" },
+        { "label": "图片上传", "editable": "yes", "who": "内容编辑", "where": "各图片字段", "level": "A", "note": "目前仅本机直连通道可用；线上要能用需接对象存储。" },
+        { "label": "飞书 / PDF / 公众号自动导入", "editable": "no", "who": "—", "where": "暂缓", "level": "C", "note": "案例集锦混有不能对外的名单与赞助方案，全自动导入等于把敏感信息推上公网，改走「读→草稿→人工确认」。" }
+      ]
+    }
+  ]
+}
