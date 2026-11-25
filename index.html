@@ -6,12 +6,12 @@
   <link rel="icon" type="image/png" href="assets/optimized/logo_favicon.png">
   <title>DSG 数创时代 | 活动生态、行业洞察与供应链AI</title>
   <link rel="stylesheet" href="assets/styles.css?v=20261119u">
-  <link rel="stylesheet" href="assets/dsg-2026.css?v=20261120c">
+  <link rel="stylesheet" href="assets/dsg-2026.css?v=20261125c">
   <script defer src="assets/alpine.min.js"></script>
   
   <script src="assets/embedded-data.js?v=20261120e"></script>
   <script src="assets/theme.js?v=20261119d"></script>
-  <script src="assets/site.js?v=20261123e"></script>
+  <script src="assets/site.js?v=20261125c"></script>
   <script src="assets/blocks.js?v=20261119d"></script>
   <script src="assets/forms.js?v=20260917-eventsync"></script>
 <!-- seo:begin 由 tools/build.py 生成，勿手动修改 -->
@@ -141,10 +141,12 @@
               <div class="syscal-cell" :class="{ outside: cell.outside, today: cell.today }">
                 <span class="sc-day" x-text="cell.day"></span>
                 <div class="sc-evs">
+                  <!-- 2026-11-25：首页日历改成只读。数据仍与活动页同一份 events.json（同月同步），
+                       但这里的日期条目不给链接、不弹详情——要看去活动页点。 -->
                   <template x-for="e in cell.events.slice(0, 2)" :key="e.id">
-                    <a class="sc-ev" :class="e.category" :href="eventDetailUrl(e)" :title="e.title">
+                    <span class="sc-ev readonly" :class="e.category" :title="e.title">
                       <span x-text="e.title"></span>
-                    </a>
+                    </span>
                   </template>
                   <span class="sc-more" x-show="cell.events.length > 2" x-text="'+' + (cell.events.length - 2)"></span>
                 </div>

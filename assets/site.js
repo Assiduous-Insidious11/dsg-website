@@ -742,9 +742,22 @@
        * 参数只认三类的 key，其余一律回到「全部活动」。
        */
       applyCatFromUrl() {
-        var match = String((global.location && global.location.search) || "").match(/[?&]cat=([a-z]+)/);
+        var qs = String((global.location && global.location.search) || "");
+        var match = qs.match(/[?&]cat=([a-z]+)/);
         var key = match ? match[1] : "";
         if (["summit", "city", "elite"].indexOf(key) !== -1) this.typeFilter = key;
+        /* 2026-11-25：从详情页返回时，把当时看的月份一起还原。
+           原来返回只会落在"全部活动"的当月，用户翻到 8 月点进去，回来却跳到 11 月。 */
+        var mm = qs.match(/[?&]m=(\d{4})-(\d{1,2})/);
+        if (mm && !key) {
+          this.calendarCursor = mm[1] + "-" + String(mm[2]).padStart(2, "0") + "-01";
+        }
+        if (key || mm) {
+          global.setTimeout(function () {
+            var el = global.document.getElementById("calendar");
+            if (el && el.scrollIntoView) el.scrollIntoView({ behavior: "auto", block: "start" });
+          }, 320);
+        }
       },
       monthShortLabel(month) {
         var isEn = (document.documentElement.lang || "").toLowerCase() === "en";
@@ -842,10 +855,9 @@
           who = (head.length > 12 ? head.slice(0, 12) + "…" : head) + (who.indexOf("/") !== -1 ? " 等" : "");
         }
         if (who) bits.push(who);
-        else {
-          var cap = event && event.scale && event.scale.expected && event.scale.expected.value;
-          if (cap) bits.push(cap + "人");
-        }
+        /* 2026-11-25：列表行不再回退显示人数。
+           原来 audienceText 被清空时会退回 "15人"，导致精英六人谈有的行带人数、有的不带，
+           一列看下来参差不齐。人数只在详情页「活动信息」里出现。 */
         return bits.join(" · ");
       },
       cardPeopleNote(event) {
@@ -1024,8 +1036,21 @@
       },
       eventDateLabel(event) { return event.dateText || this.formatDate(event.date); },
       eventDetailUrl(event) {
-        var page = document.documentElement.lang === "en" ? "event-detail-en.html" : "event-detail.html";
-        return page + "?id=" + encodeURIComponent(event.id);
+        var isEn = document.documentElement.lang === "en";
+        var page = isEn ? "event-detail-en.html" : "event-detail.html";
+        /* 2026-11-25：带上"从哪来"，详情页的返回箭头才能原路回去。
+           原来箭头写死 href="events.html"，从年度峰会/城市沙龙/精英六人谈点进去再返回，
+           一律掉回"全部活动"的日历视图，日期和月份也丢了。 */
+        var from = (this.page ? String(this.page) : "");
+        var q = "?id=" + encodeURIComponent(event.id);
+        if (from) q += "&from=" + encodeURIComponent(from);
+        if (from === "events" && this.typeFilter && this.typeFilter !== "all") {
+          q += "&cat=" + encodeURIComponent(this.typeFilter);
+        }
+        if (!isEn && from === "events" && (!this.typeFilter || this.typeFilter === "all") && this.calendarCursor) {
+          q += "&m=" + encodeURIComponent(String(this.calendarCursor).slice(0, 7));
+        }
+        return page + q;
       },
       /**
        * 标题断行（2026-11-12 需求）：按语义断句，不在词中间腰断。

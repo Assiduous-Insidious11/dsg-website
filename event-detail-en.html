@@ -2,9 +2,9 @@
 <html lang="en">
 <head><meta charset="utf-8"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" type="image/png" href="assets/optimized/logo_favicon-en.png">
   <title>Event Details Template | DSG</title><link rel="stylesheet" href="assets/styles.css?v=20261119u">
-  <link rel="stylesheet" href="assets/dsg-2026.css?v=20261123d"><script defer src="assets/alpine.min.js"></script><script src="assets/embedded-data.js?v=20261123c"></script>
+  <link rel="stylesheet" href="assets/dsg-2026.css?v=20261125c"><script defer src="assets/alpine.min.js"></script><script src="assets/embedded-data.js?v=20261123c"></script>
   <script src="assets/theme.js?v=20261119a"></script>
-  <script src="assets/site.js?v=20261123e"></script>
+  <script src="assets/site.js?v=20261125c"></script>
   <script src="assets/blocks.js?v=20261123c"></script>  <script src="assets/forms.js?v=20260917-eventsync"></script>
 <!-- seo:begin 由 tools/build.py 生成，勿手动修改 -->
   <meta name="description" content="View a single DSG event's agenda, speakers, venue, scale and registration method.">
@@ -181,4 +181,45 @@
         <p class="form-message full" x-show="formState.message" x-text="formState.message"></p>
       </form></div></div>
 <script src="assets/dsg-sync.js?v=20260917-eventsync"></script>
+  <script>
+  /* 2026-11-25：返回箭头按来路走（与中文详情页同一套逻辑）。 */
+  (function () {
+    var back = document.querySelector(".dt-back");
+    if (!back) return;
+    var isEn = (document.documentElement.lang || "").toLowerCase() === "en";
+    var p = new URLSearchParams(location.search);
+    var from = p.get("from") || "";
+    var cat = p.get("cat") || "";
+    var m = p.get("m") || "";
+    var map = {
+      home: "index", events: "events", calendar: "events-calendar",
+      summits: "events-summits", city: "events-city", elite: "events-elite-talks",
+      insights: "insights", ai: "supply-chain-ai", about: "about", contact: "contact"
+    };
+    function file(base) { return isEn ? base + "-en.html" : base + ".html"; }
+    var base = map[from] || "";
+    var target = file("events");
+    if (base === "index") {
+      target = file("index");
+    } else if (base === "events") {
+      var q = [];
+      if (cat) q.push("cat=" + encodeURIComponent(cat));
+      else if (m) q.push("m=" + encodeURIComponent(m));
+      target = file("events") + (q.length ? "?" + q.join("&") : "");
+    } else if (base) {
+      target = file(base);
+    }
+    back.setAttribute("href", target);
+    back.addEventListener("click", function (ev) {
+      try {
+        var ref = document.referrer || "";
+        if (ref.indexOf(location.origin) !== 0) return;
+        if (!/\/events[-a-z]*\.html/.test(ref) && !/\/index[-a-z]*\.html/.test(ref)) return;
+        if (history.length < 2) return;
+        ev.preventDefault();
+        history.back();
+      } catch (e) { /* fallback */ }
+    });
+  })();
+  </script>
 </body></html>

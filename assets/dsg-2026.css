@@ -3144,3 +3144,10 @@ html[lang="en"] .program-hero p {
   }
 }
 
+
+/* 2026-11-25：首页日历只读——条目不再可点，鼠标不变成手型、不做悬停高亮。
+   数据仍与活动页同一份（events.json），只是首页不给跳转。 */
+.sc-ev.readonly { cursor: default; }
+.sc-ev.readonly:hover { background: #f7f4ea; }
+.sc-ev.readonly.city:hover { background: #eef7f6; }
+.sc-ev.readonly.elite:hover { background: #f1f0fa; }

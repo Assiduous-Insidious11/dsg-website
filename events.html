@@ -5,11 +5,11 @@
   <link rel="icon" type="image/png" href="assets/optimized/logo_favicon.png">
   <title>活动中心 | DSG 数创时代</title>
   <link rel="stylesheet" href="assets/styles.css?v=20261119u">
-  <link rel="stylesheet" href="assets/dsg-2026.css?v=20261123d">
+  <link rel="stylesheet" href="assets/dsg-2026.css?v=20261125c">
   <script defer src="assets/alpine.min.js"></script>
   <script src="assets/embedded-data.js?v=20261123c"></script>
   <script src="assets/theme.js?v=20261119a"></script>
-  <script src="assets/site.js?v=20261123e"></script>
+  <script src="assets/site.js?v=20261125c"></script>
   <script src="assets/blocks.js?v=20261123c"></script>
   <script src="assets/forms.js?v=20260917-eventsync"></script>
 <!-- seo:begin 由 tools/build.py 生成，勿手动修改 -->
@@ -157,21 +157,8 @@
             <div class="cat-cards two">
               <template x-for="e in activeCategoryEvents" :key="e.id">
                 <article class="evc">
-                  <div class="evc-media">
-                    <span class="evc-tag" x-text="e.categoryLabel"></span>
-                    <template x-if="hasMedia(e)">
-                      <img :src="e.image" :alt="e.title">
-                    </template>
-                    <template x-if="!hasMedia(e)">
-                      <div class="kvx" :class="e.kvStyle">
-                        <div class="kv-top"><span class="kv-type" x-text="e.categoryLabel"></span></div>
-                        <div>
-                          <div class="kv-title" x-text="kvTitle(e)"></div>
-                          <div class="kv-meta"><span x-text="eventDateLabel(e) + ' · ' + (e.city || '')"></span></div>
-                        </div>
-                      </div>
-                    </template>
-                  </div>
+                  <!-- 2026-11-25：按用户要求删掉卡片顶部那张大图（原来两张都是空场照/会场顶灯照），
+                       正文整块顶上来，不再留 16:9 的空图位。 -->
                   <div class="evc-body">
                     <div class="evc-meta">
                       <span x-text="eventDateLabel(e)"></span>
