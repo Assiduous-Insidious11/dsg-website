@@ -2,27 +2,102 @@
   "_comment": "页面板块编排表。现有板块用 selector 定位前台真实 DOM（不复制内容，避免两份真相）；新增板块放在 custom 里，由 assets/nav-blocks.js 按 order 插入。visible=false 即前台隐藏，order 决定上下顺序。style.fontScale 只允许 4 档，style.themeColor 只允许 6 色，避免移动端溢出。",
   "updatedAt": "2026-11-25",
   "fontScaleOptions": [
-    { "value": "s", "label": "小", "css": "0.9" },
-    { "value": "standard", "label": "标准", "css": "1" },
-    { "value": "l", "label": "大", "css": "1.12" },
-    { "value": "xl", "label": "特大", "css": "1.24" }
+    {
+      "value": "s",
+      "label": "小",
+      "css": "0.9"
+    },
+    {
+      "value": "standard",
+      "label": "标准",
+      "css": "1"
+    },
+    {
+      "value": "l",
+      "label": "大",
+      "css": "1.12"
+    },
+    {
+      "value": "xl",
+      "label": "特大",
+      "css": "1.24"
+    }
   ],
   "themeColorOptions": [
-    { "value": "default", "label": "默认（金）", "css": "" },
-    { "value": "ink", "label": "墨黑", "css": "#111315" },
-    { "value": "teal", "label": "青", "css": "#0f7b74" },
-    { "value": "blue", "label": "蓝", "css": "#1f4f9c" },
-    { "value": "gold", "label": "金", "css": "#b8924a" },
-    { "value": "muted", "label": "灰", "css": "#6a7178" }
+    {
+      "value": "default",
+      "label": "默认（金）",
+      "css": ""
+    },
+    {
+      "value": "ink",
+      "label": "墨黑",
+      "css": "#111315"
+    },
+    {
+      "value": "teal",
+      "label": "青",
+      "css": "#0f7b74"
+    },
+    {
+      "value": "blue",
+      "label": "蓝",
+      "css": "#1f4f9c"
+    },
+    {
+      "value": "gold",
+      "label": "金",
+      "css": "#b8924a"
+    },
+    {
+      "value": "muted",
+      "label": "灰",
+      "css": "#6a7178"
+    }
   ],
   "blockTypes": [
-    { "value": "hero", "label": "首屏 Banner", "hasImage": true, "hasBody": true },
-    { "value": "text", "label": "纯文字段落", "hasImage": false, "hasBody": true },
-    { "value": "text-image", "label": "图文左右", "hasImage": true, "hasBody": true },
-    { "value": "cards", "label": "卡片组", "hasImage": true, "hasBody": true },
-    { "value": "metrics", "label": "数字带", "hasImage": false, "hasBody": true },
-    { "value": "images", "label": "图片墙", "hasImage": true, "hasBody": false },
-    { "value": "cta", "label": "行动号召条", "hasImage": false, "hasBody": true }
+    {
+      "value": "hero",
+      "label": "首屏 Banner",
+      "hasImage": true,
+      "hasBody": true
+    },
+    {
+      "value": "text",
+      "label": "纯文字段落",
+      "hasImage": false,
+      "hasBody": true
+    },
+    {
+      "value": "text-image",
+      "label": "图文左右",
+      "hasImage": true,
+      "hasBody": true
+    },
+    {
+      "value": "cards",
+      "label": "卡片组",
+      "hasImage": true,
+      "hasBody": true
+    },
+    {
+      "value": "metrics",
+      "label": "数字带",
+      "hasImage": false,
+      "hasBody": true
+    },
+    {
+      "value": "images",
+      "label": "图片墙",
+      "hasImage": true,
+      "hasBody": false
+    },
+    {
+      "value": "cta",
+      "label": "行动号召条",
+      "hasImage": false,
+      "hasBody": true
+    }
   ],
   "pages": {
     "home": {
@@ -31,12 +106,17 @@
       "sections": [
         {
           "id": "home-hero",
-          "name": "首屏 Banner",
+          "name": "首屏 Banner（链路自检）",
           "type": "hero",
           "selector": "[data-block='home-hero']",
           "visible": true,
           "order": 10,
-          "style": { "bgImage": "", "fontScale": "standard", "themeColor": "default", "align": "left" }
+          "style": {
+            "bgImage": "",
+            "fontScale": "standard",
+            "themeColor": "default",
+            "align": "left"
+          }
         },
         {
           "id": "home-who",
@@ -45,7 +125,12 @@
           "selector": "[data-block='home-who']",
           "visible": true,
           "order": 20,
-          "style": { "bgImage": "", "fontScale": "standard", "themeColor": "default", "align": "left" }
+          "style": {
+            "bgImage": "",
+            "fontScale": "standard",
+            "themeColor": "default",
+            "align": "left"
+          }
         },
         {
           "id": "home-calendar",
@@ -54,7 +139,12 @@
           "selector": "[data-block='home-calendar']",
           "visible": true,
           "order": 30,
-          "style": { "bgImage": "", "fontScale": "standard", "themeColor": "default", "align": "left" }
+          "style": {
+            "bgImage": "",
+            "fontScale": "standard",
+            "themeColor": "default",
+            "align": "left"
+          }
         },
         {
           "id": "home-ai",
@@ -63,7 +153,12 @@
           "selector": "[data-block='home-ai']",
           "visible": true,
           "order": 40,
-          "style": { "bgImage": "", "fontScale": "standard", "themeColor": "default", "align": "left" }
+          "style": {
+            "bgImage": "",
+            "fontScale": "standard",
+            "themeColor": "default",
+            "align": "left"
+          }
         }
       ],
       "custom": []
@@ -79,7 +174,12 @@
           "selector": "[data-block='events-banner']",
           "visible": true,
           "order": 10,
-          "style": { "bgImage": "", "fontScale": "standard", "themeColor": "default", "align": "left" }
+          "style": {
+            "bgImage": "",
+            "fontScale": "standard",
+            "themeColor": "default",
+            "align": "left"
+          }
         },
         {
           "id": "events-band",
@@ -88,7 +188,12 @@
           "selector": "[data-block='events-band']",
           "visible": true,
           "order": 20,
-          "style": { "bgImage": "", "fontScale": "standard", "themeColor": "default", "align": "left" }
+          "style": {
+            "bgImage": "",
+            "fontScale": "standard",
+            "themeColor": "default",
+            "align": "left"
+          }
         },
         {
           "id": "events-calendar",
@@ -97,7 +202,12 @@
           "selector": "[data-block='events-calendar']",
           "visible": true,
           "order": 30,
-          "style": { "bgImage": "", "fontScale": "standard", "themeColor": "default", "align": "left" }
+          "style": {
+            "bgImage": "",
+            "fontScale": "standard",
+            "themeColor": "default",
+            "align": "left"
+          }
         }
       ],
       "custom": []
