@@ -1,7 +1,20 @@
 function dsgAdmin() {
   // 2026-11-26：给自检输出一个版本号。用户截图时能一眼看出打开的是不是最新脚本，
   // 省掉"改了没生效"和"缓存了旧文件"之间的来回猜。
-  window.DSG_ADMIN_BUILD = "2026-11-26a";
+  window.DSG_ADMIN_BUILD = "2026-11-26b";
+  // —— 方案 B：GitHub 授权登录 ——
+  // 填上这两个值，后台的「登录」就变成点一下按钮、跳 GitHub 点 Authorize、自动回来，
+  // 不用再复制粘贴任何令牌。两个值都为空时自动退回令牌登录，不会把人卡住。
+  //   clientId：GitHub → Settings → Developer settings → OAuth Apps → 那串 Client ID（公开的，不是密钥）
+  //   proxy   ：换 code 用的中转地址。GitHub 的换票接口不允许网页直接调用（已实测无跨域头），
+  //             必须有一个只做这件事的小中转；它拿到 code 后连 GitHub 换回访问凭证。
+  const GH_OAUTH = {
+    clientId: "",
+    proxy: "",
+    scope: "public_repo", // 只够读写公开仓库，碰不到私库
+    callback: location.origin + location.pathname
+  };
+  window.DSG_OAUTH = GH_OAUTH;
   const storageKey = "dsg-admin-drafts-v1";
   const rolesKey = "dsg-admin-roles-v1";
   const defaultRoles = [
@@ -67,6 +80,10 @@ function dsgAdmin() {
     tokenInput: "",
     tokenBusy: false,
     loginError: "",
+    // 手动展开「用访问令牌登录」这条备用路（默认只在没接授权登录时才露出来）
+    tokenOpen: false,
+    // 这次登录是怎么进来的：oauth（点按钮授权）/ token（粘贴令牌）/ 空（还没登录）
+    authVia: "",
     publishMessage: "",
 
     get currentRole() {
@@ -164,6 +181,9 @@ function dsgAdmin() {
       await this.loadSite();
       this.restoreUndoState();
       try { this.ghToken = localStorage.getItem("dsg-gh-token") || ""; } catch (err) { /* 隐私模式忽略 */ }
+      try { this.authVia = localStorage.getItem("dsg-gh-via") || ""; } catch (err) { /* ignore */ }
+      // 从 GitHub 授权页跳回来时，地址上带着 code：先把它换成凭证，再做通道检测。
+      await this.handleOauthCallback();
       try {
         const noteRaw = localStorage.getItem("dsg-admin-policy-note");
         if (noteRaw === "0") this.policyNote = false;
@@ -361,8 +381,8 @@ function dsgAdmin() {
       }
     },
     get publishModeLabel() {
-      const base = { local: "本机直连（可发布）", github: "GitHub 令牌（可发布）", readonly: "网页版（只读草稿）", unknown: "检测中…" }[this.publish.mode] || "检测中…";
-      if (this.publish.mode === "github" && this.tokenState === "valid") return "GitHub 令牌（已验证）";
+      const base = { local: "本机直连（可发布）", github: "GitHub 账号（可发布）", readonly: "未登录（只读草稿）", unknown: "检测中…" }[this.publish.mode] || "检测中…";
+      if (this.publish.mode === "github" && this.tokenState === "valid") return "GitHub 账号（已登录）";
       return base;
     },
     // 登录面板：本机直连模式不需要；网页版只要没登录就摆出来，
@@ -375,6 +395,109 @@ function dsgAdmin() {
     // 兼容旧模板里残留的引用
     get showTokenBox() {
       return this.showLoginPanel;
+    },
+    // 授权登录是否已接好：Client ID 与中转地址都填了才算。
+    get oauthReady() {
+      return !!(GH_OAUTH.clientId && GH_OAUTH.proxy);
+    },
+    // 令牌输入框：授权登录可用时就藏起来，只在人主动点「改用访问令牌」时出现。
+    get showTokenInput() {
+      return this.tokenOpen || !this.oauthReady;
+    },
+    /** 点「用 GitHub 账号登录」：跳去 GitHub 授权，回来由 handleOauthCallback 接手 */
+    startGithubLogin() {
+      if (this.tokenBusy) return;
+      this.loginError = "";
+      if (!this.oauthReady) {
+        // 还没配好中转：别把人晾在按钮上，直接把令牌这条路打开
+        this.tokenOpen = true;
+        this.saveState = "授权登录还没接好，先用访问令牌登录（见 setup 说明）";
+        return;
+      }
+      const state = Math.random().toString(36).slice(2) + Date.now().toString(36);
+      try { sessionStorage.setItem("dsg-oauth-state", state); } catch (e) { /* 隐私模式 */ }
+      location.href = "https://github.com/login/oauth/authorize"
+        + "?client_id=" + encodeURIComponent(GH_OAUTH.clientId)
+        + "&scope=" + encodeURIComponent(GH_OAUTH.scope)
+        + "&state=" + encodeURIComponent(state)
+        + "&redirect_uri=" + encodeURIComponent(GH_OAUTH.callback);
+    },
+    /** 授权跳回后：核校验码 → 把 code 换成访问凭证 → 验明身份 → 记住 */
+    async handleOauthCallback() {
+      let q;
+      try { q = new URLSearchParams(location.search); } catch (e) { return; }
+      const code = q.get("code");
+      const state = q.get("state");
+      const denied = q.get("error");
+      if (!code && !denied) return;
+      this.loginOpen = true;
+      const clean = () => { try { history.replaceState(null, "", location.pathname); } catch (e) { /* ignore */ } };
+      if (denied) {
+        this.loginError = denied === "access_denied"
+          ? "你在 GitHub 页面上点了取消授权，没有登录。需要发布时再点一次「用 GitHub 账号登录」。"
+          : ("GitHub 授权没有完成：" + denied + (q.get("error_description") ? "（" + q.get("error_description") + "）" : ""));
+        clean();
+        return;
+      }
+      let saved = "";
+      try { saved = sessionStorage.getItem("dsg-oauth-state") || ""; } catch (e) { /* ignore */ }
+      if (!saved || state !== saved) {
+        this.loginError = "授权回调的校验码对不上（可能是从别处复制来的链接），为安全起见已停止登录，请重新点一次登录。";
+        clean();
+        return;
+      }
+      try { sessionStorage.removeItem("dsg-oauth-state"); } catch (e) { /* ignore */ }
+      this.tokenBusy = true;
+      this.saveState = "正在用 GitHub 账号换取登录凭证…";
+      let data = null;
+      try {
+        const res = await fetch(GH_OAUTH.proxy, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ code: code })
+        });
+        data = await res.json().catch(() => ({}));
+        if (!res.ok || !data || !data.access_token) {
+          this.loginError = "换取登录凭证失败："
+            + ((data && (data.error_description || data.error)) || ("中转服务返回 HTTP " + res.status))
+            + "。可以先点「改用访问令牌」登录。";
+        }
+      } catch (err) {
+        this.loginError = "连不上登录中转服务（" + (err && err.message ? err.message : "网络不通") + "）。可以先点「改用访问令牌」登录。";
+      }
+      if (data && data.access_token) {
+        const ok = await this.applyToken(data.access_token, "oauth");
+        if (!ok) {
+          this.loginError = (this.loginError || "")
+            + "授权本身成功了，但这个 GitHub 账号没有本仓库的写权限。请管理员在仓库 Settings → Collaborators 里把你加进去（权限选 Write），再登录一次。";
+        }
+      }
+      if (!this.ghToken) this.saveState = "未登录：登录后才能发布";
+      this.tokenBusy = false;
+      clean();
+    },
+    /** 拿到凭证后统一走这里：验明身份 → 存本机 → 切成可发布 */
+    async applyToken(token, via) {
+      this.ghToken = token;
+      const ok = await this.checkGhToken(true);
+      if (!ok) {
+        this.ghToken = "";
+        if (!this.loginError && this.tokenState !== "offline") {
+          this.loginError = "这个账号没能读到仓库信息（" + (this.tokenState === "invalid" ? "凭证被 GitHub 拒绝" : "权限不足") + "）。";
+        }
+        return false;
+      }
+      try { localStorage.setItem("dsg-gh-token", token); } catch (e) { /* 隐私模式 */ }
+      this.authVia = via || "token";
+      try { localStorage.setItem("dsg-gh-via", this.authVia); } catch (e) { /* ignore */ }
+      this.publish.mode = "github";
+      this.tokenInput = "";
+      this.tokenOpen = false;
+      this.loginOpen = false;
+      this.loginError = "";
+      this.publish.error = "";
+      this.saveState = "已登录 " + (this.ghLogin || "GitHub 账号") + "，可以发布";
+      return true;
     },
     /** 用本人的 GitHub 令牌登录：验明身份 → 记住 → 切到可发布状态 */
     async loginWithToken() {
@@ -392,22 +515,15 @@ function dsgAdmin() {
       }
       this.tokenBusy = true;
       this.loginError = "";
-      this.ghToken = token;
-      const ok = await this.checkGhToken(true);
-      if (ok) {
-        try { localStorage.setItem("dsg-gh-token", token); } catch (e) { /* 隐私模式 */ }
-        this.publish.mode = "github";
-        this.tokenInput = "";
-        this.loginOpen = false;
-        this.publish.error = "";
-        this.saveState = "已登录 " + (this.ghLogin || "GitHub 账号") + "，可以发布";
-      } else {
+      const ok = await this.applyToken(token, "token");
+      if (!ok) {
         this.ghToken = "";
-        this.loginError = {
+        this.loginError = this.loginError || {
           invalid: "令牌不对或已过期，请重新生成（GitHub → Settings → Developer settings → Personal access tokens）。",
           denied: "这串令牌被 GitHub 拒绝，检查是否复制完整、是否已被撤销。",
           offline: "连不上 api.github.com，可能是网络或代理拦截；换个网络再试。"
         }[this.tokenState] || "验证没通过，请重试。";
+        this.saveState = "未登录：登录后才能发布";
       }
       this.tokenBusy = false;
     },
@@ -416,11 +532,14 @@ function dsgAdmin() {
       this.ghLogin = "";
       this.tokenState = "";
       this.tokenInput = "";
+      this.tokenOpen = false;
+      this.authVia = "";
       this.publish.error = "";
       this.publish.mode = "readonly";
       try { localStorage.removeItem("dsg-gh-token"); } catch (e) { /* ignore */ }
+      try { localStorage.removeItem("dsg-gh-via"); } catch (e) { /* ignore */ }
       this.detectChannel();
-      this.saveState = "已退出，本机不再保存这个账号的令牌";
+      this.saveState = "已退出，本机不再保存这个账号的登录凭证";
     },
     // 令牌自检：只问「这串令牌是谁」，不读写仓库，零副作用。
     // 仓库目前是公开的，任何有效令牌（哪怕没有写权限）都能读到它；
