@@ -26,7 +26,7 @@ function dsgAdmin() {
     loginError: "",
     activeModule: "dashboard",
     dataError: false,
-    saveState: "草稿自动保存在本机浏览器",
+    saveState: "改动会自动保存",
     modules: [
       { id: "navigation", name: "导航菜单", short: "导航", description: "顶部六个一级菜单：改名、排序、显示/隐藏、新增与删除；EN 按钮与预约咨询按钮" },
       { id: "blocks", name: "板块管理", short: "板块", description: "首页与活动页的板块：显示/隐藏、上下排序、新增、删除、背景图、字号档位与文字颜色" },
@@ -161,7 +161,9 @@ function dsgAdmin() {
         const noteRaw = localStorage.getItem("dsg-admin-policy-note");
         if (noteRaw === "0") this.policyNote = false;
       } catch (err) { /* 忽略 */ }
-      this.detectChannel();
+      await this.detectChannel();
+      // 本机后台：把服务端那份共享草稿对上来（谁的时间新用谁的）
+      await this.syncDraftFromServer();
       const savedSession = this.readJson("dsg-admin-session-v1", null);
       if (savedSession?.active) {
         // 旧会话角色可能已被新矩阵替换/移除，强制校正到当前矩阵中的角色
@@ -325,6 +327,7 @@ function dsgAdmin() {
           if (d && d.mode === "local") {
             this.publish.mode = "local";
             this.publish.server = d;
+            this.saveState = "草稿存在共享稿库，换设备或同事接手看到同一份";
             return;
           }
         }
@@ -340,9 +343,14 @@ function dsgAdmin() {
       }
     },
     get publishModeLabel() {
-      const base = { local: "本机直连（可发布）", github: "GitHub 令牌（可发布）", readonly: "线上只读", unknown: "检测中…" }[this.publish.mode] || "检测中…";
+      const base = { local: "本机直连（可发布）", github: "GitHub 令牌（可发布）", readonly: "网页版（只读草稿）", unknown: "检测中…" }[this.publish.mode] || "检测中…";
       if (this.publish.mode === "github" && this.tokenState === "valid") return "GitHub 令牌（已验证）";
       return base;
+    },
+    // 令牌只在调试时露出：地址后面加 ?token=1 才显示输入框。
+    // 常规使用不需要令牌，也就不会再有「亮着可发布、点了却 401」这种事。
+    get showTokenBox() {
+      return /[?&]token=1/.test(location.search);
     },
     // 令牌自检：只问「这串令牌是谁」，不读写仓库，零副作用。
     // 仓库目前是公开的，任何有效令牌（哪怕没有写权限）都能读到它；
@@ -517,9 +525,9 @@ function dsgAdmin() {
         }
         if (this.publish.mode === "local") return await this.publishLocal(payload);
         if (this.publish.mode === "github") return await this.publishGithub(payload);
-        this.saveState = "当前是线上只读版：请在本机双击「启动后台.bat」打开后台后再发布";
+        this.saveState = "网页版不能发布：请用桌面后台（双击「启动后台.bat」，地址 127.0.0.1:8899）";
         // 令牌坏了的话，保留上面那句具体原因，别用泛泛的「只读」盖掉
-        this.publish.error = this.publish.error || "这个地址没有发布能力：没有本机服务，也没有可用的 GitHub 令牌。改动只存在本机草稿，线上不会变。双击「启动后台.bat」用 http://127.0.0.1:8899/admin.html 打开即可真正发布。";
+        this.publish.error = this.publish.error || "这个地址是公开的网页版，只能查看和编辑草稿，不能发布。\n\n要发布，请回到装了项目文件的那台电脑：双击「启动后台.bat」，等黑色窗口里出现「后台地址 http://127.0.0.1:8899」，再用浏览器打开这个地址。桌面后台直接写文件并推送，不需要令牌，也不会因为令牌过期而失败。\n\n你的改动已经存在草稿里，不会丢。";
       } catch (err) {
         const msg = err && err.message ? err.message : String(err);
         this.saveState = "发布失败：" + msg;
@@ -669,9 +677,53 @@ function dsgAdmin() {
       }
     },
     persist() {
-      localStorage.setItem(storageKey, JSON.stringify(this.draft));
-      localStorage.setItem(rolesKey, JSON.stringify(this.roles));
+      // 2026-11-26：草稿双写。
+      // 本地那份保速度、断网也不丢；本机后台模式下再同步一份到服务端，
+      // 这样换电脑、换浏览器、同事接手看到的都是同一份，不再各存各的。
+      const now = Date.now();
+      try {
+        localStorage.setItem(storageKey, JSON.stringify(this.draft));
+        localStorage.setItem(rolesKey, JSON.stringify(this.roles));
+        localStorage.setItem("dsg-admin-draft-at", String(now));
+      } catch (err) { /* 隐私模式下忽略 */ }
       this.saveState = `已保存草稿 ${new Date().toLocaleTimeString("zh-CN", { hour12: false })}`;
+      this.pushDraftToServer();
+    },
+    // 草稿上传节流：连续操作只在停手 1.2 秒后写一次盘，避免频繁落盘
+    pushDraftToServer() {
+      if (this.publish.mode !== "local") return;
+      if (this._draftTimer) clearTimeout(this._draftTimer);
+      this._draftTimer = setTimeout(() => {
+        fetch("/api/drafts", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ data: this.draft })
+        })
+          .then((r) => r.json())
+          .then((d) => {
+            if (d && d.ok) this.saveState = "草稿已存入共享稿库 · " + d.updated;
+          })
+          .catch(() => { /* 服务没起就只留本地那份 */ });
+      }, 1200);
+    },
+    // 打开后台时对齐服务端草稿：谁的时间新用谁的，避免把刚改的覆盖掉
+    async syncDraftFromServer() {
+      if (this.publish.mode !== "local") return;
+      try {
+        const res = await fetch("/api/drafts", { cache: "no-store" });
+        const d = await res.json();
+        if (!d || !d.ok || !d.data || !Array.isArray(d.data.events) || !d.data.events.length) return;
+        const localAt = Number(localStorage.getItem("dsg-admin-draft-at") || 0);
+        const serverAt = d.updated ? new Date(d.updated.replace(" ", "T")).getTime() : 0;
+        if (serverAt > localAt + 1000) {
+          this.draft = d.data;
+          try {
+            localStorage.setItem(storageKey, JSON.stringify(this.draft));
+            localStorage.setItem("dsg-admin-draft-at", String(serverAt));
+          } catch (err) { /* 忽略 */ }
+          this.saveState = "已载入共享草稿 · " + d.updated;
+        }
+      } catch (err) { /* 服务没起就沿用本地草稿 */ }
     },
     resetDrafts() {
       if (!confirm("确认清空本机草稿并恢复 content/*.json 的内容？")) return;
