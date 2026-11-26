@@ -12,7 +12,7 @@
   <script src="assets/forms.js?v=20260917-eventsync"></script>
   <script src="assets/embedded-data.js?v=20261120d"></script>
   <script src="assets/theme.js?v=20261119a"></script>
-  <script src="assets/admin.js?v=20261126g"></script>
+  <script src="assets/admin.js?v=20261126h"></script>
 </head>
 <body x-data="dsgAdmin()" x-init="init()">
   <template x-if="!session.active">
@@ -97,31 +97,34 @@
           </div>
         </section>
 
-        <!-- 登录发布账号：谁用谁登录，跟用哪台电脑无关 -->
+        <!-- 登录发布账号：默认只占一行，点「登录」才展开，不占版面 -->
         <section class="notice publish-login" x-show="showLoginPanel">
           <div class="publish-login-body">
             <b x-show="ghLogin">
               <span x-text="'已登录：' + ghLogin"></span>
               <span class="publish-login-state">可发布</span>
             </b>
-            <b x-show="!ghLogin">登录后才能发布到线上</b>
-            <p class="hint" x-show="!ghLogin && oauthReady">点下面的按钮，跳到 GitHub 点一次「Authorize」就回来了。不装软件、不绑电脑；换台电脑、换个人，各登各的，互不影响。改动在登录前后都不会丢。</p>
-            <p class="hint" x-show="!ghLogin && !oauthReady">授权登录还没接通（缺 Client ID 或中转地址），先用访问令牌登录；接好后这里会变成一个按钮。</p>
-            <div class="publish-login-row" x-show="!ghLogin">
-              <button class="primary" type="button" @click="startGithubLogin()" :disabled="tokenBusy"
-                      x-text="tokenBusy ? '处理中…' : '用 GitHub 账号登录'"></button>
+            <b x-show="!ghLogin">这台浏览器还没登录，登录后才能发布到线上</b>
+            <div x-show="!ghLogin && loginOpen">
+              <p class="hint" x-show="oauthReady">点下面的按钮，跳到 GitHub 点一次「Authorize」就回来了。不装软件、不绑电脑；换台电脑、换个人，各登各的，互不影响。改动在登录前后都不会丢。</p>
+              <p class="hint" x-show="!oauthReady">授权登录还没接通（缺 Client ID 或中转地址），先用访问令牌登录；接好后这里会变成一个按钮。</p>
+              <div class="publish-login-row">
+                <button class="primary" type="button" @click="startGithubLogin()" :disabled="tokenBusy"
+                        x-text="tokenBusy ? '处理中…' : '用 GitHub 账号登录'"></button>
+              </div>
+              <div class="publish-login-row" x-show="showTokenInput">
+                <input type="password" x-model="tokenInput" placeholder="粘贴 GitHub 访问令牌（github_pat_… 或 ghp_…）"
+                       @keydown.enter="loginWithToken()">
+                <button class="secondary" type="button" @click="loginWithToken()" :disabled="tokenBusy"
+                        x-text="tokenBusy ? '验证中…' : '用令牌登录'"></button>
+              </div>
+              <p class="publish-login-error" x-show="loginError" x-text="loginError"></p>
             </div>
-            <div class="publish-login-row" x-show="!ghLogin && showTokenInput">
-              <input type="password" x-model="tokenInput" placeholder="粘贴 GitHub 访问令牌（github_pat_… 或 ghp_…）"
-                     @keydown.enter="loginWithToken()">
-              <button class="secondary" type="button" @click="loginWithToken()" :disabled="tokenBusy"
-                      x-text="tokenBusy ? '验证中…' : '用令牌登录'"></button>
-            </div>
-            <p class="publish-login-error" x-show="loginError" x-text="loginError"></p>
           </div>
           <div class="diag-actions">
+            <button class="secondary mini" type="button" x-show="!ghLogin && !loginOpen" @click="loginOpen=true">登录</button>
             <button class="secondary mini" type="button" x-show="ghLogin" @click="logoutToken()">退出登录</button>
-            <button class="secondary mini" type="button" x-show="loginOpen && !ghLogin" @click="loginOpen=false">收起</button>
+            <button class="secondary mini" type="button" x-show="!ghLogin && loginOpen" @click="loginOpen=false">收起</button>
           </div>
         </section>
 
