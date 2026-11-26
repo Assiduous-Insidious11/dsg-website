@@ -7,12 +7,12 @@
   <title>DSG 管理后台</title>
   <meta name="robots" content="noindex, nofollow">
   <meta name="description" content="DSG 官网内容管理后台，仅限授权人员使用。">
-  <link rel="stylesheet" href="assets/admin.css?v=20261126d">
+  <link rel="stylesheet" href="assets/admin.css?v=20261126e">
   <script defer src="assets/alpine.min.js"></script>
   <script src="assets/forms.js?v=20260917-eventsync"></script>
   <script src="assets/embedded-data.js?v=20261120d"></script>
   <script src="assets/theme.js?v=20261119a"></script>
-  <script src="assets/admin.js?v=20261126h"></script>
+  <script src="assets/admin.js?v=20261126i"></script>
 </head>
 <body x-data="dsgAdmin()" x-init="init()">
   <template x-if="!session.active">
@@ -103,20 +103,29 @@
             <b x-show="ghLogin">
               <span x-text="'已登录：' + ghLogin"></span>
               <span class="publish-login-state">可发布</span>
+              <span class="publish-login-exp" :class="{ warn: tokenExpiring }" x-text="tokenExpiryText"></span>
             </b>
             <b x-show="!ghLogin">这台浏览器还没登录，登录后才能发布到线上</b>
+            <p class="hint" x-show="ghLogin" x-text="draftRepoText"></p>
             <div x-show="!ghLogin && loginOpen">
-              <p class="hint" x-show="oauthReady">点下面的按钮，跳到 GitHub 点一次「Authorize」就回来了。不装软件、不绑电脑；换台电脑、换个人，各登各的，互不影响。改动在登录前后都不会丢。</p>
-              <p class="hint" x-show="!oauthReady">授权登录还没接通（缺 Client ID 或中转地址），先用访问令牌登录；接好后这里会变成一个按钮。</p>
-              <div class="publish-login-row">
+              <p class="hint">两步，做一次就好，之后这台电脑会记住（不需要装任何东西）：</p>
+              <ol class="login-steps">
+                <li>
+                  <a href="https://github.com/settings/tokens/new?scopes=public_repo&amp;description=DSG%E5%AE%98%E7%BD%91%E5%90%8E%E5%8F%B0"
+                     target="_blank" rel="noopener">点这里打开 GitHub 生成页</a>
+                  <span>权限已经替你勾好，只需把 Expiration 选成 1 year，再点页面最下面的 Generate token。</span>
+                </li>
+                <li>复制那串 <code>ghp_</code> 开头的字符，粘到下面，点「登录」。</li>
+              </ol>
+              <div class="publish-login-row" x-show="oauthReady">
                 <button class="primary" type="button" @click="startGithubLogin()" :disabled="tokenBusy"
                         x-text="tokenBusy ? '处理中…' : '用 GitHub 账号登录'"></button>
               </div>
               <div class="publish-login-row" x-show="showTokenInput">
-                <input type="password" x-model="tokenInput" placeholder="粘贴 GitHub 访问令牌（github_pat_… 或 ghp_…）"
+                <input type="password" x-model="tokenInput" placeholder="粘贴刚复制的那串字符（ghp_… 开头，40 位）"
                        @keydown.enter="loginWithToken()">
-                <button class="secondary" type="button" @click="loginWithToken()" :disabled="tokenBusy"
-                        x-text="tokenBusy ? '验证中…' : '用令牌登录'"></button>
+                <button class="primary" type="button" @click="loginWithToken()" :disabled="tokenBusy"
+                        x-text="tokenBusy ? '验证中…' : '登录'"></button>
               </div>
               <p class="publish-login-error" x-show="loginError" x-text="loginError"></p>
             </div>

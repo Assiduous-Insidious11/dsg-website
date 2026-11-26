@@ -271,6 +271,33 @@ textarea { min-height: 112px; resize: vertical; }
   color: #17436f;
   margin-left: 8px;
 }
+/* 令牌有效期：让"哪天会失效"看得见，而不是哪天突然 401 才开始猜 */
+.publish-login .publish-login-exp {
+  display: inline-block;
+  margin-left: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #5b7492;
+}
+.publish-login .publish-login-exp.warn { color: #a8650f; }
+/* 登录两步指引 */
+.publish-login .login-steps {
+  margin: 10px 0 0;
+  padding-left: 20px;
+  font-size: 13px;
+  line-height: 1.75;
+  color: #2b4a6b;
+}
+.publish-login .login-steps li { margin: 2px 0; }
+.publish-login .login-steps a { color: #0f5fbf; font-weight: 700; text-decoration: underline; }
+.publish-login .login-steps span { color: #5b7492; }
+.publish-login .login-steps code {
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 12px;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: rgba(28,92,168,.1);
+}
 .dashboard-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));

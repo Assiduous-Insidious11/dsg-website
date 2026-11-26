@@ -84,6 +84,13 @@ function dsgAdmin() {
     tokenOpen: false,
     // 这次登录是怎么进来的：oauth（点按钮授权）/ token（粘贴令牌）/ 空（还没登录）
     authVia: "",
+    // 令牌到期时间。GitHub 在这个请求的响应头里直接告诉我们（github-authentication-token-expiration），
+    // 不读白不读——这样"哪天会失效"是看得见的，而不是哪天突然变成 401 才开始猜。
+    tokenExpiry: "",
+    // 共享稿库（2026-11-26）：草稿从"各自浏览器"里搬出来，存进仓库的一个独立分支。
+    // 换电脑、换人、关机再开都能接上；不参与网站构建，前台一个字节都不受影响。
+    draftRepo: { at: "", by: "", state: "idle", error: "" },
+    DRAFT_BRANCH: "admin-drafts",
     publishMessage: "",
 
     get currentRole() {
@@ -182,6 +189,7 @@ function dsgAdmin() {
       this.restoreUndoState();
       try { this.ghToken = localStorage.getItem("dsg-gh-token") || ""; } catch (err) { /* 隐私模式忽略 */ }
       try { this.authVia = localStorage.getItem("dsg-gh-via") || ""; } catch (err) { /* ignore */ }
+      try { this.tokenExpiry = localStorage.getItem("dsg-gh-exp") || ""; } catch (err) { /* ignore */ }
       // 从 GitHub 授权页跳回来时，地址上带着 code：先把它换成凭证，再做通道检测。
       await this.handleOauthCallback();
       try {
@@ -189,6 +197,8 @@ function dsgAdmin() {
         if (noteRaw === "0") this.policyNote = false;
       } catch (err) { /* 忽略 */ }
       await this.detectChannel();
+      // 已登录着的人：顺手把共享稿库那份对上来（换设备接着改靠的就是这一步）
+      if (this.publish.mode === "github") await this.pullSharedDraft();
       // 本机后台：把服务端那份共享草稿对上来（谁的时间新用谁的）
       await this.syncDraftFromServer();
       const savedSession = this.readJson("dsg-admin-session-v1", null);
@@ -385,12 +395,43 @@ function dsgAdmin() {
       if (this.publish.mode === "github" && this.tokenState === "valid") return "GitHub 账号（已登录）";
       return base;
     },
+    /** 令牌还能用多久：能看见，就不用等到哪天突然 401 才开始查 */
+    get tokenExpiryText() {
+      if (!this.ghToken) return "";
+      // 读不到就不写。经典令牌本来就不会过期，而响应头也可能因跨域策略读不到——
+      // 这两种情况分不清，就不要编一句"长期有效"给用户。
+      if (!this.tokenExpiry) return "";
+      const t = Date.parse(this.tokenExpiry);
+      if (!t) return "";
+      const days = Math.floor((t - Date.now()) / 86400000);
+      const date = new Date(t).toLocaleDateString("zh-CN");
+      if (days < 0) return "已于 " + date + " 过期，需要重新登录";
+      if (days === 0) return "今天到期（" + date + "），建议现在换新的";
+      return "有效至 " + date + "（剩 " + days + " 天）";
+    },
+    get tokenExpiring() {
+      if (!this.tokenExpiry) return false;
+      const t = Date.parse(this.tokenExpiry);
+      return !!t && (t - Date.now()) < 14 * 86400000;
+    },
+    /** 共享稿库状态，一句话说清现在草稿存在哪、什么时候存的 */
+    get draftRepoText() {
+      const s = this.draftRepo.state;
+      if (s === "saving") return "正在存进共享稿库…";
+      if (s === "error") return "共享稿库没存上（" + (this.draftRepo.error || "网络问题") + "），本机这份还在";
+      if (s === "saved" || s === "loaded") {
+        const when = this.draftRepo.at ? new Date(this.draftRepo.at).toLocaleString("zh-CN", { hour12: false }) : "";
+        return "草稿在共享稿库：" + when + "（换电脑、换人进来都能接上）";
+      }
+      return "草稿会随改动存进共享稿库，换电脑也能接着改";
+    },
     // 登录面板：本机直连模式不需要；网页版只要没登录就摆出来，
     // 谁打开后台谁看得见「先登录」这一步，不再出现「点发布才知道不能发」。
     get showLoginPanel() {
       if (this.publish.mode === "local") return false;
-      if (this.loginOpen) return true;
-      return !this.ghLogin;
+      // 没登录：常驻一行提醒；已登录：也留一行状态（账号、有效期、退出登录）。
+      // 都是一行字，不展开输入框，不会再是一进门就一大片。
+      return true;
     },
     // 兼容旧模板里残留的引用
     get showTokenBox() {
@@ -497,6 +538,8 @@ function dsgAdmin() {
       this.loginError = "";
       this.publish.error = "";
       this.saveState = "已登录 " + (this.ghLogin || "GitHub 账号") + "，可以发布";
+      // 一登录就去共享稿库取一次：这是"换台电脑能接着改"真正落地的那一步
+      await this.pullSharedDraft();
       return true;
     },
     /** 用本人的 GitHub 令牌登录：验明身份 → 记住 → 切到可发布状态 */
@@ -534,9 +577,12 @@ function dsgAdmin() {
       this.tokenInput = "";
       this.tokenOpen = false;
       this.authVia = "";
+      this.tokenExpiry = "";
+      this.draftRepo = { at: "", by: "", state: "idle", error: "" };
       this.publish.error = "";
       this.publish.mode = "readonly";
       try { localStorage.removeItem("dsg-gh-token"); } catch (e) { /* ignore */ }
+      try { localStorage.removeItem("dsg-gh-exp"); } catch (e) { /* ignore */ }
       try { localStorage.removeItem("dsg-gh-via"); } catch (e) { /* ignore */ }
       this.detectChannel();
       this.saveState = "已退出，本机不再保存这个账号的登录凭证";
@@ -554,6 +600,13 @@ function dsgAdmin() {
         if (res.ok) {
           this.tokenState = "valid";
           try { const u = await res.json(); this.ghLogin = (u && u.login) || ""; } catch (e) { this.ghLogin = ""; }
+          // 经典令牌不会过期，GitHub 就不给这个头；细粒度令牌会给，格式如 2027-11-26 08:00:00 UTC
+          const exp = res.headers.get("github-authentication-token-expiration") || "";
+          this.tokenExpiry = exp;
+          try {
+            if (exp) localStorage.setItem("dsg-gh-exp", exp);
+            else localStorage.removeItem("dsg-gh-exp");
+          } catch (e) { /* 隐私模式 */ }
           if (!silent) this.publish.error = "";
           return true;
         }
@@ -935,6 +988,7 @@ function dsgAdmin() {
       } catch (err) { /* 隐私模式下忽略 */ }
       this.saveState = `已保存草稿 ${new Date().toLocaleTimeString("zh-CN", { hour12: false })}`;
       this.pushDraftToServer();
+      this.pushDraftToRepo();
     },
     // 草稿上传节流：连续操作只在停手 1.2 秒后写一次盘，避免频繁落盘
     pushDraftToServer() {
@@ -971,6 +1025,142 @@ function dsgAdmin() {
           this.saveState = "已载入共享草稿 · " + d.updated;
         }
       } catch (err) { /* 服务没起就沿用本地草稿 */ }
+    },
+    /* ===== 共享稿库（2026-11-26） =====
+       补上"记事"那一格：草稿不再只躺在这台电脑的浏览器里。
+       登录之后，草稿被写进仓库的一个独立分支 admin-drafts（不参与网站构建，
+       线上页面一个字节都不受影响），文件名就是登录账号名。
+       换电脑、换人、关机再开，进后台先比时间戳，取较新的那一份。
+       不需要任何云服务账号——用的还是 GitHub 自己。 */
+    unb64(text) {
+      const bin = atob(text);
+      const bytes = new Uint8Array(bin.length);
+      for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+      return new TextDecoder("utf-8").decode(bytes);
+    },
+    /** 一个草稿包 = 活动/AI/洞察三份列表 + 导航 + 板块 + 页面内容，缺一份都会"换电脑就少一块" */
+    draftPack() {
+      return {
+        by: this.ghLogin || "",
+        at: new Date().toISOString(),
+        data: this.draft,
+        nav: (this.nav && this.nav.data) ? this.nav.data : null,
+        blocks: (this.cfg && this.cfg.data) ? this.cfg.data : null,
+        site: this.siteData || null
+      };
+    },
+    draftFilePath() {
+      const who = (this.ghLogin || "").replace(/[^A-Za-z0-9._-]/g, "") || "shared";
+      return "drafts/" + who + ".json";
+    },
+    /** 草稿分支不存在就从主分支拉一个出来；已存在直接用 */
+    async ensureDraftBranch() {
+      const br = this.DRAFT_BRANCH;
+      const res = await fetch("https://api.github.com/repos/" + this.publish.repo + "/git/ref/heads/" + br, {
+        headers: this.ghHeaders(), cache: "no-store"
+      });
+      if (res.ok) return br;
+      if (res.status !== 404) {
+        throw new Error("读取草稿分支失败（" + res.status + "）：" + ((await this.ghMessage(res)) || this.ghHint(res.status)));
+      }
+      const main = await this.ghGetJson("/git/ref/heads/" + this.publish.branch, "读取主分支");
+      const sha = main && main.object && main.object.sha;
+      if (!sha) throw new Error("读不到 " + this.publish.branch + " 的最新提交");
+      await this.ghJson("POST", "/git/refs", { ref: "refs/heads/" + br, sha: sha }, "创建草稿分支");
+      return br;
+    },
+    pushDraftToRepo() {
+      if (this.publish.mode !== "github" || !this.ghToken || !this.ghLogin) return;
+      if (this._draftRepoTimer) clearTimeout(this._draftRepoTimer);
+      // 停手 12 秒才写一次：不是每敲一个字就往仓库提交一次
+      this._draftRepoTimer = setTimeout(() => { this.writeSharedDraft(); }, 12000);
+    },
+    async writeSharedDraft() {
+      if (this._draftWriting) return;
+      if (this.publish.mode !== "github" || !this.ghToken || !this.ghLogin) return;
+      this._draftWriting = true;
+      this.draftRepo.state = "saving";
+      try {
+        const br = await this.ensureDraftBranch();
+        const path = this.draftFilePath();
+        let sha = null;
+        const head = await fetch("https://api.github.com/repos/" + this.publish.repo + "/contents/" + path + "?ref=" + br, {
+          headers: this.ghHeaders(), cache: "no-store"
+        });
+        if (head.ok) { try { sha = (await head.json()).sha || null; } catch (e) { sha = null; } }
+        const pack = this.draftPack();
+        const body = {
+          message: "草稿 · " + this.ghLogin + " · " + this.nowText(),
+          content: this.b64(JSON.stringify(pack, null, 2) + "\n"),
+          branch: br
+        };
+        if (sha) body.sha = sha;
+        const put = await fetch("https://api.github.com/repos/" + this.publish.repo + "/contents/" + path, {
+          method: "PUT",
+          headers: this.ghHeaders({ "Content-Type": "application/json" }),
+          body: JSON.stringify(body)
+        });
+        if (!put.ok) {
+          this.draftRepo.state = "error";
+          this.draftRepo.error = (await this.ghMessage(put)) || this.ghHint(put.status);
+          return;
+        }
+        this.draftRepo.state = "saved";
+        this.draftRepo.at = pack.at;
+        this.draftRepo.error = "";
+        this.saveState = "草稿已存进共享稿库（换电脑也能接着改）· " +
+          new Date().toLocaleTimeString("zh-CN", { hour12: false });
+      } catch (err) {
+        // 存不进共享稿库不该挡住干活：本机那份还在，下次保存接着试
+        this.draftRepo.state = "error";
+        this.draftRepo.error = (err && err.message) || "写入失败";
+      } finally {
+        this._draftWriting = false;
+      }
+    },
+    /** 进后台或刚登录时对一次：谁的时间新用谁的 */
+    async pullSharedDraft() {
+      if (this.publish.mode !== "github" || !this.ghToken || !this.ghLogin) return false;
+      try {
+        const res = await fetch("https://api.github.com/repos/" + this.publish.repo + "/contents/" + this.draftFilePath() + "?ref=" + this.DRAFT_BRANCH, {
+          headers: this.ghHeaders(), cache: "no-store"
+        });
+        if (res.status === 404) return false;   // 还没存过，正常
+        if (!res.ok) return false;
+        const meta = await res.json();
+        const pack = JSON.parse(this.unb64((meta.content || "").replace(/\s+/g, "")));
+        if (!pack || !pack.data || !Array.isArray(pack.data.events)) return false;
+        this.draftRepo.at = pack.at || "";
+        this.draftRepo.by = pack.by || "";
+        this.draftRepo.state = "loaded";
+        const localAt = Number(localStorage.getItem("dsg-admin-draft-at") || 0);
+        const repoAt = Date.parse(pack.at || "") || 0;
+        // 只有共享稿库那份更新才覆盖本机，避免把刚改的那份盖掉
+        if (repoAt <= localAt + 1000) return false;
+        this.draft = pack.data;
+        if (pack.nav) {
+          this.nav.data = pack.nav;
+          try { localStorage.setItem(this.NAV_KEY, JSON.stringify(pack.nav)); } catch (e) { /* ignore */ }
+        }
+        if (pack.blocks) {
+          this.cfg.data = pack.blocks;
+          try { localStorage.setItem(this.BLOCKS_CFG_KEY, JSON.stringify(pack.blocks)); } catch (e) { /* ignore */ }
+        }
+        if (pack.site) {
+          this.siteData = pack.site;
+          try { localStorage.setItem("dsg-admin-site-v1", JSON.stringify(pack.site)); } catch (e) { /* ignore */ }
+        }
+        try {
+          localStorage.setItem(storageKey, JSON.stringify(this.draft));
+          localStorage.setItem("dsg-admin-draft-at", String(repoAt));
+        } catch (e) { /* ignore */ }
+        this.lastSnap = this.snapshotScopes();
+        const when = pack.at ? new Date(pack.at).toLocaleString("zh-CN", { hour12: false }) : "";
+        this.saveState = "已载入共享稿库里的草稿（" + (pack.by || "同事") + " · " + when + "），接着改就行";
+        return true;
+      } catch (err) {
+        return false;
+      }
     },
     resetDrafts() {
       if (!confirm("确认清空本机草稿并恢复 content/*.json 的内容？")) return;
