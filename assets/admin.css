@@ -221,8 +221,10 @@ textarea { min-height: 112px; resize: vertical; }
   flex: 0 0 auto;
 }
 .publish-notice button { flex: 0 0 auto; }
-/* 登录发布账号：常驻顶部的入口条，任何人打开后台都看得见这一步 */
-.notice.login-panel {
+/* 登录发布账号：常驻顶部的入口条，任何人打开后台都看得见这一步。
+   注意类名不能叫 login-panel —— 那是登录页（角色/密码）在用的深色容器，
+   2026-11-26 撞过一次，整条变成黑底白字。 */
+.notice.publish-login {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -231,28 +233,33 @@ textarea { min-height: 112px; resize: vertical; }
   background: #f4f8fd;
   color: #17436f;
 }
-.login-panel .login-body { flex: 1 1 auto; min-width: 0; }
-.login-panel .hint {
+.publish-login .publish-login-body { flex: 1 1 auto; min-width: 0; }
+.publish-login .hint {
   margin: 6px 0 0;
   font-weight: 600;
   line-height: 1.6;
   color: #3c5d80;
 }
-.login-panel .login-row {
+.publish-login .publish-login-row {
   display: flex;
   gap: 10px;
   margin-top: 10px;
 }
-.login-panel .login-row input {
+.publish-login .publish-login-row input {
   flex: 1 1 auto;
   min-width: 0;
 }
-.login-panel .login-error {
+.publish-login .publish-login-row button {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  padding: 0 20px;
+}
+.publish-login .publish-login-error {
   margin: 8px 0 0;
   color: var(--danger);
   font-weight: 700;
 }
-.login-panel .login-state {
+.publish-login .publish-login-state {
   display: inline-flex;
   align-items: center;
   gap: 6px;

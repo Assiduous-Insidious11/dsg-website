@@ -324,7 +324,18 @@ function dsgAdmin() {
         // 401 就当没令牌处理，状态标与实际能力一致。
         const ok = await this.checkGhToken(true);
         this.publish.mode = ok ? "github" : "readonly";
-        if (!ok) this.saveState = "令牌已失效（" + (this.tokenState === "offline" ? "网络不通" : "401") + "）：当前只能存草稿，点「发布上线」看详情";
+        if (!ok) {
+          // 确认被 GitHub 拒绝（401/403）才清掉，别再每次打开都甩一条红色报错；
+          // 只是网络不通的话保留令牌，等网络好了还能用。
+          if (this.tokenState === "invalid" || this.tokenState === "denied") {
+            this.ghToken = "";
+            this.ghLogin = "";
+            try { localStorage.removeItem("dsg-gh-token"); } catch (e) { /* ignore */ }
+            this.saveState = "未登录：登录后才能发布";
+          } else {
+            this.saveState = "连不上 GitHub，暂时只能存草稿";
+          }
+        }
         return;
       }
       try {
@@ -368,9 +379,15 @@ function dsgAdmin() {
     /** 用本人的 GitHub 令牌登录：验明身份 → 记住 → 切到可发布状态 */
     async loginWithToken() {
       if (this.tokenBusy) return;
-      const token = (this.tokenInput || "").trim();
+      const token = (this.tokenInput || "").replace(/\s+/g, "");
       if (!token) {
         this.loginError = "请先粘贴 GitHub 访问令牌";
+        return;
+      }
+      // 2026-11-26：有人只往框里敲了 6 个字符，拿回来一个 401，看着像"机制又坏了"。
+      // 令牌长度是死的：经典令牌 40 位，细粒度令牌 90 多位。太短就不是令牌，直接拦。
+      if (token.length < 20) {
+        this.loginError = "这一串只有 " + token.length + " 个字符，不是完整令牌。完整令牌是 40 位以上（github_pat_ 开头的是 90 多位），请回 GitHub 复制整串。";
         return;
       }
       this.tokenBusy = true;

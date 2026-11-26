@@ -7,12 +7,12 @@
   <title>DSG 管理后台</title>
   <meta name="robots" content="noindex, nofollow">
   <meta name="description" content="DSG 官网内容管理后台，仅限授权人员使用。">
-  <link rel="stylesheet" href="assets/admin.css?v=20261126b">
+  <link rel="stylesheet" href="assets/admin.css?v=20261126c">
   <script defer src="assets/alpine.min.js"></script>
   <script src="assets/forms.js?v=20260917-eventsync"></script>
   <script src="assets/embedded-data.js?v=20261120d"></script>
   <script src="assets/theme.js?v=20261119a"></script>
-  <script src="assets/admin.js?v=20261126d"></script>
+  <script src="assets/admin.js?v=20261126e"></script>
 </head>
 <body x-data="dsgAdmin()" x-init="init()">
   <template x-if="!session.active">
@@ -98,21 +98,21 @@
         </section>
 
         <!-- 登录发布账号：谁用谁登录，跟用哪台电脑无关 -->
-        <section class="notice login-panel" x-show="showLoginPanel">
-          <div class="login-body">
+        <section class="notice publish-login" x-show="showLoginPanel">
+          <div class="publish-login-body">
             <b x-show="ghLogin">
               <span x-text="'已登录：' + ghLogin"></span>
-              <span class="login-state">可发布</span>
+              <span class="publish-login-state">可发布</span>
             </b>
             <b x-show="!ghLogin">登录后才能发布到线上</b>
             <p class="hint" x-show="!ghLogin">粘一次你自己的 GitHub 访问令牌，这台电脑就记住；换电脑、换同事，各登各的，不影响别人。改动在登录前后都不会丢。</p>
-            <div class="login-row" x-show="!ghLogin">
+            <div class="publish-login-row" x-show="!ghLogin">
               <input type="password" x-model="tokenInput" placeholder="粘贴 GitHub 访问令牌（github_pat_… 或 ghp_…）"
                      @keydown.enter="loginWithToken()">
               <button class="primary" type="button" @click="loginWithToken()" :disabled="tokenBusy"
                       x-text="tokenBusy ? '验证中…' : '登录'"></button>
             </div>
-            <p class="login-error" x-show="loginError" x-text="loginError"></p>
+            <p class="publish-login-error" x-show="loginError" x-text="loginError"></p>
           </div>
           <div class="diag-actions">
             <button class="secondary mini" type="button" x-show="ghLogin" @click="logoutToken()">退出登录</button>
