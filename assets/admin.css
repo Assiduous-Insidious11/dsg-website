@@ -221,6 +221,49 @@ textarea { min-height: 112px; resize: vertical; }
   flex: 0 0 auto;
 }
 .publish-notice button { flex: 0 0 auto; }
+/* 登录发布账号：常驻顶部的入口条，任何人打开后台都看得见这一步 */
+.notice.login-panel {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  border-color: rgba(28,92,168,.22);
+  background: #f4f8fd;
+  color: #17436f;
+}
+.login-panel .login-body { flex: 1 1 auto; min-width: 0; }
+.login-panel .hint {
+  margin: 6px 0 0;
+  font-weight: 600;
+  line-height: 1.6;
+  color: #3c5d80;
+}
+.login-panel .login-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+.login-panel .login-row input {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.login-panel .login-error {
+  margin: 8px 0 0;
+  color: var(--danger);
+  font-weight: 700;
+}
+.login-panel .login-state {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(28,92,168,.1);
+  color: #17436f;
+  margin-left: 8px;
+}
 .dashboard-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));

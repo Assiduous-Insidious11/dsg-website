@@ -60,6 +60,13 @@ function dsgAdmin() {
     // 令牌状态："" 未检测 / valid 有效 / invalid 401 无效 / denied 403 无权限 / offline 网络不通
     tokenState: "",
     ghToken: "",
+    // 2026-11-26：发布账号改成「谁用谁登录」。令牌只代表这个人的 GitHub 账号，
+    // 换电脑、换人各登各的，后台不再绑定某一台机器。
+    ghLogin: "",
+    loginOpen: false,
+    tokenInput: "",
+    tokenBusy: false,
+    loginError: "",
     publishMessage: "",
 
     get currentRole() {
@@ -347,10 +354,56 @@ function dsgAdmin() {
       if (this.publish.mode === "github" && this.tokenState === "valid") return "GitHub 令牌（已验证）";
       return base;
     },
-    // 令牌只在调试时露出：地址后面加 ?token=1 才显示输入框。
-    // 常规使用不需要令牌，也就不会再有「亮着可发布、点了却 401」这种事。
+    // 登录面板：本机直连模式不需要；网页版只要没登录就摆出来，
+    // 谁打开后台谁看得见「先登录」这一步，不再出现「点发布才知道不能发」。
+    get showLoginPanel() {
+      if (this.publish.mode === "local") return false;
+      if (this.loginOpen) return true;
+      return !this.ghLogin;
+    },
+    // 兼容旧模板里残留的引用
     get showTokenBox() {
-      return /[?&]token=1/.test(location.search);
+      return this.showLoginPanel;
+    },
+    /** 用本人的 GitHub 令牌登录：验明身份 → 记住 → 切到可发布状态 */
+    async loginWithToken() {
+      if (this.tokenBusy) return;
+      const token = (this.tokenInput || "").trim();
+      if (!token) {
+        this.loginError = "请先粘贴 GitHub 访问令牌";
+        return;
+      }
+      this.tokenBusy = true;
+      this.loginError = "";
+      this.ghToken = token;
+      const ok = await this.checkGhToken(true);
+      if (ok) {
+        try { localStorage.setItem("dsg-gh-token", token); } catch (e) { /* 隐私模式 */ }
+        this.publish.mode = "github";
+        this.tokenInput = "";
+        this.loginOpen = false;
+        this.publish.error = "";
+        this.saveState = "已登录 " + (this.ghLogin || "GitHub 账号") + "，可以发布";
+      } else {
+        this.ghToken = "";
+        this.loginError = {
+          invalid: "令牌不对或已过期，请重新生成（GitHub → Settings → Developer settings → Personal access tokens）。",
+          denied: "这串令牌被 GitHub 拒绝，检查是否复制完整、是否已被撤销。",
+          offline: "连不上 api.github.com，可能是网络或代理拦截；换个网络再试。"
+        }[this.tokenState] || "验证没通过，请重试。";
+      }
+      this.tokenBusy = false;
+    },
+    logoutToken() {
+      this.ghToken = "";
+      this.ghLogin = "";
+      this.tokenState = "";
+      this.tokenInput = "";
+      this.publish.error = "";
+      this.publish.mode = "readonly";
+      try { localStorage.removeItem("dsg-gh-token"); } catch (e) { /* ignore */ }
+      this.detectChannel();
+      this.saveState = "已退出，本机不再保存这个账号的令牌";
     },
     // 令牌自检：只问「这串令牌是谁」，不读写仓库，零副作用。
     // 仓库目前是公开的，任何有效令牌（哪怕没有写权限）都能读到它；
@@ -370,7 +423,7 @@ function dsgAdmin() {
         }
         if (res.status === 401 || res.status === 403) {
           this.tokenState = "invalid";
-          if (!silent) this.publish.error = "GitHub 令牌无效或已过期（" + res.status + "）。后台已自动退回只读，改动不会推到线上。请重新生成令牌，或双击「启动后台.bat」用本机通道发布。";
+          if (!silent) this.publish.error = "登录已失效（" + res.status + "）：这个浏览器里保存的令牌被 GitHub 拒绝了。请点顶栏「登录」重新粘贴令牌，改动不会丢。";
         } else {
           this.tokenState = "denied";
           if (!silent) this.publish.error = "GitHub 拒绝了这串令牌（" + res.status + "），请检查令牌是否被撤销、是否复制完整。";
@@ -378,7 +431,7 @@ function dsgAdmin() {
         return false;
       } catch (err) {
         this.tokenState = "offline";
-        if (!silent) this.publish.error = "连不上 api.github.com（网络或代理拦截），令牌无法验证。建议改用本机后台发布。";
+        if (!silent) this.publish.error = "连不上 api.github.com（网络或代理拦截），令牌无法验证。换个网络再试。";
         return false;
       }
     },
@@ -525,9 +578,10 @@ function dsgAdmin() {
         }
         if (this.publish.mode === "local") return await this.publishLocal(payload);
         if (this.publish.mode === "github") return await this.publishGithub(payload);
-        this.saveState = "网页版不能发布：请用桌面后台（双击「启动后台.bat」，地址 127.0.0.1:8899）";
-        // 令牌坏了的话，保留上面那句具体原因，别用泛泛的「只读」盖掉
-        this.publish.error = this.publish.error || "这个地址是公开的网页版，只能查看和编辑草稿，不能发布。\n\n要发布，请回到装了项目文件的那台电脑：双击「启动后台.bat」，等黑色窗口里出现「后台地址 http://127.0.0.1:8899」，再用浏览器打开这个地址。桌面后台直接写文件并推送，不需要令牌，也不会因为令牌过期而失败。\n\n你的改动已经存在草稿里，不会丢。";
+        this.saveState = "还没有登录发布账号";
+        this.loginOpen = true;
+        // 令牌坏了的话，保留上面那句具体原因，别用泛泛的「未登录」盖掉
+        this.publish.error = this.publish.error || "还没有登录，改动只在草稿里，线上没有任何变化。\n\n点顶栏「登录」，粘贴你自己的 GitHub 访问令牌即可；任何电脑都能这样登录，不需要装任何东西。";
       } catch (err) {
         const msg = err && err.message ? err.message : String(err);
         this.saveState = "发布失败：" + msg;
@@ -589,16 +643,53 @@ function dsgAdmin() {
         return "";
       }
     },
+    ghHeaders(extra) {
+      return Object.assign({
+        "Accept": "application/vnd.github+json",
+        "Authorization": "Bearer " + this.ghToken,
+        "X-GitHub-Api-Version": "2022-11-28"
+      }, extra || {});
+    },
     async ghApi(path, options) {
       const res = await fetch("https://api.github.com/repos/" + this.publish.repo + path, Object.assign({
-        headers: {
-          "Accept": "application/vnd.github+json",
-          "Authorization": "Bearer " + this.ghToken,
-          "X-GitHub-Api-Version": "2022-11-28"
-        }
+        headers: this.ghHeaders()
       }, options || {}));
       return res;
     },
+    /** 发一个带 JSON 体的写请求（建 blob / 建 tree / 建 commit / 移分支都用它） */
+    async ghJson(method, path, body, what) {
+      const res = await this.ghApi(path, {
+        method: method,
+        headers: this.ghHeaders({ "Content-Type": "application/json" }),
+        body: JSON.stringify(body)
+      });
+      if (!res.ok) {
+        const detail = await this.ghMessage(res);
+        const err = new Error((what || "请求") + "失败（" + res.status + "）：" + (detail || this.ghHint(res.status)));
+        err.status = res.status;
+        throw err;
+      }
+      try { return await res.json(); } catch (e) { return {}; }
+    },
+    /** 读一个只返回 JSON 的接口 */
+    async ghGetJson(path, what) {
+      const res = await this.ghApi(path);
+      if (!res.ok) {
+        const detail = await this.ghMessage(res);
+        const err = new Error((what || "读取") + "失败（" + res.status + "）：" + (detail || this.ghHint(res.status)));
+        err.status = res.status;
+        throw err;
+      }
+      return await res.json();
+    },
+    /**
+     * 发布 = 一次原子提交（2026-11-26 重做）
+     * 旧做法是逐个文件调用 Contents API，8 份内容就是 8 个提交：
+     * 中途任何一步失败，线上就变成"一半新一半旧"；两个人同时发布还会互相覆盖。
+     * 现在改成 Git 数据接口：先建好全部文件的 blob，再一次性生成目录、一个提交、移动分支。
+     * 要么整批生效，要么什么都不变。别人抢先提交了，GitHub 会拒绝移分支，
+     * 我们重新读一次最新提交再合进去重试，谁的改动都不会被吞掉。
+     */
     async publishGithub(payload) {
       const branch = this.publish.branch;
       const files = [
@@ -611,44 +702,60 @@ function dsgAdmin() {
         ["content/blocks.json", payload.blocks],
         ["content/site.json", payload.site]
       ].filter((f) => f[1]);
-      let last = "";
-      for (const [path, data] of files) {
-        const head = await this.ghApi("/contents/" + path + "?ref=" + branch);
-        let sha = null;
-        if (head.status === 200) {
-          const meta = await head.json();
-          sha = meta.sha;
-        } else if (head.status !== 404) {
-          const detail = await this.ghMessage(head);
-          throw new Error("读取 " + path + " 失败（" + head.status + "）：" + (detail || this.ghHint(head.status)));
+
+      let lastError = null;
+      for (let attempt = 0; attempt < 3; attempt++) {
+        try {
+          const commit = await this.commitOnce(files, payload, branch);
+          this.publish.commit = commit.slice(0, 7);
+          this.publish.at = new Date().toLocaleString("zh-CN", { hour12: false });
+          this.publish.error = "";
+          this.clearPendingOps();
+          this.saveState = "已发布（提交 " + commit.slice(0, 7) + "）：约 1 分钟后全网可见";
+          return;
+        } catch (err) {
+          lastError = err;
+          const retryable = err && (err.status === 422 || err.status === 409);
+          if (!retryable || attempt === 2) throw err;
+          // 有人刚刚也在发布：等一拍，重新读最新提交再合一次
+          await new Promise((r) => setTimeout(r, 900 + attempt * 800));
         }
-        const body = {
-          message: (payload.message || "后台发布内容更新") + " · " + path,
-          content: this.b64(JSON.stringify(data, null, 2) + "\n"),
-          branch: branch
-        };
-        if (sha) body.sha = sha;
-        const put = await this.ghApi("/contents/" + path, {
-          method: "PUT",
-          headers: {
-            "Accept": "application/vnd.github+json",
-            "Authorization": "Bearer " + this.ghToken,
-            "Content-Type": "application/json",
-            "X-GitHub-Api-Version": "2022-11-28"
-          },
-          body: JSON.stringify(body)
-        });
-        if (!put.ok) {
-          const detail = await this.ghMessage(put);
-          throw new Error("写入 " + path + " 失败（" + put.status + "）：" + (detail || this.ghHint(put.status)));
-        }
-        const out = await put.json();
-        last = out.commit && out.commit.sha ? out.commit.sha.slice(0, 7) : last;
       }
-      this.publish.commit = last;
-      this.publish.at = new Date().toLocaleString("zh-CN", { hour12: false });
-      this.clearPendingOps();
-      this.saveState = `已通过 GitHub 发布（提交 ${last}）：约 1 分钟后全网可见`;
+      throw lastError || new Error("发布未完成");
+    },
+    async commitOnce(files, payload, branch) {
+      const ref = await this.ghGetJson("/git/ref/heads/" + branch, "读取分支 " + branch);
+      const headSha = ref && ref.object && ref.object.sha;
+      if (!headSha) throw new Error("读不到分支 " + branch + " 的最新提交，请确认分支名");
+      const head = await this.ghGetJson("/git/commits/" + headSha, "读取最新提交");
+      const baseTree = head && head.tree && head.tree.sha;
+
+      const blobs = await Promise.all(files.map(async (f) => {
+        const out = await this.ghJson("POST", "/git/blobs", {
+          content: JSON.stringify(f[1], null, 2) + "\n",
+          encoding: "utf-8"
+        }, "写入 " + f[0]);
+        return { path: f[0], mode: "100644", type: "blob", sha: out.sha };
+      }));
+
+      const tree = await this.ghJson("POST", "/git/trees", {
+        base_tree: baseTree,
+        tree: blobs
+      }, "生成提交目录");
+
+      const who = this.ghLogin ? " · " + this.ghLogin : "";
+      const message = (payload.message || "后台发布内容更新") + who;
+      const commit = await this.ghJson("POST", "/git/commits", {
+        message: message,
+        tree: tree.sha,
+        parents: [headSha]
+      }, "创建提交");
+
+      await this.ghJson("PATCH", "/git/refs/heads/" + branch, {
+        sha: commit.sha,
+        force: false
+      }, "更新线上分支");
+      return commit.sha;
     },
     can(moduleId) {
       if (moduleId === "dashboard") return true;
