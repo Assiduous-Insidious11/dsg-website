@@ -690,9 +690,9 @@ function dsgAdmin() {
      * 要么整批生效，要么什么都不变。别人抢先提交了，GitHub 会拒绝移分支，
      * 我们重新读一次最新提交再合进去重试，谁的改动都不会被吞掉。
      */
-    async publishGithub(payload) {
-      const branch = this.publish.branch;
-      const files = [
+    /** 台账：这 8 份文件就是前台的"内容源"，发布与回退走同一份清单 */
+    contentFiles(payload) {
+      return [
         ["content/events.json", payload.events],
         ["content/ai-cases.json", payload.aiCases],
         ["content/articles.json", payload.insights],
@@ -702,6 +702,10 @@ function dsgAdmin() {
         ["content/blocks.json", payload.blocks],
         ["content/site.json", payload.site]
       ].filter((f) => f[1]);
+    },
+    async publishGithub(payload) {
+      const branch = this.publish.branch;
+      const files = this.contentFiles(payload);
 
       let lastError = null;
       for (let attempt = 0; attempt < 3; attempt++) {
@@ -980,46 +984,85 @@ function dsgAdmin() {
       });
       this.persist();
     },
+    // 图片上传（2026-11-26 改成双通道）：
+    //   本机模式 → 本机服务落盘到 assets/photos/
+    //   网页模式 → 直接把图片提交进仓库 assets/photos/，同事在别的电脑也能换海报
+    // 以前只有本机通道，等于"能改字不能换图"，多人协作根本跑不起来。
+    readAsDataUrl(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = () => reject(new Error("读取本地文件失败"));
+        reader.readAsDataURL(file);
+      });
+    },
+    safeFileName(name) {
+      const base = String(name || "image.png").replace(/[\\/:*?"<>|]+/g, "-").replace(/\s+/g, "-");
+      const m = base.match(/\.([A-Za-z0-9]{2,5})$/);
+      const ext = m ? "." + m[1].toLowerCase() : ".png";
+      const stem = base.replace(/\.[A-Za-z0-9]{2,5}$/, "").slice(0, 40) || "image";
+      const stamp = new Date().toISOString().slice(0, 10).replace(/-/g, "") + "-" +
+        Date.now().toString(36);
+      return stamp + "-" + stem + ext;
+    },
+    async uploadImage(file, bucket) {
+      const folder = String(bucket || "misc").replace(/[^A-Za-z0-9_\-\u4e00-\u9fa5]+/g, "-");
+      const dataUrl = await this.readAsDataUrl(file);
+      if (this.publish.mode === "local") {
+        const res = await fetch("/api/upload", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name: file.name, dataUrl: dataUrl, bucket: folder })
+        });
+        const d = await res.json();
+        if (!d.ok) throw new Error(d.error || "本机上传失败");
+        return d.path;
+      }
+      if (this.publish.mode !== "github") {
+        this.loginOpen = true;
+        throw new Error("还没登录发布账号");
+      }
+      const base64 = String(dataUrl).split(",")[1] || "";
+      if (!base64) throw new Error("图片读取失败");
+      const path = "assets/photos/" + folder + "/" + this.safeFileName(file.name);
+      await this.ghJson("PUT", "/contents/" + path, {
+        message: "上传图片 " + path + (this.ghLogin ? " · " + this.ghLogin : ""),
+        content: base64,
+        branch: this.publish.branch
+      }, "上传图片");
+      return path;
+    },
     // 图片上传：本机发布服务负责落盘到 assets/photos/<活动编号>/，返回站内相对路径
     pickImage(kind) {
       const event = this.selected.events;
       if (!event) return;
-      if (this.publish.mode !== "local") {
-        this.saveState = "上传图片需要本机后台：请双击「启动后台.bat」后再上传";
+      if (this.publish.mode === "readonly" || this.publish.mode === "unknown") {
+        this.loginOpen = true;
+        this.saveState = "请先登录发布账号，再上传图片";
         return;
       }
       const input = document.createElement("input");
       input.type = "file";
       input.accept = "image/*";
-      input.onchange = () => {
+      input.onchange = async () => {
         const file = input.files && input.files[0];
         if (!file) return;
-        const reader = new FileReader();
-        reader.onload = async () => {
-          this.saveState = "正在上传图片…";
-          try {
-            const res = await fetch("/api/upload", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ name: file.name, dataUrl: reader.result, bucket: event.id || "misc" })
-            });
-            const d = await res.json();
-            if (!d.ok) { this.saveState = "上传失败：" + (d.error || ""); return; }
-            if (kind === "gallery") {
-              event.gallery = (event.gallery || []).concat([d.path]);
-            } else if (kind === "poster") {
-              event.poster = d.path;
-            } else {
-              event.image = d.path;
-              event.heroImage = d.path;
-            }
-            this.persist();
-            this.saveState = "图片已上传：" + d.path;
-          } catch (err) {
-            this.saveState = "上传失败：本机发布服务未运行";
+        this.saveState = "正在上传图片…";
+        try {
+          const path = await this.uploadImage(file, event.id || "misc");
+          if (kind === "gallery") {
+            event.gallery = (event.gallery || []).concat([path]);
+          } else if (kind === "poster") {
+            event.poster = path;
+          } else {
+            event.image = path;
+            event.heroImage = path;
           }
-        };
-        reader.readAsDataURL(file);
+          this.persist();
+          this.saveState = "图片已上传：" + path;
+        } catch (err) {
+          this.saveState = "上传失败：" + (err && err.message ? err.message : "未知错误");
+        }
       };
       input.click();
     },
@@ -1613,40 +1656,32 @@ function dsgAdmin() {
       try { localStorage.removeItem(this.BLOCKS_CFG_KEY); } catch (err) { /* ignore */ }
       this.loadBlocksCfg().then(() => { this.saveState = "板块设置已恢复为线上"; });
     },
-    // 板块背景图上传：复用本机发布服务的 /api/upload，落到 assets/photos/blocks-<页面>/
+    // 板块背景图上传：本机 / 网页两条通道都支持，落点 assets/photos/blocks-<页面>/
     pickBlockImage() {
       const block = this.cfgSelected;
       if (!block) return;
-      if (this.publish.mode !== "local") {
-        this.saveState = "上传图片需要本机后台：请双击「启动后台.bat」后再上传";
+      if (this.publish.mode === "readonly" || this.publish.mode === "unknown") {
+        this.loginOpen = true;
+        this.saveState = "请先登录发布账号，再上传图片";
         return;
       }
       const self = this;
       const input = document.createElement("input");
       input.type = "file";
       input.accept = "image/*";
-      input.onchange = function () {
+      input.onchange = async function () {
         const file = input.files && input.files[0];
         if (!file) return;
-        const reader = new FileReader();
-        reader.onload = async function () {
-          self.saveState = "正在上传图片…";
-          try {
-            const res = await fetch("/api/upload", {
-              method: "POST", headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ name: file.name, dataUrl: reader.result, bucket: "blocks-" + self.cfg.page })
-            });
-            const d = await res.json();
-            if (!d.ok) { self.saveState = "上传失败：" + (d.error || ""); return; }
-            block.style = block.style || {};
-            block.style.bgImage = d.path;
-            self.persistCfg("更换板块「" + block.name + "」的背景图");
-            self.saveState = "已上传：" + d.path;
-          } catch (err) {
-            self.saveState = "上传失败：本机发布服务未运行";
-          }
-        };
-        reader.readAsDataURL(file);
+        self.saveState = "正在上传图片…";
+        try {
+          const path = await self.uploadImage(file, "blocks-" + self.cfg.page);
+          block.style = block.style || {};
+          block.style.bgImage = path;
+          self.persistCfg("更换板块「" + block.name + "」的背景图");
+          self.saveState = "已上传：" + path;
+        } catch (err) {
+          self.saveState = "上传失败：" + (err && err.message ? err.message : "未知错误");
+        }
       };
       input.click();
     },
@@ -1720,9 +1755,31 @@ function dsgAdmin() {
     async loadHistory() {
       this.history.loading = true;
       const local = this.pendingOps().slice().reverse();
-      // 快照与操作日志只存在本机服务里；线上没有这个接口，直接跳过，避免 404
-      if (!/^(127\.0\.0\.1|localhost|\[::1\])$/.test(location.hostname)) {
+      const isLocal = /^(127\.0\.0\.1|localhost|\[::1\])$/.test(location.hostname);
+      // 网页版：版本列表直接读仓库提交记录，任何设备、任何人都看到同一份
+      if (!isLocal) {
         this.history.ops = local;
+        if (this.publish.mode === "github") {
+          try {
+            const list = await this.ghGetJson("/commits?sha=" + this.publish.branch + "&per_page=20", "读取发布记录");
+            this.history.revisions = (list || []).map((c) => {
+              const meta = c.commit || {};
+              const author = meta.author || {};
+              return {
+                id: c.sha,
+                short: String(c.sha || "").slice(0, 7),
+                message: String(meta.message || "").split("\n")[0],
+                files: [],
+                actor: author.name || "",
+                ts: author.date ? new Date(author.date).toLocaleString("zh-CN", { hour12: false }) : ""
+              };
+            });
+            this.history.remote = true;
+          } catch (err) {
+            this.history.revisions = [];
+            this.history.remote = false;
+          }
+        }
         this.history.loading = false;
         return;
       }
@@ -1750,9 +1807,14 @@ function dsgAdmin() {
     },
     async revertTo(id) {
       if (!id) return;
-      if (!confirm("确认把全站内容退回到 " + id + " 这一步？\n\n会用那一步的内容覆盖当前内容，并立即发布上线。")) return;
+      if (!confirm("确认把全站内容退回到 " + String(id).slice(0, 7) + " 这一步？\n\n会用那一步的内容覆盖当前内容，并立即发布上线。")) return;
+      if (this.publish.mode === "github") {
+        await this.revertGithub(id);
+        return;
+      }
       if (this.publish.mode !== "local") {
-        this.saveState = "回退需要本机后台：请双击「启动后台.bat」后再操作";
+        this.loginOpen = true;
+        this.saveState = "请先登录发布账号，再执行回退";
         return;
       }
       this.saveState = "正在回退…";
@@ -1772,6 +1834,53 @@ function dsgAdmin() {
         this.loadHistory();
       } catch (err) {
         this.saveState = "回退失败：本机后台服务未运行";
+      }
+    },
+    /**
+     * 网页端回退：把某次提交里的内容文件取出来，作为一次新提交推回去。
+     * 不去改写历史（force push 会把同事的提交冲掉），而是在最新提交之上再走一步，
+     * 所以任何人、任何设备都能安全回退。
+     */
+    async revertGithub(sha) {
+      const short = String(sha).slice(0, 7);
+      this.saveState = "正在读取 " + short + " 的内容…";
+      try {
+        const decode = (b64) => {
+          const bin = atob(String(b64 || "").replace(/\s/g, ""));
+          const bytes = new Uint8Array(bin.length);
+          for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+          return JSON.parse(new TextDecoder("utf-8").decode(bytes));
+        };
+        const keys = [
+          ["content/events.json", "events"],
+          ["content/ai-cases.json", "aiCases"],
+          ["content/articles.json", "insights"],
+          ["content/page-blocks.json", "pageBlocks"],
+          ["content-en/page-blocks.json", "pageBlocksEn"],
+          ["content/navigation.json", "navigation"],
+          ["content/blocks.json", "blocks"],
+          ["content/site.json", "site"]
+        ];
+        const payload = {
+          message: "回退到 " + short + (this.ghLogin ? " · " + this.ghLogin : "")
+        };
+        for (const [path, key] of keys) {
+          const res = await this.ghApi("/contents/" + path + "?ref=" + sha);
+          if (res.status === 404) continue;
+          if (!res.ok) throw new Error("读取 " + path + "（" + res.status + "）失败");
+          const meta = await res.json();
+          payload[key] = decode(meta.content);
+        }
+        const commit = await this.commitOnce(this.contentFiles(payload), payload, this.publish.branch);
+        this.saveState = "已回退到 " + short + " 并发布（新提交 " + commit.slice(0, 7) + "）";
+        await this.loadContent();
+        await this.loadBlocks();
+        await this.loadNav();
+        await this.loadBlocksCfg();
+        this.startWatcher();
+        this.loadHistory();
+      } catch (err) {
+        this.saveState = "回退失败：" + (err && err.message ? err.message : "未知错误");
       }
     },
 

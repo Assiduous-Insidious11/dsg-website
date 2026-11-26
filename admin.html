@@ -12,7 +12,7 @@
   <script src="assets/forms.js?v=20260917-eventsync"></script>
   <script src="assets/embedded-data.js?v=20261120d"></script>
   <script src="assets/theme.js?v=20261119a"></script>
-  <script src="assets/admin.js?v=20261126c"></script>
+  <script src="assets/admin.js?v=20261126d"></script>
 </head>
 <body x-data="dsgAdmin()" x-init="init()">
   <template x-if="!session.active">
@@ -432,7 +432,7 @@
               <div class="hist-list">
                 <template x-for="r in history.revisions" :key="r.id">
                   <div class="hist-row">
-                    <em x-text="r.id"></em>
+                    <em x-text="r.short || r.id"></em>
                     <div>
                       <strong x-text="r.message || '发布内容更新'"></strong>
                       <p x-text="(r.files || []).join('、')"></p>
