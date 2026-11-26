@@ -786,6 +786,20 @@ html[lang="en"] .hero h1 {
 .st-band.on-light .st-lab { color: var(--muted); }
 .st-note { margin-top: 14px; font-size: 12px; color: var(--muted); }
 
+/* 2026-11-26：首屏数字带「逐条跳上来」（会议需求 ⑧）。
+   用 animation 而不是「先写成 opacity:0、再等 JS 加类」——脚本没跑、或者 Alpine
+   事后把格子整块换掉，元素最多只是不动，绝不会整块看不见。 */
+.st-band.st-anim .st-item {
+  animation: stRise .62s cubic-bezier(.22, .61, .36, 1) both;
+}
+@keyframes stRise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .st-band.st-anim .st-item { animation: none !important; }
+}
+
 /* ---------- 首页：近期活动（主卡 + 次卡） ---------- */
 .evf-wrap {
   display: grid;

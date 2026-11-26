@@ -1522,3 +1522,102 @@
     fixBack(); restoreScroll();
   }
 })(window);
+
+/* 2026-11-26：首屏数字带「逐条浮入 + 数字递增」（会议需求 ⑧，附带 A）。
+   三条硬约束：
+   1) 系统开了「减少动效」就整套不启用，直接显示终值；
+   2) 动画只改 textContent，源码里的真实数值始终是最终值——脚本没跑、跑一半断掉，数字都不会错；
+   3) 只在进入视口后触发，且对 Alpine 后渲染出来的格子同样生效（否则模板一换节点，动画就丢了）。 */
+(function (global) {
+  var doc = global.document;
+  if (!doc) return;
+
+  function reduceMotion() {
+    try { return global.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (e) { return false; }
+  }
+
+  // 从 "10000+" / "120" / "1,200" 里拆出数字，前后缀原样保留
+  function parseNum(raw) {
+    var m = String(raw == null ? "" : raw).trim().match(/^(\D*?)([\d][\d,\.]*)(.*)$/);
+    if (!m) return null;
+    var body = m[2];
+    var v = parseFloat(body.replace(/,/g, ""));
+    if (!isFinite(v)) return null;
+    return { value: v, post: m[3], commas: body.indexOf(",") !== -1, dec: body.indexOf(".") !== -1 ? 1 : 0 };
+  }
+
+  function fmt(n, commas, dec) {
+    var s = dec ? n.toFixed(dec) : String(Math.round(n));
+    return commas ? s.replace(/\B(?=(\d{3})+(?!\d))/g, ",") : s;
+  }
+
+  function countUp(el, target, dur) {
+    if (!el || el.getAttribute("data-counting") === "done") return;
+    var p = parseNum(el.textContent);
+    if (!p || p.value <= 0) return;
+    el.setAttribute("data-counting", "done");
+    var start = 0;
+    function step(ts) {
+      if (!start) start = ts;
+      var q = Math.min((ts - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - q, 3);
+      el.textContent = fmt(p.value * eased, p.commas, p.dec) + p.post;
+      if (q < 1) global.requestAnimationFrame(step);
+      else el.textContent = fmt(p.value, p.commas, p.dec) + p.post;  // 收尾写回精确终值
+    }
+    global.requestAnimationFrame(step);
+  }
+
+  function armBand(band) {
+    if (band.getAttribute("data-st-armed") === "1") return;
+    band.setAttribute("data-st-armed", "1");
+
+    function startItems(scope, baseDelay) {
+      var items = scope.querySelectorAll(".st-item");
+      Array.prototype.forEach.call(items, function (item, i) {
+        var n = item.querySelector(".st-num > span");
+        if (!n || n.getAttribute("data-counting") === "done") return;
+        global.setTimeout(function () { countUp(n, 900); }, baseDelay + i * 120 + 120);
+      });
+    }
+
+    startItems(band, 0);
+
+    // Alpine 拿数据后会整块替换格子：新节点补上同一套动效，不能让它们停在那里不涨
+    if (global.MutationObserver) {
+      var mo = new global.MutationObserver(function (list) {
+        var added = false;
+        list.forEach(function (rec) {
+          if (rec.addedNodes && rec.addedNodes.length) added = true;
+        });
+        if (added) startItems(band, 0);
+      });
+      mo.observe(band, { childList: true, subtree: true });
+      global.setTimeout(function () { mo.disconnect(); }, 6000);
+    }
+  }
+
+  function boot() {
+    var bands = doc.querySelectorAll(".ev-hero-band");
+    if (!bands.length || reduceMotion()) return;
+    Array.prototype.forEach.call(bands, function (b) {
+      b.classList.add("st-anim");
+      Array.prototype.forEach.call(b.querySelectorAll(".st-item"), function (item, i) {
+        item.style.animationDelay = (i * 120) + "ms";
+      });
+    });
+    if (!("IntersectionObserver" in global)) {
+      Array.prototype.forEach.call(bands, armBand);
+      return;
+    }
+    var io = new global.IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { armBand(en.target); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.15 });
+    Array.prototype.forEach.call(bands, function (b) { io.observe(b); });
+  }
+
+  if (doc.readyState === "loading") doc.addEventListener("DOMContentLoaded", boot);
+  else boot();
+})(window);
