@@ -1,4 +1,7 @@
 function dsgAdmin() {
+  // 2026-11-26：给自检输出一个版本号。用户截图时能一眼看出打开的是不是最新脚本，
+  // 省掉"改了没生效"和"缓存了旧文件"之间的来回猜。
+  window.DSG_ADMIN_BUILD = "2026-11-26a";
   const storageKey = "dsg-admin-drafts-v1";
   const rolesKey = "dsg-admin-roles-v1";
   const defaultRoles = [
@@ -351,7 +354,12 @@ function dsgAdmin() {
           headers: { "Authorization": "Bearer " + this.ghToken, "Accept": "application/vnd.github+json" },
           cache: "no-store"
         });
-        if (res.ok) { this.tokenState = "valid"; if (!silent) this.publish.error = ""; return true; }
+        if (res.ok) {
+          this.tokenState = "valid";
+          try { const u = await res.json(); this.ghLogin = (u && u.login) || ""; } catch (e) { this.ghLogin = ""; }
+          if (!silent) this.publish.error = "";
+          return true;
+        }
         if (res.status === 401 || res.status === 403) {
           this.tokenState = "invalid";
           if (!silent) this.publish.error = "GitHub 令牌无效或已过期（" + res.status + "）。后台已自动退回只读，改动不会推到线上。请重新生成令牌，或双击「启动后台.bat」用本机通道发布。";
@@ -364,6 +372,75 @@ function dsgAdmin() {
         this.tokenState = "offline";
         if (!silent) this.publish.error = "连不上 api.github.com（网络或代理拦截），令牌无法验证。建议改用本机后台发布。";
         return false;
+      }
+    },
+    /**
+     * 发布失败自检（2026-11-26）
+     * 逐个环节探一次，把 GitHub 的原话摆出来，不再让人猜是令牌、权限还是限流。
+     * 顺序：令牌身份 → 仓库写权限 → 文件能否读 → 剩余额度。
+     */
+    async selfCheck() {
+      const out = [];
+      const put = (s) => out.push(s);
+      put("后台版本：" + (window.DSG_ADMIN_BUILD || "未标注") + " · 打开地址：" + location.host);
+      if (!this.ghToken) {
+        put("令牌：浏览器里没有存");
+        return out.join("\n");
+      }
+      put("令牌：已填写，长度 " + this.ghToken.length + "（40 为经典令牌，93 为细粒度令牌）");
+      const auth = { "Authorization": "Bearer " + this.ghToken, "Accept": "application/vnd.github+json" };
+      const ghLimit = (res) => {
+        const r = res.headers.get("x-ratelimit-remaining");
+        const retry = res.headers.get("retry-after");
+        return (r != null ? " · 剩余调用 " + r : "") + (retry ? " · 需等待 " + retry + " 秒" : "");
+      };
+      try {
+        const r = await fetch("https://api.github.com/user", { headers: auth, cache: "no-store" });
+        if (r.ok) {
+          let login = "";
+          try { const u = await r.json(); login = (u && u.login) || ""; } catch (e) { /* 忽略 */ }
+          put("[1] 令牌身份：" + r.status + " 正常，账号 " + (login || "未知") + ghLimit(r));
+        } else {
+          const m = await this.ghMessage(r);
+          put("[1] 令牌身份：" + r.status + " " + (m || this.ghHint(r.status)) + ghLimit(r));
+        }
+      } catch (e) {
+        put("[1] 令牌身份：连不上 api.github.com，" + (e && e.message ? e.message : "网络或代理拦截"));
+      }
+      try {
+        const r2 = await fetch("https://api.github.com/repos/" + this.publish.repo, { headers: auth, cache: "no-store" });
+        if (r2.ok) {
+          const d = await r2.json();
+          const p = (d && d.permissions) || {};
+          put("[2] 仓库权限：" + r2.status + " " + (d && d.full_name ? d.full_name : this.publish.repo) +
+              " · 可写=" + (p.push ? "是" : "否") + " · 私有=" + (d && d.private ? "是" : "否") + ghLimit(r2));
+        } else {
+          const m2 = await this.ghMessage(r2);
+          put("[2] 仓库权限：" + r2.status + " " + (m2 || this.ghHint(r2.status)) + ghLimit(r2));
+        }
+      } catch (e) {
+        put("[2] 仓库权限：请求失败，" + (e && e.message ? e.message : "网络异常"));
+      }
+      try {
+        const r3 = await this.ghApi("/contents/content/events.json?ref=" + this.publish.branch);
+        if (r3.ok) {
+          put("[3] 读取内容文件：" + r3.status + " 正常" + ghLimit(r3));
+        } else {
+          const m3 = await this.ghMessage(r3);
+          put("[3] 读取内容文件：" + r3.status + " " + (m3 || this.ghHint(r3.status)) + ghLimit(r3));
+        }
+      } catch (e) {
+        put("[3] 读取内容文件：请求失败，" + (e && e.message ? e.message : "网络异常"));
+      }
+      return out.join("\n");
+    },
+    copyDiag() {
+      const text = this.publish.error || "";
+      try {
+        navigator.clipboard.writeText(text);
+        this.saveState = "诊断信息已复制，可直接发给技术查看";
+      } catch (err) {
+        this.saveState = "复制失败，请手动选中下面的文字";
       }
     },
     saveGhToken(value) {
@@ -446,8 +523,17 @@ function dsgAdmin() {
       } catch (err) {
         const msg = err && err.message ? err.message : String(err);
         this.saveState = "发布失败：" + msg;
-        this.publish.error = msg;
+        this.publish.error = msg + "\n\n正在自动逐项自检…";
         if (window.console && console.error) console.error("[DSG 发布失败]", err);
+        // 2026-11-26：失败时自动跑一遍连通性自检，把令牌身份、仓库写权限、
+        // 文件读取三关的结果直接摆出来，不再让用户靠猜或靠截图报错。
+        try {
+          const diag = await this.selfCheck();
+          this.publish.error = msg + "\n\n—— 自动自检 ——\n" + diag +
+            "\n\n判读：[1] 出错 = 令牌本身失效或复制不全；[2] 可写=否 = 令牌没给这个仓库的写权限；[3] 只有这一关出错 = 短时间调用过多，等一分钟再点。";
+        } catch (diagErr) {
+          this.publish.error = msg;
+        }
       } finally {
         this.publish.busy = false;
       }

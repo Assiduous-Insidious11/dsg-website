@@ -7,12 +7,12 @@
   <title>DSG 管理后台</title>
   <meta name="robots" content="noindex, nofollow">
   <meta name="description" content="DSG 官网内容管理后台，仅限授权人员使用。">
-  <link rel="stylesheet" href="assets/admin.css?v=20261125e">
+  <link rel="stylesheet" href="assets/admin.css?v=20261126a">
   <script defer src="assets/alpine.min.js"></script>
   <script src="assets/forms.js?v=20260917-eventsync"></script>
   <script src="assets/embedded-data.js?v=20261120d"></script>
   <script src="assets/theme.js?v=20261119a"></script>
-  <script src="assets/admin.js?v=20261125e"></script>
+  <script src="assets/admin.js?v=20261126a"></script>
 </head>
 <body x-data="dsgAdmin()" x-init="init()">
   <template x-if="!session.active">
@@ -87,9 +87,12 @@
         <section class="notice publish-notice" x-show="publish.error">
           <div>
             <b>发布没走通，线上没有任何改动</b>
-            <p x-text="publish.error"></p>
+            <p class="diag-text" x-text="publish.error"></p>
           </div>
-          <button class="secondary mini" type="button" @click="publish.error=''">知道了</button>
+          <div class="diag-actions">
+            <button class="secondary mini" type="button" @click="copyDiag()">复制诊断</button>
+            <button class="secondary mini" type="button" @click="publish.error=''">知道了</button>
+          </div>
         </section>
 
         <section class="notice" x-show="dataError">
